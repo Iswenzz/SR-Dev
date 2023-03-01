@@ -1,0 +1,4 @@
+effect(trigger, color)
+{
+
+}
