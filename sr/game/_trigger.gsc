@@ -6,6 +6,7 @@
 main()
 {
 	event("spawn", ::onSpawn);
+	event("death", ::clear);
 }
 
 onSpawn()
@@ -13,6 +14,8 @@ onSpawn()
 	self endon("spawned");
 	self endon("death");
 	self endon("disconnect");
+
+	self clear();
 
 	self.huds["trigger"] = [];
 	self.huds["trigger"]["controls"] = addHud(self, 0, -80, 1, "left", "bottom");
@@ -101,4 +104,19 @@ save()
 
 	logPrint("trigger = spawn(\"trigger_radius\", " + origin + ", 0, " + width + ", " + height + ");\n");
 	if (solid) logPrint("trigger setContents(true);\n");
+}
+
+clear()
+{
+	self endon("disconnect");
+
+	if (isDefined(self.huds["trigger"]))
+	{
+		huds = getArrayKeys(self.huds["trigger"]);
+		for (i = 0; i < huds.size; i++)
+		{
+			if (isDefined(self.huds["trigger"][huds[i]]))
+				self.huds["trigger"][huds[i]] destroy();
+		}
+	}
 }
