@@ -5,7 +5,6 @@ main()
 {
 	precache();
 
-	menu("-1", 			"save", 		::menu_Save);
 	menu("-1", 			"dog", 			::menu_Dog);
 	menu("-1", 			"back", 		::menu_Back);
 	menu("quickstuff", 	"3rdperson", 	::menu_3rdPerson);
@@ -36,11 +35,6 @@ precache()
 	precacheMenu("misc/endofgame");
 	precacheMenu("misc/scoreboard");
 	precacheMenu("misc/muteplayer");
-}
-
-menu_Save(arg)
-{
-
 }
 
 menu_Dog(arg)

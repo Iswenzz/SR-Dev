@@ -99,8 +99,6 @@ save()
 	height = trigger.height;
 	solid = trigger.solid;
 
-	logPrint("Triggers:\n\n");
 	logPrint("trigger = spawn(\"trigger_radius\", " + origin + ", 0, " + width + ", " + height + ");\n");
-	if (solid)
-		logPrint("trigger setContents(true);\n");
+	if (solid) logPrint("trigger setContents(true);\n");
 }

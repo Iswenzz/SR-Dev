@@ -12,12 +12,12 @@ createSecretWays(token)
 
 changeWay(way)
 {
-	self iPrintLnBold(way);
+
 }
 
 finishWay(way)
 {
-	self iPrintLnBold(way);
+	self thread sr\player\_run::endTimer();
 }
 
 createEndMap(origin, width, height, way)

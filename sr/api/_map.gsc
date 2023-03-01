@@ -81,20 +81,20 @@ noFallDamage()
 
 getSpeed(speed)
 {
-	return speed;
+	return int(ceil(getDvarInt("g_speed") * (speed / 190)));
 }
 
 getMoveSpeedScale(moveSpeedScale)
 {
-	return moveSpeedScale;
+	return getDvarFloat("dr_jumpers_speed") * (moveSpeedScale / 1.05);
 }
 
 getGravity(gravity)
 {
-	return gravity;
+	return int(ceil(getDvarFloat("g_gravity") * (gravity / 800)));
 }
 
 getJumpHeight(jumpHeight)
 {
-	return jumpHeight;
+	return int(ceil(getDvarFloat("jump_height") * (jumpHeight / 39)));
 }

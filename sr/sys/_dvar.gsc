@@ -4,7 +4,15 @@ initDvars()
 {
 	addDvar("mod", "mod_id", "dev");
 
-	setDvar("g_deadchat", 1000);
+	makeDvarServerInfo("mod_author", "SuX Lolz");
+	setDvar("mod_author", "SuX Lolz");
+
+	reset();
+}
+
+reset()
+{
+	setDvar("g_deadchat", 1);
 	setDvar("g_knockback", 1000);
 	setDvar("g_speed", 190);
 	setDvar("g_gravity", 800);
@@ -13,9 +21,6 @@ initDvars()
 	setDvar("dr_activators_speed", 1.05);
 	setDvar("jump_slowdownEnable", 0);
 	setDvar("bullet_penetrationEnabled", 0);
-
-	makeDvarServerInfo("mod_author", "SuX Lolz");
-	setDvar("mod_author", "SuX Lolz");
 }
 
 addDvar(scriptName, dvarName, defaultValue, min, max, type)

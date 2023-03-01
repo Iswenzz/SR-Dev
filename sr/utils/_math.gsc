@@ -7,13 +7,11 @@ vectorScale(vec, scale)
 
 drawText(pos, text, time, color, alpha, scale)
 {
+	time = IfUndef(time, 0) * 20;
+
 	if (!isDefined(color))
 		color = randomColorDark();
 
-	if (!isDefined(time) || time == 0)
-		time = -1;
-
-	time = int(time * 20);
 	for (i = 0; i != time; i++)
 	{
 		print3D(pos, text, color, alpha, scale);
@@ -23,11 +21,10 @@ drawText(pos, text, time, color, alpha, scale)
 
 drawPoint(pos, time, color)
 {
+	time = IfUndef(time, 0) * 20;
+
 	if (!isDefined(color))
 		color = randomColorDark();
-
-	if (!isDefined(time))
-		time = 0;
 
 	lines = [];
 	count = 5;
@@ -38,8 +35,7 @@ drawPoint(pos, time, color)
 		lines[i] = pos - l / 10;
 		lines[i + 1] = pos + l / 10;
 	}
-
-	for (j = 1; j != 20 * time; j++)
+	for (j = 0; j != time; j++)
 	{
 		for (i = 0; i < count * 2; i += 2)
 			line(lines[i], lines[i + 1], color, true);
@@ -49,10 +45,10 @@ drawPoint(pos, time, color)
 
 drawLine(from, to, time, color)
 {
+	time = IfUndef(time, 0) * 20;
+
 	if (!isDefined(color))
 		color = randomColorDark();
-
-	time = IfUndef(time, 0) * 20;
 
 	for (i = 0; i != time; i++)
 	{

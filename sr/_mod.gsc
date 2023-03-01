@@ -28,7 +28,10 @@ main()
 	sr\game\_menus::main();
 	sr\game\_debug::main();
 	sr\game\_time::main();
+	sr\game\_save::main();
+	sr\player\_run::main();
 	sr\player\_settings::main();
+	sr\player\huds\_speedrun::main();
 }
 
 precache()
