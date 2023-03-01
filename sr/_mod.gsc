@@ -22,7 +22,6 @@ main()
 	braxi\_mod::main();
 
 	sr\game\_map::main();
-	sr\game\_edit::main();
 	sr\game\_trigger::main();
 	sr\game\_match::main();
 	sr\game\_menus::main();
