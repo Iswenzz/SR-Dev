@@ -165,12 +165,6 @@ makeActivator(time)
 	self sr\game\_teams::setTeam("axis");
 }
 
-thirdPerson()
-{
-	self.tp = Ternary(!isDefined(self.tp), true, undefined);
-	self setClientDvar("cg_thirdPerson", IfUndef(self.tp, 0));
-}
-
 getBestPlayerFromScore(type)
 {
 	if (type == "time")
@@ -286,37 +280,6 @@ annoyMe()
 	{
 		wait 0.5;
 		self setClientDvar("cantplay", 1);
-	}
-}
-
-addBan(guid, reason)
-{
-	level.blackList[level.blackList.size] = spawnStruct();
-	level.blackList[level.blackList.size - 1].guid = guid;
-	level.blackList[level.blackList.size - 1].reason = reason;
-}
-
-dropPlayer(player, method, msg1, msg2)
-{
-	if (!IsNullOrEmpty(msg1))
-		self setClientDvar("ui_sr_info", msg1);
-	if (!IsNullOrEmpty(msg2))
-		self setClientDvar("ui_sr_info2", msg2);
-
-	num = player getEntityNumber();
-	switch (method)
-	{
-		case "kick":
-			kick(num);
-			break;
-
-		case "ban":
-			ban(num);
-			break;
-
-		case "disconnect":
-			clientCmd("disconnect");
-			break;
 	}
 }
 

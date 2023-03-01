@@ -244,6 +244,16 @@ linearScale(value, min, max, rangeMin, rangeMax)
 	return clamp((value - min) * (rangeMax - rangeMin) / (max - min) + rangeMin, rangeMin, rangeMax);
 }
 
+randomColor()
+{
+	return (randomInt(100) / 100, randomInt(100) / 100, randomInt(100) / 100);
+}
+
+randomColorDark()
+{
+	return (randomInt(50) / 100, randomInt(50) / 100, randomInt(50) / 100);
+}
+
 playersSetLowerMessage(text, time)
 {
 	players = getAllPlayers();

@@ -48,7 +48,8 @@
 		BUTTON_BIND(9, "3rd Person", "openscriptmenu quickstuff 3rdperson", ;)
 		BUTTON_BIND(10, "Suicide", "openscriptmenu quickstuff suicide", ;)
 
-		BUTTON_BIND(16, "Save", "openscriptmenu -1 save", ;)
+		BUTTON_BIND(16, "Debug Mode", "openscriptmenu debug mode", ;)
+		BUTTON_BIND(17, "Save", "openscriptmenu -1 save", ;)
 
 		BUTTON_KEYBINDHELP
 	}

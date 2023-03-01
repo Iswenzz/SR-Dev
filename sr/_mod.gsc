@@ -23,9 +23,11 @@ main()
 
 	sr\game\_map::main();
 	sr\game\_edit::main();
+	sr\game\_trigger::main();
 	sr\game\_match::main();
 	sr\game\_menus::main();
-	sr\game\_triggers::main();
+	sr\game\_debug::main();
+	sr\game\_time::main();
 	sr\player\_settings::main();
 }
 
