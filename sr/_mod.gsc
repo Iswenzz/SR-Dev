@@ -20,6 +20,7 @@ main()
 	maps\mp\gametypes\_weapons::init();
 
 	braxi\_mod::main();
+	battleroyale\_mod::main();
 
 	sr\game\_map::main();
 	sr\game\_trigger::main();

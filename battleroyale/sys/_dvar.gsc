@@ -2,26 +2,14 @@
 
 initDvars()
 {
-	addDvar("mod", "mod_id", "dev");
-
-	setDvar("sv_mapRotationCurrent", "map " + level.map);
-	setDvar("mod_author", "SuX Lolz");
-	makeDvarServerInfo("mod_author", "SuX Lolz");
-
-	reset();
-}
-
-reset()
-{
-	setDvar("g_deadchat", 1);
-	setDvar("g_knockback", 1000);
-	setDvar("g_speed", 190);
-	setDvar("g_gravity", 800);
-	setDvar("jump_height", 39);
-	setDvar("dr_jumpers_speed", 1.05);
-	setDvar("dr_activators_speed", 1.05);
-	setDvar("jump_slowdownEnable", 0);
-	setDvar("bullet_penetrationEnabled", 0);
+	addDvar("rounds", "br_rounds", 4, 1, 10, "int");
+	addDvar("debug", "br_debug", 0, 0, 1, "int");
+	addDvar("lobby_countdown", "br_lobby_countdown", 10, 0, 60, "int");
+	addDvar("spawn_time", "br_spawn_time", 4, 1, 30, "int");
+	addDvar("zone_time", "br_zone_time", 120, 1, 1000, "int");
+	addDvar("zone_levels", "br_zone_levels", 0, 0, 4, "int");
+	addDvar("plane_duration", "br_plane_seconds", 15, 1, 120, "int");
+	addDvar("randomize", "br_randomize", 1, 0, 1, "int");
 }
 
 addDvar(scriptName, dvarName, defaultValue, min, max, type)

@@ -1,4 +1,5 @@
 #include battleroyale\game\_game;
+#include sr\utils\_math;
 
 removeAllMapTriggers()
 {
@@ -31,11 +32,13 @@ createSpawn(origin, angle)
 createLobbyBlocker(origin, width, height)
 {
 	trigger = spawn("trigger_radius", (origin[0], origin[1], origin[2] - 60), 0, width, height);
-
+	trigger.radius = int(width / 2);
 	trigger.targetname = "lobby";
+
 	if (!level.dvar["debug"])
 		trigger setContents(true);
 
+	thread sr\game\fx\_trigger::effect(trigger, "yellow");
 	return trigger;
 }
 
@@ -52,14 +55,20 @@ createPlanePath(start, end, angle)
 	path[1] = spawn("script_origin", end);
 	path[1].targetname = "plane_" + level.planePath;
 
+	thread drawLine(start, end, -1, (0, 0, 1));
+
 	trigger = spawn("trigger_radius", path[1].origin, 0, 300, 300);
 	trigger.radius = 300;
 	trigger.targetname = "drop_recover";
+
+	thread sr\game\fx\_trigger::effect(trigger, "blue");
 }
 
 createPlaneDrop(origin)
 {
 	level.dropOrigin = origin;
+
+	thread drawPoint(origin, -1, (0, 1, 0));
 }
 
 createPlaneDropTrigger(origin, radius)
@@ -67,6 +76,8 @@ createPlaneDropTrigger(origin, radius)
 	ent = spawn("trigger_radius", origin, 0, radius, 2000);
 	ent.radius = radius;
 	ent.targetname = "drop";
+
+	thread sr\game\fx\_trigger::effect(ent, "red");
 }
 
 createPlaneDuration(seconds)
@@ -78,6 +89,8 @@ createPlaneDuration(seconds)
 createZone(origin)
 {
 	level.zoneSpawns[level.zoneSpawns.size] = origin;
+
+	thread drawPoint(origin, -1, (0, 1, 1));
 }
 
 createZoneLevels(levels)
