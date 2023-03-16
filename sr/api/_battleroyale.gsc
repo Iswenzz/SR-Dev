@@ -56,12 +56,6 @@ createPlanePath(start, end, angle)
 	path[1].targetname = "plane_" + level.planePath;
 
 	thread drawLine(start, end, -1, (0, 0, 1));
-
-	trigger = spawn("trigger_radius", path[1].origin, 0, 300, 300);
-	trigger.radius = 300;
-	trigger.targetname = "drop_recover";
-
-	thread sr\game\fx\_trigger::effect(trigger, "blue");
 }
 
 createPlaneDrop(origin)
