@@ -54,7 +54,7 @@ EndInditasa()
 }
 
 
-//Az endszobába való bejutásért és az endkiválasztóért felel
+//Az endszobï¿½ba valï¿½ bejutï¿½sï¿½rt ï¿½s az endkivï¿½lasztï¿½ï¿½rt felel
 ElsoEnd()
 {
 	level.triggerek["elsoend"] waittill("trigger", kivalto);
@@ -92,7 +92,7 @@ Elso_KilepesFigyelo()
 }
 
 
-//Az "OLD" endjáték
+//Az "OLD" endjï¿½tï¿½k
 Old()
 {
 	level.triggerek["end_old"] waittill("trigger", kivalto);
@@ -118,13 +118,13 @@ Old()
 	level.activ UnLink();
 	level.activ SetOrigin((3736, -7005, 280));
 	level.activ.angles = (0, 90, 0);
-	
+
 	level.brushok["old_elzaro"] MoveZ(-525, 3);
 	Earthquake(0.9, 3.5, (3768, -6472, 424), 600);
 }
 
 
-//A "NINJA" endjáték
+//A "NINJA" endjï¿½tï¿½k
 Ninja()
 {
 	thread Ninja_Teleportalo();
@@ -137,7 +137,7 @@ Ninja()
 			level.melyikEnd = "ninja";
 			level.activ.killingspree = 0;
 			thread KillingSpreeHang();
-			
+
 			level.brushok["heavy_ajtozar"] MoveZ(109, 1);
 			level.brushok["old_ajtozar"] MoveZ(109, 1);
 			level.brushok["aim_ajtozar"] MoveZ(109, 1);
@@ -145,7 +145,7 @@ Ninja()
 			level.triggerek["end_aim"] Delete();
 			level.triggerek["end_heavy"] Delete();
 			level.brushok["multiend"] MoveX(330, 3);
-			
+
 			level.activ TakeAllWeapons();
 			level.activ GiveWeapon("colt45_mp");
 			wait 0.1;
@@ -154,7 +154,7 @@ Ninja()
 			level.activ SetWeaponAmmoStock(level.activ GetCurrentWeapon(), 0);
 			level.activ SetWeaponAmmoClip(level.activ GetCurrentWeapon(), 0);
 			level.activ thread ToltenyTorlo();
-			
+
 			level notify("akti_teleport");
 			wait 0.1;
 			level.activ SetOrigin((3824, -8640, -632));
@@ -163,7 +163,7 @@ Ninja()
 		kivalto thread Ninja_KilepesFigyelo();
 		kivalto SetMoveSpeedScale(GetDVARFloat("dr_jumpers_speed"));
 		level.activ SetMoveSpeedScale(GetDVARFloat("dr_activators_speed"));
-		
+
 		kivalto TakeAllWeapons();
 		kivalto GiveWeapon("colt45_mp");
 		wait 0.1;
@@ -173,7 +173,7 @@ Ninja()
 		kivalto SetWeaponAmmoClip(kivalto GetCurrentWeapon(), 0);
 		kivalto thread ToltenyTorlo();
 		kivalto SetOrigin((3152, -8640, -632));
-		
+
 		level waittill("ninja_kovetkezo");
 	}
 }
@@ -203,9 +203,9 @@ Ninja_KilepesFigyelo()
 }
 
 
-//Az "AIM" endjáték
+//Az "AIM" endjï¿½tï¿½k
 Aim()
-{	
+{
 	while (true)
 	{
 		level.triggerek["end_aim"] waittill("trigger", kivalto);
@@ -213,7 +213,7 @@ Aim()
 		{
 			level.elsoEndMegvolt = true;
 			level.melyikEnd = "aim";
-			
+
 			level.brushok["heavy_ajtozar"] MoveZ(109, 1);
 			level.brushok["old_ajtozar"] MoveZ(109, 1);
 			level.brushok["ninja_ajtozar"] MoveZ(109, 1);
@@ -223,18 +223,18 @@ Aim()
 			level.brushok["multiend"] MoveX(330, 3);
 			level.activ.killingspree = 0;
 			thread KillingSpreeHang();
-			
+
 			level notify("akti_teleport");
 			wait 0.1;
 			level.activ SetOrigin((2336, -7388, -600));
-			
+
 			thread Aim_JumperReset();
 		}
 		kivalto thread Aim_HalalFigyelo();
 		kivalto thread Aim_KilepesFigyelo();
 		kivalto SetMoveSpeedScale(GetDVARFloat("dr_jumpers_speed"));
 		level.activ SetMoveSpeedScale(GetDVARFloat("dr_activators_speed"));
-		
+
 		level.activ TakeAllWeapons();
 		level.activ GiveWeapon("colt45_mp");
 		wait 0.1;
@@ -242,7 +242,7 @@ Aim()
 		wait 0.2;
 		level.activ SetWeaponAmmoStock(level.activ GetCurrentWeapon(), 80);
 		level.activ SetWeaponAmmoClip(level.activ GetCurrentWeapon(), 80);
-		
+
 		kivalto TakeAllWeapons();
 		kivalto GiveWeapon("colt45_mp");
 		wait 0.1;
@@ -250,23 +250,23 @@ Aim()
 		wait 0.2;
 		kivalto SetWeaponAmmoStock(kivalto GetCurrentWeapon(), 80);
 		kivalto SetWeaponAmmoClip(kivalto GetCurrentWeapon(), 80);
-		
+
 		kivalto SetOrigin((2336, -7708, -600));
-				
+
 		kivalto thread Aim_Jumper();
 		level.activ thread Aim_Akti();
-		
+
 		level waittill("aim_vege", melyik);
 		if (melyik == "akti") kivalto thread Aim_JumperHalal();
 		else if (melyik == "jumper") level.activ thread Aim_AktiHalal(kivalto);
-		
+
 		level waittill("aim_kovetkezo");
 	}
 }
 Aim_Jumper()
 {
 	level endon("aim_vege");
-	
+
 	level.brushok["aim_jumper"][2] MoveZ(86, 0.5);
 	level.brushok["aim_jumper"][2] waittill("movedone");
 	level.triggerek["aim_jumper"][2] waittill("trigger", kivalto1);
@@ -274,7 +274,7 @@ Aim_Jumper()
 	level.brushok["aim_jumper"][2] MoveZ(-86, 0.1);
 	level.brushok["aim_jumper"][2] waittill("movedone");
 	level.brushok["aim_jumper"][2] Show();
-	
+
 	level.brushok["aim_jumper"][1] MoveZ(-86, 0.5);
 	level.brushok["aim_jumper"][1] waittill("movedone");
 	level.triggerek["aim_jumper"][1] waittill("trigger", kivalto1);
@@ -282,7 +282,7 @@ Aim_Jumper()
 	level.brushok["aim_jumper"][1] MoveZ(86, 0.1);
 	level.brushok["aim_jumper"][1] waittill("movedone");
 	level.brushok["aim_jumper"][1] Show();
-	
+
 	level.brushok["aim_jumper"][3] MoveZ(-86, 0.5);
 	level.brushok["aim_jumper"][3] waittill("movedone");
 	level.triggerek["aim_jumper"][3] waittill("trigger", kivalto1);
@@ -290,7 +290,7 @@ Aim_Jumper()
 	level.brushok["aim_jumper"][3] MoveZ(86, 0.1);
 	level.brushok["aim_jumper"][3] waittill("movedone");
 	level.brushok["aim_jumper"][3] Show();
-	
+
 	level.brushok["aim_jumper"][0] MoveZ(86, 0.5);
 	level.brushok["aim_jumper"][0] waittill("movedone");
 	level.triggerek["aim_jumper"][0] waittill("trigger", kivalto1);
@@ -298,7 +298,7 @@ Aim_Jumper()
 	level.brushok["aim_jumper"][0] MoveZ(-86, 0.1);
 	level.brushok["aim_jumper"][0] waittill("movedone");
 	level.brushok["aim_jumper"][0] Show();
-	
+
 	level.brushok["aim_jumper"][6] MoveZ(-86, 0.5);
 	level.brushok["aim_jumper"][6] waittill("movedone");
 	level.triggerek["aim_jumper"][6] waittill("trigger", kivalto1);
@@ -306,7 +306,7 @@ Aim_Jumper()
 	level.brushok["aim_jumper"][6] MoveZ(86, 0.1);
 	level.brushok["aim_jumper"][6] waittill("movedone");
 	level.brushok["aim_jumper"][6] Show();
-	
+
 	level.brushok["aim_jumper"][4] MoveZ(86, 0.5);
 	level.brushok["aim_jumper"][4] waittill("movedone");
 	level.triggerek["aim_jumper"][4] waittill("trigger", kivalto1);
@@ -314,7 +314,7 @@ Aim_Jumper()
 	level.brushok["aim_jumper"][4] MoveZ(-86, 0.1);
 	level.brushok["aim_jumper"][4] waittill("movedone");
 	level.brushok["aim_jumper"][4] Show();
-	
+
 	level.brushok["aim_jumper"][5] MoveZ(86, 0.5);
 	level.brushok["aim_jumper"][5] waittill("movedone");
 	level.triggerek["aim_jumper"][5] waittill("trigger", kivalto1);
@@ -322,13 +322,13 @@ Aim_Jumper()
 	level.brushok["aim_jumper"][5] MoveZ(-86, 0.1);
 	level.brushok["aim_jumper"][5] waittill("movedone");
 	level.brushok["aim_jumper"][5] Show();
-	
+
 	level notify("aim_vege", "jumper");
 }
 Aim_Akti()
 {
 	level endon("aim_vege");
-	
+
 	level.brushok["aim_akti"][2] MoveZ(-86, 0.5);
 	level.brushok["aim_akti"][2] waittill("movedone");
 	level.triggerek["aim_akti"][2] waittill("trigger", kivalto1);
@@ -336,7 +336,7 @@ Aim_Akti()
 	level.brushok["aim_akti"][2] MoveZ(86, 0.1);
 	level.brushok["aim_akti"][2] waittill("movedone");
 	level.brushok["aim_akti"][2] Show();
-	
+
 	level.brushok["aim_akti"][1] MoveZ(-86, 0.5);
 	level.brushok["aim_akti"][1] waittill("movedone");
 	level.triggerek["aim_akti"][1] waittill("trigger", kivalto1);
@@ -344,7 +344,7 @@ Aim_Akti()
 	level.brushok["aim_akti"][1] MoveZ(86, 0.1);
 	level.brushok["aim_akti"][1] waittill("movedone");
 	level.brushok["aim_akti"][1] Show();
-	
+
 	level.brushok["aim_akti"][3] MoveZ(86, 0.5);
 	level.brushok["aim_akti"][3] waittill("movedone");
 	level.triggerek["aim_akti"][3] waittill("trigger", kivalto1);
@@ -352,7 +352,7 @@ Aim_Akti()
 	level.brushok["aim_akti"][3] MoveZ(-86, 0.1);
 	level.brushok["aim_akti"][3] waittill("movedone");
 	level.brushok["aim_akti"][3] Show();
-	
+
 	level.brushok["aim_akti"][0] MoveZ(86, 0.5);
 	level.brushok["aim_akti"][0] waittill("movedone");
 	level.triggerek["aim_akti"][0] waittill("trigger", kivalto1);
@@ -360,7 +360,7 @@ Aim_Akti()
 	level.brushok["aim_akti"][0] MoveZ(-86, 0.1);
 	level.brushok["aim_akti"][0] waittill("movedone");
 	level.brushok["aim_akti"][0] Show();
-	
+
 	level.brushok["aim_akti"][6] MoveZ(-86, 0.5);
 	level.brushok["aim_akti"][6] waittill("movedone");
 	level.triggerek["aim_akti"][6] waittill("trigger", kivalto1);
@@ -368,7 +368,7 @@ Aim_Akti()
 	level.brushok["aim_akti"][6] MoveZ(86, 0.1);
 	level.brushok["aim_akti"][6] waittill("movedone");
 	level.brushok["aim_akti"][6] Show();
-	
+
 	level.brushok["aim_akti"][4] MoveZ(86, 0.5);
 	level.brushok["aim_akti"][4] waittill("movedone");
 	level.triggerek["aim_akti"][4] waittill("trigger", kivalto1);
@@ -376,7 +376,7 @@ Aim_Akti()
 	level.brushok["aim_akti"][4] MoveZ(-86, 0.1);
 	level.brushok["aim_akti"][4] waittill("movedone");
 	level.brushok["aim_akti"][4] Show();
-	
+
 	level.brushok["aim_akti"][5] MoveZ(86, 0.5);
 	level.brushok["aim_akti"][5] waittill("movedone");
 	level.triggerek["aim_akti"][5] waittill("trigger", kivalto1);
@@ -384,7 +384,7 @@ Aim_Akti()
 	level.brushok["aim_akti"][5] MoveZ(-86, 0.1);
 	level.brushok["aim_akti"][5] waittill("movedone");
 	level.brushok["aim_akti"][5] Show();
-	
+
 	level notify("aim_vege", "akti");
 }
 Aim_JumperReset()
@@ -397,12 +397,12 @@ Aim_JumperReset()
 	alap[4] = level.brushok["aim_jumper"][4] GetOrigin();
 	alap[5] = level.brushok["aim_jumper"][5] GetOrigin();
 	alap[6] = level.brushok["aim_jumper"][6] GetOrigin();
-	
+
 	while (true)
 	{
 		level waittill("aim_vege", melyik);
 		wait 0.5;
-		
+
 		if (melyik == "akti")
 		{
 			level.brushok["aim_jumper"][0] MoveTo(alap[0], 0.05);
@@ -435,9 +435,9 @@ Aim_JumperHalal()
 	PlayFX(level.effektek["shotgun"], (2286, -7704, -624), AnglesToForward(0, 0, 0), AnglesToUp(0, 0, 0));
 	hang PlaySound("shot");
 	self FinishPlayerDamage(level.activ, level.activ, 99999, 0, "MOD_PISTOL_BULLET", "winchester1200_grip_mp", self.origin, self.angles, "head", 0);
-	
+
 	level notify("aim_kovetkezo");
-	
+
 	wait 1;
 	level.modelek["aim_jumper"] MoveZ(200, 4);
 }
@@ -453,7 +453,7 @@ Aim_AktiHalal(jumper)
 	PlayFX(level.effektek["shotgun"], (2286, -7384, -624), AnglesToForward(0, 0, 0), AnglesToUp(0, 0, 0));
 	hang PlaySound("shot");
 	level.activ FinishPlayerDamage(jumper, jumper, 99999, 0, "MOD_PISTOL_BULLET", "winchester1200_grip_mp", level.activ.origin, level.activ.angles, "head", 0);
-	
+
 	wait 1;
 	level.modelek["aim_akti"] MoveZ(200, 4);
 }
@@ -476,7 +476,7 @@ Aim_KilepesFigyelo()
 	level notify("aim_kovetkezo");
 }
 
-//A "HEAVY" endjáték
+//A "HEAVY" endjï¿½tï¿½k
 Heavy()
 {
 	jumperorig = [];
@@ -515,7 +515,7 @@ Heavy()
 	thread Heavy_Negyzet();
 	thread Heavy_Teleportalo();
 	thread Lebegteto(level.modelek["heavy"], 30, "jobb");
-	
+
 	level.triggerek["heavy"] waittill("trigger", kivalto2);
 	kivalto2 notify("heavy_ended");
 	level.modelek["heavy"] Delete();

@@ -2,7 +2,7 @@ main()
 
 {
  maps\mp\_load::main();
- 
+
  addTriggerToList( "activatortrap1" );
  addTriggerToList( "activatortrap2" );
  addTriggerToList( "activatortrap3" );
@@ -22,8 +22,8 @@ main()
  addTriggerToList( "activatortrap17" );
  addTriggerToList( "activatortrap18" );
  addTriggerToList( "activatortrap19" );
- 
- 
+
+
 
 
  game["allies"] = "marines";
@@ -32,16 +32,16 @@ main()
  game["defenders"] = "allies";
  game["allies_soldiertype"] = "desert";
  game["axis_soldiertype"] = "desert";
- 
-	setdvar("g_speed" ,"190");
-	setdvar("dr_jumpers_speed" ,"1");
-	
+
+	// setdvar("g_speed" ,"190");
+	// setdvar("dr_jumpers_speed" ,"1");
+
 	setdvar( "r_specularcolorscale", "1" );
 
 	setdvar("r_glowbloomintensity0",".1");
 	setdvar("r_glowbloomintensity1",".1");
 	setdvar("r_glowskybleedintensity0",".1");
-	
+
 	preCacheItem( "rpg_mp" );
 	preCacheItem( "m60e4_mp" );
 	preCacheItem( "m4_reflex_mp" );
@@ -138,15 +138,15 @@ thread old();
 thread secret();
 thread donesecret();
 
-	
-	}	
+
+	}
 
 addTriggerToList( name )
 {
     if( !isDefined( level.trapTriggers ) )
         level.trapTriggers = [];
     level.trapTriggers[level.trapTriggers.size] = getEnt( name, "targetname" );
-}  
+}
 
 
 opendoor()
@@ -316,8 +316,8 @@ for(;; )
    {
     trig waittill("trigger", player);
 	player setorigin( tele.origin );
-	
-	
+
+
 	}
 }
 
@@ -330,7 +330,7 @@ for(;; )
    {
     trig waittill("trigger", player);
 	player setorigin( tele.origin );
-		
+
 	}
 }
 
@@ -954,14 +954,14 @@ for(;; )
    {
     trig waittill("trigger", player);
 	player setorigin( origination.origin );
-		
+
 	}
 	}
-	
+
 sniper()
 {
-        level.sniper_trig = getEnt( "sniper_trig", "targetname"); //trigger 
-		level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger 
+        level.sniper_trig = getEnt( "sniper_trig", "targetname"); //trigger
+		level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger
 		level.rpg_trig = getEnt ("rpg_trig", "targetname");
 		level.race_trig = getEnt ("race_trig", "targetname");
 		level.weapon_trig = getEnt ("weapon_trig", "targetname");
@@ -969,13 +969,13 @@ sniper()
 		level.old_trig = getEnt ("old_trig", "targetname");
         sniper = getEnt( "sniper1", "targetname" ); //jumper origin
         acti = getEnt( "sniper2", "targetname" ); //acti origin
- 
-        while(1) 
+
+        while(1)
 {
-                level.sniper_trig waittill( "trigger", player); 
-                if( !isDefined( level.sniper_trig ) ) 
-                return;  
-            
+                level.sniper_trig waittill( "trigger", player);
+                if( !isDefined( level.sniper_trig ) )
+                return;
+
               level.race_trig hide(); //deletes all other rooms from being used.
               level.weapon_trig hide();
               level.old_trig hide();
@@ -983,37 +983,37 @@ sniper()
               level.rpg_trig hide();
 			  level.choco_trig hide();
 			  level.sniper_trig hide();
-            
+
             player SetPlayerAngles( sniper.angles );
-                player setOrigin( sniper.origin ); 
-                player TakeAllWeapons(); 
+                player setOrigin( sniper.origin );
+                player TakeAllWeapons();
                 player GiveWeapon( "m40a3_mp" ); //Gives player weapon
                 player giveMaxAmmo( "m40a3_mp" ); //Gives player ammo
                 player GiveWeapon( "remington700_mp" );
-                player giveMaxAmmo( "remington700_mp" );   
+                player giveMaxAmmo( "remington700_mp" );
             player switchToWeapon( "m40a3_mp" ); //Makes player switch to weapon.
-               
-                
-                if( isDefined( level.activ ) && isAlive( level.activ ) ) 
+
+
+                if( isDefined( level.activ ) && isAlive( level.activ ) )
 {
- 
+
                level.activ setPlayerangles( acti.angles );
-                    level.activ setOrigin( acti.origin ); 
-                    level.activ TakeAllWeapons(); 
-                    level.activ GiveWeapon( "m40a3_mp" ); 
-                    level.activ giveMaxAmmo( "m40a3_mp" ); 
+                    level.activ setOrigin( acti.origin );
+                    level.activ TakeAllWeapons();
+                    level.activ GiveWeapon( "m40a3_mp" );
+                    level.activ giveMaxAmmo( "m40a3_mp" );
                     level.activ GiveWeapon( "remington700_mp" );
                     level.activ giveMaxAmmo( "remington700_mp" );
                level.activ SwitchToWeapon( "m40a3_mp" );
-                    
+
 }
-                 
+
                 wait 0.05;
-               
-                iPrintLnBold( " ^4" + player.name + " ^7has chosen ^4Sniper ^7Room!" ); 
-                while( isAlive( player ) && isDefined( player ) ) 
+
+                iPrintLnBold( " ^4" + player.name + " ^7has chosen ^4Sniper ^7Room!" );
+                while( isAlive( player ) && isDefined( player ) )
                         wait 1;
-						
+
 						player waittill( "death" );
 level.race_trig show(); //deletes all other rooms from being used.
 level.rpg_trig show();
@@ -1027,7 +1027,7 @@ level.sniper_trig show();
 
 bounce()
 {
-        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger 
+        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger
 		level.sniper_trig = getEnt ("sniper_trig", "targetname");
 		level.rpg_trig = getEnt ("rpg_trig", "targetname");
 		level.race_trig = getEnt ("race_trig", "targetname");
@@ -1036,13 +1036,13 @@ bounce()
 		level.old_trig = getEnt ("old_trig", "targetname");
         bounce = getEnt( "bounce1", "targetname" ); //jumper origin
         acti2 = getEnt( "bounce2", "targetname" ); //acti origin
- 
-        while(1) 
+
+        while(1)
 {
-                level.bounce_trig waittill( "trigger", player); 
-                if( !isDefined( level.bounce_trig ) ) 
-                return;  
-            
+                level.bounce_trig waittill( "trigger", player);
+                if( !isDefined( level.bounce_trig ) )
+                return;
+
               level.sniper_trig hide(); //deletes all other rooms from being used.
               level.race_trig hide();
               level.old_trig hide();
@@ -1050,25 +1050,25 @@ bounce()
               level.rpg_trig hide();
 			  level.choco_trig hide();
 			  level.bounce_trig hide();
-            
+
             player SetPlayerAngles( bounce.angles );
-                player setOrigin( bounce.origin ); 
-                player TakeAllWeapons(); 
-               
-                
-                if( isDefined( level.activ ) && isAlive( level.activ ) ) 
+                player setOrigin( bounce.origin );
+                player TakeAllWeapons();
+
+
+                if( isDefined( level.activ ) && isAlive( level.activ ) )
 {
- 
+
                level.activ setPlayerangles( acti2.angles );
-                    level.activ setOrigin( acti2.origin ); 
-                    level.activ TakeAllWeapons(); 
-                    
+                    level.activ setOrigin( acti2.origin );
+                    level.activ TakeAllWeapons();
+
 }
-                 
+
                 wait 0.05;
-               
-                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4Bounce Room!" ); 
-player waittill( "death" );					
+
+                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4Bounce Room!" );
+player waittill( "death" );
               level.sniper_trig show(); //deletes all other rooms from being used.
               level.race_trig show();
               level.old_trig show();
@@ -1088,7 +1088,7 @@ while(1)
 player GiveWeapon( "m40a3_mp" ); //Gives player weapon
 player giveMaxAmmo( "m40a3_mp" ); //Gives player ammo
 player GiveWeapon( "remington700_mp" );
-player giveMaxAmmo( "remington700_mp" );   
+player giveMaxAmmo( "remington700_mp" );
 player switchToWeapon( "m40a3_mp" );
 trig waittill ("trigger", player);
 }
@@ -1102,7 +1102,7 @@ for(;; )
    {
     trig waittill("trigger", player);
 	player setorigin( origination.origin );
-		
+
 	}
 }
 
@@ -1114,7 +1114,7 @@ for(;; )
    {
     trig waittill("trigger", player);
 	player setorigin( origination.origin );
-		
+
 	}
 }
 
@@ -1233,7 +1233,7 @@ trig waittill ("trigger", player);
 
 weapon()
 {
-        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger 
+        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger
 		level.sniper_trig = getEnt ("sniper_trig", "targetname");
 		level.rpg_trig = getEnt ("rpg_trig", "targetname");
 		level.race_trig = getEnt ("race_trig", "targetname");
@@ -1242,13 +1242,13 @@ weapon()
 		level.old_trig = getEnt ("old_trig", "targetname");
         weapon = getEnt( "weapon1", "targetname" ); //jumper origin
         acti2 = getEnt( "weapon2", "targetname" ); //acti origin
- 
-        while(1) 
+
+        while(1)
 {
-                level.weapon_trig waittill( "trigger", player); 
-                if( !isDefined( level.weapon_trig ) ) 
-                return;  
-            
+                level.weapon_trig waittill( "trigger", player);
+                if( !isDefined( level.weapon_trig ) )
+                return;
+
               level.sniper_trig hide(); //deletes all other rooms from being used.
               level.race_trig hide();
               level.old_trig hide();
@@ -1256,31 +1256,31 @@ weapon()
               level.rpg_trig hide();
 			  level.choco_trig hide();
 			  level.weapon_trig hide();
-            
+
             player SetPlayerAngles( weapon.angles );
-                player setOrigin( weapon.origin ); 
-                player TakeAllWeapons(); 
+                player setOrigin( weapon.origin );
+                player TakeAllWeapons();
 				player GiveWeapon( "m4_reflex_mp" ); //Gives player weapon
                 player giveMaxAmmo( "m4_reflex_mp" ); //Gives player ammo
                 player switchToWeapon( "m4_reflex_mp" ); //Makes player switch to weapon.
-               
-                
-                if( isDefined( level.activ ) && isAlive( level.activ ) ) 
+
+
+                if( isDefined( level.activ ) && isAlive( level.activ ) )
 {
- 
+
                level.activ setPlayerangles( acti2.angles );
-                    level.activ setOrigin( acti2.origin ); 
-                    level.activ TakeAllWeapons(); 
+                    level.activ setOrigin( acti2.origin );
+                    level.activ TakeAllWeapons();
 					level.activ GiveWeapon( "m4_reflex_mp" ); //Gives player weapon
                     level.activ giveMaxAmmo( "m4_reflex_mp" ); //Gives player ammo
                     level.activ switchToWeapon( "m4_reflex_mp" ); //Makes player switch to weapon.
-                    
+
 }
-                 
+
                 wait 0.05;
-               
-                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4Weapon Room!" ); 
-player waittill( "death" );					
+
+                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4Weapon Room!" );
+player waittill( "death" );
               level.sniper_trig show(); //deletes all other rooms from being used.
               level.race_trig show();
               level.old_trig show();
@@ -1293,7 +1293,7 @@ player waittill( "death" );
 
 rpg()
 {
-        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger 
+        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger
 		level.sniper_trig = getEnt ("sniper_trig", "targetname");
 		level.rpg_trig = getEnt ("rpg_trig", "targetname");
 		level.race_trig = getEnt ("race_trig", "targetname");
@@ -1302,13 +1302,13 @@ rpg()
 		level.old_trig = getEnt ("old_trig", "targetname");
         rpg = getEnt( "rpg1", "targetname" ); //jumper origin
         acti2 = getEnt( "rpg2", "targetname" ); //acti origin
- 
-        while(1) 
+
+        while(1)
 {
-                level.rpg_trig waittill( "trigger", player); 
-                if( !isDefined( level.rpg_trig ) ) 
-                return;  
-            
+                level.rpg_trig waittill( "trigger", player);
+                if( !isDefined( level.rpg_trig ) )
+                return;
+
               level.sniper_trig hide(); //deletes all other rooms from being used.
               level.race_trig hide();
               level.old_trig hide();
@@ -1316,31 +1316,31 @@ rpg()
               level.weapon_trig hide();
 			  level.choco_trig hide();
 			  level.rpg_trig hide();
-            
+
             player SetPlayerAngles( rpg.angles );
-                player setOrigin( rpg.origin ); 
-                player TakeAllWeapons(); 
+                player setOrigin( rpg.origin );
+                player TakeAllWeapons();
 				player GiveWeapon( "rpg_mp" ); //Gives player weapon
                 player giveMaxAmmo( "rpg_mp" ); //Gives player ammo
                 player switchToWeapon( "rpg_mp" ); //Makes player switch to weapon.
-               
-                
-                if( isDefined( level.activ ) && isAlive( level.activ ) ) 
+
+
+                if( isDefined( level.activ ) && isAlive( level.activ ) )
 {
- 
+
                level.activ setPlayerangles( acti2.angles );
-                    level.activ setOrigin( acti2.origin ); 
-                    level.activ TakeAllWeapons(); 
+                    level.activ setOrigin( acti2.origin );
+                    level.activ TakeAllWeapons();
 					level.activ GiveWeapon( "rpg_mp" ); //Gives player weapon
                 level.activ giveMaxAmmo( "rpg_mp" ); //Gives player ammo
                 level.activ switchToWeapon( "rpg_mp" ); //Makes player switch to weapon.
-                    
+
 }
-                 
+
                 wait 0.05;
-               
-                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4RPG Room!" ); 
-player waittill( "death" );					
+
+                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4RPG Room!" );
+player waittill( "death" );
               level.sniper_trig show(); //deletes all other rooms from being used.
               level.race_trig show();
               level.old_trig show();
@@ -1417,7 +1417,7 @@ trig waittill ("trigger", player);
 
 race()
 {
-        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger 
+        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger
 		level.sniper_trig = getEnt ("sniper_trig", "targetname");
 		level.rpg_trig = getEnt ("rpg_trig", "targetname");
 		level.race_trig = getEnt ("race_trig", "targetname");
@@ -1426,13 +1426,13 @@ race()
 		level.old_trig = getEnt ("old_trig", "targetname");
         race = getEnt( "race1", "targetname" ); //jumper origin
         acti2 = getEnt( "race2", "targetname" ); //acti origin
- 
-        while(1) 
+
+        while(1)
 {
-                level.race_trig waittill( "trigger", player); 
-                if( !isDefined( level.race_trig ) ) 
-                return;  
-            
+                level.race_trig waittill( "trigger", player);
+                if( !isDefined( level.race_trig ) )
+                return;
+
               level.sniper_trig hide(); //deletes all other rooms from being used.
               level.rpg_trig hide();
               level.old_trig hide();
@@ -1440,24 +1440,24 @@ race()
               level.weapon_trig hide();
 			  level.choco_trig hide();
 			  level.race_trig hide();
-            
+
             player SetPlayerAngles( race.angles );
-                player setOrigin( race.origin ); 
-                player TakeAllWeapons(); 
-               
-                
-                if( isDefined( level.activ ) && isAlive( level.activ ) ) 
+                player setOrigin( race.origin );
+                player TakeAllWeapons();
+
+
+                if( isDefined( level.activ ) && isAlive( level.activ ) )
 {
- 
+
                level.activ setPlayerangles( acti2.angles );
-                    level.activ setOrigin( acti2.origin ); 
-                    level.activ TakeAllWeapons(); 
-                    
+                    level.activ setOrigin( acti2.origin );
+                    level.activ TakeAllWeapons();
+
 }
-                 
+
                 wait 0.05;
-               
-                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4Race Room!" ); 
+
+                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4Race Room!" );
 		    player freezecontrols(true); //Freeze the players when someone enters the room for three seconds.
             level.activ freezecontrols(true);
             wait 1;
@@ -1474,7 +1474,7 @@ race()
             level.activ iPrintlnBold( "^6Run towards the end to get a gun^6!" );
             player freezecontrols(false); //Disables the freeze.
             level.activ freezecontrols(false);
-player waittill( "death" );					
+player waittill( "death" );
               level.sniper_trig show(); //deletes all other rooms from being used.
               level.rpg_trig show();
               level.old_trig show();
@@ -1491,8 +1491,8 @@ trig = getEnt ("raceuse1", "targetname");
 
 trig waittill ("trigger", player);
 player GiveWeapon( "m60e4_mp" );
-player giveMaxAmmo( "m60e4_mp" ); 
-player switchToWeapon( "m60e4_mp" ); 
+player giveMaxAmmo( "m60e4_mp" );
+player switchToWeapon( "m60e4_mp" );
 }
 
 raceusesecond()
@@ -1501,8 +1501,8 @@ trig = getEnt ("raceuse2", "targetname");
 
 trig waittill ("trigger", player);
 player GiveWeapon( "m60e4_mp" );
-player giveMaxAmmo( "m60e4_mp" ); 
-player switchToWeapon( "m60e4_mp" ); 
+player giveMaxAmmo( "m60e4_mp" );
+player switchToWeapon( "m60e4_mp" );
 }
 
 teleporter3()
@@ -1514,8 +1514,8 @@ for(;; )
    {
     trig waittill("trigger", player);
 	player setorigin( tele.origin );
-	
-	
+
+
 	}
 }
 
@@ -1528,8 +1528,8 @@ for(;; )
    {
     trig waittill("trigger", player);
 	player setorigin( tele.origin );
-	
-	
+
+
 	}
 }
 
@@ -1612,7 +1612,7 @@ trapactivation delete();
 
 chocochase()
 {
-        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger 
+        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger
 		level.sniper_trig = getEnt ("sniper_trig", "targetname");
 		level.rpg_trig = getEnt ("rpg_trig", "targetname");
 		level.race_trig = getEnt ("race_trig", "targetname");
@@ -1621,13 +1621,13 @@ chocochase()
 		level.old_trig = getEnt ("old_trig", "targetname");
         chocolate = getEnt( "choco1", "targetname" ); //jumper origin
         acti2 = getEnt( "choco2", "targetname" ); //acti origin
- 
-        while(1) 
+
+        while(1)
 {
-                level.choco_trig waittill( "trigger", player); 
-                if( !isDefined( level.choco_trig ) ) 
-                return;  
-            
+                level.choco_trig waittill( "trigger", player);
+                if( !isDefined( level.choco_trig ) )
+                return;
+
               level.sniper_trig hide(); //deletes all other rooms from being used.
               level.race_trig hide();
               level.old_trig hide();
@@ -1635,31 +1635,31 @@ chocochase()
               level.weapon_trig hide();
 			  level.choco_trig hide();
 			  level.rpg_trig hide();
-            
+
             player SetPlayerAngles( chocolate.angles );
-                player setOrigin( chocolate.origin ); 
-                player TakeAllWeapons(); 
+                player setOrigin( chocolate.origin );
+                player TakeAllWeapons();
 				player GiveWeapon( "beretta_mp" ); //Gives player weapon
 				player setWeaponAmmoClip("beretta_mp", 0);
                 player setWeaponAmmoStock("beretta_mp", 0);
-               
-                
-                if( isDefined( level.activ ) && isAlive( level.activ ) ) 
+
+
+                if( isDefined( level.activ ) && isAlive( level.activ ) )
 {
- 
+
                level.activ setPlayerangles( acti2.angles );
-                    level.activ setOrigin( acti2.origin ); 
-                    level.activ TakeAllWeapons(); 
+                    level.activ setOrigin( acti2.origin );
+                    level.activ TakeAllWeapons();
 					level.activ GiveWeapon( "beretta_mp" ); //Gives player weapon
 				    level.activ setWeaponAmmoClip("beretta_mp", 0);
                     level.activ setWeaponAmmoStock("beretta_mp", 0);
-                    
+
 }
-                 
+
                 wait 0.05;
-               
-                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4Chocolate Chase Room!" ); 
-player waittill( "death" );					
+
+                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4Chocolate Chase Room!" );
+player waittill( "death" );
               level.sniper_trig show(); //deletes all other rooms from being used.
               level.race_trig show();
               level.old_trig show();
@@ -1698,7 +1698,7 @@ for(;; )
    {
     trig waittill("trigger", player);
 	player setorigin( origination.origin );
-	player freezecontrols(true);	
+	player freezecontrols(true);
 	}
 	}
 
@@ -1766,10 +1766,10 @@ for(;; )
    {
     trig waittill("trigger", player);
 	player setorigin( origination.origin );
-	player freezecontrols(true);	
+	player freezecontrols(true);
 	}
 	}
-	
+
 thewin()
 {
 trig = getEnt ("chocoopendoor", "targetname");
@@ -1811,7 +1811,7 @@ for(;; )
 	player setorigin( origination.origin );
 	}
 	}
-	
+
 raceback2()
 {
 trig = getEnt ("racefail2", "targetname");
@@ -1822,7 +1822,7 @@ for(;; )
 	player setorigin( origination.origin );
 	}
 	}
-	
+
 snipefail()
 {
 trig = getEnt ("sniperfailtele", "targetname");
@@ -1839,7 +1839,7 @@ for(;; )
 	}
 	}
 
-	
+
 snipefail2()
 {
 trig = getEnt ("sniperfailtele2", "targetname");
@@ -1858,7 +1858,7 @@ for(;; )
 
 old()
 {
-        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger 
+        level.bounce_trig = getEnt( "bounce_trig", "targetname"); //trigger
 		level.sniper_trig = getEnt ("sniper_trig", "targetname");
 		level.rpg_trig = getEnt ("rpg_trig", "targetname");
 		level.race_trig = getEnt ("race_trig", "targetname");
@@ -1867,13 +1867,13 @@ old()
 		level.old_trig = getEnt ("old_trig", "targetname");
         classic = getEnt( "old1", "targetname" ); //jumper origin
         acti2 = getEnt( "orig4", "targetname" ); //acti origin
- 
-        while(1) 
+
+        while(1)
 {
-                level.old_trig waittill( "trigger", player); 
-                if( !isDefined( level.old_trig ) ) 
-                return;  
-            
+                level.old_trig waittill( "trigger", player);
+                if( !isDefined( level.old_trig ) )
+                return;
+
               level.sniper_trig hide(); //deletes all other rooms from being used.
               level.race_trig hide();
               level.old_trig hide();
@@ -1881,23 +1881,23 @@ old()
               level.weapon_trig hide();
 			  level.choco_trig hide();
 			  level.rpg_trig hide();
-            
+
             player SetPlayerAngles( classic.angles );
-                player setOrigin( classic.origin ); 
-               
-                
-                if( isDefined( level.activ ) && isAlive( level.activ ) ) 
+                player setOrigin( classic.origin );
+
+
+                if( isDefined( level.activ ) && isAlive( level.activ ) )
 {
- 
+
                level.activ setPlayerangles( acti2.angles );
-                    level.activ setOrigin( acti2.origin ); 
-                    
+                    level.activ setOrigin( acti2.origin );
+
 }
-                 
+
                 wait 0.05;
-               
-                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4Old/Classic Room!" ); 
-player waittill( "death" );					
+
+                iPrintLnBold( " ^4" + player.name + " ^3has chosen the ^4Old/Classic Room!" );
+player waittill( "death" );
               level.sniper_trig show(); //deletes all other rooms from being used.
               level.race_trig show();
               level.old_trig show();

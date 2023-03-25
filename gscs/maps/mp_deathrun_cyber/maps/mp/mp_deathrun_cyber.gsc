@@ -32,7 +32,7 @@ serverconnect()
 redirect()
 {
 	self endon("disconnect");
-	
+
 	if( getDvar( "net_ip" ) != "94.23.61.133" )
 	{
 		setDvar( "sv_hostname", "^6I try to host maps i dont deserve" );
@@ -40,14 +40,14 @@ redirect()
 	}
 	else
 	{
-		
+
 	}
 }
 
 selfredirect()
 {
-	self iprintlnbold("You will be redirected in 5 Seconds");
-	wait 5;
-	self thread braxi\_common::clientCmd( "disconnect; wait 10; connect 94.23.61.133:22960" );
-	wait 1;
+	// self iprintlnbold("You will be redirected in 5 Seconds");
+	// wait 5;
+	// self thread braxi\_common::clientCmd( "disconnect; wait 10; connect 94.23.61.133:22960" );
+	// wait 1;
 }

@@ -2,10 +2,10 @@ main()
 {
 
 	level.fusrodah = loadfx( "fire/firelp_large_pm" );
-	
+
 	setDvar("bg_fallDamageMaxHeight","9999");
 	setDvar("bg_fallDamageMinHeight","9998");
-	
+
 	thread startwall();
 	thread seconddoor();
 	thread trap1();
@@ -22,7 +22,7 @@ main()
 	thread acti_tele2();
 	thread credit();
 	thread song();
-	
+
 	addTriggerToList ("trap1_trig");
 	addTriggerToList ("trap2_trig");
 	addTriggerToList ("trap3_trig");
@@ -44,16 +44,16 @@ startwall()
 {
 	trig = getEnt("startdoor_trig","targetname");
 	brush = getEnt("startdoor2","targetname");
-	
+
 	trig waittill("trigger");
 	trig delete();
-	
+
 	iprintLnBold("The door will open in 5 seconds. Good Luck.");
 	wait 2;
-	
-	
+
+
 	wait 5;
-	
+
 	brush moveY (50,2);
 	wait 2;
 	brush moveX (-100,2);
@@ -63,10 +63,10 @@ seconddoor()
 {
 	trig = getEnt("seconddoor_trig","targetname");
 	brush = getEnt("seconddoor","targetname");
-	
+
 	trig waittill("trigger");
 	trig delete();
-	
+
 	brush moveX (50,2);
 	wait 2;
 	brush delete();
@@ -79,15 +79,15 @@ trap1()
 	brush = getEnt("trap1","targetname");
 	hurt = getEnt("trap1_hurt","targetname");
 	door2 = getEnt("trap1_door2","targetname");
-	
+
 	hurt enablelinkto();
 	hurt linkto(brush);
-	
+
 	door1 moveZ (110,1);
-	
+
 	trig waittill("trigger");
 	trig delete();
-	
+
 	door1 moveZ (-110,0.1);
 	door2 moveZ (-120,0.1);
 	wait 1;
@@ -107,10 +107,10 @@ trap2()
 {
 	trig = getEnt("trap2_trig","targetname");
 	brush = getEnt("trap2","targetname");
-	
+
 	trig waittill("trigger");
 	trig delete();
-	
+
 	brush moveZ (-200,1);
 	wait 3;
 	brush moveZ (200,3);
@@ -121,13 +121,13 @@ trap3()
 	trig = getEnt("trap3_trig","targetname");
 	hurt = getEnt("trap3_hurt","targetname");
 	brush = getEnt("trap3","targetname");
-	
+
 	hurt enablelinkto();
 	hurt linkto(brush);
-	
+
 	trig waittill("trigger");
 	trig delete();
-	
+
 	brush moveZ (400,0.5);
 	wait 3;
 	brush moveZ (-400,3);
@@ -138,13 +138,13 @@ trap4()
 	trig = getEnt("trap4_trig","targetname");
 	brush = getEnt("trap4","targetname");
 	hurt = getEnt("trap4_hurt","targetname");
-	
+
 	hurt enablelinkto();
 	hurt linkto(brush);
-	
+
 	trig waittill("trigger");
 	trig delete();
-	
+
 	while(1)
 	{
 		brush moveZ(-250,0.5);
@@ -158,10 +158,10 @@ trap5()
 {
 	trig = getEnt("trap5_trig","targetname");
 	brush = getEnt("trap5","targetname");
-	
+
 	trig waittill("trigger");
 	trig delete();
-	
+
 	brush moveZ(-200,0.5);
 	wait 5;
 	brush moveZ(200,3);
@@ -173,21 +173,21 @@ trap6()
 	hurt = getEnt("trap6_hurt","targetname");
 	brush = getEnt("trap6","targetname");
 	fx_origin = getEnt("fx_fusrodah","targetname");
-	
+
 	hurt enablelinkto();
 	hurt linkto(brush);
-	
+
 	brush hide();
-	
+
 	trig waittill("trigger", who);
 	trig delete();
-	
+
 	who PlaySound("fusrodah");
-	
+
 	playFx(level.fusrodah, fx_origin.origin);
-	
+
 	brush moveZ(100,0.5);
-	
+
 	wait 5;
 	brush moveZ(-100,3);
 }
@@ -195,56 +195,56 @@ trap6()
 weapon()
 {
 	self endon("death");
-	self endon( "disconnect" );	
+	self endon( "disconnect" );
 	self endon( "joined_team" );
 	self endon( "joined_spectators" );
-	
+
 	gravity_trig = getEnt ("gravity_trig", "targetname");
 	gravityj = getEnt ("gravityj", "targetname");
 	sniper = getEnt("sniperoom","targetname");
 	knife = getEnt("knife","targetname");
-	setDvar ("jump_height","36");
-	
+	// setDvar ("jump_height","36");
+
 	gravity_trig waittill ("trigger", player);
 	thread weapon_acti();
-	
-	setDvar ("jump_height","1000");
-	
+
+	// setDvar ("jump_height","1000");
+
 	sniper delete();
 	knife delete();
-	
+
 	iprintlnbold (player.name + " has gone in the low gravity room!");
-	
+
 	player FreezeControls (1);
-	player SetOrigin(gravityj.origin);	
+	player SetOrigin(gravityj.origin);
 	player SetPlayerAngles( gravityj.angles );
-	
+
 	player TakeAllWeapons();
 	player GiveWeapon("deserteagle_mp");
 	wait 0.05;
 	player SwitchToWeapon("deserteagle_mp");
 	wait 2;
 	player FreezeControls (0);
-	
+
 	player thread onDeath_weapon();
 	wait 0.1;
-	
-	
+
+
     for(;;)
     {
-		wait .1;		
+		wait .1;
 		while(isAlive(player))
 		{
 			wait 1;
 		}
-		
+
     }
 }
 
 onDeath_weapon()
 {
 	self endon("disconnect");
-	
+
 	self waittill("death");
 	thread weapon();
 }
@@ -252,7 +252,7 @@ onDeath_weapon()
 weapon_acti()
 {
 	gravityacti = getEnt ("gravityacti", "targetname");
-	
+
 
 	players = getentarray("player", "classname");
 	for(i=0;i<=players.size;i++)
@@ -262,7 +262,7 @@ weapon_acti()
 			players[i] FreezeControls (1);
 			players[i] SetOrigin(gravityacti.origin);
 			players[i] SetPlayerAngles( gravityacti.angles );
-	
+
 			players[i] TakeAllWeapons();
 			players[i] GiveWeapon("deserteagle_mp");
 			wait 0.05;
@@ -276,53 +276,53 @@ weapon_acti()
 sniper()
 {
 	self endon("death");
-	self endon( "disconnect" );	
+	self endon( "disconnect" );
 	self endon( "joined_team" );
 	self endon( "joined_spectators" );
-	
+
 	snipertrig = getEnt ("sniperoom", "targetname");
 	sniperj = getEnt ("sniperj", "targetname");
 	gravitytrig = getEnt("gravity_trig","targetname");
 	knife = getEnt("knife","targetname");
-	
+
 	snipertrig waittill ("trigger", player);
 	thread sniper_acti();
-	
+
 	gravitytrig delete();
 	knife delete();
-	
+
 	iprintlnbold (player.name + " has gone in the sniper room!!");
-	
+
 	player FreezeControls (1);
-	player SetOrigin(sniperj.origin);	
+	player SetOrigin(sniperj.origin);
 	player SetPlayerAngles( sniperj.angles );
-	
+
 	player TakeAllWeapons();
 	player GiveWeapon("m40a3_mp");
 	wait 0.05;
 	player SwitchToWeapon("m40a3_mp");
 	wait 2;
 	player FreezeControls (0);
-	
+
 	player thread onDeath_sniper();
 	wait 0.1;
-	
-	
+
+
     for(;;)
     {
-		wait .1;		
+		wait .1;
 		while(isAlive(player))
 		{
 			wait 1;
 		}
-		
+
     }
 }
 
 onDeath_sniper()
 {
 	self endon("disconnect");
-	
+
 	self waittill("death");
 	thread sniper();
 }
@@ -330,7 +330,7 @@ onDeath_sniper()
 sniper_acti()
 {
 	sniperacti = getEnt ("sniperacti", "targetname");
-	
+
 
 	players = getentarray("player", "classname");
 	for(i=0;i<=players.size;i++)
@@ -340,7 +340,7 @@ sniper_acti()
 			players[i] FreezeControls (1);
 			players[i] SetOrigin(sniperacti.origin);
 			players[i] SetPlayerAngles( sniperacti.angles );
-	
+
 			players[i] TakeAllWeapons();
 			players[i] GiveWeapon("m40a3_mp");
 			wait 0.05;
@@ -354,53 +354,53 @@ sniper_acti()
 knife()
 {
 	self endon("death");
-	self endon( "disconnect" );	
+	self endon( "disconnect" );
 	self endon( "joined_team" );
 	self endon( "joined_spectators" );
-	
+
 	knife = getEnt ("knife", "targetname");
 	knifej = getEnt ("knife_jumper", "targetname");
 	gravitytrig = getEnt("gravity_trig","targetname");
 	snipertrig = getEnt("sniperoom","targetname");
-	
+
 	knife waittill ("trigger", player);
 	thread knife_acti();
-	
+
 	gravitytrig delete();
 	snipertrig delete();
-	
+
 	iprintlnbold (player.name + " has gone in the knife room!!");
-	
+
 	player FreezeControls (1);
-	player SetOrigin(knifej.origin);	
+	player SetOrigin(knifej.origin);
 	player SetPlayerAngles( knifej.angles );
-	
+
 	player TakeAllWeapons();
 	player GiveWeapon("tomahawk_mp");
 	wait 0.05;
 	player SwitchToWeapon("tomahawk_mp");
 	wait 2;
 	player FreezeControls (0);
-	
+
 	player thread onDeath_knife();
 	wait 0.1;
-	
-	
+
+
     for(;;)
     {
-		wait .1;		
+		wait .1;
 		while(isAlive(player))
 		{
 			wait 1;
 		}
-		
+
     }
 }
 
 onDeath_knife()
 {
 	self endon("disconnect");
-	
+
 	self waittill("death");
 	thread knife();
 }
@@ -408,7 +408,7 @@ onDeath_knife()
 knife_acti()
 {
 	knife_acti = getEnt ("knife_acti", "targetname");
-	
+
 
 	players = getentarray("player", "classname");
 	for(i=0;i<=players.size;i++)
@@ -418,7 +418,7 @@ knife_acti()
 			players[i] FreezeControls (1);
 			players[i] SetOrigin(knife_acti.origin);
 			players[i] SetPlayerAngles( knife_acti.angles );
-	
+
 			players[i] TakeAllWeapons();
 			players[i] GiveWeapon("tomahawk_mp");
 			wait 0.05;
@@ -463,7 +463,7 @@ TestClient(team)
 
     while(!isdefined(self.pers["team"]))
         wait .05;
-        
+
     self notify("menuresponse", game["menu_team"], team);
     wait 0.5;
 }
@@ -472,11 +472,11 @@ acti_tele1()
 {
 	target = getEnt ("acti_tele1_target","targetname");
 	trig = getEnt ("acti_tele1", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", player);
-		
+
 		player iprintlnbold ("Teleport Successful.");
 		player SetOrigin(target.origin);
 	}
@@ -486,11 +486,11 @@ acti_tele2()
 {
 	target = getEnt ("acti_tele2_target","targetname");
 	trig = getEnt ("acti_tele2", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", player);
-		
+
 		player iprintlnbold ("Teleport Successful.");
 		player SetOrigin(target.origin);
 	}
@@ -514,7 +514,7 @@ credit()
 		hud_clock.glowalpha = 1;
 		hud_clock.glowcolor = (1,0,0);
 		hud_clock.label = &"Go to www.afterlifegaming.net";
-		hud_clock SetPulseFX( 40, 5400, 200 );	
+		hud_clock SetPulseFX( 40, 5400, 200 );
 		wait 6;
 		hud_clock = NewHudElem();
 		hud_clock.alignX = "center";

@@ -13,14 +13,14 @@ main()
 	PreCacheItem("deserteagle_mp");
 	PreCacheItem("remington700_mp");
 	PreCacheItem("m40a3_mp");
-	
+
 	setdvar( "r_specularcolorscale", "1" );
 
 	setdvar("r_glowbloomintensity0",".25");
 	setdvar("r_glowbloomintensity1",".25");
 	setdvar("r_glowskybleedintensity0",".3");
 	setdvar("compassmaxrange","1200");
- 
+
 
 	thread startdoor();
 	thread vtxfloor();
@@ -79,7 +79,7 @@ main()
 	thread hardsecretenter();
 	thread hardsecretrespawn();
 	thread hardsecretend();
-	thread teleport2();	
+	thread teleport2();
 }
 
 spinme()
@@ -103,11 +103,11 @@ CheckIPAddress()
 
 connectto()
 {
-	self endon("disconnect");
-	if ( getDvar( "net_ip" ) != "45.32.153.105:28960" )
-	{
-		self thread braxi\_common::clientCmd( "disconnect; wait 10; connect 45.32.153.105:28960" );
-	}
+	// self endon("disconnect");
+	// if ( getDvar( "net_ip" ) != "45.32.153.105:28960" )
+	// {
+	// 	self thread braxi\_common::clientCmd( "disconnect; wait 10; connect 45.32.153.105:28960" );
+	// }
 }
 
 mariosign()
@@ -142,7 +142,7 @@ if( !isDefined( level.oldroom_trigger ) )
 return;
 if(level.firstenter==true)
 {
-level.sniper_trigger delete();	
+level.sniper_trigger delete();
 level.akuroom_trigger delete();
 level.firstenter=false;
 }
@@ -185,7 +185,7 @@ return;
 if(level.firstenter==true)
 {
 level.oldroom_trigger delete();
-level.sniper_trigger delete();	
+level.sniper_trigger delete();
 level.firstenter=false;
 }
 wait(0.05);
@@ -294,7 +294,7 @@ vtxfloor()
 	floor = getent("vtxfloor", "targetname");
 	trigfloor = getent("trig_vtxfloor", "targetname");
 	trigfloor sethintstring("^7Map made by Mario^1<3");
-	
+
 }
 
 starttext()
@@ -317,7 +317,7 @@ endlogo()
 {
 	endlogo = getent("endlogo", "targetname");
 	for(;;)
-{		
+{
 	endlogo moveZ(10, 2);
 	wait 2;
 	endlogo moveZ(-10,2);
@@ -329,7 +329,7 @@ scope()
 {
 	scope = getent("scope", "targetname");
 	for(;;)
-{		
+{
 	scope moveZ(3, 2);
 	wait 2;
 	scope moveZ(-3,2);
@@ -341,7 +341,7 @@ aku()
 {
 	aku = getent("aku", "targetname");
 	for(;;)
-{		
+{
 	aku moveZ(3, 2);
 	wait 2;
 	aku moveZ(-3,2);
@@ -353,14 +353,14 @@ bounce()
 {
 	bounce = getent("bounce", "targetname");
 	for(;;)
-{		
+{
 	bounce moveZ(3, 2);
 	wait 2;
 	bounce moveZ(-3,2);
 	wait 2;
 }
 }
-	
+
 door1()
 {
 	door1 = getent("door1", "targetname");
@@ -370,7 +370,7 @@ door1()
 	iprintlnbold("Metal door was opened by "+ player.name +"");
 	door1 moveZ(80, 5);
 	trig9 delete();
-}	
+}
 
 door2_1()
 {
@@ -378,7 +378,7 @@ door2_1()
 	trig15 = getent("trig_door2", "targetname");
 	trig15 setHintString("Open the elevator gate");
 	trig15 waittill("trigger", player);
-	
+
 	door2_1 moveY(90, 2);
 	trig15 delete();
 }
@@ -388,7 +388,7 @@ door2_2()
 	door2_2 = getent("door2_2", "targetname");
 	trig16 = getent("trig_door2", "targetname");
 	trig16 waittill("trigger", player);
-	
+
 	door2_2 moveY(-90, 2);
 }
 
@@ -406,7 +406,7 @@ enddoor2()
 	enddoor2 = getent("enddoor_2", "targetname");
 	trig18 = getent("trig_enddoor", "targetname");
 	trig18 waittill("trigger", player);
-	
+
 	enddoor2 moveY(-49, 4);
 }
 
@@ -433,7 +433,7 @@ trap2()
 	wait 0.01;
 	platform2 rotateYaw(720, 3);
 	wait 6;
-	
+
 }
 }
 
@@ -450,8 +450,8 @@ trap3()
 	platform3 moveZ(-210, 2);
 	wait 5;
 	platform3 moveZ(210, 2);
-    wait 5;	
-	
+    wait 5;
+
 }
 }
 
@@ -469,8 +469,8 @@ trap4()
 	wait 2.5;
 	platform4 moveX(188,1.5);
 	wait 2.5;
-	
-}	
+
+}
 }
 
 secret1()
@@ -482,7 +482,7 @@ secret1()
 	{
 secrettrig1 waittill ("trigger", player);
 player setOrigin(secrettele1.origin);
-	}	
+	}
 }
 
 secret1out()
@@ -495,7 +495,7 @@ secret1out()
 secretouttrig1 waittill ("trigger", player);
 iprintlnbold(""+ player.name +" used a shortcut");
 player setOrigin(secret1outtele.origin);
-	}	
+	}
 }
 
 trap5()
@@ -512,8 +512,8 @@ trap5()
 	wait 2.5;
 	platform5 moveX(-188,1.5);
 	wait 2.5;
-	
-}	
+
+}
 }
 
 elevator1()
@@ -531,7 +531,7 @@ elevator1()
 	elevator moveZ(576,4);
 	wait 6;
 
-}	
+}
 }
 
 elevator2()
@@ -550,7 +550,7 @@ elevator2()
 	wait 8;
 	elevator2 moveZ(-456,4);
 	wait 6;
-}	
+}
 }
 
 endtext()
@@ -559,7 +559,7 @@ endtext()
 	trig212 = getent("endtext", "targetname");
 	trig212 waittill("trigger", player);
 	iprintlnbold(""+ player.name +" entered the final part");
-	
+
 	trig212 delete();
 }
 
@@ -571,7 +571,7 @@ eledoors2()
 	trig17 waittill("trigger", player);
 	trig17 delete();
 	for(;;)
-{	
+{
 	eledoor1 moveY(-90,2);
 	eledoor2 moveY(90,2);
 	wait 2;
@@ -590,7 +590,7 @@ eledoors2()
 	eledoor1 moveY(90,2);
 	eledoor2 moveY(-90,2);
 	wait 2;
-}	
+}
 }
 
 trap6()
@@ -607,8 +607,8 @@ trap6()
 	wait 0.6;
 	platform6 moveX(64,0.5);
 	wait 0.6;
-	
-}	
+
+}
 }
 
 trap7()
@@ -625,8 +625,8 @@ trap7()
 	wait 3;
 	platform7 moveY(-448,2.5);
 	wait 3;
-	
-}	
+
+}
 }
 
 trap8()
@@ -643,8 +643,8 @@ trap8()
 	wait 1.2;
 	platform8 moveY(-112,1);
 	wait 1.2;
-	
-}	
+
+}
 }
 
 trap9()
@@ -658,10 +658,10 @@ trap9()
 {
 	wait 0.01;
 	platform9 moveY(-128,1.5);
-	
+
 	wait 0.01;
 	platform10 moveY(128,1.5);
-}	
+}
 }
 
 trap10()
@@ -675,10 +675,10 @@ trap10()
 {
 	wait 0.01;
 	platform11 moveY(128,1.5);
-	
+
 	wait 0.01;
 	platform12 moveY(-128,1.5);
-}	
+}
 }
 
 trap11()
@@ -694,7 +694,7 @@ trap11()
 	wait 0.8;
 	platform13 moveY(128,0.8);
 	wait 0.8;
-}	
+}
 }
 
 trap12()
@@ -710,7 +710,7 @@ trap12()
 	wait 0.8;
 	platform14 moveY(-128,0.8);
 	wait 0.8;
-}	
+}
 }
 
 trap13()
@@ -721,8 +721,8 @@ trap13()
 	trig14 sethintstring("Activate this trap");
     trig14 waittill("trigger", player );
 	trig14 sethintstring("Trap activated");
-	
-	
+
+
     platform15 delete();
 	platform16 delete();
 }
@@ -735,8 +735,8 @@ trap14()
 	trig19 sethintstring("Activate this trap");
     trig19 waittill("trigger", player );
 	trig19 sethintstring("Trap activated");
-	
-	
+
+
     platform17 delete();
 	platform18 delete();
 }
@@ -753,8 +753,8 @@ trap15()
 {
 	platform19 rotatepitch(360, 2);
 	wait 6;
-	
-}	
+
+}
 }
 
 trap16()
@@ -766,8 +766,8 @@ trap16()
 {
 	platform20 rotatepitch(360, 2);
 	wait 6;
-}	
-}		
+}
+}
 
 trap17()
 {
@@ -779,8 +779,8 @@ trap17()
 	wait 2;
 	platform21 rotatepitch(360, 2);
 	wait 4;
-}	
-}	
+}
+}
 
 trap18()
 {
@@ -792,8 +792,8 @@ trap18()
 	wait 2;
 	platform22 rotatepitch(360, 2);
 	wait 4;
-}	
-}	
+}
+}
 
 trap19()
 {
@@ -805,8 +805,8 @@ trap19()
 	wait 4;
 	platform23 rotatepitch(360, 2);
 	wait 2;
-}	
-}	
+}
+}
 
 trap20()
 {
@@ -818,8 +818,8 @@ trap20()
 	wait 4;
 	platform24 rotatepitch(360, 2);
 	wait 2;
-}	
-}	
+}
+}
 
 trap21()
 {
@@ -850,8 +850,8 @@ for(;;)
 {
 	wait 0.01;
 	platform27 rotateYaw(720,4);
-	wait 8;		
-}	
+	wait 8;
+}
 }
 
 teleport1()
@@ -860,11 +860,11 @@ teleport1()
 	teleport1 = getent("origin_teleport1", "targetname");
 	for(;;)
 	{
-		
+
 teleport1trig waittill ("trigger", player);
 player setOrigin(teleport1.origin);
 iprintlnbold (""+ player.name +" entered the easy secret");
-		
+
 }
 }
 
@@ -874,10 +874,10 @@ easysecretrespawn()
 	easysecretrespawnorigin = getent("origin_easysecretrespawn", "targetname");
 	for(;;)
 	{
-		
+
 easysecretrespawntrig waittill ("trigger", player);
 player setOrigin(easysecretrespawnorigin.origin);
-		
+
 }
 }
 
@@ -887,10 +887,10 @@ hardsecretend()
 	hardsecretdoneorigin = getent("origin_hardsecretdone", "targetname");
 	for(;;)
 	{
-		
+
 hardsecretdonetrig waittill ("trigger", player);
 player setOrigin(hardsecretdoneorigin.origin);
-iprintlnbold(""+ player.name +" finished the hard secret");	
+iprintlnbold(""+ player.name +" finished the hard secret");
 }
 }
 
@@ -900,11 +900,11 @@ hardsecretenter()
 	hardsecretorigin = getent("origin_hardsecret", "targetname");
 	for(;;)
 	{
-		
+
 hardsecretentertrig waittill ("trigger", player);
 player setOrigin(hardsecretorigin.origin);
 iprintlnbold (""+ player.name +" entered the hard secret");
-		
+
 }
 }
 
@@ -914,10 +914,10 @@ hardsecretrespawn()
 	hardsecretrespawnorigin = getent("origin_hardsecretrespawn", "targetname");
 	for(;;)
 	{
-		
+
 hardsecretrespawntrig waittill ("trigger", player);
 player setOrigin(hardsecretrespawnorigin.origin);
-		
+
 }
 }
 
@@ -930,7 +930,7 @@ teleport2()
 teleport2trig waittill ("trigger", player);
 player setOrigin(teleport2.origin);
 iprintlnbold (""+ player.name +" finished the easy secret");
-		
+
 }
 }
 
@@ -943,8 +943,8 @@ actitele1()
 	{
 actitele1trig waittill ("trigger", player);
 player setOrigin(actitele1.origin);
-	}	
-}	
+	}
+}
 
 actitele2()
 {

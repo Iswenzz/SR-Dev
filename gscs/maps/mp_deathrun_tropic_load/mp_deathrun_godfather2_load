@@ -1,0 +1,46 @@
+File fx/shellejects/rifle.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/shellejects/pistol.efx, line 1: Effect needs to be updated from the legacy format.
+LoadScriptModelEntity: no model specified for script_model at 1552 -2048 64
+LoadScriptModelEntity: no model specified for script_model at 1552 -2112 64
+LoadScriptModelEntity: no model specified for script_model at 1552 -2176 64
+LoadScriptModelEntity: no model specified for script_model at 1552 -2240 64
+LoadScriptModelEntity: no model specified for script_model at 1552 -2304 64
+ERROR: Could not open 'maps/mp/mp_deathrun_godfather2.gsc'
+ERROR: failed loading 'maps/mp/mp_deathrun_godfather2.gsc' of type 'rawfile'
+ERROR: unknown effect type 'bullet_small_reflect' in first column of file 'fx/iw_impacts.csv'fx/fx/impacts/default_hit.efx.efx not found
+fx/fx/impacts/small_brick.efx.efx not found
+fx/fx/impacts/small_concrete.efx.efx not found
+fx/fx/impacts/small_gravel2.efx.efx not found
+fx/fx/impacts/flesh_hit.efx.efx not found
+fx/fx/impacts/small_foliage.efx.efx not found
+fx/fx/impacts/small_glass.efx.efx not found
+fx/fx/impacts/small_grass.efx.efx not found
+fx/fx/impacts/small_gravel.efx.efx not found
+fx/fx/impacts/snowhit_small.efx.efx not found
+fx/fx/impacts/metalhit_small.efx.efx not found
+fx/fx/impacts/small_rock.efx.efx not found
+fx/fx/impacts/waterhit_small.efx.efx not found
+fx/fx/impacts/woodhit_small.efx.efx not found
+ERROR: 369 missing entries in effect CSV files (see console for details)ERROR: failed loading 'mp_deathrun_godfather2' of type 'impactfx'
+Sound file 'sound/voiceovers/generic/OM/gen_m_death1.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death2.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death3.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death4.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death5.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death6.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death7.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death8.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death1.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death2.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death3.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death4.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death5.wav' not found
+Sound file 'sound/voiceovers/generic/RU3/ru3_death_01.wav' not found
+Sound file 'sound/voiceovers/generic/RU3/ru3_death_02.wav' not found
+Sound file 'sound/voiceovers/generic/RU4/ru4_death_01.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_01.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_02.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_03.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_04.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_05.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_06.wav' not found

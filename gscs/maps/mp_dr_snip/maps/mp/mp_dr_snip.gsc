@@ -30,22 +30,22 @@
 	thread transporter();
 	thread jumper();
 
-	
+
 }
 
 
- 
+
  joker()
 {
 	trig = getEnt( "joker", "targetname" );
 
 
 	trig waittill( "trigger", player );
-	
+
 	players = getentarray("player","classname");
 	for(i=0;i<players.size;i++)
 		players[i] PlayLocalSound("joker");
-	iprintlnbold ("^1Escape from the acti! ^5Acti CAN´T SHOOT IN FREE!");
+	iprintlnbold ("^1Escape from the acti! ^5Acti CANï¿½T SHOOT IN FREE!");
 
 }
 
@@ -58,12 +58,12 @@ trap_3()
 	brush4 = getEnt( "block4", "targetname" );
 	brush5 = getEnt( "block5", "targetname" );
 	brush6 = getEnt( "block6", "targetname" );
-						
+
 	trig waittill( "trigger", who );
 	trig waittill( "trigger", player );
 	trig delete();
 	player iprintlnbold ("^1Camera detects your movements");
-	
+
 	while(1)
 	{
 		brush1 moveX( -200, 1 );
@@ -86,7 +86,7 @@ pickaxe()
 {
 	trig = getEnt("weap", "targetname");
 	trig waittill( "trigger", player);
-    players = getentarray("player","classname");	
+    players = getentarray("player","classname");
 	for(i=0;i<players.size;i++)
 	    {
 	      		players[i] TakeAllWeapons();
@@ -103,7 +103,7 @@ togglespeed()
 
 	trig waittill( "trigger", player);
 	trig delete();
-	
+
 	player setMoveSpeedScale(1.5);
 }
 
@@ -128,10 +128,10 @@ freezing()
 	wait 2.1;
 	prop1 moveZ (20 , 2);
 	prop2 moveZ (20 , 2);
-		
 
-	
-	
+
+
+
 
 }
 
@@ -141,17 +141,17 @@ togglespeed1()
 	trig = getEnt( "speed2", "targetname" );
 
 	trig waittill( "trigger", player);
-		
+
 	player setMoveSpeedScale(0.1);
 }
 
 togglespeed2()
 {
 	trig = getEnt( "speed1", "targetname" );
-	
+
 
 	trig waittill( "trigger", player);
-		
+
 	player setMoveSpeedScale(1.1);
 }
 
@@ -160,7 +160,7 @@ togglespeed3()
 	trig = getEnt( "speed8", "targetname" );
 
 	trig waittill( "trigger", player);
-		
+
 	player setMoveSpeedScale(1.4);
 	iprintlnbold ("^1" + " " + "^1"+ player.name + " "+ "^5escaped activator^1!!^5Now ^1KILL ^5him!");
 }
@@ -191,7 +191,7 @@ gravity2()
 	wait 1;
 	player iprintlnbold ("^5 Speed set to normal... ");
 	player setMoveSpeedScale(1);
-	
+
 }
 
 gravity()
@@ -199,20 +199,20 @@ gravity()
 	trig = getEnt( "gravity", "targetname" );
 
 	trig waittill( "trigger", player);
-	setDvar( "g_gravity", 300 );
-	iprintlnbold ("^1OMG ^2YOU ^3DISCOVER ^4THE ^5LADDER ^6WITH ^7SMALL ^8GRAVITY! ");	
+	// setDvar( "g_gravity", 300 );
+	// iprintlnbold ("^1OMG ^2YOU ^3DISCOVER ^4THE ^5LADDER ^6WITH ^7SMALL ^8GRAVITY! ");
 
 }
 
 bold()
 {
 	trig = getEnt( "bold", "targetname" );
-	
+
 
 	trig waittill( "trigger", player);
     player.maxhealth = 500;
 	player.health = player.maxhealth;
-	player iprintlnbold ("^8Do NOT FREERUN! You can´t shoot in free run! ");	
+	player iprintlnbold ("^8Do NOT FREERUN! You canï¿½t shoot in free run! ");
 
 }
 
@@ -254,7 +254,7 @@ teleport()
 		for( i = 0; i < entTransporter.size; i++ )
 			entTransporter[i] thread transporter();
 }
- 
+
 transporter()
 {
 for(;;)
@@ -266,7 +266,7 @@ for(;;)
 		player setplayerangles( entTarget.angles );
 		wait 0.3;
     }
-	
+
 }
 
 

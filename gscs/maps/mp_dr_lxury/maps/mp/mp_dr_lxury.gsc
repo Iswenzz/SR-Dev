@@ -10,24 +10,24 @@
 main()
 {
  maps\mp\_load::main();
- 
+
  game["allies"] = "marines";
  game["axis"] = "opfor";
  game["attackers"] = "axis";
  game["defenders"] = "allies";
  game["allies_soldiertype"] = "desert";
  game["axis_soldiertype"] = "desert";
- 
-	setdvar("g_speed" ,"190");
-	setdvar("dr_jumpers_speed" ,"1");
-	
+
+	// setdvar("g_speed" ,"190");
+	// setdvar("dr_jumpers_speed" ,"1");
+
 	setdvar( "r_specularcolorscale", "1" );
 
 	setdvar("r_glowbloomintensity0",".1");
 	setdvar("r_glowbloomintensity1",".1");
 	setdvar("r_glowskybleedintensity0",".1");
 
- 
+
  addTriggerToList( "trig_trap02" );
  addTriggerToList( "trig_trap01" );
  addTriggerToList( "trig_trap03" );
@@ -41,7 +41,7 @@ main()
  addTriggerToList( "trig_rotatetrap" );
  addTriggerToList( "trig_trapbegin" );
  addTriggerToList( "trig_creeper" );
- 
+
  thread messages();
  thread mapstarttraps();
  thread startdoor();
@@ -80,11 +80,11 @@ main()
  thread bounce();
  thread old();
  thread weapon();
- 
- 
- 
+
+
+
 }
-	
+
 messages()
 {
 wait 10;
@@ -119,9 +119,9 @@ trig_plat1 = getent("trig_plat1","targetname");
 trig_plat1 waittill("trigger" , user );
 while(1)
 {
-plat1 moveX(368, 2); 
+plat1 moveX(368, 2);
 wait 4;
-plat1 moveX(-368, 2); 
+plat1 moveX(-368, 2);
 wait 4;
 }
 }
@@ -133,9 +133,9 @@ trig_plat2 = getent("trig_plat2","targetname");
 trig_plat2 waittill("trigger" , user );
 while(1)
 {
-plat2 moveX(368, 2); 
+plat2 moveX(368, 2);
 wait 4;
-plat2 moveX(-368, 2); 
+plat2 moveX(-368, 2);
 wait 4;
 }
 }
@@ -148,9 +148,9 @@ trig_plat3 = getent("trig_plat3","targetname");
 trig_plat3 waittill("trigger" , user );
 while(1)
 {
-plat3 moveX(368, 2); 
+plat3 moveX(368, 2);
 wait 4;
-plat3 moveX(-368, 2); 
+plat3 moveX(-368, 2);
 wait 4;
 }
 }
@@ -203,7 +203,7 @@ teleport3()
 {
 	trig = getEnt("teleport_3","targetname");
 	target = getEnt("tp3","targetname");
-	
+
 
 	for(;;)
 	{
@@ -217,7 +217,7 @@ teleport4()
 {
 	trig = getEnt("teleport_4","targetname");
 	target = getEnt("tp4","targetname");
-	
+
 
 	for(;;)
 	{
@@ -231,7 +231,7 @@ teleport5()
 {
 	trig = getEnt("teleport_5","targetname");
 	target = getEnt("tp5","targetname");
-	
+
 
 	for(;;)
 	{
@@ -245,7 +245,7 @@ teleport6()
 {
 	trig = getEnt("teleport_6","targetname");
 	target = getEnt("tp6","targetname");
-	
+
 
 	for(;;)
 	{
@@ -259,7 +259,7 @@ teleportsecret()
 {
 	trig = getEnt("teleport_secret","targetname");
 	target = getEnt("tpsecret","targetname");
-	
+
 
 	for(;;)
 	{
@@ -275,7 +275,7 @@ teleportsecretfail()
 {
 	trig = getEnt("tpsecretfail","targetname");
 	target = getEnt("tpsecret","targetname");
-	
+
 
 	for(;;)
 	{
@@ -291,7 +291,7 @@ teleportsecretend()
 {
 	trig = getEnt("telepsecretend","targetname");
 	target = getEnt("tpsecretend","targetname");
-	
+
 
 	for(;;)
 	{
@@ -302,7 +302,7 @@ teleportsecretend()
 		player GiveWeapon("m40a3_mp");
 		player GiveMaxAmmo("m40a3_mp");
 		wait .05;
-		player SwitchToWeapon("m40a3_mp");  
+		player SwitchToWeapon("m40a3_mp");
 		player iPrintlnBold("^8Here have a sniper");
 	}
 }
@@ -348,27 +348,27 @@ music SetHintString("^4Press ^7use ^4to ^7play ^4music");
 		iprintln("^4Song: ^9Lxury - J.A.W.S");
 		iprintln("^4Song: ^9Lxury - J.A.W.S");
 	}
-	
+
 	if(possibility == 2)
-	
+
 	{
 		ambientPlay("company");
 		iprintln("^4Song: ^9Lxury - Company");
 		iprintln("^4Song: ^9Lxury - Company");
 		iprintln("^4Song: ^9Lxury - Company");
 	}
-	
+
 	if(possibility == 3)
-	
+
 	{
 		ambientPlay("benediction");
 		iprintln("^4Song: ^9Hot Natured - Benediction (Lxury remix)");
 		iprintln("^4Song: ^9Hot Natured - Benediction (Lxury remix)");
 		iprintln("^4Song: ^9Hot Natured - Benediction (Lxury remix)");
 	}
-	
 
-	
+
+
 music delete();
 iprintlnbold(" ^8 Someone here is a ^3luxurious DJ^8!");
 wait 1;
@@ -539,7 +539,7 @@ trig SetHintString( "Make Them Move" );
 trig waittill("trigger", player );
 if(level.trapsdisabled)
 {
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 }
 else
 {
@@ -581,7 +581,7 @@ trap2killer LinkTo(trap2spike);
 trig waittill ("trigger", player);
 if(level.trapsdisabled)
 {
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 }
 else
 {
@@ -621,7 +621,7 @@ trig SetHintString( "^1Push them off!" );
 trig waittill("trigger", player );
 if(level.trapsdisabled)
 {
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 }
 else
 {
@@ -658,7 +658,7 @@ killer3 LinkTo(trap3);
 trig waittill("trigger", player );
 if(level.trapsdisabled)
 {
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 }
 else
 {
@@ -694,7 +694,7 @@ trig SetHintString( "^1 Make them strafe" );
 trig waittill("trigger", player );
 if(level.trapsdisabled)
 {
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 }
 else
 {
@@ -702,19 +702,19 @@ trig SetHintString("^4Activated");
 r = RandomIntRange(1, 3);
 if(r == 2)
 {
-	trap1 moveY (370, 0.5); 
+	trap1 moveY (370, 0.5);
 	trap1 waittill("movedone");
 }
 if(r == 1)
 {
-	trap2 moveY (370, 0.5); 
+	trap2 moveY (370, 0.5);
 	trap2 waittill("movedone");
 }
 if(r == 3)
 {
-	trap1 moveY (370, 0.5); 
+	trap1 moveY (370, 0.5);
 	trap1 waittill("movedone");
-	trap2 moveY (370, 0.5); 
+	trap2 moveY (370, 0.5);
 	trap2 waittill("movedone");
 }
 
@@ -732,7 +732,7 @@ trig SetHintString( "^1 Rotations, rotations.." );
 trig waittill("trigger", player );
 if(level.trapsdisabled)
 {
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 }
 else
 {
@@ -749,7 +749,7 @@ trig SetHintString("^4Activated");
  }
  }
 
- 
+
  trap07()
  {
  trap1 =getent("trap07a","targetname");
@@ -765,18 +765,18 @@ trig SetHintString("^4Activated");
  trig waittill("trigger", player );
  if(level.trapsdisabled)
 {
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 }
 else
 {
 trig SetHintString("^4Activated");
 while(1)
 {
-trap1 moveZ(1800, 8); 
-trap2 moveZ(1800, 8); 
+trap1 moveZ(1800, 8);
+trap2 moveZ(1800, 8);
 wait 1;
-trap1 moveZ(-1800, 8); 
-trap2 moveZ(-1800, 8); 
+trap1 moveZ(-1800, 8);
+trap2 moveZ(-1800, 8);
 wait 1;
 }
 }
@@ -792,7 +792,7 @@ trig SetHintString( "^1 Move poles UP AND DOWN " );
 trig waittill("trigger", player );
  if(level.trapsdisabled)
 {
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 }
 else
 {
@@ -800,10 +800,10 @@ trig SetHintString("^4Activated");
 while(1)
 {
 wait 0.5;
-trap1 moveZ(50, 5); 
+trap1 moveZ(50, 5);
 trap2 moveZ(-50, 5);
 wait 5;
-trap1 moveZ(-50, 5); 
+trap1 moveZ(-50, 5);
 trap2 moveZ(50, 5);
 wait 5;
 }
@@ -819,7 +819,7 @@ trig SetHintString( "^1 Rotations, ^8rotations, ^3rotations^1.." );
 trig waittill("trigger", player );
 if(level.trapsdisabled)
 {
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 }
 else
 {
@@ -833,7 +833,7 @@ else
 
  }
  }
- 
+
  trap09()
 {
 	trig = getEnt("trig_trap09","targetname");
@@ -845,12 +845,12 @@ else
 	trig waittill ("trigger", player );
 	if(level.trapsdisabled)
 	{
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 	}
 	else
 	{
 	trig SetHintString("^4Activated");
-	
+
 	while(1)
 		{
 		platform1 rotateroll (360,1);
@@ -859,9 +859,9 @@ else
 		platform2 rotateroll (360,1);
 		platform4 rotateroll (360,1);
 		wait 2;
-		
+
 		}
-	}	
+	}
 }
 
 
@@ -887,8 +887,8 @@ platform2 waittill ("movedone");
 
 }
 }
-	
-	
+
+
 rotatetrap()
 {
 trig = getent("trig_rotatetrap","targetname");
@@ -897,7 +897,7 @@ trig SetHintString( " ^1Spin that " );
 trig waittill ("trigger");
 	if(level.trapsdisabled)
 	{
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 	}
 	else
 	{
@@ -908,7 +908,7 @@ trig waittill ("trigger");
 				draai rotateyaw (360, 3);
 				wait 0.1;
 			}
-		}	
+		}
 }
 
 trap10()
@@ -921,7 +921,7 @@ trig SetHintString( "^1 Move those things" );
 trig waittill ("trigger");
 	if(level.trapsdisabled)
 	{
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 	}
 	else
 	{
@@ -932,14 +932,14 @@ trig waittill ("trigger");
 		trap2 moveY(-800, 10);
 		trap3 moveY(-800, 10);
 		wait 2;
-		trap1 moveZ(-400, 5); 		
+		trap1 moveZ(-400, 5);
 		trap2 moveY(800, 10);
 		trap3 moveY(800, 10);
 		wait 2;
 
 		}
 	}
-}	
+}
 
 
 
@@ -951,7 +951,7 @@ trig SetHintString( "^1 If they jump down just activate this :D" );
 trig waittill ("trigger");
 	if(level.trapsdisabled)
 	{
-	iprintln(" ^6 user.name + ^3 pls dont acti on free !"); 
+	iprintln(" ^6 user.name + ^3 pls dont acti on free !");
 	}
 	else
 	{
@@ -961,9 +961,9 @@ trig waittill ("trigger");
 		wait 10;
 		creeper delete();
 		wait 0.1;
-		
+
 	}
-}	
+}
 
 
 
@@ -1000,8 +1000,8 @@ iPrintlnBold(" ^8 player.name ^2+  ^3Finished the map. Hooray!");
 sniper()
 {
 level.teleactorigin = getEnt("sniper_activator", "targetname");
-telejumporigin = getEnt("sniper_jumper", "targetname"); 
-level.bounce_trigger = getEnt("trigger_bounce", "targetname"); 
+telejumporigin = getEnt("sniper_jumper", "targetname");
+level.bounce_trigger = getEnt("trigger_bounce", "targetname");
 level.sniper_trigger = getEnt("trigger_sniper","targetname");
 level.old_trigger = getEnt("trigger_old","targetname");
 level.weapon_trigger = getEnt("trigger_weapon","targetname");
@@ -1024,19 +1024,19 @@ if(!isDefined(level.sniper_trigger))
 		level.old_trigger delete();
 		level.weapon_trigger delete();
 		level.firstenter=false;
-		}	
+		}
 		wait(0.05);
-		
-		
-		
-		
+
+
+
+
 player SetOrigin( telejumporigin.origin );
 player setplayerangles( telejumporigin.angles );
 player TakeAllWeapons();
 player GiveWeapon("m40a3_mp");
 player GiveMaxAmmo("m40a3_mp");
 wait .05;
-player SwitchToWeapon("m40a3_mp");  
+player SwitchToWeapon("m40a3_mp");
 wait(0.05);
 level.activ SetOrigin (level.teleactorigin.origin);
 level.activ setplayerangles (level.teleactorigin.angles);
@@ -1044,14 +1044,14 @@ level.activ TakeAllWeapons();
 level.activ GiveWeapon( "m40a3_mp" );
 level.activ GiveMaxAmmo("m40a3_mp");
 wait .05;
-level.activ SwitchToWeapon("m40a3_mp"); 
+level.activ SwitchToWeapon("m40a3_mp");
 iPrintlnBold( " ^2 1 v 1 me rust!" );
 wait(0.05);
 player switchToWeapon( "m40a3_mp" );
 level.activ SwitchToWeapon( "m40a3_mp" );
 
 
-	player freezecontrols(true); 
+	player freezecontrols(true);
 		level.activ freezecontrols(true);
 		wait 1;
 		player iPrintlnBold( "^53" );
@@ -1065,13 +1065,13 @@ level.activ SwitchToWeapon( "m40a3_mp" );
 		wait 1;
 		player iPrintlnBold( "^5Snipaah time^1!" );
 		level.activ iPrintlnBold(  "^5Snipaah time^1!" );
-		player freezecontrols(false); 
-		level.activ freezecontrols(false); 
+		player freezecontrols(false);
+		level.activ freezecontrols(false);
 
 		player waittill( "death" );
 		level.PlayerInRoom = false;
 }
-} 
+}
 
 
 
@@ -1083,11 +1083,11 @@ bounce()
 		level.sniper_trigger = getEnt("trigger_sniper","targetname");
 		level.old_trigger = getEnt("trigger_old","targetname");
 		level.weapon_trigger = getEnt("trigger_weapon","targetname");
-     	
+
 		while(1)
      	{
          	level.bounce_trigger waittill( "trigger", player );
-			
+
 			ambientPlay("maduk");
 
          	if( !isDefined( level.bounce_trigger ) )
@@ -1098,24 +1098,24 @@ bounce()
 		level.old_trigger delete();
 		level.weapon_trigger delete();
 		level.firstenter=false;
-		}	
+		}
 		wait(0.05);
-			
+
          	player SetPlayerAngles( jump.angles );
          	player setOrigin( jump.origin );
          	player TakeAllWeapons();
-		player giveweapon( "knife_mp" );     
+		player giveweapon( "knife_mp" );
          	level.activ setPlayerangles( acti.angles );
          	level.activ setOrigin( acti.origin );
          	level.activ TakeAllWeapons();
-		level.activ giveweapon( "knife_mp" ); 
-		iPrintlnBold( " ^8" + player.name + " ^4 has entered the Bounce room^8!" );         
-         	wait 0.05;	
+		level.activ giveweapon( "knife_mp" );
+		iPrintlnBold( " ^8" + player.name + " ^4 has entered the Bounce room^8!" );
+         	wait 0.05;
 		level.activ switchtoweapon( "knife_mp" );
 		player switchtoweapon( "knife_mp" );
-		
-		
-		player freezecontrols(true); 
+
+
+		player freezecontrols(true);
 		level.activ freezecontrols(true);
 		wait 1;
 		player iPrintlnBold( "^53" );
@@ -1129,12 +1129,12 @@ bounce()
 		wait 1;
 		player iPrintlnBold( "^5Bouncaaah^1!" );
 		level.activ iPrintlnBold( "^5Bouncaaah^1!" );
-		player freezecontrols(false); 
-		level.activ freezecontrols(false); 
-		
+		player freezecontrols(false);
+		level.activ freezecontrols(false);
+
 		player waittill( "death" );
 		level.PlayerInRoom = false;
-			
+
      	}
 }
 
@@ -1149,7 +1149,7 @@ old()
 		deur2 = getEnt("old_door2","targetname");
 		letters = getEnt("old_letters","targetname");
 		level.old_trigger waittill( "trigger", player );
-     	
+
 		{
 		ambientPlay("schnitzel");
 		level.sniper_trigger delete();
@@ -1157,13 +1157,13 @@ old()
 		level.old_trigger delete();
 		level.activ setPlayerangles( acti.angles );
         level.activ setOrigin( acti.origin );
-		iPrintlnBold( " ^8" + player.name + " ^4 has entered the old room^8!" ); 
+		iPrintlnBold( " ^8" + player.name + " ^4 has entered the old room^8!" );
 		deur1 moveZ (-160,2);
 		letters moveZ (-160,2);
 		wait 12;
 		deur2 moveZ (-352,2);
-		}		
-}		
+		}
+}
 
 
 weapon()
@@ -1174,11 +1174,11 @@ weapon()
 		level.sniper_trigger = getEnt("trigger_sniper","targetname");
 		level.old_trigger = getEnt("trigger_old","targetname");
 		level.bounce_trigger = getEnt("trigger_bounce","targetname");
-     
+
      	while(1)
      	{
          	level.weapon_trigger waittill( "trigger", player );
-			
+
 			ambientPlay("firemansam");
 
          	if( !isDefined( level.weapon_trigger ) )
@@ -1189,24 +1189,24 @@ weapon()
 		level.old_trigger delete();
 		level.bounce_trigger delete();
 		level.firstenter=false;
-		}	
+		}
 		wait(0.05);
-			
+
          	player SetPlayerAngles( jump.angles );
          	player setOrigin( jump.origin );
          	player TakeAllWeapons();
-		player giveweapon( "knife_mp" );     
+		player giveweapon( "knife_mp" );
          	level.activ setPlayerangles( acti.angles );
          	level.activ setOrigin( acti.origin );
          	level.activ TakeAllWeapons();
-		level.activ giveweapon( "knife_mp" ); 
-		iPrintlnBold( " ^8" + player.name + " ^4 has entered the Weapon room^8!" );         
-         	wait 0.05;	
+		level.activ giveweapon( "knife_mp" );
+		iPrintlnBold( " ^8" + player.name + " ^4 has entered the Weapon room^8!" );
+         	wait 0.05;
 		level.activ switchtoweapon( "knife_mp" );
 		player switchtoweapon( "knife_mp" );
-		
-		
-		player freezecontrols(true); 
+
+
+		player freezecontrols(true);
 		level.activ freezecontrols(true);
 		wait 1;
 		player iPrintlnBold ( "^8Weapons are at the top!" );
@@ -1223,9 +1223,9 @@ weapon()
 		wait 1;
 		player iPrintlnBold( "^5GO!" );
 		level.activ iPrintlnBold( "^5GO!" );
-		player freezecontrols(false); 
-		level.activ freezecontrols(false); 
-		
+		player freezecontrols(false);
+		level.activ freezecontrols(false);
+
 		player waittill( "death" );
 		level.PlayerInRoom = false;
      	}

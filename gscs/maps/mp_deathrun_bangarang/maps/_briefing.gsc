@@ -5,17 +5,17 @@ MISSION BRIEFING
 main()
 {
 	setsaveddvar("hud_drawhud",0);
-	
+
 	level.script = tolower(getdvar ("mapname"));
 	if(!isdefined(level.tmpmsg))
 		level.tmpmsg = [];
-		
+
 	player = getent("player", "classname");
-	setsaveddvar("g_speed",0);
+	// setsaveddvar("g_speed",0);
 	player setViewmodel( "viewmodel_hands_cloth" );  //hack
-	
+
 	precacheShader("black");
-	
+
 	movieDefined = 0;
 	for( index = 0; index < level.slide.size; index++)
 	{
@@ -25,7 +25,7 @@ main()
 			break;
 		}
 	}
-	
+
 	if ( movieDefined )
 	{
 		// movie
@@ -39,7 +39,7 @@ main()
 		for(i=0;i<level.slide.size;i++)
 			if(isdefined(level.slide[i]["image"]))
 				precacheshader(level.slide[i]["image"]);
-				
+
 		player thread skipthebriefing();
 		player dothebriefing();
 		player gotothelevel(false);
@@ -54,7 +54,7 @@ start(fFadeTime)
 	level.briefing_running = true;
 	level.briefing_ending = false;
 	level.PlaceNextImage = "A";
-	
+
 	if (isdefined (level.imageA))
 		level.imageA destroy();
 	if (isdefined (level.imageB))
@@ -63,7 +63,7 @@ start(fFadeTime)
 		level.blackscreen destroy();
 	if (isdefined (level.FiretoSkip))
 		level.FiretoSkip destroy();
-	
+
 	if( !isDefined(fFadeTime) || !fFadeTime )
 	{
 		level.briefing_fadeInTime = 0.5;
@@ -106,8 +106,8 @@ start(fFadeTime)
 	level.FiretoSkip settext (&"SCRIPT_PLATFORM_FIRE_TO_SKIP");
 	level.FiretoSkip.alpha = 0.0;
 
-	thread fadeInFireToSkip(); 
-	
+	thread fadeInFireToSkip();
+
 	//Image A
 	level.imageA = newHudElem();
 	level.imageA.alignX = "center";
@@ -119,7 +119,7 @@ start(fFadeTime)
 	level.imageA.vertAlign = "fullscreen";
 	level.imageA setShader("black", 640, 360);
 	level.imageA.foreground = true;
-	
+
 	//Image B
 	level.imageB = newHudElem();
 	level.imageB.alignX = "center";
@@ -131,9 +131,9 @@ start(fFadeTime)
 	level.imageB.alpha = 0;
 	level.imageB setShader("black", 640, 360);
 	level.imageB.foreground = true;
-	
+
 	self freezeControls(true);
-	
+
 	wait .5;
 
 	for(i=0;i<level.slide.size;i++)
@@ -170,16 +170,16 @@ start(fFadeTime)
 fadeInFireToSkip()
 {
 	wait(1);
-	thread fadeFireToSkip();	
-	level.FiretoSkip fadeOverTime(level.briefing_fadeOutTime);	
-	level.FiretoSkip.alpha = 1.0;	
+	thread fadeFireToSkip();
+	level.FiretoSkip fadeOverTime(level.briefing_fadeOutTime);
+	level.FiretoSkip.alpha = 1.0;
 }
 
 // fades fire to skip after 7 seconds
 fadeFireToSkip()
 {
-	wait 7; 
-	level.FiretoSkip fadeOverTime(level.briefing_fadeOutTime);	
+	wait 7;
+	level.FiretoSkip fadeOverTime(level.briefing_fadeOutTime);
 	level.FiretoSkip.alpha = 0.0;
 }
 
@@ -195,30 +195,30 @@ skipCheck()
 	self endon("briefingend");
 
 	player = getent("player", "classname" );
-	
+
 	wait( 0.05 );
-	
+
 	maps\_utility::set_console_status();
-	
+
 	for(;;)
 	{
 		// we want to check if the "A" button has been pressed on xenon
-		// instead of FIRE. 
+		// instead of FIRE.
 		if( level.console )
 		{
 			if(player buttonPressed( "BUTTON_A" ))
 			{
-				self notify("briefingskip");			
+				self notify("briefingskip");
 				end();
-				return;				
-			}	
-			wait(0.05); 
-			continue; 
+				return;
+			}
+			wait(0.05);
+			continue;
 		}
-		
+
 		if(player attackButtonPressed())
 		{
-			self notify("briefingskip");			
+			self notify("briefingskip");
 			end();
 			return;
 		}
@@ -229,7 +229,7 @@ skipCheck()
 image(sImageShader)
 {
 	self endon("briefingskip");
-	
+
 	if (level.PlaceNextImage == "A")
 	{
 		level.PlaceNextImage = "B";
@@ -269,10 +269,10 @@ endThread()
 		return;
 	if(level.briefing_ending)
 		return;
-		
+
 	self notify("briefingend");
 	level.briefing_ending = true;
-	
+
 	// Make sure the briefing audio is ended on for slideshows
 	if(level.script[0] != "m")
 	{
@@ -282,7 +282,7 @@ endThread()
 	// Fade the screen in
 	thread imageFadeOut("A");
 	thread imageFadeOut("B");
-	
+
 	wait(1.5);
 //	self freezeControls(false);
 

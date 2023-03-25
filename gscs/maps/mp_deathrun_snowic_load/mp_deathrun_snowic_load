@@ -1,0 +1,8 @@
+ERROR: Could not open 'rumble/defaultweapon_fire_h.rmb'
+ERROR: failed loading 'rumble/defaultweapon_fire_h.rmb' of type 'rawfile'
+ERROR: Could not open 'rumble/defaultweapon_fire_l.rmb'
+ERROR: failed loading 'rumble/defaultweapon_fire_l.rmb' of type 'rawfile'
+ERROR: Could not open 'rumble/defaultweapon_melee_h.rmb'
+ERROR: failed loading 'rumble/defaultweapon_melee_h.rmb' of type 'rawfile'
+ERROR: Could not open 'rumble/defaultweapon_melee_l.rmb'
+ERROR: failed loading 'rumble/defaultweapon_melee_l.rmb' of type 'rawfile'

@@ -23,7 +23,7 @@ main()
 	level.sperm = LoadFX("misc/wavebreak_01_cargoship");
 	level.trap["lightning"] = LoadFX("rednose/lightning_col");
 	level.trap["lightning_dirt"] = LoadFX("rednose/lightning_dirt");
-	
+
 	maps\mp\_load::main();
 	maps\mp\_rotateme_trap18_secondway::main();
 	maps\mp\_rotateme_trap25::main();
@@ -37,7 +37,7 @@ main()
 //	braxi\_common::mapAuthor( "rednose", "3377db6e" );
 
 
-	
+
 	precacheItem( "ak47_mp" );
 	precacheItem( "barrett_mp" );
 	precacheItem( "deserteagle_mp" );
@@ -47,27 +47,27 @@ main()
 	precacheModel( "viewhands_dnf_duke" );
 	precacheModel( "playermodel_dnf_duke" );
 
-	
-	
-	
+
+
+
 //////////////////////////////////////////////////////////////////////
 /////////////////////////\ \//////////////////////////////////////////
-////////// _ __    __   \_\ \    ___     ___     ____     __  //////// 
+////////// _ __    __   \_\ \    ___     ___     ____     __  ////////
 ///////////\`'__\/'__`\ /'_` \ /' _ `\  / __`\  /',__\  /'__`\ ///////
 //////////\ \ \//\  __//\ \r\ \/\ \/\ \/\ \e\ \/\__, `\/\ d__/ ///////
 ////////// \ \_\\ \____\ \___,_\ \_\ \_\ \____/\/\____/\ \____\ //////
 //////////  \/_/ \/____/\/__,_ /\/_/\/_/\/___/  \/___/  \/____/ //////
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-	
-	
+
+
 	game["allies"] = "marines";
 	game["axis"] = "opfor";
 	game["attackers"] = "axis";
 	game["defenders"] = "allies";
 	game["allies_soldiertype"] = "desert";
 	game["axis_soldiertype"] = "desert";
-	
+
 	setDvar( "compassmaxrange", "1024" );
 
 
@@ -225,7 +225,7 @@ addtrapstofreerun()
 	addTriggerToList("trigger40");
 	addTriggerToList("trigger41");
 	addTriggerToList("trigger42");
-	
+
 
 
 }
@@ -237,8 +237,8 @@ dukemodel_jumper()
 {
 	while(1)
 	{
-		level waittill( "jumper", who ); 
-		who setModel( "playermodel_dnf_duke" ); // adds the Duke model 
+		level waittill( "jumper", who );
+		who setModel( "playermodel_dnf_duke" ); // adds the Duke model
 	}
 
 }
@@ -251,7 +251,7 @@ ambienty()
 
 	trig waittill( "trigger", player );
 	trig delete();
-	
+
 	ambientPlay("ambient");
 
 
@@ -264,7 +264,7 @@ enter35()
 
 	trig waittill( "trigger", player );
 	trig delete();
-	
+
 	brush delete();
 
 
@@ -280,9 +280,9 @@ avoidscraay()
 
 	trig waittill( "trigger", player );
 	trig delete();
-	
+
 	wait 60;
-	dmg maps\mp\_utility::triggerOn();	
+	dmg maps\mp\_utility::triggerOn();
 }
 
 act2()
@@ -291,7 +291,7 @@ act2()
 	floor1 = getent ("act2_floor","targetname");
 	trig waittill( "trigger", player );
 	trig delete();
-	
+
 	wait 5;
 
 	floor1 delete();
@@ -301,11 +301,11 @@ act2()
 jump_height_trig()
 {
 	trig = getent ("jump_height_trig","targetname");
-	
-	
-	setdvar( "jump_height", "39" );
+
+
+	// setdvar( "jump_height", "39" );
 	level.dvar[ "afk_warn" ] = 15;
-	
+
 	trig waittill( "trigger", player );
 	trig delete();
 
@@ -318,7 +318,7 @@ scars()
 
 	trig waittill( "trigger", player );
 	trig delete();
-	
+
 	player TakeAllWeapons();
 
 }
@@ -328,10 +328,10 @@ scarywall()
 {
 	trig = getent ("scarywalltrig","targetname");
 	upme = getEnt( "scarywall", "targetname" );
-	
+
 	trig waittill( "trigger", player );
 	trig delete();
-	
+
 	wait 10;
 	upme movex( 224, 15 );
 
@@ -347,20 +347,20 @@ avoidbug()
 	brush2 = getEnt( "avoidbug2", "targetname" );
 	brush3 = getEnt( "avoidbug3", "targetname" );
 	brush4 = getEnt( "avoidbug4", "targetname" );
-	brush5 = getEnt( "avoidbug5", "targetname" );			
-	
-	
+	brush5 = getEnt( "avoidbug5", "targetname" );
+
+
 	trig waittill( "trigger", player );
 	trig delete();
-	
-	
+
+
 	wait 2;
 	brush1 movez( -200, 2 );
 	brush2 movez( -2000, 2 );
 	brush3 movez( -150, 2 );
 	brush4 movez( -300, 2 );
 	brush5 movez( -800, 2 );
-				
+
 }
 
 
@@ -373,11 +373,11 @@ within()
 {
 	trig = getent ("within","targetname");
 	brush = getEnt( "roller1vs1", "targetname" );
-	fabricclip = getEnt( "fabricclip", "targetname" );	
-	
+	fabricclip = getEnt( "fabricclip", "targetname" );
+
 	trig waittill( "trigger", player );
 	trig delete();
-	
+
 	acti = undefined;
 	jumper = undefined;
 	players = getentarray("player", "classname");
@@ -397,7 +397,7 @@ within()
 			break;
 		}
 	}
-		
+
 	AmbientStop(3);
 	MusicStop(3);
 //    level notify( "addtime",  "240" );
@@ -407,24 +407,24 @@ within()
 	level.blackhud.vertalign = "fullscreen";
 	level.blackhud.color = (0,0,0);
 	level.blackhud setShader("white", 640, 480 );
-	
+
 	wait 0.1;
-	
+
 	level.blackhud.alpha = 0;
-	
-	
+
+
 	AmbientPlay("within");
 	VisionSetNaked( "icbm", 2 );
-	
+
 	level.dvar[ "afk_warn" ] = 999;
 	level.dvar[ "afk_time"] = 1000;
-	
+
 	acti FreezeControls(1);
 	player FreezeControls(1);
 
 	wait 13.6;
 	brush movez( 305, 5 );
-	
+
 	noti = SpawnStruct();
 	noti.titleText = "1 VS 1";
 	noti.notifyText = "Activator VS Jumper";
@@ -432,9 +432,9 @@ within()
 	noti.glowcolor = (0,0,1);
 	for(i=0;i<players.size;i++)
 		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
-		
 
-	
+
+
 	wait 10;
 	noti = SpawnStruct();
 	noti.titleText = acti.name + " VS " + player.name;
@@ -443,7 +443,7 @@ within()
 	noti.glowcolor = (0,0,2);
 	for(i=0;i<players.size;i++)
 		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
-		
+
 	wait 15.7;
 	PlayFX( level.lightshow_fx, (-9208,2564,326) );
 	wait 12.7;
@@ -464,11 +464,11 @@ drop_it()
 {
 	trig = getent ("drop_it","targetname");
 	brush = getent ("240_up","targetname");
-	
-		
+
+
 	trig waittill( "trigger", player );
 	trig delete();
-	
+
 	acti = undefined;
 	jumper = undefined;
 	players = getentarray("player", "classname");
@@ -488,19 +488,19 @@ drop_it()
 			break;
 		}
 	}
-		
+
 	AmbientStop(3);
 	MusicStop(3);
 //    level notify( "addtime",  "240" );
 	AmbientPlay("drop");
 
-	
+
 	level.dvar[ "afk_warn" ] = 999;
 	level.dvar[ "afk_time"] = 1000;
 	setDvar("bg_falldamagemaxheight", 2000 );
 	setDvar("bg_falldamageminheight", 1500 );
 
-	
+
 	noti = SpawnStruct();
 	noti.titleText = "1 VS 1";
 	noti.notifyText = "Activator VS Jumper";
@@ -508,7 +508,7 @@ drop_it()
 	noti.glowcolor = (0,0,1);
 	for(i=0;i<players.size;i++)
 		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
-		
+
 
 	wait 10;
 	noti = SpawnStruct();
@@ -518,14 +518,14 @@ drop_it()
 	noti.glowcolor = (0,0,2);
 	for(i=0;i<players.size;i++)
 		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
-		
-		
+
+
 	wait 3.2;
-	
+
 	PlayFX( level.finalfight_fx, (-7152,2585,258) );
-	
+
 	brush movez( 224, 10 );
-	
+
 }
 
 
@@ -535,16 +535,16 @@ dragon()
 	brush1 = getEnt( "finalfightdoor1", "targetname" );
 	brush2 = getEnt( "finalfightdoor2", "targetname" );
 	brush3 = getEnt( "finalfightdoor3", "targetname" );
-	brush4 = getEnt( "finalfightdoor4", "targetname" );	
+	brush4 = getEnt( "finalfightdoor4", "targetname" );
 	brush5 = getEnt( "finalfightdoor5", "targetname" );
 	brush6 = getEnt( "finalfightdoor6", "targetname" );
 	bigboom = getEnt( "bigboom", "targetname" );
 	dragonclip = getEnt( "dragonclip", "targetname" );
-	
-		
+
+
 	trig waittill( "trigger", player );
 	trig delete();
-	
+
 	acti = undefined;
 	jumper = undefined;
 	players = getentarray("player", "classname");
@@ -564,35 +564,35 @@ dragon()
 			break;
 		}
 	}
-		
+
 	AmbientStop(3);
 	MusicStop(3);
 //    level notify( "addtime",  "240" );
 	AmbientPlay("dragon");
 
-	
+
 	level.dvar[ "afk_warn" ] = 999;
 	level.dvar[ "afk_time"] = 1000;
 	setDvar("bg_falldamagemaxheight", 2000 );
 	setDvar("bg_falldamageminheight", 1500 );
-	setdvar( "jump_height", "250" );
-	
-	
+	// setdvar( "jump_height", "250" );
+
+
 	acti FreezeControls(1);
 	player FreezeControls(1);
-	
+
 	brush4 movez( -305, 5 );
 	wait 1;
 	brush1 movez( 200, 5 );
 
 	wait 2.9;
-	
+
 	PlayFX( level.blue, (-5656,2408,144) );
 	PlayFX( level.blue, (-5664,2656,144) );
 	PlayFX( level.blue, (-4524,2656,144) );
 	PlayFX( level.blue, (-4524,2392,144) );
-	
-	
+
+
 	noti = SpawnStruct();
 	noti.titleText = "1 VS 1";
 	noti.notifyText = "Activator VS Jumper";
@@ -600,8 +600,8 @@ dragon()
 	noti.glowcolor = (0,0,1);
 	for(i=0;i<players.size;i++)
 		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
-		
-		
+
+
 	brush2 movex( -400, 5 );
 	brush3 movex( 400, 5 );
 	wait 1;
@@ -616,19 +616,19 @@ dragon()
 	noti.glowcolor = (0,0,2);
 	for(i=0;i<players.size;i++)
 		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
-		
+
 	PlayFX( level.orb, (-5088,2528,328) );
 
 	wait 13.8;
-	
+
 	PlayFX( level.orb_expl, (-5088,2528,328) );
 	bigboom PlaySound("lightning");
-	
+
 
 	acti FreezeControls(0);
 	player FreezeControls(0);
 	dragonclip delete();
-	
+
 	level waittill( "intermission" );
 
 
@@ -642,10 +642,10 @@ levels()
 	trig = getent ("levels","targetname");
 	bum = getEnt( "bum", "targetname" );
 	portalclip = getEnt( "portalclip", "targetname" );
-		
+
 	trig waittill( "trigger", player );
 	trig delete();
-	
+
 	acti = undefined;
 	jumper = undefined;
 	players = getentarray("player", "classname");
@@ -665,19 +665,19 @@ levels()
 			break;
 		}
 	}
-		
+
 	AmbientStop(3);
 	MusicStop(3);
 //    level notify( "addtime",  "240" );
 	AmbientPlay("levels");
 
-	
+
 	level.dvar[ "afk_warn" ] = 999;
 	level.dvar[ "afk_time"] = 1000;
 	setDvar("bg_falldamagemaxheight", 2000 );
 	setDvar("bg_falldamageminheight", 1500 );
 	setDvar("cg_thirdperson", 1 );
-	
+
 
 	acti FreezeControls(1);
 	player FreezeControls(1);
@@ -690,15 +690,15 @@ levels()
 	noti.glowcolor = (0,0,1);
 	for(i=0;i<players.size;i++)
 		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
-		
-		
+
+
 	PlayFX( level.orb_up, (-3584,2582,408) );
 	PlayFX( level.orb_up, (-3579,2543,399) );
 	PlayFX( level.orb_up, (-3579,1407,408) );
 	PlayFX( level.orb_up, (-3536,3864,320) );
-	
-	
-	wait 6.5;	
+
+
+	wait 6.5;
 	PlayFX( level.def_exp_fx, (-3584,2582,408) );
 	bum PlaySound("lightning");
 
@@ -711,21 +711,21 @@ levels()
 	noti.glowcolor = (0,0,2);
 	for(i=0;i<players.size;i++)
 	players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
-	
-	wait 11;	
+
+	wait 11;
 	PlayFX( level.def_exp_fx, (-3584,2582,408) );
 	bum PlaySound("lightning");
-	wait 0.8;	
+	wait 0.8;
 	PlayFX( level.def_exp_fx, (-3584,2582,408) );
 	bum PlaySound("lightning");
-	wait 0.8;	
-	wait 4.5;	
+	wait 0.8;
+	wait 4.5;
 	PlayFX( level.def_exp_fx, (-3584,2582,408) );
 	bum PlaySound("lightning");
-	wait 0.4;	
+	wait 0.4;
 	PlayFX( level.def_exp_fx, (-3584,2582,408) );
 	bum PlaySound("lightning");
-	
+
 	acti FreezeControls(0);
 	player FreezeControls(0);
 	portalclip delete();
@@ -738,10 +738,10 @@ transformers()
 	trig = getent ("transformers","targetname");
 	shine = getent ("1728","targetname");
 	palmtrig = getent ("palmtrig","targetname");
-	
+
 	trig waittill( "trigger", player );
 	trig delete();
-	
+
 	acti = undefined;
 	jumper = undefined;
 	players = getentarray("player", "classname");
@@ -761,23 +761,23 @@ transformers()
 			break;
 		}
 	}
-		
+
 	AmbientStop(3);
 	MusicStop(3);
 //    level notify( "addtime",  "240" );
 	AmbientPlay("transformers");
 	VisionSetNaked( "mpIntro", 5 );
-	
+
 	level.dvar[ "afk_warn" ] = 999;
 	level.dvar[ "afk_time"] = 1000;
 	setDvar("bg_falldamagemaxheight", 2000 );
 	setDvar("bg_falldamageminheight", 1500 );
-	setdvar( "jump_height", "250" );
-	
+	// setdvar( "jump_height", "250" );
+
 
 	acti FreezeControls(1);
 	player FreezeControls(1);
-	
+
 	level.blackhud = NewHudElem();
 	level.blackhud.horzalign = "fullscreen";
 	level.blackhud.vertalign = "fullscreen";
@@ -785,11 +785,11 @@ transformers()
 	level.blackhud setShader("white", 640, 480 );
 
 	shine movez( -1728, 15 );
-	
+
 	wait 5;
-	
+
 	level.blackhud.alpha = 0;
-	
+
 	noti = SpawnStruct();
 	noti.titleText = "1 VS 1";
 	noti.notifyText = "Activator VS Jumper";
@@ -815,10 +815,10 @@ transformers()
 	level.blackhud setShader("white", 640, 480 );
 	wait 0.1;
 	level.blackhud.alpha = 0;
-	
+
 	PlayFX( level.orbs_fx, (-1522,4624,811) );
 	wait 26.5;
-	
+
 	level.blackhud = NewHudElem();
 	level.blackhud.horzalign = "fullscreen";
 	level.blackhud.vertalign = "fullscreen";
@@ -829,7 +829,7 @@ transformers()
 	level.blackhud.alpha = 0;
 
 	wait 3.25;
-	
+
 	level.blackhud = NewHudElem();
 	level.blackhud.horzalign = "fullscreen";
 	level.blackhud.vertalign = "fullscreen";
@@ -839,9 +839,9 @@ transformers()
 	wait 0.1;
 	level.blackhud.alpha = 0;
 	PlayFX( level.flow_trans, (-1656,4600,800) );
-	
+
 	wait 3.25;
-	
+
 	level.blackhud = NewHudElem();
 	level.blackhud.horzalign = "fullscreen";
 	level.blackhud.vertalign = "fullscreen";
@@ -851,23 +851,23 @@ transformers()
 	wait 0.1;
 	level.blackhud.alpha = 0;
 	PlayFX( level.flow_trans, (-1656,4600,800) );
-	
+
 	wait 13.25;
-	
-	wait 9.75;		
+
+	wait 9.75;
 	acti FreezeControls(0);
 	player FreezeControls(0);
 	palmtrig delete();
 
 	VisionSetNaked( "icbm", 2 );
-	
+
 		level waittill( "intermission" );
 }
 
 getak()
 {
-	trig = getEnt("getak", "targetname");	
-	
+	trig = getEnt("getak", "targetname");
+
 	trig waittill("trigger", player);
 	trig delete();
 
@@ -876,8 +876,8 @@ getak()
 		player GiveWeapon( "ak47_mp" );
 		wait 0.01;
 		player SwitchToWeapon( "ak47_mp" );
-				
-}	
+
+}
 
 
 
@@ -914,7 +914,7 @@ randomRoute()
 	{
 		activator = undefined;
 		players = getentarray( "player", "classname" );
-		
+
 		for( i = 0; i < players.size; i++ )
 		{
 			if( players[i].pers["team"] == "axis" )
@@ -923,33 +923,33 @@ randomRoute()
 				break;
 			}
 		}
-		
+
 		if( isDefined(activator) )
 			break;
-			
+
 		wait(0.1);
 	}
-	
+
 	door = [];
 	door[0] = getEnt( "door1", "targetname" );
 	door[1] = getEnt( "door2", "targetname" );
 	door[2] = getEnt( "door3", "targetname" );
 	door[3] = getEnt( "door4", "targetname" );
 	door[4] = getEnt( "door5", "targetname" );
-	
+
 	origin = [];
 	origin[0] = (-1840, 1648, -32);
 	origin[1] = (-1528, 2896, 400);
 	origin[2] = (-580, 2547, 504);
 	origin[3] = (192, 1920, 56);
 	origin[4] = (588, 2164, 360);
-	
+
 	route = randomInt( 5 );
-	
-	door[route] moveZ( 500, 5 );		// 100 ist die höhe der Tür, kannst du noch ändern...oder auch auf nen negativen wert damit die tür nach unten wegbewegt wird
-	
+
+	door[route] moveZ( 500, 5 );		// 100 ist die hï¿½he der Tï¿½r, kannst du noch ï¿½ndern...oder auch auf nen negativen wert damit die tï¿½r nach unten wegbewegt wird
+
 	activator setOrigin( origin[route] );
-	
+
 	iprintlnbold( "Way "+(route+1)+" unlocked!" );
 }
 
@@ -961,7 +961,7 @@ movetogether()
 
 	trig waittill( "trigger", who );
 	trig delete();
-	
+
 while(1)
 	{
 	movetogether1 movey( -2112, 25 );
@@ -988,10 +988,10 @@ pedotime()
 
 	pedotime1 movez( 112, 5 );
 
-	
+
 	pedotime2 movez( 112, 5 );
 
-	
+
 	pedotime3 movez( 112, 5 );
 
 }
@@ -1002,8 +1002,8 @@ credits_beg()
 
 	trig waittill( "trigger", who );
 	trig delete();
-	
-	
+
+
 	wait(5);
 	players = getentarray("player", "classname");
 	noti = SpawnStruct();
@@ -1057,7 +1057,7 @@ TestClient(team)
 
 	while(!isdefined(self.pers["team"]))
 		wait .05;
-		
+
 	self notify("menuresponse", game["menu_team"], team);
 	wait 0.5;
 }
@@ -1081,8 +1081,8 @@ player_shock()
 
 	trig = getent ("player_shock","targetname");
 	players = getentarray("player", "classname");
-	
-	
+
+
 	trig waittill( "trigger", player );
 
 	player ShellShock("frag_grenade_mp", 60 );
@@ -1094,8 +1094,8 @@ teargas()
 
 	trig = getent ("teargas","targetname");
 	players = getentarray("player", "classname");
-	
-	
+
+
 	trig waittill( "trigger", player );
 
 	player ShellShock("teargas", 60 );
@@ -1107,8 +1107,8 @@ finaltele1()
 	trig = getEnt("finaltele1", "targetname");
 	porterA = getEnt("porter_activator_1", "targetname");
 	porterJ = getEnt("porter_jumper_1", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1136,8 +1136,8 @@ finaltele2()
 	trig = getEnt("finaltele2", "targetname");
 	porterA = getEnt("porter_activator_2", "targetname");
 	porterJ = getEnt("porter_jumper_2", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1166,8 +1166,8 @@ finaltele3()
 	trig = getEnt("finaltele3", "targetname");
 	porterA = getEnt("porter_activator_3", "targetname");
 	porterJ = getEnt("porter_jumper_3", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1195,8 +1195,8 @@ finaltele4()
 	trig = getEnt("finaltele4", "targetname");
 	porterA = getEnt("porter_activator_4", "targetname");
 	porterJ = getEnt("porter_jumper_4", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1224,8 +1224,8 @@ finaltele5()
 	trig = getEnt("finaltele5", "targetname");
 	porterA = getEnt("porter_activator_5", "targetname");
 	porterJ = getEnt("porter_jumper_5", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1255,8 +1255,8 @@ finaltele1_way2()
 	trig = getEnt("finaltele1_way2", "targetname");
 	porterA = getEnt("porter_activator_1", "targetname");
 	porterJ = getEnt("porter_jumper_1", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1284,8 +1284,8 @@ finaltele2_way2()
 	trig = getEnt("finaltele2_way2", "targetname");
 	porterA = getEnt("porter_activator_2", "targetname");
 	porterJ = getEnt("porter_jumper_2", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1314,8 +1314,8 @@ finaltele3_way2()
 	trig = getEnt("finaltele3_way2", "targetname");
 	porterA = getEnt("porter_activator_3", "targetname");
 	porterJ = getEnt("porter_jumper_3", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1343,8 +1343,8 @@ finaltele4_way2()
 	trig = getEnt("finaltele4_way2", "targetname");
 	porterA = getEnt("porter_activator_4", "targetname");
 	porterJ = getEnt("porter_jumper_4", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1372,8 +1372,8 @@ finaltele5_way2()
 	trig = getEnt("finaltele5_way2", "targetname");
 	porterA = getEnt("porter_activator_5", "targetname");
 	porterJ = getEnt("porter_jumper_5", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1402,8 +1402,8 @@ finaltele1_way3()
 	trig = getEnt("finaltele1_way3", "targetname");
 	porterA = getEnt("porter_activator_1", "targetname");
 	porterJ = getEnt("porter_jumper_1", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1431,8 +1431,8 @@ finaltele2_way3()
 	trig = getEnt("finaltele2_way3", "targetname");
 	porterA = getEnt("porter_activator_2", "targetname");
 	porterJ = getEnt("porter_jumper_2", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1461,8 +1461,8 @@ finaltele3_way3()
 	trig = getEnt("finaltele3_way3", "targetname");
 	porterA = getEnt("porter_activator_3", "targetname");
 	porterJ = getEnt("porter_jumper_3", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1490,8 +1490,8 @@ finaltele4_way3()
 	trig = getEnt("finaltele4_way3", "targetname");
 	porterA = getEnt("porter_activator_4", "targetname");
 	porterJ = getEnt("porter_jumper_4", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1519,8 +1519,8 @@ finaltele5_way3()
 	trig = getEnt("finaltele5_way3", "targetname");
 	porterA = getEnt("porter_activator_5", "targetname");
 	porterJ = getEnt("porter_jumper_5", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1548,8 +1548,8 @@ finaltele1_way4()
 	trig = getEnt("finaltele1_way4", "targetname");
 	porterA = getEnt("porter_activator_1", "targetname");
 	porterJ = getEnt("porter_jumper_1", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1577,8 +1577,8 @@ finaltele2_way4()
 	trig = getEnt("finaltele2_way4", "targetname");
 	porterA = getEnt("porter_activator_2", "targetname");
 	porterJ = getEnt("porter_jumper_2", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1607,8 +1607,8 @@ finaltele3_way4()
 	trig = getEnt("finaltele3_way4", "targetname");
 	porterA = getEnt("porter_activator_3", "targetname");
 	porterJ = getEnt("porter_jumper_3", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1636,8 +1636,8 @@ finaltele4_way4()
 	trig = getEnt("finaltele4_way4", "targetname");
 	porterA = getEnt("porter_activator_4", "targetname");
 	porterJ = getEnt("porter_jumper_4", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1665,8 +1665,8 @@ finaltele5_way4()
 	trig = getEnt("finaltele5_way4", "targetname");
 	porterA = getEnt("porter_activator_5", "targetname");
 	porterJ = getEnt("porter_jumper_5", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1695,8 +1695,8 @@ finaltele1_way5()
 	trig = getEnt("finaltele1_way5", "targetname");
 	porterA = getEnt("porter_activator_1", "targetname");
 	porterJ = getEnt("porter_jumper_1", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1724,8 +1724,8 @@ finaltele2_way5()
 	trig = getEnt("finaltele2_way5", "targetname");
 	porterA = getEnt("porter_activator_2", "targetname");
 	porterJ = getEnt("porter_jumper_2", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1754,8 +1754,8 @@ finaltele3_way5()
 	trig = getEnt("finaltele3_way5", "targetname");
 	porterA = getEnt("porter_activator_3", "targetname");
 	porterJ = getEnt("porter_jumper_3", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1783,8 +1783,8 @@ finaltele4_way5()
 	trig = getEnt("finaltele4_way5", "targetname");
 	porterA = getEnt("porter_activator_4", "targetname");
 	porterJ = getEnt("porter_jumper_4", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1812,8 +1812,8 @@ finaltele5_way5()
 	trig = getEnt("finaltele5_way5", "targetname");
 	porterA = getEnt("porter_activator_5", "targetname");
 	porterJ = getEnt("porter_jumper_5", "targetname");
-				
-	
+
+
 	level.finalJumper = undefined;
 
 	while( 1 )
@@ -1857,12 +1857,12 @@ room( tp, weap, health )
 {
 	self SetPlayerAngles( tp.angles );
 	self SetOrigin( tp.origin );
-	
+
 	self TakeAllWeapons();
 	self GiveWeapon( weap );
 	self GiveMaxAmmo( weap );
 	self SwitchToWeapon( weap );
-	
+
 	self.maxhealth = health;
 	self.health = self.maxhealth;
 }
@@ -1884,16 +1884,16 @@ trap_01()
 	c44 = getEnt( "c44", "targetname" );
 	c45 = getEnt( "c45", "targetname" );
 	c46 = getEnt( "c46", "targetname" );
-	
+
 
 		dmg maps\mp\_utility::triggerOff();
-	
+
 	trig waittill( "trigger", player );
 	trig delete();
-	
-	
 
-		dmg maps\mp\_utility::triggerOn();	
+
+
+		dmg maps\mp\_utility::triggerOn();
 
 		PlayFX( level.c4_fx, (-1765,2098,-153) );
 		c41 PlaySound("c4");
@@ -1901,10 +1901,10 @@ trap_01()
 		PlayFX( level.c4_fx, (-1886,2090,-196) );
 		c42 PlaySound("c4");
 
-	
 
-	
-	
+
+
+
 	wait 0.1;
 	c41 delete();
 	c42 delete();
@@ -1914,7 +1914,7 @@ trap_01()
 	c46 delete();
 
 	dmg delete();
-					
+
 
 }
 
@@ -1935,7 +1935,7 @@ trap_02()
 	wait 4;
 	squeeze1 movex( -240, 3 );
 	squeeze2 movex( 240, 3 );
-	
+
 }
 
 
@@ -1943,10 +1943,10 @@ trap_03()
 {
 	trig = getent ("trigger3","targetname");
 	brush = getent ("trap_03brush","targetname");
-		
+
 	trig waittill( "trigger", who );
 	trig delete();
-	
+
 	brush PlaySound ("lightning_hit");
 	brush delete();
 
@@ -1982,7 +1982,7 @@ trap_05()
 
 
 	dmg maps\mp\_utility::triggerOff();
-	
+
 	trig waittill( "trigger", player );
 	trig delete();
 
@@ -1993,15 +1993,15 @@ trap_05()
 	PlayFX( level.fire_fx, (-1952,4525,-240) );
 	PlayFX( level.fire_fx, (-1674,4368,-240) );
 
-		
-	dmg maps\mp\_utility::triggerOn();	
-	
+
+	dmg maps\mp\_utility::triggerOn();
+
 	wait 5;
-	
+
 	safe movez( 32, 3 );
 	dmg delete();
-	
-					
+
+
 }
 
 
@@ -2020,24 +2020,24 @@ trap_07()
 	trig waittill( "trigger", who );
 	trig delete();
 
-	
+
 	clip1 movez( 208, 1 );
 	clip2 movez( 208, 1 );
 	block1 movez( 112, 2 );
 	block2 movez( 112, 2 );
-		
-		
+
+
 	wait 7.5;
 
-	
+
 	brushGroup1[randomInt(brushGroup1.size)] notSolid();
 	brushGroup2[randomInt(brushGroup2.size)] notSolid();
 
 
-		
-	
+
+
 	wait 5;
-	
+
 	clip1 movez( -208, 1 );
 	clip2 movez( -208, 1 );
 	block1 movez( -112, 2 );
@@ -2058,16 +2058,16 @@ trap_08()
 	updown7 =getent("updown7","targetname");
 	updown8 =getent("updown8","targetname");
 
-	
-	
+
+
 	trig waittill( "trigger", who );
 	trig delete();
-	
-	
+
+
 	while(1)
-		{	
+		{
 		wait(2);
-		
+
 		updown1 movez( -500, 3 );
 		updown2 movez( -500, 3 );
 		updown3 movez( -500, 3 );
@@ -2078,7 +2078,7 @@ trap_08()
 		updown8 movez( -500, 3 );
 
 		wait(5);
-		
+
 		updown1 movez( 500, 5 );
 		updown2 movez( 500, 5 );
 		updown3 movez( 500, 5 );
@@ -2088,7 +2088,7 @@ trap_08()
 		updown7 movez( 500, 5 );
 		updown8 movez( 500, 5 );
 
-		wait(7);	
+		wait(7);
 		}
 }
 
@@ -2101,18 +2101,18 @@ trap_09()
 	dmg = getent ("trap9_dmg","targetname");
 
 	dmg maps\mp\_utility::triggerOff();
-		
+
 	trig waittill( "trigger", who );
 	trig delete();
-	
+
 		movingdown movez( -152, 2 );
 		clip112 movez( 160, 0.5 );
 		wait(1);
-		dmg maps\mp\_utility::triggerOn();	
+		dmg maps\mp\_utility::triggerOn();
 		wait(3);
 		movingdown movez( 152, 5 );
 		clip112 movez( -160, 0.5 );
-		
+
 	dmg delete();
 
 }
@@ -2140,13 +2140,13 @@ trap_10()
 	be15 = getEnt( "be15", "targetname" );
 	be16 = getEnt( "be16", "targetname" );
 	be17 = getEnt( "be17", "targetname" );
-	
+
 		dmg maps\mp\_utility::triggerOff();
-	
+
 	trig waittill( "trigger", player );
 	trig delete();
-	
-		dmg maps\mp\_utility::triggerOn();	
+
+		dmg maps\mp\_utility::triggerOn();
 
 		PlayFX( level.barrel_fx, (-1818,8510,-216) );
 		be8 PlaySound("c4");
@@ -2154,9 +2154,9 @@ trap_10()
 		be8 PlaySound("c4");
 			wait 0.1;
 		be8 PlaySound("c4");
-	
+
 	wait 0.1;
-	
+
 	be1 delete();
 	be2 delete();
 	be3 delete();
@@ -2176,7 +2176,7 @@ trap_10()
 	be17 delete();
 	clips delete();
 	dmg delete();
-					
+
 
 }
 
@@ -2253,21 +2253,21 @@ trap_14()
 
 
 	dmg maps\mp\_utility::triggerOff();
-	
+
 	trig waittill( "trigger", player );
 	trig delete();
 
 	PlayFX( level.fire_blue_fx, (-1314,4758,-99) );
 	firesound112 PlayLoopSound("fire_loop");
-		
-	dmg maps\mp\_utility::triggerOn();	
-	
+
+	dmg maps\mp\_utility::triggerOn();
+
 	wait 5;
-	
+
 	help1 movez( 256, 1 );
 	help2 movez( 256, 1 );
-	
-					
+
+
 }
 
 
@@ -2275,7 +2275,7 @@ trap_15()
 {
 	trig = getent ("trigger15","targetname");
 	moveme1 = getEnt( "moveme1", "targetname" );
-	
+
 	trig waittill( "trigger", player );
 	trig delete();
 
@@ -2289,7 +2289,7 @@ trap_16()
 {
 	trig = getent ("trigger16","targetname");
 	upme = getEnt( "upme", "targetname" );
-	
+
 	trig waittill( "trigger", player );
 	trig delete();
 
@@ -2299,28 +2299,28 @@ trap_16()
 
 }
 
-trap_17() 
-{ 
+trap_17()
+{
 	trapdoor1 = getent( "trapdoor1", "targetname" );
-	trapdoor2 = getent( "trapdoor2", "targetname" ); 
-	goup = getent( "goup", "targetname" ); 
-	trig = getent( "trigger17", "targetname" ); 
-	
+	trapdoor2 = getent( "trapdoor2", "targetname" );
+	goup = getent( "goup", "targetname" );
+	trig = getent( "trigger17", "targetname" );
+
 	trig waittill( "trigger", player );
 	trig delete();
 
-		trapdoor1 rotateto( ( -90, 0, 0 ), 1); 
-		trapdoor1 waittill ("rotatedone"); 
-		trapdoor2 rotateto( ( -90, 0, 0 ), 1); 
-		trapdoor2 waittill ("rotatedone"); 
-		
-		wait 3; 
-		
-		trapdoor1 rotateto( ( 0, 0, 0 ), 1.7); 
-		trapdoor1 waittill ("rotatedone"); 
-		trapdoor2 rotateto( ( 0, 0, 0 ), 1.7); 
-		trapdoor2 waittill ("rotatedone"); 
-		
+		trapdoor1 rotateto( ( -90, 0, 0 ), 1);
+		trapdoor1 waittill ("rotatedone");
+		trapdoor2 rotateto( ( -90, 0, 0 ), 1);
+		trapdoor2 waittill ("rotatedone");
+
+		wait 3;
+
+		trapdoor1 rotateto( ( 0, 0, 0 ), 1.7);
+		trapdoor1 waittill ("rotatedone");
+		trapdoor2 rotateto( ( 0, 0, 0 ), 1.7);
+		trapdoor2 waittill ("rotatedone");
+
 		goup movez( 240, 5 );
 
 }
@@ -2330,13 +2330,13 @@ trap_18()
 {
 	trig = getEnt( "trigger18", "targetname" );
 	brush = getent ("delette","targetname");
-	
+
 	trig waittill( "trigger", who );
 	trig delete();
-	
+
 	brush PlaySound ("lightning_hit");
 	brush delete();
-	
+
 }
 
 
@@ -2347,7 +2347,7 @@ trap_19()
 
 	trig waittill( "trigger", who );
 	trig delete();
-	
+
 	brush PlaySound ("lightning_hit");
 	brush delete();
 }
@@ -2370,7 +2370,7 @@ trap_20()
 {
 	trig = getent ("trigger20","targetname");
 	trap_20 = getEnt( "trap_20", "targetname" );
-	
+
 	trig waittill( "trigger", player );
 	trig delete();
 
@@ -2388,7 +2388,7 @@ trap_21()
 
 	trig waittill( "trigger", who );
 	trig delete();
-	
+
 	for( i = 0; i < 2; i++ )
 	{
 		brush rotateYaw( 512, 3 );
@@ -2413,7 +2413,7 @@ trap_22()
 	}
 //	PlayFX( level.shoot_fx, (-799,8253,559) );
 	PlayFX( level.shoot_fx, (-799,8253,559), (-799,8243,559));
-	
+
 	who PlaySound("shot");
 	trig delete();
 
@@ -2424,30 +2424,30 @@ trap_23 ()
 	trigger23 = getent ("trigger23","targetname");
 	brush_3 = getent ("brush_3","targetname");
 	killa = getent ("kill","targetname");
-	
+
 	trigger23 waittill ("trigger");
 	trigger23 delete ();
-	
+
 	killa enablelinkto ();
 	killa linkto (brush_3);
-	
+
 	brush_3 movez( 12, 0.5 );
 	wait 4 ;
 	brush_3 movez( -12, 0.5 );
-	wait 4 ; 
+	wait 4 ;
 }
 //thx to mrx
-	
+
 trap_24 ()
 {
 	trigger = getent ("trigger24","targetname");
 	brush = getent ("olotrolo","targetname");
 
-	
+
 	trigger waittill ("trigger");
 	trigger delete ();
-	
-	
+
+
 	brush movez( 286, 2 );
 	wait 4 ;
 	brush movez( -286, 2 );
@@ -2461,10 +2461,10 @@ trap_26()
 	brush2 =getent("brushyt2","targetname");
 	brush3 =getent("brushyt3","targetname");
 	brush4 =getent("brushyt4","targetname");
-	
+
 	trigger waittill ("trigger");
 	trigger delete ();
-	
+
 	while(1)
 		{
 		brush1 movex( -320, 3 );
@@ -2495,7 +2495,7 @@ trap_27()
 
 	trigger waittill ("trigger");
 	trigger delete ();
-	
+
 	while(1)
 		{
 		brush1 movex( 490, 3 );
@@ -2512,16 +2512,16 @@ trap_27()
 
 trap_28()
 {
-	trig = getEnt("trigger28", "targetname");	
-	
+	trig = getEnt("trigger28", "targetname");
+
 	trig waittill("trigger", player);
 	trig delete();
-	
+
 	player TakeAllWeapons();
 	player GiveWeapon( "deserteaglegold_mp" );
 	wait 0.01;
 	player SwitchToWeapon( "deserteaglegold_mp" );
-				
+
 
 }
 
@@ -2536,11 +2536,11 @@ trap_29()
 
 	dmg1 enablelinkto();
 	dmg1 linkto(brush);
-	
+
 	brush movex( -656, 5 );
 	wait 5;
 	brush movex( 656, 5 );
-	
+
 }
 
 trap_30()
@@ -2549,11 +2549,11 @@ trap_30()
 	blocklooping = getent ("blocklooping","targetname");
 	dmg = getent ("trigger_dmg_30","targetname");
 	dmg maps\mp\_utility::triggerOff();
-	
+
 	trigger waittill ("trigger");
 	trigger delete ();
-	
-	dmg maps\mp\_utility::triggerOn();	
+
+	dmg maps\mp\_utility::triggerOn();
 	PlayFX( level.blue, (-112,7456,80) );
 	PlayFX( level.blue, (-288,7456,80) );
 	PlayFX( level.blue, (-464,7456,80) );
@@ -2570,7 +2570,7 @@ trap_31()
 
 	trigger waittill ("trigger");
 	trigger delete ();
-	
+
 	while(1)
 		{
 		brush movex( 600, 5 );
@@ -2587,11 +2587,11 @@ trap_32()
 	trigger = getent ("trigger32","targetname");
 	dmg = getent ("trigger_dmg_32","targetname");
 	dmg maps\mp\_utility::triggerOff();
-	
+
 	trigger waittill ("trigger");
 	trigger delete ();
-	
-	dmg maps\mp\_utility::triggerOn();	
+
+	dmg maps\mp\_utility::triggerOn();
 	PlayFX( level.sperm, (-360,8904,72) );
 	wait(3);
 	dmg maps\mp\_utility::triggerOff();
@@ -2602,13 +2602,13 @@ trap_33()
 	trigger = getent ("trigger33","targetname");
 	brush = getent ("smasher33","targetname");
 	dmg = getent ("trigger_dmg_33","targetname");
-	
+
 	trigger waittill ("trigger");
 	trigger delete ();
-	
+
 	dmg enablelinkto();
 	dmg linkto(brush);
-	
+
 		while(1)
 		{
 		brush movez( -200, 0.5 );
@@ -2628,7 +2628,7 @@ trap_34()
 {
 	trigger = getent ("trigger34","targetname");
 	brush = getent("pushmeup","targetname");
-	
+
 	trigger waittill ("trigger");
 	trigger delete ();
 
@@ -2642,14 +2642,14 @@ trap_35()
 	trigger = getent ("trigger35","targetname");
 	brush = getent("spikesrot","targetname");
 	dmg = getent ("dmg_rot","targetname");
-	
+
 	trigger waittill ("trigger");
 	trigger delete ();
 
-		
+
 	dmg enablelinkto();
 	dmg linkto(brush);
-	
+
 	brush rotatepitch( 360, 2 );
 	brush movex( 288, 2 );
 	brush PlaySound ("doormove2");
@@ -2672,11 +2672,11 @@ trap_36()
 	dmg4 = getent ("dmg_smasha4","targetname");
 	dmg5 = getent ("dmg_smasha5","targetname");
 
-	
+
 	trigger waittill ("trigger");
 	trigger delete ();
 
-		
+
 	dmg1 enablelinkto();
 	dmg1 linkto(brush1);
 	dmg2 enablelinkto();
@@ -2687,45 +2687,45 @@ trap_36()
 	dmg4 linkto(brush4);
 	dmg5 enablelinkto();
 	dmg5 linkto(brush5);
-	
+
 while(1)
 	{
 	brush1 movez( -204, 0.5 );
 	brush1 PlaySound ("stoneimpact");
-	
+
 	wait(2);
 	brush1 movez( 204, 2 );
 	brush1 PlaySound ("stonemove");
-	
+
 	brush2 movez( -204, 0.5 );
 	brush2 PlaySound ("stoneimpact");
-	
+
 	wait(2);
-	
+
 	brush2 movez( 204, 2 );
 	brush2 PlaySound ("stonemove");
-	
+
 	brush3 movez( -204, 0.5 );
 	brush3 PlaySound ("stoneimpact");
-	
+
 	wait(2);
-	
+
 	brush3 movez( 204, 2 );
 	brush3 PlaySound ("stonemove");
-	
+
 	brush4 movez( -204, 0.5 );
 	brush4 PlaySound ("stoneimpact");
-	
+
 	wait(2);
-	
+
 	brush4 movez( 204, 2 );
 	brush4 PlaySound ("stonemove");
-	
+
 	brush5 movez( -204, 0.5 );
 	brush5 PlaySound ("stoneimpact");
-	
+
 	wait(2);
-	
+
 	brush5 movez( 204, 2 );
 	brush5 PlaySound ("stonemove");
 	}
@@ -2737,13 +2737,13 @@ trap_37()
 	trigger = getent ("trigger37","targetname");
 	brush = getent("rotaspikes","targetname");
 	dmg = getent ("dmg_sikes","targetname");
-	
+
 	trigger waittill ("trigger");
 	trigger delete ();
 
 	dmg enablelinkto();
 	dmg linkto(brush);
-	
+
 	brush rotateyaw( 18000, 150 );
 	brush waittill ("movedone");
 }
@@ -2752,7 +2752,7 @@ trap_38()
 {
 	trigger = getent ("trigger38","targetname");
 	brush = getent("deletelie","targetname");
-	
+
 	trigger waittill ("trigger");
 	trigger delete ();
 
@@ -2765,17 +2765,17 @@ trap_39 ()
 	trigger = getent ("trigger39","targetname");
 	brush = getent ("trap_39","targetname");
 	killa = getent ("trap_39_dmg","targetname");
-	
+
 	killa maps\mp\_utility::triggerOff();
-		
+
 	trigger waittill ("trigger");
 	trigger delete ();
-	
+
 	killa maps\mp\_utility::triggerOn();
-	
+
 	killa enablelinkto ();
 	killa linkto (brush);
-	
+
 	brush movez( 36, 0.5 );
 	wait 10 ;
 	brush movez( -36, 0.5 );
@@ -2783,19 +2783,19 @@ trap_39 ()
 
 trap_40()
 {
-	trig = getEnt("trigger40", "targetname");	
-	
+	trig = getEnt("trigger40", "targetname");
+
 	trig waittill("trigger", who );
 	trig delete();
-	
+
 	thread StartFiringLightnings();
 }
 
 StartFiringLightnings()
 {
-	center = (283,8629,354);		
+	center = (283,8629,354);
 	count = 20;
-	
+
 	soundObj = Spawn("script_origin", center );
 	wait 0.1;
 	while(1)
@@ -2833,14 +2833,14 @@ trap_41 ()
 	brushsound = getent ("trap41_sound","targetname");
 	killaa = getent ("trap41_dmg","targetname");
 
-		
+
 	trigger waittill ("trigger");
 	trigger delete ();
 
-	
+
 	killaa enablelinkto ();
 	killaa linkto (brush);
-	
+
 	brush movez( -104, 1 );
 	wait 0.5 ;
 	brushsound PlaySound ("stoneimpact");
@@ -2868,24 +2868,24 @@ trap_42()
 	dmg2 = getent ("trap42_dmg_2","targetname");
 	dmg3 = getent ("trap42_dmg_3","targetname");
 	dmg4 = getent ("trap42_dmg_4","targetname");
-	
+
 	dmg1 enablelinkto ();
 	dmg1 linkto (brush);
-		
+
 	dmg2 enablelinkto ();
 	dmg2 linkto (brush);
-		
+
 	dmg3 enablelinkto ();
 	dmg3 linkto (brush);
-		
+
 	dmg4 enablelinkto ();
 	dmg4 linkto (brush);
-	
+
 	trig waittill( "trigger", who );
 	trig delete();
-	
 
-	
+
+
 while(1)
 	{
 	brush movex( 72, 2 );

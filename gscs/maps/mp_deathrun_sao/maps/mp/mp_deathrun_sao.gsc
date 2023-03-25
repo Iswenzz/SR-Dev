@@ -66,21 +66,21 @@ main()
 	preCacheModel("body_mp_usmc_cqb");
 	preCacheModel("sao_sword");
 	preCacheModel("viewmodel_sword");
-	
+
 	game["allies"] = "sas";
 	game["axis"] = "opfor";
 	game["attackers"] = "axis";
 	game["defenders"] = "allies";
 	game["allies_soldiertype"] = "woodland";
 	game["axis_soldiertype"] = "woodland";
-	
+
 	setdvar( "r_specularcolorscale", "2" );
-	
+
 	setdvar("r_glowbloomintensity0",".25");
 	setdvar("r_glowbloomintensity1",".25");
 	setdvar("r_glowskybleedintensity0",".3");
 	setdvar("compassmaxrange","1800");
-	setdvar("g_speed","190");
+	// setdvar("g_speed","190");
 	setdvar("bg_fallDamageMaxHeight","400");
 	setdvar("bg_fallDamageMinHeight","200");
 
@@ -445,7 +445,7 @@ removeglass()
 }
 
 actitele1()
-{	
+{
 	level.rubytele = getent("acti1","targetname");
 	{
 		level.activ setOrigin( level.rubytele.origin );
@@ -552,7 +552,7 @@ d_t_crystal()
 	obj moveZ(-30,1);
 	obj waittill("movedone");
 	wait 1;
-	}	
+	}
 
 }
 
@@ -949,10 +949,10 @@ level.trig_trap = getent("trigtrap_ct7","targetname");
      {
     user thread changeofheart();
     iprintln("[^5Aincrad^7] - ^1"+user.name+" got Change of Heart!");
-   
+
    user.infected = true;
      }
- 
+
  wait .05;
  }
 }
@@ -1325,7 +1325,7 @@ sword_dance()
     level.sword_trig = getEnt( "sword_dance_trig", "targetname");
     jump = getEnt( "jumper_sword", "targetname" );
     acti = getEnt( "acti_sword", "targetname" );
-    
+
     while(1)
     {
         level.sword_trig waittill( "trigger", player );
@@ -1338,7 +1338,7 @@ sword_dance()
         level.jump_trig delete();
 		level.firstenter=false;
 		}
-		
+
 		player freezeControls(true);
 		level.activ freezeControls(true);
         player SetPlayerAngles( jump.angles );
@@ -1348,7 +1348,7 @@ sword_dance()
         level.activ setPlayerangles( acti.angles );
         level.activ setOrigin( acti.origin );
         level.activ TakeAllWeapons();
-        level.activ GiveWeapon( "sao_sword_mp" ); 		
+        level.activ GiveWeapon( "sao_sword_mp" );
         wait 0.05;
         player switchToWeapon( "sao_sword_mp" );
         level.activ SwitchToWeapon( "sao_sword_mp" );
@@ -1372,7 +1372,7 @@ sniper()
     level.sniper_trig = getEnt( "sniper_trig", "targetname");
     jump = getEnt( "jumper_sniper", "targetname" );
     acti = getEnt( "acti_sniper", "targetname" );
-    
+
     while(1)
     {
         level.sniper_trig waittill( "trigger", player );
@@ -1385,7 +1385,7 @@ sniper()
  		level.jump_trig delete();
 		level.firstenter=false;
 		}
-		
+
 		player freezeControls(true);
 		level.activ freezeControls(true);
         player SetPlayerAngles( jump.angles );
@@ -1396,8 +1396,8 @@ sniper()
         level.activ setPlayerangles( acti.angles );
         level.activ setOrigin( acti.origin );
         level.activ TakeAllWeapons();
-        level.activ GiveWeapon( "remington700_mp" ); 
-        level.activ GiveMaxAmmo( "remington700_mp" );		
+        level.activ GiveWeapon( "remington700_mp" );
+        level.activ GiveMaxAmmo( "remington700_mp" );
         wait 0.05;
         player switchToWeapon( "remington700_mp" );
         level.activ SwitchToWeapon( "remington700_mp" );
@@ -1421,7 +1421,7 @@ one_shot_victim()
     level.oneshot_trig = getEnt( "oneshot_trig", "targetname");
     jump = getEnt( "jumper_one", "targetname" );
     acti = getEnt( "acti_one", "targetname" );
-    
+
     while(1)
     {
         level.oneshot_trig waittill( "trigger", player );
@@ -1434,7 +1434,7 @@ one_shot_victim()
  		level.jump_trig delete();
 		level.firstenter=false;
 		}
-		
+
 		player freezeControls(true);
 		level.activ freezeControls(true);
         player SetPlayerAngles( jump.angles );
@@ -1446,9 +1446,9 @@ one_shot_victim()
         level.activ setPlayerangles( acti.angles );
         level.activ setOrigin( acti.origin );
         level.activ TakeAllWeapons();
-        level.activ GiveWeapon( "remington700_mp" ); 
+        level.activ GiveWeapon( "remington700_mp" );
         level.activ SetWeaponAmmoClip( "remington700_mp", 1 );
-		level.activ SetWeaponAmmoStock( "remington700_mp", 0 );		
+		level.activ SetWeaponAmmoStock( "remington700_mp", 0 );
         wait 0.05;
         player switchToWeapon( "remington700_mp" );
         level.activ SwitchToWeapon( "remington700_mp" );
@@ -1483,7 +1483,7 @@ jump()
     level.jump_trig = getEnt( "jump_trig", "targetname");
     jump = getEnt( "jumper_jump", "targetname" );
     acti = getEnt( "acti_jump", "targetname" );
-    
+
     while(1)
     {
         level.jump_trig waittill( "trigger", player );
@@ -1496,7 +1496,7 @@ jump()
  		level.oneshot_trig delete();
 		level.firstenter=false;
 		}
-		
+
 		player freezeControls(true);
 		level.activ freezeControls(true);
         player SetPlayerAngles( jump.angles );
@@ -1506,7 +1506,7 @@ jump()
         level.activ setPlayerangles( acti.angles );
         level.activ setOrigin( acti.origin );
         level.activ TakeAllWeapons();
-        level.activ GiveWeapon( "knife_mp" ); 	
+        level.activ GiveWeapon( "knife_mp" );
         wait 0.05;
         player switchToWeapon( "knife_mp" );
         level.activ SwitchToWeapon( "knife_mp" );
@@ -1555,7 +1555,7 @@ sniper2()
 		if (player.hassniper == 0)
 		{
 			player giveweapon("remington700_mp");
-			player GiveMaxAmmo("remington700_mp");	
+			player GiveMaxAmmo("remington700_mp");
 			wait .001;
 			player switchtoweapon("remington700_mp");
 			player.hassniper = 1;

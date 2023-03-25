@@ -1,5 +1,5 @@
 /*
- .----------------.  .----------------.  .----------------.  .----------------.  .----------------. 
+ .----------------.  .----------------.  .----------------.  .----------------.  .----------------.
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. |
 | |  _________   | || | _____  _____ | || |     _____    | || |  ____  ____  | || |     ____     | |
 | | |  _   _  |  | || ||_   _||_   _|| || |    |_   _|   | || | |_  _||_  _| | || |   .'    `.   | |
@@ -9,22 +9,22 @@
 | |   |_____|    | || |  |__/  \__|  | || |    |_____|   | || |   |______|   | || |   `.____.'   | |
 | |              | || |              | || |              | || |              | || |              | |
 | '--------------' || '--------------' || '--------------' || '--------------' || '--------------' |
- '----------------'  '----------------'  '----------------'  '----------------'  '----------------' 
- 
+ '----------------'  '----------------'  '----------------'  '----------------'  '----------------'
+
 	mp_dr_laboratory
-	Map Made by TwiYo	
-	Scripted by TwiYo			
+	Map Made by TwiYo
+	Scripted by TwiYo
 	xFire: 1buzzz
-	
+
 	Created for Braxi's Deathrun 1.2 mod for CoD4
 	www.ix-treme.com
-	
-	Credits: 
+
+	Credits:
 	Thanks to
 	Luk
 	rednose
 	rabbit
-*/ 
+*/
 #include braxi\_common;
 #include common_scripts\utility;
 main()
@@ -49,56 +49,56 @@ main()
 	precacheItem("saw_grip_mp");
 	precacheItem("rpg_mp");
 	precachestring(&"&&1"); // Countdown
-	
+
 	game["allies"] = "sas";
 	game["axis"] = "opfor";
 	game["attackers"] = "axis";
 	game["defenders"] = "allies";
 	game["allies_soldiertype"] = "woodland";
-	game["axis_soldiertype"] = "woodland";	
-	setdvar( "r_specularcolorscale", "1" );	
+	game["axis_soldiertype"] = "woodland";
+	setdvar( "r_specularcolorscale", "1" );
 	setdvar("r_glowbloomintensity0", ".25");
 	setdvar("r_glowbloomintensity1", ".25");
 	setdvar("r_glowskybleedintensity0", ".3");
 	setdvar("compassmaxrange","1800");
-	
+
 	//////// FX
-	level.blue= loadFX("labor/orb_up");	
-	playLoopedFX(level.blue, 0.3, (54, 210, 48)); 
-	playLoopedFX(level.blue, 0.3, (54, -146, 48)); 
-	level.blue2= loadFX("labor/orb_up2");	
-	playLoopedFX(level.blue2, 0.3, (-5186, -5456, -4064)); 
-	playLoopedFX(level.blue2, 0.3, (-5966, -5456, -4064)); 	
-	level.cube= loadFX("labor/cube_lila");	
-	playLoopedFX(level.cube, 0.3, (-576, -400, 112)); 
-	playLoopedFX(level.cube, 0.3, (-576, 456 ,112)); 	
-	level.cubedown= loadFX("labor/cube_lilablue_down");	
-	playLoopedFX(level.cubedown, 0.3, (-576, -400, 260)); 
-	playLoopedFX(level.cubedown, 0.3, (-576, 456, 256)); 		
-	level.tank_particles= loadFX("labor/water-tank_particles");	
-	playLoopedFX(level.tank_particles, 0.3, (1420, 34, -268)); 
+	level.blue= loadFX("labor/orb_up");
+	playLoopedFX(level.blue, 0.3, (54, 210, 48));
+	playLoopedFX(level.blue, 0.3, (54, -146, 48));
+	level.blue2= loadFX("labor/orb_up2");
+	playLoopedFX(level.blue2, 0.3, (-5186, -5456, -4064));
+	playLoopedFX(level.blue2, 0.3, (-5966, -5456, -4064));
+	level.cube= loadFX("labor/cube_lila");
+	playLoopedFX(level.cube, 0.3, (-576, -400, 112));
+	playLoopedFX(level.cube, 0.3, (-576, 456 ,112));
+	level.cubedown= loadFX("labor/cube_lilablue_down");
+	playLoopedFX(level.cubedown, 0.3, (-576, -400, 260));
+	playLoopedFX(level.cubedown, 0.3, (-576, 456, 256));
+	level.tank_particles= loadFX("labor/water-tank_particles");
+	playLoopedFX(level.tank_particles, 0.3, (1420, 34, -268));
 	level.tank_particles1= loadFX("labor/water-tank_particles1");
-	playLoopedFX(level.tank_particles1, 0.3, (1186, 326, -956)); 	
+	playLoopedFX(level.tank_particles1, 0.3, (1186, 326, -956));
 	level.tank_particles2= loadFX("labor/water-tank_particles2");
-	playLoopedFX(level.tank_particles2, 0.3, (484, 344, -952)); 
+	playLoopedFX(level.tank_particles2, 0.3, (484, 344, -952));
 	level.tank_particles3= loadFX("labor/water-tank_particles3");
-	playLoopedFX(level.tank_particles3, 0.3, (-206, 330, -952)); 		
+	playLoopedFX(level.tank_particles3, 0.3, (-206, 330, -952));
 	level.tank_particles4= loadFX("labor/water-tank_particles4");
-	playLoopedFX(level.tank_particles4, 0.3, (-5154, -1540, -1764)); 
-	playLoopedFX(level.tank_particles4, 0.3, (-5980, -1540, -1764)); 
+	playLoopedFX(level.tank_particles4, 0.3, (-5154, -1540, -1764));
+	playLoopedFX(level.tank_particles4, 0.3, (-5980, -1540, -1764));
 	level.tank_particles5= loadFX("labor/water-tank_particles5");
-	playLoopedFX(level.tank_particles5, 0.3, (-5154, -4262, -1766)); 
-	playLoopedFX(level.tank_particles5, 0.3, (-5982, -4246, -1766)); 	
-	level.smoke = loadfx ("labor/smoke");	
+	playLoopedFX(level.tank_particles5, 0.3, (-5154, -4262, -1766));
+	playLoopedFX(level.tank_particles5, 0.3, (-5982, -4246, -1766));
+	level.smoke = loadfx ("labor/smoke");
 	level.fire = loadFX("labor/fire_falling");
 	level.tail = loadFX("labor/train_particle_tail");
-	
+
 	////////////////Multi Bounce
 	level.knockback = getDvarInt("g_knockback");	// script by  DanTheMan
-    bounce   = getEntArray("bounce", "targetname");    
+    bounce   = getEntArray("bounce", "targetname");
     for(i = 0;i < bounce.size;i++)
     bounce[i] thread doublebounce();
-	
+
 	////////////// Elevators and other things
 	thread mapmusic();
 	thread shit();
@@ -113,7 +113,7 @@ main()
 	thread getlift1();
 	thread getlift2();
 	thread getlift3();
-	thread moveingplat();	
+	thread moveingplat();
 	thread bouncerespawn();
 	thread wepicon();
 	thread bounceweapon();
@@ -144,7 +144,7 @@ main()
 	addtriggerTolist("trap8_trigger");
 	addtriggerTolist("trap9_trigger");
 	addtriggerTolist("trap10_trigger");
-	
+
 	///////////////Secrets
 	thread owh();
 	thread spiningrpg();
@@ -165,12 +165,12 @@ main()
 	thread giverpg4();
 	thread giverpg5();
 	thread backtomap();
-	thread backtomap2();	
-	
+	thread backtomap2();
+
 	///////////////////////Endroom Queue
 	endroomQueueSetup();
 	thread watchEndrooms();
-	thread SniperRoomTrigger();	
+	thread SniperRoomTrigger();
 	thread KnifeRoomTrigger();
 	thread BounceRoomTrigger();
 	thread RandomWeapRoomTrigger();
@@ -184,7 +184,7 @@ doublebounce()	// script by  DanTheMan
     for(;;)
     {
     self waittill("trigger", player);
-    
+
     if(!isDefined(player.bouncing))
     player thread player_bounce(self);
     }
@@ -217,7 +217,7 @@ player_bounce(trigger)
     while(self isTouching(trigger))
     wait 0.05;
     self.bouncing = undefined;
-}	
+}
 
 /////////////////// Elevators and other things
 mapmusic() {
@@ -290,11 +290,11 @@ moveingplat1() {
 		plat3 waittill ("movedone");
 	}
 }
-		
+
 lifjumper1() {
 	trigger = getent ("lift_1_trigger", "targetname");
 	lift = getent ("lift_1", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	trigger delete();
 	thread jumpernodmg1();
@@ -310,7 +310,7 @@ lifjumper1() {
 
 jumpernodmg1() {
 	lift = getent ("jumperlift_no_dmg_1", "targetname");
-	
+
 	while(1) {
 		lift moveZ (-800, 5);
 		lift waittill ("movedone");
@@ -324,7 +324,7 @@ jumpernodmg1() {
 lifjumper2() {
 	trigger = getent ("lift_2_trigger", "targetname");
 	lift = getent ("lift_2", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	trigger delete();
 	thread jumpernodmg2();
@@ -340,7 +340,7 @@ lifjumper2() {
 
 jumpernodmg2() {
 	lift = getent ("jumperlift_no_dmg_2", "targetname");
-	
+
 	while(1) {
 		lift moveZ (-480, 5);
 		lift waittill ("movedone");
@@ -354,7 +354,7 @@ jumpernodmg2() {
 lifjumper3() {
 	trigger = getent ("lift_3_trigger", "targetname");
 	lift = getent ("lift_3", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	trigger delete();
 	thread jumpernodmg3();
@@ -370,7 +370,7 @@ lifjumper3() {
 
 jumpernodmg3() {
 	lift = getent ("jumperlift_no_dmg_3", "targetname");
-	
+
 	while(1) {
 		lift moveZ (-444, 5);
 		lift waittill ("movedone");
@@ -384,13 +384,13 @@ jumpernodmg3() {
 lifacti1() {
 	trigger = getent ("lift_1_acti_trigger", "targetname");
 	lift = getent ("lift_1_acti", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	trigger delete();
 	level.getlift1_trigger delete();
-	
+
 	thread lifacti1nodmg();
-	
+
 	while(1) {
 		lift moveZ (-480, 1.5);
 		lift waittill ("movedone");
@@ -404,12 +404,12 @@ lifacti1() {
 lifacti2() {
 	trigger = getent ("lift_2_acti_trigger", "targetname");
 	lift = getent ("lift_2_acti", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	trigger delete();
 	level.getlift2_trigger delete();
 	thread lifacti2nodmg();
-	
+
 	while(1) {
 		lift moveZ (-516, 1.5);
 		lift waittill ("movedone");
@@ -423,12 +423,12 @@ lifacti2() {
 lifacti3() {
 	trigger = getent ("lift_3_acti_trigger", "targetname");
 	lift = getent ("lift_3_acti", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	trigger delete();
 	level.getlift3_trigger delete();
 	thread lifacti3nodmg();
-	
+
 	while(1) {
 		lift moveZ (-2044, 1.5);
 		lift waittill ("movedone");
@@ -441,7 +441,7 @@ lifacti3() {
 
 lifacti1nodmg() {
 	nodmg = getent ("lift_1_acti_nodmg", "targetname");
-	
+
 	while(1) {
 		nodmg moveZ (-480, 1.5);
 		nodmg waittill ("movedone");
@@ -454,7 +454,7 @@ lifacti1nodmg() {
 
 lifacti2nodmg() {
 	nodmg = getent ("lift_2_acti_nodmg", "targetname");
-	
+
 	while(1) {
 		nodmg moveZ (-516, 1.5);
 		nodmg waittill ("movedone");
@@ -467,7 +467,7 @@ lifacti2nodmg() {
 
 lifacti3nodmg() {
 	nodmg = getent ("lift_3_acti_nodmg", "targetname");
-	
+
 	while(1) {
 		nodmg moveZ (-2044, 1.5);
 		nodmg waittill ("movedone");
@@ -482,13 +482,13 @@ getlift1() {
 	level.getlift1_trigger = getent ("getlift1", "targetname");
 	trigger = getent ("lift_1_acti_trigger", "targetname");
 	lift = getent ("lift_1_acti", "targetname");
-	
+
 	level.getlift1_trigger waittill ("trigger", player);
 	level.getlift1_trigger delete();
 	trigger delete();
-			
+
 	thread lifacti1nodmg();
-	
+
 	while(1) {
 		lift moveZ (-480, 1.5);
 		lift waittill ("movedone");
@@ -497,20 +497,20 @@ getlift1() {
 		lift waittill ("movedone");
 		wait 5;
 	}
-		
+
 }
 
 getlift2() {
 	level.getlift2_trigger = getent ("getlift2", "targetname");
 	trigger = getent ("lift_2_acti_trigger", "targetname");
 	lift = getent ("lift_2_acti", "targetname");
-	
+
 	level.getlift2_trigger waittill ("trigger", player);
 	level.getlift2_trigger delete();
 	trigger delete();
-			
+
 	thread lifacti2nodmg();
-	
+
 	while(1) {
 		lift moveZ (-516, 1.5);
 		lift waittill ("movedone");
@@ -519,7 +519,7 @@ getlift2() {
 		lift waittill ("movedone");
 		wait 5;
 	}
-		
+
 }
 
 
@@ -527,13 +527,13 @@ getlift3() {
 	level.getlift3_trigger = getent ("getlift3", "targetname");
 	trigger = getent ("lift_3_acti_trigger", "targetname");
 	lift = getent ("lift_3_acti", "targetname");
-	
+
 	level.getlift3_trigger waittill ("trigger", player);
 	level.getlift3_trigger delete();
 	trigger delete();
-			
+
 	thread lifacti3nodmg();
-	
+
 	while(1) {
 		lift moveZ (-2044, 1.5);
 		lift waittill ("movedone");
@@ -558,162 +558,162 @@ shit() {
 	thread endshit2();
 	thread endshit3();
 	thread endshit4();
-		
+
 	while(1){
 		object movex (1265, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movex (-1270, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 endshit1() {
 	object = getent ("end_ring1", "targetname");
-	
+
 	while(1){
 		object movez (-170, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movez (170, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 endshit2() {
 	object = getent ("end_ring2", "targetname");
-	
+
 	while(1){
 		object movez (170, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movez (-170, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 endshit3() {
 	object = getent ("end_ring3", "targetname");
-	
+
 	while(1){
 		object movez (-170, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movez (170, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 endshit4() {
 	object = getent ("end_ring4", "targetname");
-	
+
 	while(1){
 		object movez (170, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movez (-170, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 shit2() {
 	object = getent ("spawn_ring_2", "targetname");
 
-	
+
 	while(1){
 		object movex (-1265, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movex (1265, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 shit2a() {
 	object = getent ("spawn_ring_2a", "targetname");
 
-	
+
 	while(1){
 		object movex (1265, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movex (-1265, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 shit1a() {
 	object = getent ("spawn_ring_1a", "targetname");
 
-	
+
 	while(1){
 		object movex (-1265, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movex (1265, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 shit3() {
 	object = getent ("ring_1", "targetname");
 
-	
+
 	while(1){
 		object movez (170, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movez (-170, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 shit4() {
 	object = getent ("ring_2", "targetname");
 
-	
+
 	while(1){
 		object movez (-170, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movez (170, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 shit5() {
 	object = getent ("ring_3", "targetname");
 
-	
+
 	while(1){
 		object movez (170, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movez (-170, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 shit6() {
 	object = getent ("ring_4", "targetname");
 
-	
+
 	while(1){
 		object movez (-170, 6);
-		object waittill ("movedone"); 
+		object waittill ("movedone");
 		object movez (170, 6);
 		object waittill ("movedone");
 	}
-		
+
 }
 
 door1() {
 	left = getent ("door_left", "targetname");
 	right = getent ("door_right", "targetname");
-	
+
 	wait 10;
 
-	
+
 	left movey (135, 2.5);
 	right movey (-132, 2.5);
 	wait 2.6;
@@ -724,7 +724,7 @@ door1() {
 jumppad(who)
 {
 	trigger = getEnt ("jump", "targetname" );
-	
+
 	while(1)
 	{
     	trigger waittill ( "trigger", who );
@@ -743,7 +743,7 @@ bouncerespawn() {
 	trigger = getEnt ("bounce_respawn_trigger", "targetname");
 	jumper = getEnt ("bounce_jumper_respawn", "targetname");
 	activator = getEnt ("bounce_activator_respawn", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
@@ -752,10 +752,10 @@ bouncerespawn() {
 			player SetOrigin(jumper.origin);
 			player SetPlayerAngles( jumper.angles );
 		}
-		else if(player.pers["team"] == "axis")	
+		else if(player.pers["team"] == "axis")
 		{
 			player SetOrigin(activator.origin);
-			player SetPlayerAngles( activator.angles );			
+			player SetPlayerAngles( activator.angles );
 		}
 	}
 }
@@ -776,7 +776,7 @@ wepicon() {
 bounceweapon()
 {
 	trigger = getent ("bounce_weap_trigger", "targetname");
-	
+
 	random = randomInt(14);
 	while(1){
 	trigger waittill ("trigger", player);
@@ -784,55 +784,55 @@ bounceweapon()
 		case 0: player takeallweapons();
 				player giveWeapon("deserteagle_mp", 100, 500 );
 				player switchToWeapon("deserteagle_mp"); break;
-				
+
 		case 1: player takeallweapons();
 				player giveWeapon("uzi_mp", 100, 500 );
 				player switchToWeapon("uzi_mp"); break;
-				
+
 		case 2: player takeallweapons();
 				player giveWeapon("m4_mp", 100, 500 );
 				player switchToWeapon("m4_mp"); break;
-				
+
 		case 3: player takeallweapons();
 				player giveWeapon("ak47_mp", 100, 500 );
 				player switchToWeapon("ak47_mp"); break;
-				
+
 		case 4: player takeallweapons();
 				player giveWeapon("g3_mp", 100, 500 );
 				player switchToWeapon("g3_mp"); break;
-				
+
 		case 5: player takeallweapons();
 				player giveWeapon("m60e4_mp", 100, 500 );
 				player switchToWeapon("m60e4_mp"); break;
-				
+
 		case 6: player takeallweapons();
 				player giveWeapon("p90_mp", 100, 500 );
 				player switchToWeapon("p90_mp"); break;
-				
+
 		case 7: player takeallweapons();
 				player giveWeapon("m40a3_mp", 100, 500 );
 				player switchToWeapon("m40a3_mp"); break;
-				
+
 		case 8: player takeallweapons();
 				player giveWeapon("barrett_mp", 100, 500 );
 				player switchToWeapon("barrett_mp"); break;
-				
+
 		case 9: player takeallweapons();
 				player giveWeapon("g36c_silencer_mp", 100, 0 );
 				player switchToWeapon("g36c_silencer_mp"); break;
-				
+
 		case 10: player takeallweapons();
 			 	 player giveWeapon("skorpion_silencer_mp", 100, 500 );
 				 player switchToWeapon("skorpion_silencer_mp"); break;
-				
+
 		case 11: player takeallweapons();
 				 player giveWeapon("saw_grip_mp", 100, 500 );
 			 	 player switchToWeapon("saw_grip_mp"); break;
-				
+
 		case 12: player takeallweapons();
 				 player giveWeapon("remington700_mp", 100, 500 );
 				 player switchToWeapon("remington700_mp"); break;
-				
+
 		case 13: player takeallweapons();
 				 player giveWeapon("ak74u_mp", 100, 500 );
 				 player switchToWeapon("ak74u_mp"); break;
@@ -858,7 +858,7 @@ onPlayerConnected() {
 onPlayerSpawned() {
 	while(1){
 	level waittill( "player_spawn", player );
-	
+
 	player thread showcredits();
 	}
 }
@@ -884,7 +884,7 @@ text()
 		wait 10;
 		hud_clock fadeOverTime(1);
 		hud_clock.alpha = 0;
-		wait 1;	
+		wait 1;
 		hud_clock fadeOverTime(1);
 		hud_clock.alpha = 1;
 		hud_clock setText("xFire: 1buzzz");
@@ -893,19 +893,19 @@ text()
 		hud_clock.alpha = 0;
 		wait 1;
 	}
-} 
+}
 
 showcredits() {
 	self thread removeafter();
 	howto = createText("Press [{+activate}] while crouching for credits.");
-	
-	while(!isDefined( self.hasSeenCredits )){		
+
+	while(!isDefined( self.hasSeenCredits )){
 		if(self useButtonpressed() && self getStance() == "crouch"){
 			self thread getcredits();
-			
+
 			break;
-		}		
-		wait .1; 
+		}
+		wait .1;
 	}
 
 }
@@ -936,7 +936,7 @@ createText(messages)
 }
 
 getcredits() {
-	
+
 	level.creditTime = 6;
 		self.hasSeenCredits = true;
 	self thread showCredit( "Special Thanks to:", 2.4);
@@ -983,7 +983,7 @@ removeendtext()
 	{
         self.credit_text destroy();
     }
-} 
+}
 
 addTestClients()
 {
@@ -1019,14 +1019,14 @@ TestClient(team)
 
 	while(!isdefined(self.pers["team"]))
 		wait .05;
-		
+
 	self notify("menuresponse", game["menu_team"], team);
 	wait 0.5;
 }
 
 setupServers()
 {
-	serv_deathrun = getEnt( "server_redirect", "targetname" );		
+	serv_deathrun = getEnt( "server_redirect", "targetname" );
 	serv_deathrun thread serverTrigger( "91.121.0.115:28960 ", "^3Deathrun 1.2" );
 
 }
@@ -1034,47 +1034,47 @@ setupServers()
 serverTrigger( ip, name )
 {
 	level endon( "game over" );
-	
+
 	while(1)
 	{
 		self waittill( "trigger", player );
-		
+
 		if( !isDefined( player.server_name ) || player.server_name != name  )
 		{
 			player notify( "change_server" );
 			wait 0.05;
-			
+
 			player.server_name = name;
 			player thread serverMessage( ip, name );
 		}
 		else
 			player notify( "server_choice" );
-		
+
 		wait 0.05;
 	}
 }
 
 serverMessage( ip, name )
 {
-	level endon( "game over" );
-	self endon( "disconnect" );
-	self endon( "change_server" );
-	
-	self iPrintLnBold( "^7If you want to join the\n^3iXtreme ^3" + name + " ^7Server shoot it 2 times" );
-	
-	while(1)
-	{
-		self waittill( "server_choice" );
-		
-		self iPrintLnBold( "Shoot it once more to join the\n^3iXtreme ^3" + name + " ^7Server" );
-		
-		self waittill( "server_choice" );
-		
-		self setClientDvar( "clientcmd", "disconnect; wait 50; connect " + ip );
-		self openMenu( "clientcmd" );
-		
-		iPrintLn( "^1" + self.name + " ^7joined the ^3iXtreme ^3" + name + " ^7Server" );
-	}
+	// level endon( "game over" );
+	// self endon( "disconnect" );
+	// self endon( "change_server" );
+
+	// self iPrintLnBold( "^7If you want to join the\n^3iXtreme ^3" + name + " ^7Server shoot it 2 times" );
+
+	// while(1)
+	// {
+	// 	self waittill( "server_choice" );
+
+	// 	self iPrintLnBold( "Shoot it once more to join the\n^3iXtreme ^3" + name + " ^7Server" );
+
+	// 	self waittill( "server_choice" );
+
+	// 	// self setClientDvar( "clientcmd", "disconnect; wait 50; connect " + ip );
+	// 	// self openMenu( "clientcmd" );
+
+	// 	iPrintLn( "^1" + self.name + " ^7joined the ^3iXtreme ^3" + name + " ^7Server" );
+	// }
 }
 
 //////////////////////////////// Traps
@@ -1098,13 +1098,13 @@ trap1() {
 	red = getent ("trap1_red", "targetname");
 	rolle1 hide();
 	rolle2 hide();
-	
+
 	klappe1 linkto(rolle1);
 	klappe2 linkto(rolle2);
 	red hide();
 	trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
 	trigger waittill ("trigger", Player);
-	trigger setHintString ("^1Trap Activated!"); 
+	trigger setHintString ("^1Trap Activated!");
 	blue hide();
 	red show();
 	rolle1 rotatepitch (90, 1);
@@ -1118,25 +1118,25 @@ trap1() {
 	wait 1;
 	newway1 moveX (-380, 1);
 	newway2 moveX (-380, 1);
-	
+
 	while(1) {
 		spinner rotateyaw (360, 1.5);
 		wait 1.5;
 	}
 
 }
-		
+
 trap2() {
 	trigger = getent ("trap2_trigger", "targetname");
-	
+
 	//Spinner
 	level.spinner = getent ("trap2_spin_platform", "targetname");
 	level.luckeL = getent ("trap2_spin_lucke_links", "targetname");
-	level.luckeR = getent ("trap2_spin_lucke_rechts", "targetname");	
+	level.luckeR = getent ("trap2_spin_lucke_rechts", "targetname");
 	level.stangeL = getent ("trap2_spin_stange_links", "targetname");
 	level.stangeR = getent ("trap2_spin_stange_rechts", "targetname");
 	level.stangeU = getent ("trap2_spin_stange_unten", "targetname");
-	
+
 	//Roller
 	level.roll1 = getent ("trap2_roll_1", "targetname");
 	level.roll2 = getent ("trap2_roll_2", "targetname");
@@ -1144,41 +1144,41 @@ trap2() {
 	level.door1 = getent ("trap2_roll_door1", "targetname");
 	level.door2 = getent ("trap2_roll_door2", "targetname");
 	level.door3 = getent ("trap2_roll_door3", "targetname");
-	
+
 	//Pusher
 	level.pusher = getent ("trap2_psuher_platform", "targetname");
 	level.stangepU1 = getent ("trap2_psuher_stangeu1", "targetname");
 	level.stangepU2 = getent ("trap2_psuher_stangeu2", "targetname");
 	blue = getent ("trap2_blue", "targetname");
 	red = getent ("trap2_red", "targetname");
-	
+
 	red hide();
-	
+
 	trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
 	trigger waittill ("trigger", Player);
-	trigger setHintString ("^1Trap Activated!"); 
+	trigger setHintString ("^1Trap Activated!");
 	blue hide();
 	red show();
-	
-	random = randomInt(3);	
+
+	random = randomInt(3);
 	switch(random){
 		//Spinner
-		case 0: thread spinner();				
+		case 0: thread spinner();
 				break;
-		//Roller		
+		//Roller
 		case 1: thread roller();
 				break;
-		//Pusher		
+		//Pusher
 		case 2: thread pusher();
 				break;
 	}
-}	
-	
+}
+
 spinner() {
 	//Door Opened
 	level.pusher moveZ (-280, 1.5);
 	level.stangepU1 moveZ (-284, 1.5);
-	level.stangepU2 moveZ (-284, 1.5);	
+	level.stangepU2 moveZ (-284, 1.5);
 	wait 2.5;
 	level.luckeL movey (-24, 2);
 	level.luckeR movey (24, 2);
@@ -1190,7 +1190,7 @@ spinner() {
 	level.spinner moveZ (288, 1.5);
 	wait 1.5;
 	level.stangeU moveZ (-284, 1.5);
-		
+
 	thread spinit();
 }
 spinit() {
@@ -1199,14 +1199,14 @@ spinit() {
 		level.spinner waittill ("rotatedone");
 	}
 }
-	
+
 roller() {
 	//Door Opened
 	level.pusher moveZ (-280, 1.5);
 	level.stangepU1 moveZ (-284, 1.5);
-	level.stangepU2 moveZ (-284, 1.5);	
-	wait 2.5;	
-	
+	level.stangepU2 moveZ (-284, 1.5);
+	wait 2.5;
+
 	level.door1 moveZ (-64, 1.5);
 	level.door2 moveZ (-64, 1.5);
 	level.door3 moveZ (-64, 1.5);
@@ -1214,7 +1214,7 @@ roller() {
 	level.roll1 movex (320, 1.5);
 	level.roll2 movex (320, 1.5);
 	level.roll3 movex (320, 1.5);
-		
+
 	thread rollit();
 }
 rollit(){
@@ -1230,19 +1230,19 @@ pusher() {
 	level.pusher movez (216, 0.2);
 	level.stangepU1 moveZ (280, 0.2);
 	level.stangepU2 moveZ (280, 0.2);
-	
+
 	wait 2.5;
-	
+
 	level.pusher movez (-216, 0.2);
 	level.stangepU1 moveZ (-284, 0.2);
 	level.stangepU2 moveZ (-284, 0.2);
-}	
-	
+}
+
 trap3() {
 	trigger = getent ("trap3_trigger", "targetname");
-	level.trap3_laser0 = getent ("trap3_laser0", "targetname");	
-	level.trap3_laser1 = getent ("trap3_laser1", "targetname");	
-	level.trap3_laser2 = getent ("trap3_laser2", "targetname");	
+	level.trap3_laser0 = getent ("trap3_laser0", "targetname");
+	level.trap3_laser1 = getent ("trap3_laser1", "targetname");
+	level.trap3_laser2 = getent ("trap3_laser2", "targetname");
 	level.trap3_laser3 = getent ("trap3_laser3", "targetname");
 	red = getent ("trap3_red", "targetname");
 	blue = getent ("trap3_blue", "targetname");
@@ -1255,62 +1255,62 @@ trap3() {
 	level.trap3_laser1 hide();
 	level.trap3_laser2 hide();
 	level.trap3_laser3 hide();
-	
-	level.trap3_laser0_dmg = getent ("trap3_laser0_dmg", "targetname");	
-	level.trap3_laser1_dmg = getent ("trap3_laser1_dmg", "targetname");		
-	level.trap3_laser2_dmg = getent ("trap3_laser2_dmg", "targetname");		
-	level.trap3_laser3_dmg = getent ("trap3_laser3_dmg", "targetname");	
 
-	level.trap3_laser0_rotate = getent ("trap3_laser0_rotate", "targetname");	
-	level.trap3_laser1_rotate = getent ("trap3_laser1_rotate", "targetname");	
-	level.trap3_laser2_rotate = getent ("trap3_laser2_rotate", "targetname");	
-	level.trap3_laser3_rotate = getent ("trap3_laser3_rotate", "targetname");	
+	level.trap3_laser0_dmg = getent ("trap3_laser0_dmg", "targetname");
+	level.trap3_laser1_dmg = getent ("trap3_laser1_dmg", "targetname");
+	level.trap3_laser2_dmg = getent ("trap3_laser2_dmg", "targetname");
+	level.trap3_laser3_dmg = getent ("trap3_laser3_dmg", "targetname");
 
-	level.trap3_laser0 linkto (level.trap3_laser0_rotate);	
+	level.trap3_laser0_rotate = getent ("trap3_laser0_rotate", "targetname");
+	level.trap3_laser1_rotate = getent ("trap3_laser1_rotate", "targetname");
+	level.trap3_laser2_rotate = getent ("trap3_laser2_rotate", "targetname");
+	level.trap3_laser3_rotate = getent ("trap3_laser3_rotate", "targetname");
+
+	level.trap3_laser0 linkto (level.trap3_laser0_rotate);
 	level.trap3_laser1 linkto (level.trap3_laser1_rotate);
 	level.trap3_laser2 linkto (level.trap3_laser2_rotate);
 	level.trap3_laser3 linkto (level.trap3_laser3_rotate);
-	
+
 	thread monitorSmokeActivity();
 
-	
+
 
 	trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
 	trigger waittill ("trigger", Player);
-	trigger setHintString ("^1Trap Activated!"); 
-	
+	trigger setHintString ("^1Trap Activated!");
+
 	thread trap3_smoke1();
 	thread trap3_smoke2();
-	
+
 	level.trap3_laser0_dmg.origin = level.trap3_laser0_rotate.origin;
 	level.trap3_laser0_dmg enablelinkto();
 	level.trap3_laser0_dmg linkto(level.trap3_laser0_rotate);
-	
+
 	level.trap3_laser1_dmg.origin = level.trap3_laser1_rotate.origin;
 	level.trap3_laser1_dmg enablelinkto();
 	level.trap3_laser1_dmg linkto(level.trap3_laser1_rotate);
-	
+
 	level.trap3_laser2_dmg.origin = level.trap3_laser2_rotate.origin;
 	level.trap3_laser2_dmg enablelinkto();
 	level.trap3_laser2_dmg linkto(level.trap3_laser2_rotate);
-	
+
 	level.trap3_laser3_dmg.origin = level.trap3_laser3_rotate.origin;
 	level.trap3_laser3_dmg enablelinkto();
 	level.trap3_laser3_dmg linkto(level.trap3_laser3_rotate);
-	
+
 	blue hide();
 	red show();
-	
+
 	level.trap3_laser0_rotate thread laser0Rotate();
 	level.trap3_laser1_rotate thread laser1Rotate();
 	level.trap3_laser2_rotate thread laser2Rotate();
 	level.trap3_laser3_rotate thread laser3Rotate();
-	
+
 }
 trap3_smoke1() {
 	smoke = getent ("smoke_0", "targetname");
 	trigger = getent ("trap3_smoke1_trigger", "targetname");
-	
+
 	while(1) {
 		trigger waittill ("trigger", player);
 		playfx (level.smoke, smoke.origin);
@@ -1323,7 +1323,7 @@ trap3_smoke1() {
 trap3_smoke2() {
 	smoke = getent ("smoke_1", "targetname");
 	trigger = getent ("trap3_smoke2_trigger", "targetname");
-	
+
 	while(1) {
 		trigger waittill ("trigger", player);
 		playfx (level.smoke, smoke.origin);
@@ -1333,17 +1333,17 @@ trap3_smoke2() {
 		wait 5;
 	}
 }
-		
+
 monitorSmokeActivity(){
 
 	hidden = true;
-	
+
 	latest = 0;
 
 	while(1){
-		
+
 		if( hidden && (isDefined( level.smoke1_active ) || isDefined( level.smoke2_active )) ){
-			
+
 			level.trap3_laser0 show();
 			wait 0.5;
 			level.trap3_laser1 show();
@@ -1351,10 +1351,10 @@ monitorSmokeActivity(){
 			level.trap3_laser2 show();
 			wait 0.2;
 			level.trap3_laser3 show();
-			
+
 			hidden = false;
 		}
-		
+
 		if( !isDefined( level.smoke1_active ) && isDefined( level.smoke2_active ) ) // Smoke 1 is the only one
 			latest = level.smoke2_active;
 		else if( !isDefined( level.smoke2_active ) && isDefined( level.smoke1_active ) ) // Smoke 2 is the only one
@@ -1364,9 +1364,9 @@ monitorSmokeActivity(){
 				latest = level.smoke1_active;
 			else
 				latest = level.smoke2_active;
-			
+
 		if( (getTime() - latest) > 15000 && !hidden && !isDefined( level.smoke1_active ) && !isDefined( level.smoke2_active ) ){
-			
+
 			level.trap3_laser0 hide();
 			wait 0.5;
 			level.trap3_laser1 hide();
@@ -1374,7 +1374,7 @@ monitorSmokeActivity(){
 			level.trap3_laser2 hide();
 			wait 0.2;
 			level.trap3_laser3 hide();
-			
+
 			hidden = true;
 		}
 		wait 0.05;
@@ -1386,7 +1386,7 @@ laser0Rotate(){
 
 	self rotateroll(-60, 2.3); // First initial rotation upwards
 	wait 2.3;
-	
+
 	while(1){
 		self rotateroll(60, 2.3);
 		wait 2.3;
@@ -1401,7 +1401,7 @@ laser1Rotate(){
 
 	self rotateroll(40, 2); // First initial rotation upwards
 	wait 2;
-	
+
 	while(1){
 		self rotateroll(-50, 2);
 		wait 2;
@@ -1416,7 +1416,7 @@ laser2Rotate(){
 
 	self rotatepitch(45, 1.0); // First initial rotation upwards
 	wait 1;
-	
+
 	while(1){
 		self rotatepitch(-90, 2.1);
 		wait 2.1;
@@ -1431,7 +1431,7 @@ laser3Rotate(){
 
 	self rotatepitch(-45, 1.0); // First initial rotation upwards
 	wait 1;
-	
+
 	while(1){
 		self rotatepitch(90, 1.7);
 		wait 1.7;
@@ -1454,15 +1454,15 @@ trap4() {
 	red = getent ("trap4_red", "targetname");
 	dmg enablelinkto();
 	dmg linkto (spikes);
-	
+
 	red hide();
-	
+
 	trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
 	trigger waittill ("trigger", Player);
-	trigger setHintString ("^1Trap Activated!"); 	
+	trigger setHintString ("^1Trap Activated!");
 	blue hide();
 	red show();
-	
+
 	lucke moveZ (-20, 1);
 	wait 1;
 	spikes moveY (-820, 1);
@@ -1481,17 +1481,17 @@ trap5() {
 	red = getent ("trap5_red", "targetname");
 	rolle hide();
 	wall linkto (rolle);
-	
+
 	red hide();
-	
+
 	trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
 	trigger waittill ("trigger", Player);
-	trigger setHintString ("^1Trap Activated!"); 
+	trigger setHintString ("^1Trap Activated!");
 	blue hide();
 	red show();
-	
+
 	decke moveX (-315, 1.5);
-	wait 1.5;	
+	wait 1.5;
 	rolle rotatepitch (-180, 1);
 	wait 1;
 	decke moveX (315, 1.5);
@@ -1517,17 +1517,17 @@ trap6() {
 	blue = getent ("trap6_blue", "targetname");
 	red = getent ("trap6_red", "targetname");
 	oldposition = dmg.origin;
-	
+
 	red hide();
-	
+
 	trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
 	trigger waittill ("trigger", Player);
-	trigger setHintString ("^1Trap Activated!"); 
+	trigger setHintString ("^1Trap Activated!");
 	blue hide();
 	red show();
-	
+
 	dmg.origin =  setdmg.origin;
-	sound playsound ("fire_trap"); 
+	sound playsound ("fire_trap");
 	playFx(level.fire, fire1.origin);
 	playFx(level.fire, fire2.origin);
 	playFx(level.fire, fire3.origin);
@@ -1543,7 +1543,7 @@ trap6() {
 	wait 8;
 	dmg.origin = oldposition;
 
-}	
+}
 
 trap7() {
 	trigger = getent ("trap7_trigger", "targetname");
@@ -1553,24 +1553,24 @@ trap7() {
 	blue = getent ("trap7_blue", "targetname");
 	red = getent ("trap7_red", "targetname");
 	red hide();
-	
+
 	trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
 	trigger waittill ("trigger", Player);
-	trigger setHintString ("^1Trap Activated!"); 
+	trigger setHintString ("^1Trap Activated!");
 	blue hide();
 	red show();
 	luckeO moveZ (8, 1.5);
 	luckeU moveZ (-12, 1.5);
-	
+
 	wait 1.5;
 	while(1){
-		pusher moveY (-820, 1);	
+		pusher moveY (-820, 1);
 		pusher waittill ("movedone");
 		wait 1.5;
 		pusher moveY (820, 1);
 		pusher waittill ("movedone");
 		wait 1.5;
-		
+
 	}
 }
 
@@ -1579,15 +1579,15 @@ trap8() {
 	spinner = getent ("trap8_spinner", "targetname");
 	blue = getent ("trap8_blue", "targetname");
 	red = getent ("trap8_red", "targetname");
-	
+
 	red hide();
-	
+
 	trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
 	trigger waittill ("trigger", Player);
-	trigger setHintString ("^1Trap Activated!"); 
+	trigger setHintString ("^1Trap Activated!");
 	blue hide();
 	red show();
-	
+
 	while(1) {
 		spinner rotatepitch (360, 8.5);
 		wait 8.5;
@@ -1596,7 +1596,7 @@ trap8() {
 
 trap9() {
 	trigger = getent ("trap9_trigger", "targetname");
-	
+
 	level.trap9_plat1 = getent ("trap9_plat1", "targetname");
 	level.trap9_plat2 = getent ("trap9_plat2", "targetname");
 	level.trap9_plat3 = getent ("trap9_plat3", "targetname");
@@ -1606,11 +1606,11 @@ trap9() {
 	level.trap9_plat7 = getent ("trap9_plat7", "targetname");
 	level.trap9_plat8 = getent ("trap9_plat8", "targetname");
 	level.trap9_plat9 = getent ("trap9_plat9", "targetname");
-	
+
 	level.bouncelucke1 = getent ("stopbounce_lucke1", "targetname");
 	level.bouncelucke2 = getent ("stopbounce_lucke2", "targetname");
-	level.bounceplatform = getent ("stopbounce_platform", "targetname"); 
-	
+	level.bounceplatform = getent ("stopbounce_platform", "targetname");
+
 	level.klappe1 = getent ("klappe1", "targetname");
 	level.klappe2 = getent ("klappe2", "targetname");
 	level.klappe3 = getent ("klappe3", "targetname");
@@ -1691,7 +1691,7 @@ trap9() {
 	level.klappe79 = getent ("klappe79", "targetname");
 	level.klappe80 = getent ("klappe80", "targetname");
 	level.klappe81 = getent ("klappe81", "targetname");
-	
+
 	level.star1 = getent ("star1", "targetname");
 	level.star2 = getent ("star2", "targetname");
 	level.star3 = getent ("star3", "targetname");
@@ -1732,7 +1732,7 @@ trap9() {
 	level.star38 = getent ("star38", "targetname");
 	level.star39 = getent ("star39", "targetname");
 	level.star40 = getent ("star40", "targetname");
-	
+
 	level.stardmg1 = getent ("stardmg1", "targetname");
 	level.stardmg2 = getent ("stardmg2", "targetname");
 	level.stardmg3 = getent ("stardmg3", "targetname");
@@ -1773,10 +1773,10 @@ trap9() {
 	level.stardmg38 = getent ("stardmg38", "targetname");
 	level.stardmg39 = getent ("stardmg39", "targetname");
 	level.stardmg40 = getent ("stardmg40", "targetname");
-	
+
 	blue = getent ("trap9_blue", "targetname");
 	red = getent ("trap9_red", "targetname");
-	
+
 	level.stardmg1 enablelinkto();
 	level.stardmg1 linkto (level.star1);
 	level.stardmg2 enablelinkto();
@@ -1857,24 +1857,24 @@ trap9() {
 	level.stardmg39 linkto (level.star39);
 	level.stardmg40 enablelinkto();
 	level.stardmg40 linkto (level.star40);
-	
+
 	red hide();
-	
+
 	trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
 	trigger waittill ("trigger", Player);
-	trigger setHintString ("^1Trap Activated!"); 
+	trigger setHintString ("^1Trap Activated!");
 	blue hide();
 	red show();
-	
+
 	thread bouncestop();
 	thread randomplat();
-	random = randomInt(4);	
+	random = randomInt(4);
 	switch(random){
-		case 0: thread starattack1(); break;		 
-		case 1: thread starattack2(); break;	
-		case 2: thread starattack3(); break;		
+		case 0: thread starattack1(); break;
+		case 1: thread starattack2(); break;
+		case 2: thread starattack3(); break;
 		case 3: thread starattack4(); break;
-}		
+}
 }
 
 bouncestop() {
@@ -1888,7 +1888,7 @@ bouncestop() {
 	level.bouncelucke1 movey (-37, 2);
 	level.bouncelucke2 movey (28, 2);
 }
-	
+
 
 randomplat() {
 	random = randomint(4);
@@ -1928,7 +1928,7 @@ starattack1() {
 	level.klappe81 moveZ (-20, 1);
 	level.klappe40 moveZ (16, 1);
 	level.klappe41 moveZ (-16, 1);
-	level.klappe56 moveZ (24, 1); 
+	level.klappe56 moveZ (24, 1);
 	level.klappe57 moveZ (-20, 1);
 	level.klappe7 moveZ (16, 1);
 	level.klappe8 moveZ (-16, 1);
@@ -1936,9 +1936,9 @@ starattack1() {
 	level.klappe13 moveZ (-16, 1);
 	level.klappe14 moveZ (16, 1);
 	level.klappe15 moveZ (-16, 1);
-	level.klappe42 moveZ (24, 1); 
-	level.klappe43 moveZ (-20, 1);	
-	wait 1.5;	
+	level.klappe42 moveZ (24, 1);
+	level.klappe43 moveZ (-20, 1);
+	wait 1.5;
 	level.star1 movex (880, 1);
 	level.star1 rotateyaw (360, 1);
 	level.star25 movex (450, 1);
@@ -2117,7 +2117,7 @@ starattack1() {
 	level.klappe81 moveZ (20, 1);
 	level.klappe40 moveZ (-16, 1);
 	level.klappe41 moveZ (16, 1);
-	level.klappe56 moveZ (-24, 1); 
+	level.klappe56 moveZ (-24, 1);
 	level.klappe57 moveZ (20, 1);
 	level.klappe7 moveZ (-16, 1);
 	level.klappe8 moveZ (16, 1);
@@ -2125,8 +2125,8 @@ starattack1() {
 	level.klappe13 moveZ (16, 1);
 	level.klappe14 moveZ (-16, 1);
 	level.klappe15 moveZ (16, 1);
-	level.klappe42 moveZ (-24, 1); 
-	level.klappe43 moveZ (20, 1);	
+	level.klappe42 moveZ (-24, 1);
+	level.klappe43 moveZ (20, 1);
 }
 
 starattack2() {
@@ -2141,16 +2141,16 @@ starattack2() {
 	level.klappe16 moveZ (16, 1);
 	level.klappe17 moveZ (-16, 1);
 	level.klappe48 moveZ (24, 1);
-	level.klappe49 moveZ (-20, 1);	
+	level.klappe49 moveZ (-20, 1);
 	level.klappe78 moveZ (24, 1);
-	level.klappe79 moveZ (-20, 1);	
+	level.klappe79 moveZ (-20, 1);
 	level.klappe66 moveZ (24, 1);
 	level.klappe67 moveZ (-20, 1);
 	level.klappe52 moveZ (24, 1);
-	level.klappe53 moveZ (-20, 1);	
+	level.klappe53 moveZ (-20, 1);
 	level.klappe24 moveZ (16, 1);
-	level.klappe25 moveZ (-16, 1);	
-	wait 1.5;	
+	level.klappe25 moveZ (-16, 1);
+	wait 1.5;
 	level.star2 movex (880, 1);
 	level.star2 rotateyaw (360, 1);
 	level.star15 movex (450, 1);
@@ -2330,15 +2330,15 @@ starattack2() {
 	level.klappe16 moveZ (-16, 1);
 	level.klappe17 moveZ (16, 1);
 	level.klappe48 moveZ (-24, 1);
-	level.klappe49 moveZ (20, 1);	
+	level.klappe49 moveZ (20, 1);
 	level.klappe78 moveZ (-24, 1);
-	level.klappe79 moveZ (20, 1);	
+	level.klappe79 moveZ (20, 1);
 	level.klappe66 moveZ (-24, 1);
 	level.klappe67 moveZ (20, 1);
 	level.klappe52 moveZ (-24, 1);
-	level.klappe53 moveZ (20, 1);	
+	level.klappe53 moveZ (20, 1);
 	level.klappe24 moveZ (-16, 1);
-	level.klappe25 moveZ (16, 1);	
+	level.klappe25 moveZ (16, 1);
 }
 starattack3() {
 	level.klappe5 moveZ (16, 1);
@@ -2361,7 +2361,7 @@ starattack3() {
 	level.klappe33 moveZ (-16, 1);
 	level.klappe72 moveZ (24, 1);
 	level.klappe73 moveZ (-20, 1);
-	wait 1.5;	
+	wait 1.5;
 	level.star3 movex (880, 1);
 	level.star3 rotateyaw (360, 1);
 	level.star9 movex (715, 1);
@@ -2569,10 +2569,10 @@ starattack4() {
 	level.klappe62 moveZ (24, 1);
 	level.klappe63 moveZ (-20, 1);
 	level.klappe22 moveZ (16, 1);
-	level.klappe23 moveZ (-16, 1);	
+	level.klappe23 moveZ (-16, 1);
 	level.klappe34 moveZ (16, 1);
-	level.klappe35 moveZ (-16, 1);		
-	wait 1.5;	
+	level.klappe35 moveZ (-16, 1);
+	wait 1.5;
 	level.star5 movex (880, 1);
 	level.star5 rotateyaw (360, 1);
 	level.star23 movex (450, 1);
@@ -2750,7 +2750,7 @@ starattack4() {
 	level.klappe38 moveZ (-24, 1);
 	level.klappe39 moveZ (20, 1);
 	level.klappe28 moveZ (-16, 1);
-	level.klappe29 moveZ (16, 1);	
+	level.klappe29 moveZ (16, 1);
 	level.klappe74 moveZ (-24, 1);
 	level.klappe75 moveZ (20, 1);
 	level.klappe58 moveZ (-24, 1);
@@ -2758,10 +2758,10 @@ starattack4() {
 	level.klappe62 moveZ (-24, 1);
 	level.klappe63 moveZ (20, 1);
 	level.klappe22 moveZ (-16, 1);
-	level.klappe23 moveZ (16, 1);	
+	level.klappe23 moveZ (16, 1);
 	level.klappe34 moveZ (-16, 1);
-	level.klappe35 moveZ (16, 1);		
-	
+	level.klappe35 moveZ (16, 1);
+
 }
 
 trap10() {
@@ -2772,29 +2772,29 @@ trap10() {
 	dmgR = getent ("trap10_spikes_dmg_r", "targetname");
 	blue = getent ("trap10_blue", "targetname");
 	red = getent ("trap10_red", "targetname");
-	
+
 	red hide();
 	dmgL enablelinkto();
 	dmgL linkto(spikeL);
 	dmgR enablelinkto();
 	dmgR linkto(spikeR);
-	
+
 	trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
 	trigger waittill ("trigger", Player);
-	trigger setHintString ("^1Trap Activated!"); 
+	trigger setHintString ("^1Trap Activated!");
 	blue hide();
 	red show();
-	
+
 	while(1) {
-	spikeL movez (115, 0.5);	
-	spikeR movez (115, 0.5);	
+	spikeL movez (115, 0.5);
+	spikeR movez (115, 0.5);
 	wait 4;
-	spikeL movez (-115, 0.5);	
-	spikeR movez (-115, 0.5);	
+	spikeL movez (-115, 0.5);
+	spikeR movez (-115, 0.5);
 	wait 6;
 	}
 }
-	
+
 ////////////////////Secrets
 
 owh() {
@@ -2804,7 +2804,7 @@ owh() {
 	thread owh3();
 	thread owh4();
 	thread owh5();
-	
+
 	trigger waittill ("trigger", player);
 	player iprintlnbold("^7owh^1, ^7that hurts" + "^1 :'(");
 	trigger delete();
@@ -2812,7 +2812,7 @@ owh() {
 
 owh1() {
 	trigger = getent ("owh1_trigger", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	player iprintlnbold ("Stop searching for Secrets^1!");
 	trigger delete();
@@ -2820,7 +2820,7 @@ owh1() {
 
 owh2() {
 	trigger = getent ("owh2_trigger", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	player iprintlnbold ("Stop it^1!");
 	trigger delete();
@@ -2828,7 +2828,7 @@ owh2() {
 
 owh3() {
 	trigger = getent ("owh3_trigger", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	player iprintlnbold ("Give up^1!");
 	trigger delete();
@@ -2836,7 +2836,7 @@ owh3() {
 
 owh4() {
 	trigger = getent ("owh4_trigger", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	player iprintlnbold ("Do you think a Wall has no Feeling^1?");
 	trigger delete();
@@ -2848,7 +2848,7 @@ owh5() {
 	step3 = getent ("owh7_trigger", "targetname");
 	step4 = getent ("owh8_trigger", "targetname");
 
-	
+
 	step1 waittill ("trigger", player);
 	player iprintlnbold ("You just found Step ^11");
 	step1 delete();
@@ -2860,7 +2860,7 @@ owh5() {
 	step3 delete();
 	while (1){
 	step4 waittill ("trigger", player);
-	player iprintlnbold ("You just found Step ^14");	
+	player iprintlnbold ("You just found Step ^14");
 	wait 1;
 	player thread gosecret();
 	}
@@ -2871,13 +2871,13 @@ owh5() {
 gosecret() {
 	target = getent ("owh_target", "targetname");
 	target1 = getent ("owh_target1", "targetname");
-	
-	self setOrigin (target.origin);	
+
+	self setOrigin (target.origin);
 	self setplayerangles (target.angles);
 	wait 5.5;
 	self setOrigin (target1.origin);
 	self setplayerangles (target.origin);
-	self iprintlnbold ("Have fun^1!");	
+	self iprintlnbold ("Have fun^1!");
 }
 
 
@@ -2898,7 +2898,7 @@ spiningrpg() {
 
 spiningrpg1() {
 	object = getent ("secret_rpg_spin1", "targetname");
-	
+
 	while(1) {
 		object moveZ (20, 5);
 		object waittill ("movedone");
@@ -2909,7 +2909,7 @@ spiningrpg1() {
 
 spiningrpg2() {
 	object = getent ("secret_rpg_spin2", "targetname");
-	
+
 	while(1) {
 		object moveZ (20, 5);
 		object waittill ("movedone");
@@ -2920,7 +2920,7 @@ spiningrpg2() {
 
 spiningrpg3() {
 	object = getent ("secret_rpg_spin3", "targetname");
-	
+
 	while(1) {
 		object moveZ (20, 5);
 		object waittill ("movedone");
@@ -2931,7 +2931,7 @@ spiningrpg3() {
 
 spiningrpg4() {
 	object = getent ("secret_rpg_spin4", "targetname");
-	
+
 	while(1) {
 		object moveZ (20, 5);
 		object waittill ("movedone");
@@ -2942,7 +2942,7 @@ spiningrpg4() {
 
 spiningrpg5() {
 	object = getent ("secret_rpg_spin5", "targetname");
-	
+
 	while(1) {
 		object moveZ (20, 5);
 		object waittill ("movedone");
@@ -2954,7 +2954,7 @@ spiningrpg5() {
 jumpsecret() {
 	trigger = getent ("jump_secret_trigger", "targetname");
 	target = getent ("jump_secret_target", "targetname");
-	
+
 	while(1) {
 		trigger waittill("trigger", player);
 		player setorigin (target.origin);
@@ -2978,7 +2978,7 @@ secretTimer()
 		wait 1;
 		time--;
 		if(time<=0)
-		self suicide();			
+		self suicide();
 	}
 }
 
@@ -2999,13 +2999,13 @@ textleft() {
 	self.hud_text.glowcolor = (0.0, 1.0, 0.0);
 	self.hud_text.owner = self;
 	self.hud_text setText("Time left:");
-	self.hud_text thread removehudsondeath();	
+	self.hud_text thread removehudsondeath();
 	wait 180;
-	self removeText();	
+	self removeText();
 }
 
-	
-time() {	
+
+time() {
 	self endon ("death");
 	self endon ("disconnect");
 	self.hud_count = newClientHudElem(self);
@@ -3028,8 +3028,8 @@ time() {
 		self.hud_count setvalue( 180 - i );
 		wait 1;
 	}
-	
-	self removeCountdown();	
+
+	self removeCountdown();
 }
 
 removeText()
@@ -3038,7 +3038,7 @@ removeText()
 	{
         self.hud_text destroy();
     }
-} 
+}
 
 removeCountdown() {
 	if( isDefined( self.hud_count) )
@@ -3050,22 +3050,22 @@ removeCountdown() {
 removehudsondeath() {
 	self endon ("death");
 	self.owner waittill_any("death", "disconnect");
-	
+
 	if( isDefined( self ) )
 	{
         self destroy();
     }
-	
+
 }
 
 respawn0() {
 	trigger = getent ("jump_secret_respawn0", "targetname");
 	target = getent ("jump_secret_respawn0_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -3074,11 +3074,11 @@ respawn0() {
 respawn1() {
 	trigger = getent ("jump_secret_respawn1", "targetname");
 	target = getent ("jump_secret_respawn1_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -3087,11 +3087,11 @@ respawn1() {
 respawn2() {
 	trigger = getent ("jump_secret_respawn2", "targetname");
 	target = getent ("jump_secret_respawn2_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -3100,11 +3100,11 @@ respawn2() {
 respawn3() {
 	trigger = getent ("jump_secret_respawn3", "targetname");
 	target = getent ("jump_secret_respawn3_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -3113,11 +3113,11 @@ respawn3() {
 respawn4() {
 	trigger = getent ("jump_secret_respawn4", "targetname");
 	target = getent ("jump_secret_respawn4_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -3126,11 +3126,11 @@ respawn4() {
 respawn5() {
 	trigger = getent ("jump_secret_respawn5", "targetname");
 	target = getent ("jump_secret_respawn5_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -3139,60 +3139,60 @@ respawn5() {
 respawn6() {
 	trigger = getent ("jump_secret_respawn6", "targetname");
 	target = getent ("jump_secret_respawn6_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
 }
-	
+
 respawn7() {
 	trigger = getent ("jump_secret_respawn7", "targetname");
 	target = getent ("jump_secret_respawn7_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
 }
-	
+
 respawn8() {
 	trigger = getent ("jump_secret_respawn8", "targetname");
 	target = getent ("jump_secret_respawn8_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
 }
-	
+
 giverpg0() {
 	trigger = getent ("secret_giverpg0", "targetname");
-	
+
 	while(1) {
 		trigger waittill ("trigger", player);
-		
+
 		player giveWeapon("rpg_mp", 100, 500 );
 		player givemaxammo ("rpg_mp");
 		player switchToWeapon("rpg_mp");
 	}
-}	
+}
 
 giverpg1() {
 	trigger = getent ("secret_giverpg1", "targetname");
-	
+
 	while(1) {
 		trigger waittill ("trigger", player);
-		
+
 		player giveWeapon("rpg_mp", 100, 500 );
 		player givemaxammo ("rpg_mp");
 		player switchToWeapon("rpg_mp");
@@ -3201,10 +3201,10 @@ giverpg1() {
 
 giverpg2() {
 	trigger = getent ("secret_giverpg2", "targetname");
-	
+
 	while(1) {
 		trigger waittill ("trigger", player);
-		
+
 		player giveWeapon("rpg_mp", 100, 500 );
 		player givemaxammo ("rpg_mp");
 		player switchToWeapon("rpg_mp");
@@ -3213,10 +3213,10 @@ giverpg2() {
 
 giverpg3() {
 	trigger = getent ("secret_giverpg3", "targetname");
-	
+
 	while(1) {
 		trigger waittill ("trigger", player);
-		
+
 		player giveWeapon("rpg_mp", 100, 500 );
 		player givemaxammo ("rpg_mp");
 		player switchToWeapon("rpg_mp");
@@ -3225,10 +3225,10 @@ giverpg3() {
 
 giverpg4() {
 	trigger = getent ("secret_giverpg4", "targetname");
-	
+
 	while(1) {
 		trigger waittill ("trigger", player);
-		
+
 		player giveWeapon("rpg_mp", 100, 500 );
 		player givemaxammo ("rpg_mp");
 		player switchToWeapon("rpg_mp");
@@ -3237,10 +3237,10 @@ giverpg4() {
 
 giverpg5() {
 	trigger = getent ("secret_giverpg5", "targetname");
-	
+
 	while(1) {
 		trigger waittill ("trigger", player);
-		
+
 		player giveWeapon("rpg_mp", 100, 500 );
 		player givemaxammo ("rpg_mp");
 		player switchToWeapon("rpg_mp");
@@ -3250,7 +3250,7 @@ giverpg5() {
 backtomap() {
 	trigger = getent ("backtomap_trigger", "targetname");
 	target = getent ("backtomap_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
@@ -3268,7 +3268,7 @@ backtomap() {
 backtomap2() {
 	trigger = getent ("backtomap2_trigger", "targetname");
 	target = getent ("backtomap2_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
@@ -3282,7 +3282,7 @@ backtomap2() {
 		player braxi\_rank::giveRankXp( "", 250);
 	}
 }
-	
+
 /////////////////////////Endrooms + Queue
 
 endroomQueueSetup(){
@@ -3290,27 +3290,27 @@ endroomQueueSetup(){
 	level.knife_trigger = getent ("knife_trigger", "targetname");
 	level.bounce_trigger = getent ("bounce_trigger", "targetname");
 	level.randomweap_trigger = getent ("randomweap_trigger", "targetname");
-	
+
 	players = getPlayingPlayers();
 	for( i = 0; i < players.size; i++)
 		players[i] thread removePlayerOnStuff();
-	
+
 	level.playerQueue = [];
 	level.selectedEndroom = "";
-	
+
 }
 
 watchEndrooms(){
-	
+
 	while(1){
 		level waittill("start_endroom_fight", player);
-		
+
 		switch( level.selectedEndroom ){
 			case "sniper": player thread SniperFight(); break;
 			case "knife": player thread KnifeFight(); break;
 			case "bounce": player thread BounceFight(); break;
 			case "randomweap": player thread RandomWeapFight(); break;
-			
+
 		}
 	}
 }
@@ -3321,12 +3321,12 @@ sniperRoomTrigger(){
 
 	while( 1 ){
 		 level.sniper_endroom waittill("trigger", player);
-		
+
 		if( level.selectedEndroom != "" && level.selectedEndroom != "sniper" ){
-			iprintlnbold("Other room was chosen and this text should not be visible!"); 
+			iprintlnbold("Other room was chosen and this text should not be visible!");
 			return;
 		}
-		
+
 		if( level.selectedEndroom == ""){
 			level.knife_trigger delete();
 			level.bounce_trigger delete();
@@ -3334,11 +3334,11 @@ sniperRoomTrigger(){
 			level.oldway_trigger delete();
 			level.selectedEndroom = "sniper";
 		}
-		
+
 		if( arrayContains(level.playerQueue, player) ){
 			continue;
 		}
-			
+
 		if( level.playerQueue.size > 0 ){
 			player notify("kill afk monitor");
 			level.playerQueue[level.playerQueue.size] = player;
@@ -3347,9 +3347,9 @@ sniperRoomTrigger(){
 			player setOrigin(warteraum.origin);
 		}
 		else{
-			level.playerQueue[level.playerQueue.size] = player;			
+			level.playerQueue[level.playerQueue.size] = player;
 			level notify("start_endroom_fight", player);
-		}		
+		}
 	}
 }
 
@@ -3359,24 +3359,24 @@ KnifeRoomTrigger(){
 
 	while( 1 ){
 		level.knife_trigger waittill("trigger", player);
-		
+
 		if( level.selectedEndroom != "" && level.selectedEndroom != "knife" ){
-			iprintlnbold("Other room was chosen and this text should not be visible!"); 
+			iprintlnbold("Other room was chosen and this text should not be visible!");
 			return;
 		}
-		
+
 		if( level.selectedEndroom == ""){
 			level.sniper_endroom delete();
-			level.bounce_trigger delete();	
+			level.bounce_trigger delete();
 			level.randomweap_trigger delete();
 			level.oldway_trigger delete();
 			level.selectedEndroom = "knife";
 		}
-		
+
 		if( arrayContains(level.playerQueue, player) ){
 			continue;
 		}
-			
+
 		if( level.playerQueue.size > 0 ){
 			player notify("kill afk monitor");
 			level.playerQueue[level.playerQueue.size] = player;
@@ -3385,9 +3385,9 @@ KnifeRoomTrigger(){
 			player setOrigin(warteraum.origin);
 		}
 		else{
-			level.playerQueue[level.playerQueue.size] = player;			
+			level.playerQueue[level.playerQueue.size] = player;
 			level notify("start_endroom_fight", player);
-		}		
+		}
 	}
 }
 
@@ -3396,12 +3396,12 @@ BounceRoomTrigger(){
 
 	while( 1 ){
 		level.bounce_trigger waittill("trigger", player);
-		
+
 		if( level.selectedEndroom != "" && level.selectedEndroom != "bounce" ){
-			iprintlnbold("Other room was chosen and this text should not be visible!"); 
+			iprintlnbold("Other room was chosen and this text should not be visible!");
 			return;
 		}
-		
+
 		if( level.selectedEndroom == ""){
 			level.sniper_endroom delete();
 			level.knife_trigger delete();
@@ -3409,11 +3409,11 @@ BounceRoomTrigger(){
 			level.oldway_trigger delete();
 			level.selectedEndroom = "bounce";
 		}
-		
+
 		if( arrayContains(level.playerQueue, player) ){
 			continue;
 		}
-			
+
 		if( level.playerQueue.size > 0 ){
 			player notify("kill afk monitor");
 			level.playerQueue[level.playerQueue.size] = player;
@@ -3422,9 +3422,9 @@ BounceRoomTrigger(){
 			player setOrigin(warteraum.origin);
 		}
 		else{
-			level.playerQueue[level.playerQueue.size] = player;			
+			level.playerQueue[level.playerQueue.size] = player;
 			level notify("start_endroom_fight", player);
-		}		
+		}
 	}
 }
 
@@ -3433,12 +3433,12 @@ RandomWeapRoomTrigger(){
 
 	while( 1 ){
 		level.randomweap_trigger waittill("trigger", player);
-		
+
 		if( level.selectedEndroom != "" && level.selectedEndroom != "randomweap" ){
-			iprintlnbold("Other room was chosen and this text should not be visible!"); 
+			iprintlnbold("Other room was chosen and this text should not be visible!");
 			return;
 		}
-		
+
 		if( level.selectedEndroom == ""){
 			level.sniper_endroom delete();
 			level.knife_trigger delete();
@@ -3446,11 +3446,11 @@ RandomWeapRoomTrigger(){
 			level.oldway_trigger delete();
 			level.selectedEndroom = "randomweap";
 		}
-		
+
 		if( arrayContains(level.playerQueue, player) ){
 			continue;
 		}
-			
+
 		if( level.playerQueue.size > 0 ){
 			player notify("kill afk monitor");
 			level.playerQueue[level.playerQueue.size] = player;
@@ -3459,57 +3459,57 @@ RandomWeapRoomTrigger(){
 			player setOrigin(warteraum.origin);
 		}
 		else{
-			level.playerQueue[level.playerQueue.size] = player;			
+			level.playerQueue[level.playerQueue.size] = player;
 			level notify("start_endroom_fight", player);
-		}		
+		}
 	}
 }
 
 ///////////////////// Endrooms
 
 SniperFight(){
-	
+
 	self endon("disconnect");
 	self endon("player_spectator");
 
 	level.actiorigin = getent ("snip_acti_teleport", "targetname");
 	teleorigin = getent ("sniper_jumper_teleport", "targetname");
-	
-	
+
+
 	self setorigin (teleorigin.origin);
 	self setplayerangles (teleorigin.angles);
-	
+
 	wait(0.05);
-	
+
 	thread createSelectedRoom(self.name + " ^3 HAS ENTERED THE SNIPER ROOM^7!"); // change the message if you want
 	self takeallweapons();
 	self GiveWeapon("m40a3_mp");
 	self GiveWeapon("remington700_mp");
 	self SwitchToWeapon( "m40a3_mp" );
-	
+
 	if( isDefined( level.activ ) ){
 		level.activ SetOrigin( level.actiorigin.origin );
 		level.activ setplayerangles( level.actiorigin.angles );
 	}
-	
+
 	wait(0.05);
 	if( isDefined( level.activ ) ){
-		level.activ takeallweapons();	
+		level.activ takeallweapons();
 		level.activ GiveWeapon("m40a3_mp");
 		level.activ GiveWeapon("remington700_mp");
 		level.activ SwitchToWeapon( "m40a3_mp" );
 	}
 	while( isDefined( self ) && isAlive( self )  )
 		wait 1;
-	
+
 	level.playerQueue = removeFromArray(level.playerQueue, self);
-	
+
 	if(level.playerQueue.size > 0)
 		level notify("start_endroom_fight", level.playerQueue[0]);
-}	
+}
 
 knifeFight(){
-	
+
 	self endon("disconnect");
 	self endon("player_spectator");
 
@@ -3518,37 +3518,37 @@ knifeFight(){
 
 	self setorigin (teleorigin.origin);
 	self setplayerangles (teleorigin.angles);
-	
+
 	wait(0.05);
-	
+
 	thread createSelectedRoom(self.name + " ^3 HAS ENTERED THE KNIFE ROOM^7!"); // change the message if you want
 	self takeallweapons();
 	self GiveWeapon("knife_mp");
 	self SwitchToWeapon( "knife_mp" );
-	
+
 	if( isDefined( level.activ ) ){
 		level.activ SetOrigin( level.actiorigin.origin );
 		level.activ setplayerangles( level.actiorigin.angles );
 	}
-	
+
 	wait(0.05);
 	if( isDefined( level.activ ) ){
-		level.activ takeallweapons();	
+		level.activ takeallweapons();
 		level.activ GiveWeapon("knife_mp");
 		level.activ SwitchToWeapon( "knife_mp" );
 	}
-	
+
 	while( isDefined( self ) && isAlive( self )  )
 		wait 1;
-	
+
 	level.playerQueue = removeFromArray(level.playerQueue, self);
-	
+
 	if(level.playerQueue.size > 0)
 		level notify("start_endroom_fight", level.playerQueue[0]);
 }
 
 BounceFight(){
-	
+
 	self endon("disconnect");
 	self endon("player_spectator");
 
@@ -3557,50 +3557,50 @@ BounceFight(){
 
 	self setorigin (teleorigin.origin);
 	self setplayerangles (teleorigin.angles);
-	
+
 	wait(0.05);
-	
+
 	thread createSelectedRoom(self.name + " ^3 HAS ENTERED THE BOUNCE ROOM^7!"); // change the message if you want
 	self takeallweapons();
 	self GiveWeapon("tomahawk_mp");
 	self SwitchToWeapon( "tomahawk_mp" );
-	
+
 	if( isDefined( level.activ ) ){
 		level.activ SetOrigin( level.actiorigin.origin );
 		level.activ setplayerangles( level.actiorigin.angles );
 	}
-	
+
 	wait(0.05);
 	if( isDefined( level.activ ) ){
-		level.activ takeallweapons();	
+		level.activ takeallweapons();
 		level.activ GiveWeapon("tomahawk_mp");
 		level.activ SwitchToWeapon( "tomahawk_mp" );
 	}
 	while( isDefined( self ) && isAlive( self )  )
 		wait 1;
-	
+
 	level.playerQueue = removeFromArray(level.playerQueue, self);
-	
+
 	if(level.playerQueue.size > 0)
 		level notify("start_endroom_fight", level.playerQueue[0]);
 }
 
 RandomWeapFight(){
-	
+
 	self endon("disconnect");
 	self endon("player_spectator");
-	
+
 	level.actiorigin = getent ("randomweap_acti_teleport", "targetname");
 	teleorigin = getent ("randomweap_jumper_teleport", "targetname");
-				
+
 	self setorigin (teleorigin.origin);
 	self setplayerangles (teleorigin.angles);
-	
+
 	wait(0.05);
-	self thread jumperweap();	
-	
+	self thread jumperweap();
+
 	thread createSelectedRoom(self.name + " ^3 HAS ENTERED THE RANDOM WEAPON ROOM^7!"); // change the message if you want
-	
+
 	if( isDefined( level.activ ) ){
 	level.activ SetOrigin (level.actiorigin.origin);
 	level.activ setplayerangles (level.actiorigin.angles);
@@ -3612,9 +3612,9 @@ RandomWeapFight(){
 	}
 	while( isDefined( self ) && isAlive( self )  )
 		wait 1;
-	
+
 	level.playerQueue = removeFromArray(level.playerQueue, self);
-	
+
 	if(level.playerQueue.size > 0)
 		level notify("start_endroom_fight", level.playerQueue[0]);
 }
@@ -3623,60 +3623,60 @@ jumperweap()
 {
 	wait 0.25;
 	random = randomInt(14);
-	
+
 	switch(random){
 		case 0: self takeallweapons();
 				self giveWeapon("deserteagle_mp", 100, 500 );
 				self switchToWeapon("deserteagle_mp"); break;
-				
+
 		case 1: self takeallweapons();
 				self giveWeapon("uzi_mp", 100, 500 );
 				self switchToWeapon("uzi_mp"); break;
-				
+
 		case 2: self takeallweapons();
 				self giveWeapon("m4_mp", 100, 500 );
 				self switchToWeapon("m4_mp"); break;
-				
+
 		case 3: self takeallweapons();
 				self giveWeapon("ak47_mp", 100, 500 );
 				self switchToWeapon("ak47_mp"); break;
-				
+
 		case 4: self takeallweapons();
 				self giveWeapon("g3_mp", 100, 500 );
 				self switchToWeapon("g3_mp"); break;
-				
+
 		case 5: self takeallweapons();
 				self giveWeapon("m60e4_mp", 100, 500 );
 				self switchToWeapon("m60e4_mp"); break;
-				
+
 		case 6: self takeallweapons();
 				self giveWeapon("p90_mp", 100, 500 );
 				self switchToWeapon("p90_mp"); break;
-				
+
 		case 7: self takeallweapons();
 				self giveWeapon("m40a3_mp", 100, 500 );
 				self switchToWeapon("m40a3_mp"); break;
-				
+
 		case 8: self takeallweapons();
 				self giveWeapon("barrett_mp", 100, 500 );
 				self switchToWeapon("barrett_mp"); break;
-				
+
 		case 9: self takeallweapons();
 				self giveWeapon("g36c_silencer_mp", 100, 0 );
 				self switchToWeapon("g36c_silencer_mp"); break;
-				
+
 		case 10: self takeallweapons();
 			 	 self giveWeapon("skorpion_silencer_mp", 100, 500 );
 				 self switchToWeapon("skorpion_silencer_mp"); break;
-				
+
 		case 11: self takeallweapons();
 				 self giveWeapon("saw_grip_mp", 100, 500 );
 			 	 self switchToWeapon("saw_grip_mp"); break;
-				
+
 		case 12: self takeallweapons();
 				 self giveWeapon("remington700_mp", 100, 500 );
 				 self switchToWeapon("remington700_mp"); break;
-				
+
 		case 13: self takeallweapons();
 				 self giveWeapon("ak74u_mp", 100, 500 );
 				 self switchToWeapon("ak74u_mp"); break;
@@ -3689,60 +3689,60 @@ actiweap()
 {
 	wait 0.25;
 	random = randomInt(14);
-	
+
 	switch(random){
 		case 0: self takeallweapons();
 				self giveWeapon("deserteagle_mp", 100, 500 );
 				self switchToWeapon("deserteagle_mp"); break;
-				
+
 		case 1: self takeallweapons();
 				self giveWeapon("uzi_mp", 100, 500 );
 				self switchToWeapon("uzi_mp"); break;
-				
+
 		case 2: self takeallweapons();
 				self giveWeapon("m4_mp", 100, 500 );
 				self switchToWeapon("m4_mp"); break;
-				
+
 		case 3: self takeallweapons();
 				self giveWeapon("ak47_mp", 100, 500 );
 				self switchToWeapon("ak47_mp"); break;
-				
+
 		case 4: self takeallweapons();
 				self giveWeapon("g3_mp", 100, 500 );
 				self switchToWeapon("g3_mp"); break;
-				
+
 		case 5: self takeallweapons();
 				self giveWeapon("m60e4_mp", 100, 500 );
 				self switchToWeapon("m60e4_mp"); break;
-				
+
 		case 6: self takeallweapons();
 				self giveWeapon("p90_mp", 100, 500 );
 				self switchToWeapon("p90_mp"); break;
-				
+
 		case 7: self takeallweapons();
 				self giveWeapon("m40a3_mp", 100, 500 );
 				self switchToWeapon("m40a3_mp"); break;
-				
+
 		case 8: self takeallweapons();
 				self giveWeapon("barrett_mp", 100, 500 );
 				self switchToWeapon("barrett_mp"); break;
-				
+
 		case 9: self takeallweapons();
 				self giveWeapon("g36c_silencer_mp", 100, 0 );
 				self switchToWeapon("g36c_silencer_mp"); break;
-				
+
 		case 10: self takeallweapons();
 			 	 self giveWeapon("skorpion_silencer_mp", 100, 500 );
 				 self switchToWeapon("skorpion_silencer_mp"); break;
-				
+
 		case 11: self takeallweapons();
 				 self giveWeapon("saw_grip_mp", 100, 500 );
 			 	 self switchToWeapon("saw_grip_mp"); break;
-				
+
 		case 12: self takeallweapons();
 				 self giveWeapon("remington700_mp", 100, 500 );
 				 self switchToWeapon("remington700_mp"); break;
-				
+
 		case 13: self takeallweapons();
 				 self giveWeapon("ak74u_mp", 100, 500 );
 				 self switchToWeapon("ak74u_mp"); break;
@@ -3753,18 +3753,18 @@ actiweap()
 
 oldfight()
 {
-	
+
    	level.oldway_trigger = getEnt( "oldway_trigger", "targetname");
 	object = getent ("old_door", "targetname");
-			
+
 		level.oldway_trigger waittill( "trigger", player );
-       
+
 		level.sniper_endroom delete();
 		level.knife_trigger delete();
-		level.bounce_trigger delete();	
+		level.bounce_trigger delete();
 		level.randomweap_trigger delete();
 		level.oldway_trigger delete();
-		thread createSelectedRoom(player.name + " ^3 HAS OPENED THE OLD WAY^7!" );		
+		thread createSelectedRoom(player.name + " ^3 HAS OPENED THE OLD WAY^7!" );
 		object moveZ (-185, 2.5);
 		object waittill ("movedone");
 }
@@ -3772,14 +3772,14 @@ oldfight()
 removePlayerOnStuff(){
 	self notify("stop_removeonstuff");
 	self endon("stop_removeonstuff");
-	
+
 	if( !isAlive( self ) )
 		return;
-	
+
 	self waittill_any("disconnect", "death", "player_spectator");
-	
+
 	level.playerQueue = removeFromArray(level.playerQueue, self);
-	
+
 }
 
 createSelectedRoom(messages)

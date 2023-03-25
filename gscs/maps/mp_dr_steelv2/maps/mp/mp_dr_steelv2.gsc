@@ -14,7 +14,7 @@ www.ix-treme.com and www.deathrun.org
 /////////[]///////////[]////[]////[]////[]/////[][]////[]////////[]//
 /////////[]////////////[]//[][]//[]/////[]//////[]/////[]////////[]//
 /////////[]/////////////[][]//[][]//////[]//////[]/////[][][][][][]//
-///////////////////////////////////////////////////////////////////// 
+/////////////////////////////////////////////////////////////////////
 */
 
 main()
@@ -25,7 +25,7 @@ main()
 
 	thread Ambient();
 	thread jukeBox();
-	
+
 	setExpFog(500, 2200, 0.81, 0.75, 0.63, 0.5);
 	precacheItem("ak74u_mp");
 	precacheItem("remington700_mp");
@@ -46,16 +46,16 @@ main()
 	precacheModel("Yuusha_2");
 	level.rainbowfire = loadFX("deathrun/rainbowfire");
 	level.fire1 = loadFX("deathrun/fire1");
-	playLoopedFX(level.fire1, 0.05, (7520.62, 663.391, 1270));  
-	playLoopedFX(level.rainbowfire, 0.05, (7520.2, 661 , 1226));  
-	playLoopedFX(level.rainbowfire, 0.05, (8892.29, 676.901, 1288)); 
+	playLoopedFX(level.fire1, 0.05, (7520.62, 663.391, 1270));
+	playLoopedFX(level.rainbowfire, 0.05, (7520.2, 661 , 1226));
+	playLoopedFX(level.rainbowfire, 0.05, (8892.29, 676.901, 1288));
 	level.fire = loadfx("test/jeepride_smokeblind");
-	
+
 	setdvar( "r_specularcolorscale", "1" );
 	setdvar("r_glowbloomintensity0",".25");
 	setdvar("r_glowbloomintensity1",".25");
 	setdvar("r_glowskybleedintensity0",".3");
-	
+
 	game["allies"] = "marines";
 	game["axis"] = "opfor";
 	game["attackers"] = "axis";
@@ -90,7 +90,7 @@ main()
 	addtriggerTolist("trap7_trigger");
 	addtriggerTolist("trap8_trigger");
 	addtriggerTolist("trap9_trigger");
-	addtriggerTolist("trap10_trigger");	
+	addtriggerTolist("trap10_trigger");
 	/////////////////////LIFTS/////////////////
 	thread liftdoor();
 	thread liftjumper();
@@ -112,9 +112,9 @@ main()
 	thread secret2();
 	thread secret2respawn();
 	thread secret2exit_1();
-		
+
 	setupJumppads();
- 
+
 if( isDefined( level.jumppads ) && level.jumppads.size )
 {
 for( i = 0 ; i < level.jumppads.size ; i++ )
@@ -124,15 +124,15 @@ if( !isDefined( pad ) )
 continue;
 spawnJumppad( pad.origin , pad.angles , pad.height , pad.radius , pad.dirPos , pad.model , pad.power , pad.sound );
 
-jumppads = getEntArray( "jumppad" , "targetname" ); 
+jumppads = getEntArray( "jumppad" , "targetname" );
 if( isDefined( jumppads ) && jumppads.size )
 {
 for( i = 0 ; i < jumppads.size ; i++ )
 {
 pad = jumppads[i];
 if( !isDefined( pad ) )
-continue; 
-pad thread monitorUsage(); 
+continue;
+pad thread monitorUsage();
 }
 }
 }
@@ -146,7 +146,7 @@ pad thread monitorUsage();
 	thread tunnel3();
 	thread tunnel4();
 	thread tunnel5();
-	thread tunnel6();	
+	thread tunnel6();
 	thread tunnel7();
 	thread tunnel8();
 	thread tunnel9();
@@ -179,324 +179,324 @@ exit2()
 {
 		trigger = getent ("exit2_trigger", "targetname");
 		target  = getent ("spawn", "targetname");
-		
+
 		trigger waittill("trigger", Player);
 		wait .1;
 		player detachAll();
-		player setModel("Yuusha_2"); 
+		player setModel("Yuusha_2");
 		wait .1;
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 }
 
-	
-	
+
+
 setupJumppads() //3 als beispiel
 {
-//precacheModel( "xmodel/serthy_buildzone" );                         //falls model erwünscht, unbeding precachen! sonst crasht der server
- 
+//precacheModel( "xmodel/serthy_buildzone" );                         //falls model erwï¿½nscht, unbeding precachen! sonst crasht der server
+
 level.jumppads = [];                                            // ganz wichtig! muss zuerst stehen!
- 
+
 level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2104,-4600, 1368 );        //wo?          
+level.jumppads[level.jumppads.size - 1].origin = ( 2104,-4600, 1368 );        //wo?
 level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
 level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
 //level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
 level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
 //level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
 
 level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2136 ,-4600, 1368 );          //wo?         
+level.jumppads[level.jumppads.size - 1].origin = ( 2136 ,-4600, 1368 );          //wo?
 level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
 level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
- 
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2168 ,-4600, 1368  );          //wo?          
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird 
- 
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2200 ,-4600, 1368   );          //wo?          
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird  
- 
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2232,-4600, 1368  );        //wo?             
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird  
-
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2264  ,-4600, 1368 );          //wo?              
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird  
-
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2296 ,-4600, 1368 );        //wo?              
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird  
-
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2328 ,-4600,  1368 );        //wo?              
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );          //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird  
-
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = (  2360  , -4600, 1368 );        //wo?                 
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird  
-
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2392 ,-4600, 1368   );        //wo?                   
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
 //level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
 level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
 //level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
 
 level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2424  ,-4600, 1368   );        //wo?                   
+level.jumppads[level.jumppads.size - 1].origin = ( 2168 ,-4600, 1368  );          //wo?
 level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
 level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
 //level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
 level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
 //level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
- 
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = (2456, -4600,1368   );        //wo?               
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird 
- 
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2488, -4600, 1368 );        //wo?                    
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird  
- 
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2520, -4600, 1368  );        //wo?                      
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );             //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird   
 
 level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2552, -4600, 1368  );        //wo?                       
+level.jumppads[level.jumppads.size - 1].origin = ( 2200 ,-4600, 1368   );          //wo?
 level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
 level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
 //level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
 level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird  
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
 
 level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2584, -4600, 1368  );        //wo?                          
+level.jumppads[level.jumppads.size - 1].origin = ( 2232,-4600, 1368  );        //wo?
 level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
 level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
 //level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
 level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird  
- 
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2616, -4600, 1368  );        //wo?                          
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );              //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird  
- 
-level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2648, -4600, 1368 );        //wo?                           
-level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius   
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );         //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
-//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
-level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird   
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
 
 level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
-level.jumppads[level.jumppads.size - 1].origin = ( 2680, -4600, 1368 );        //wo?                           
+level.jumppads[level.jumppads.size - 1].origin = ( 2264  ,-4600, 1368 );          //wo?
 level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
-level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger höhe  
-level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius   
-level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );         //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )   
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
 //level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
 level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
-//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird   
- 
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = ( 2296 ,-4600, 1368 );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = ( 2328 ,-4600,  1368 );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );          //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = (  2360  , -4600, 1368 );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = ( 2392 ,-4600, 1368   );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = ( 2424  ,-4600, 1368   );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );           //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = (2456, -4600,1368   );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = ( 2488, -4600, 1368 );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = ( 2520, -4600, 1368  );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );             //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = ( 2552, -4600, 1368  );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = ( 2584, -4600, 1368  );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );            //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = ( 2616, -4600, 1368  );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );              //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = ( 2648, -4600, 1368 );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );         //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
+level.jumppads[level.jumppads.size] = spawnStruct();                        //muss immer zuerst stehen bei jedem neuen jumppad
+level.jumppads[level.jumppads.size - 1].origin = ( 2680, -4600, 1368 );        //wo?
+level.jumppads[level.jumppads.size - 1].angles = ( 0 , 0 , 0 );             //winkel?
+level.jumppads[level.jumppads.size - 1].height =  1;                       //trigger hï¿½he
+level.jumppads[level.jumppads.size - 1].radius = 5;                        //trigger radius
+level.jumppads[level.jumppads.size - 1].dirPos = ( 9341 , -9837 , 4696 );         //richtung, sollte im bereich von +/- 50 neben dem origin sich befinden: origin + ( 50 , -30 , 32 )
+//level.jumppads[level.jumppads.size - 1].model = "xmodel/serthy_buildzone";      //damit man es erkennt? muss precached werden!!!
+level.jumppads[level.jumppads.size - 1].power = 150000;                      //wie stark das jumppad ist
+//level.jumppads[level.jumppads.size - 1].sound = "minefield_click";          //sound welcher abgespielt wird
+
 level.jumppads[level.jumppads.size] = spawnStruct();                        //minimale anforderungen
 level.jumppads[level.jumppads.size - 1].origin = ( 2342 , 123 , 73 );           //minimale anforderungen
- 
+
 level.jumppads[level.jumppads.size] = spawnStruct();                        //minimale anforderungen
 level.jumppads[level.jumppads.size - 1].origin = ( 3434 , 32 , -17 );           //minimale anforderungen
 }
- 
+
 spawnJumppad( origin , angles , height , radius , dirPos , model , power , sound )
 {
 if( !isDefined( radius ) )      radius = 5;
 if( !isDefined( height ) )      height = 1;
 if( !isDefined( angles ) )      angles = ( 0 , 0 , 0 );
- 
+
 jumppad = spawn( "trigger_radius" , origin , 0 , radius , height );
 jumppad.angles = angles;
 jumppad.targetname = "jumppad";
 jumppad.jumpSound = sound;
 jumppad.power = power;
- 
+
 if( isDefined( model ) )
 {
 jumppad.vis = spawn( "script_model" , origin );
 jumppad.vis setmodel( model );
 }
- 
+
 if( isDefined( dirPos ) )
 jumppad.dir = vectorNormalize( dirPos - origin );
 }
- 
+
 monitorUsage()
 {
 if( isDefined( self.target ) )
 {
 target = getEnt( self.target , "targetname" );
- 
+
 if( isDefined( target ) )
 {
 self.dir = vectorNormalize( self.target.origin - self.origin );
 self.target delete();
 }
 }
- 
+
 if( isDefined( self.script_noteworthy ) )
 {
 tokens = strTok( self.script_noteworthy , "," );
 self.power = tokens[0];
 self.jumpSound = tokens[1];
 }
- 
+
 while( isDefined( self ) )
 {
 wait( 0.05 );
- 
+
 self waittill( "trigger" , player );
- 
+
 if( !isDefined( player.isOnJumppad ) )
 self bouncePlayer( player , self.power , self.dir );
 }
 }
- 
+
 bouncePlayer( player , power , dir )
 {
 player endon( "disconnect" );
- 
+
 player.isOnJumppad = undefined;
- 
+
 if( isDefined( self.jumpSound ) && self.jumpSound != "" )
 self playSound( self.jumpSound );
- 
+
 if( !isDefined( dir ) )
 dir = ( 0 , 0 , 1 );
- 
+
 if( !isDefined( power ) )
 power = 150000;
- 
+
 //player iPrintLnBold( "Yippieeeh!" );
- 
+
 while( isDefined( self ) && isDefined( player ) )
 {
 if( player.sessionstate != "playing" )
 break;
 else if( !player isTouching( self ) )
 break;
- 
+
 power = int( player.maxhealth * power );
 health = player.health;
 player.health += power;
- 
+
 player finishPlayerDamage( self , self , power , 0 , "MOD_PROJECTILE" , "none" , self.origin , dir , "none" , 0 );
- 
+
 player.health = health;
- 
+
 wait( 0.05 );
 }
- 
+
 player.isOnJumppad = undefined;
-}	
-	
-	
-	
+}
+
+
+
 	addTriggerToList( name )
 {
     if( !isDefined( level.trapTriggers ) )
         level.trapTriggers = [];
     level.trapTriggers[level.trapTriggers.size] = getEnt( name, "targetname" );
 }
-	
+
 setupServers()
 {
-	serv_deathrun = getEnt( "server_deathrun", "targetname" );		
+	serv_deathrun = getEnt( "server_deathrun", "targetname" );
 	serv_deathrun thread serverTrigger( "178.254.28.132:28960 ", "^3Deathrun 1.2" );
 
 }
@@ -504,47 +504,47 @@ setupServers()
 serverTrigger( ip, name )
 {
 	level endon( "game over" );
-	
+
 	while(1)
 	{
 		self waittill( "trigger", player );
-		
+
 		if( !isDefined( player.server_name ) || player.server_name != name  )
 		{
 			player notify( "change_server" );
 			wait 0.05;
-			
+
 			player.server_name = name;
 			player thread serverMessage( ip, name );
 		}
 		else
 			player notify( "server_choice" );
-		
+
 		wait 0.05;
 	}
 }
 
 serverMessage( ip, name )
 {
-	level endon( "game over" );
-	self endon( "disconnect" );
-	self endon( "change_server" );
-	
-	self iPrintLnBold( "^7If you want to join the\n^3iXtreme ^3" + name + " ^7Server shoot it 2 times" );
-	
-	while(1)
-	{
-		self waittill( "server_choice" );
-		
-		self iPrintLnBold( "Shoot it once more to join the\n^3iXtreme ^3" + name + " ^7Server" );
-		
-		self waittill( "server_choice" );
-		
-		self setClientDvar( "clientcmd", "disconnect; wait 50; connect " + ip );
-		self openMenu( "clientcmd" );
-		
-		iPrintLn( "^1" + self.name + " ^7joined the ^3iXtreme ^3" + name + " ^7Server" );
-	}
+	// level endon( "game over" );
+	// self endon( "disconnect" );
+	// self endon( "change_server" );
+
+	// self iPrintLnBold( "^7If you want to join the\n^3iXtreme ^3" + name + " ^7Server shoot it 2 times" );
+
+	// while(1)
+	// {
+	// 	self waittill( "server_choice" );
+
+	// 	self iPrintLnBold( "Shoot it once more to join the\n^3iXtreme ^3" + name + " ^7Server" );
+
+	// 	self waittill( "server_choice" );
+
+	// 	self setClientDvar( "clientcmd", "disconnect; wait 50; connect " + ip );
+	// 	self openMenu( "clientcmd" );
+
+	// 	iPrintLn( "^1" + self.name + " ^7joined the ^3iXtreme ^3" + name + " ^7Server" );
+	// }
 }
 
 
@@ -553,37 +553,37 @@ Ambient()
 AmbientPlay ( "map" );
 wait 2;
 iprintln("^1>>^7Now Playing^3: ^1Gorillaz ^3- ^7On Melancholy Hill ( HyGrade Remix )^1<<");
-iprintln("^1>>^7Now Playing^3: ^1Gorillaz ^3- ^7On Melancholy Hill ( HyGrade Remix )^1<<"); 
-}	
-		
-	
+iprintln("^1>>^7Now Playing^3: ^1Gorillaz ^3- ^7On Melancholy Hill ( HyGrade Remix )^1<<");
+}
+
+
 startdoor()
 {
 		trigger = getent ("door_trigger", "targetname");
 		object = getent("links", "targetname");
-		
-		
-		
+
+
+
 		trigger waittill ("trigger", Player);
 		trigger delete();
-	
-			
+
+
 		thread credit();
 		thread button();
-		thread rechts();	
+		thread rechts();
 		thread quake();
 		object moveX (15, 5);
 		object waittill("movedone");
 		object moveY (100, 5);
-			
-		
-		
-				
+
+
+
+
 }
 rechts()
 {
 		object = getent ("rechts", "targetname");
-		
+
 		object moveX (15, 5);
 		object waittill("movedone");
 		object moveY (-100, 5);
@@ -592,18 +592,18 @@ quake()
 {
 		sound = getent ("main_door", "targetname");
 		main_door  = getent( "main_door", "targetname" );
-		
-		
+
+
 			wait(0.5);
 				EarthQuake( 0.4, 5, main_door.origin, 10000 );
 				//Earthquake( 0.7, 8, main_door.origin, 10000 );
-				sound PlaySound( "elm_quake_sub_rumble"); 
-		
+				sound PlaySound( "elm_quake_sub_rumble");
+
 }
 button()
 {
 		object = getent ("button", "targetname");
-		
+
 		object  moveX (-10, 3.5);
 }
 credit()
@@ -611,9 +611,9 @@ credit()
 wait(2.5);
 thread drawInformation( 800, 0.8, 1, "Steel v2" );
 wait(4);
-thread drawInformation( 800, 0.8, 1, "© Elpredatore & TwiYo" );
+thread drawInformation( 800, 0.8, 1, "ï¿½ Elpredatore & TwiYo" );
 wait(4);
-}	
+}
 
 drawInformation( start_offset, movetime, mult, text )
 {
@@ -664,29 +664,29 @@ trap1()
 	links = getent ("door_links", "targetname");
 	coneR = getent ("coneR", "targetname");
 	coneL = getent ("coneL", "targetname");
-	
+
 	trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
-	trigger waittill ("trigger", Player);		
-	
+	trigger waittill ("trigger", Player);
+
 	trigger setHintString ("^1Trap Activated!");
-		
-	
+
+
 	{
 	thread objectc();
-	
+
 	rechts enablelinkto();
 	rechts linkto (coneR);
 	coneR rotateroll(-85,0.1);
-	
+
 	links enablelinkto();
 	links linkto (coneL);
 	coneL rotateroll(85,0.1);
-	
+
 	wait(10);
-	
+
 	coneR rotateroll(85,.9);
 	coneL rotateroll(-85,.9);
-	
+
 	}
 }
 
@@ -694,29 +694,29 @@ trap1()
 objectc()
 {
 	objectc = getent("push", "targetname");
-	
+
 	wait(15);
 	thread spikes();
 	objectc moveX(-250, 8);
 	objectc waittill ("movedone");
 	wait(4);
 	objectc moveX(250, 5);
-	
-	
+
+
 	}
 spikes()
 {
 	spike = getent("spikes", "targetname");
 	killtrigger = getent ("spikesh", "targetname");
-	
-	
+
+
 	killtrigger enablelinkto ();
 	killtrigger linkto (spike);
 	spike moveX(55, 5);
 	spike waittill ("movedone");
 	wait(4);
 	spike moveX(-55, 5);
-	
+
 }
 
 exit()
@@ -724,12 +724,12 @@ exit()
 		trigger = getEnt ("exit_trigger", "targetname");
 		target = getEnt ("exit_teleport", "targetname");
 		object = getent ("knopf", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
 		trigger delete();
-		object moveY (12, 2.5); 
+		object moveY (12, 2.5);
 		iPrintlnBold( " ^6" + player.name + " ^5 Has Found a way to leave the Trap^1!" ); // Change the massage if you want
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
@@ -738,49 +738,49 @@ exit()
 knopf()
 {
 	object = getent ("knopf", "targetname");
-	
+
 	object notsolid();
 	}
-	
+
 trap2()
 {
 		trigger = getEnt("trap2_trigger","targetname");
-        		
-       
+
+
 		trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
-		trigger waittill ("trigger", Player);		
-	
-		trigger setHintString ("^1Trap Activated!");  
-    
-		myVar = getEntArray("trap2a", "targetname")[RandomInt(2)];  
+		trigger waittill ("trigger", Player);
+
+		trigger setHintString ("^1Trap Activated!");
+
+		myVar = getEntArray("trap2a", "targetname")[RandomInt(2)];
 		myVar notsolid();
 		myVar = getEntArray("trap2b", "targetname")[RandomInt(2)];
 		myVar notsolid();
-	 
-            
+
+
 }
 trap3()
 {
-		
+
 		trigger = getent ("trap3_trigger", "targetname");
 		object1 = getent ("trap3_lasera", "targetname");
 		hurt1 = getent ("laser_hurt1", "targetname");
 		hurt2 = getent ("laser_hurt2", "targetname");
 		hurt3 = getent ("laser_hurt3", "targetname");
-		
+
 		trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
-		trigger waittill ("trigger", Player);		
-	
-		trigger setHintString ("^1Trap Activated!");  
-		
+		trigger waittill ("trigger", Player);
+
+		trigger setHintString ("^1Trap Activated!");
+
 		thread trap3aa();
-		
+
 		hurt1 enablelinkto ();
 		hurt1 linkto (object1);
 		hurt2 enablelinkto ();
 		hurt2 linkto (object1);
 		hurt3 enablelinkto ();
-		hurt3 linkto (object1);		
+		hurt3 linkto (object1);
 		object1 notsolid();
 		while(1)
 		{
@@ -795,8 +795,8 @@ trap3aa()
 {
 			object2 = getent ("trap3_laserb", "targetname");
 			hurt4 = getent ("laser_hurt4", "targetname");
-			hurt5 = getent ("laser_hurt5", "targetname");			
-			
+			hurt5 = getent ("laser_hurt5", "targetname");
+
 			hurt4 enablelinkto ();
 			hurt4 linkto (object2);
 			hurt5 enablelinkto ();
@@ -805,7 +805,7 @@ trap3aa()
 			wait 2;
 			while(1)
 			{
-			
+
 			object2 moveZ (-405, 2);
 			object2 waittill("movedone");
 			object2 moveZ (405, 2);
@@ -819,12 +819,12 @@ trap3platten()
 		thread trap3b();
 		while(1)
 		{
-		
+
 		objecta moveX (500, 1.5);
 		objecta waittill("movedone");
 		objecta moveX (-500,1.5);
 		objecta waittill("movedone");
-		
+
 		}
 }
 trap3b()
@@ -837,19 +837,19 @@ trap3b()
 		objectb waittill("movedone");
 		objectb moveX (-500,1.5);
 		objectb waittill("movedone");
-			
+
 		}
 }
 trap4()
 {
 		trigger = getent ("trap4_trigger", "targetname");
 		object = getent ("spin", "targetname");
-	
+
 		trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
-		trigger waittill ("trigger", Player);		
-	
-		trigger setHintString ("^1Trap Activated!");  
-			
+		trigger waittill ("trigger", Player);
+
+		trigger setHintString ("^1Trap Activated!");
+
 		while(1)
 		{
 		object rotatepitch (360, 3.5);
@@ -861,11 +861,11 @@ trap5()
 {
 		trigger = getent ("trap5_trigger", "targetname");
 		object = getent ("trap5a", "targetname");
-		
+
 		trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
-		trigger waittill ("trigger", Player);		
-	
-		trigger setHintString ("^1Trap Activated!");  
+		trigger waittill ("trigger", Player);
+
+		trigger setHintString ("^1Trap Activated!");
 
 		while(1)
 		{
@@ -874,7 +874,7 @@ trap5()
 		object waittill("movedone");
 		object moveY (-395, 1.3);
 		object waittill("movedone");
-		
+
 		}
 }
 
@@ -887,19 +887,19 @@ trap5b()
 		object moveY (-395, 1.3);
 		object waittill("movedone");
 }
-	
+
 trap6()
 {
 		trigger = getent ("trap6_trigger", "targetname");
 		object = getent ("trap6", "targetname");
-		
+
 		trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
-		trigger waittill ("trigger", Player);		
-	
-		trigger setHintString ("^1Trap Activated!"); 
+		trigger waittill ("trigger", Player);
+
+		trigger setHintString ("^1Trap Activated!");
 
 		while(1)
-		{		
+		{
 		object rotateYAW (360, 3);
 		wait(0.5);
 		}
@@ -909,15 +909,15 @@ trap7()
 {
 		trigger = getent ("trap7_trigger", "targetname");
 		object = getent ("trap7", "targetname");
-		
+
 		trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
-		trigger waittill ("trigger", Player);		
-	
-		trigger setHintString ("^1Trap Activated!"); 
+		trigger waittill ("trigger", Player);
+
+		trigger setHintString ("^1Trap Activated!");
 
 		while(1)
 		{
-		
+
 		object moveZ (65, 1.5);
 		object waittill("movedone");
 		object moveZ (-65, 1.5);
@@ -925,28 +925,28 @@ trap7()
 		}
 }
 
-		
+
 trap8()
 {
 		trigger = getent ("trap8_trigger", "targetname");
 		object = getent ("trap8a", "targetname");
-		
+
 		trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
-		trigger waittill ("trigger", Player);		
-	
-		trigger setHintString ("^1Trap Activated!"); 
+		trigger waittill ("trigger", Player);
+
+		trigger setHintString ("^1Trap Activated!");
 
 		thread trap8b();
 		while(1)
 		{
-		
-				
+
+
 		object moveZ (-50, 1.3);
 		object waittill("movedone");
-		
+
 		object moveZ (50, 1.3);
 		object waittill("movedone");
-		
+
 		}
 }
 
@@ -957,7 +957,7 @@ trap8b()
 		{
 		object moveZ (50, 1.3);
 		object waittill("movedone");
-		
+
 		object moveZ (-50, 1.3);
 		object waittill("movedone");
 		}
@@ -970,19 +970,19 @@ trap9()
 		hurt1 = getent ("trap9_hurt1", "targetname");
 		hurt2 = getent ("trap9_hurt2", "targetname");
 		hurt3 = getent ("trap9_hurt3", "targetname");
-		
+
 		trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
-		trigger waittill ("trigger", Player);		
-	
-		trigger setHintString ("^1Trap Activated!"); 
-		
+		trigger waittill ("trigger", Player);
+
+		trigger setHintString ("^1Trap Activated!");
+
 		hurt1 enablelinkto ();
-		hurt1 linkto (object);	
+		hurt1 linkto (object);
 		hurt2 enablelinkto ();
-		hurt2 linkto (object);	
+		hurt2 linkto (object);
 		hurt3 enablelinkto ();
-		hurt3 linkto (object);	
-		
+		hurt3 linkto (object);
+
 		while(1)
 		{
 		object moveZ (-180, 0.5);
@@ -998,48 +998,48 @@ trap10()
 {
 		trigger = getent ("trap10_trigger", "targetname");
 		object = getent ("trap10a", "targetname");
-		
+
 		trigger setHintString ("^7Press ^3[Use] ^7to Activate!");
-		trigger waittill ("trigger", Player);		
-	
-		trigger setHintString ("^1Trap Activated!"); 
-		
+		trigger waittill ("trigger", Player);
+
+		trigger setHintString ("^1Trap Activated!");
+
 		thread trap10b();
 		thread trap10c();
 		thread trap10d();
 		thread trap10e();
 		thread trap10f();
 		thread trap10g();
-		
+
 		while(1)
 		{
-		
+
 		object moveZ (-180, 1.5);
 		object waittill("movedone");
 		wait(0.8);
 		object moveZ (180, 1.5);
 		object waittill("movedone");
 		wait(2.5);
-		
+
 		}
 }
 
 trap10b()
 {
 		object = getent ("trap10b", "targetname");
-		
+
 		while(1)
 		{
 		object rotateyaw (360, 1.5);
 		wait 1;
 		}
-		
+
 }
 
 trap10c()
 {
 		object = getent ("trap10c", "targetname");
-		
+
 		while(1)
 		{
 		object moveY (-110, 1.5);
@@ -1047,13 +1047,13 @@ trap10c()
 		object moveY (110, 1.5);
 		object waittill("movedone");
 		}
-		
+
 }
 
 trap10d()
 {
 		object = getent ("trap10d", "targetname");
-		
+
 		while(1)
 		{
 		object moveZ (-180, 1.5);
@@ -1063,13 +1063,13 @@ trap10d()
 		object waittill("movedone");
 		wait(1);
 		}
-		
+
 }
 
 trap10e()
 {
 		object = getent ("trap10e", "targetname");
-		
+
 		while(1)
 		{
 		object moveZ (-150, 1.5);
@@ -1078,13 +1078,13 @@ trap10e()
 		object waittill("movedone");
 		wait 1;
 		}
-		
+
 }
 
 trap10f()
 {
 		object = getent ("trap10f", "targetname");
-		
+
 		while(1)
 		{
 		object moveY (150, 1.5);
@@ -1092,13 +1092,13 @@ trap10f()
 		object moveY (-150, 1.5);
 		object waittill ("movedone");
 		}
-		
+
 }
 
 trap10g()
 {
 		object = getent ("trap10g", "targetname");
-		
+
 		while(1)
 		{
 		object moveX (150, 1.5);
@@ -1106,17 +1106,17 @@ trap10g()
 		object moveX (-150, 1.5);
 		object waittill ("movedone");
 		}
-		
+
 }
 ////////////////////////////////////Lifts////////////////////////////////////////
 liftdoor()
 {
 		trigger = getent("lift_door_trigger", "targetname");
 		liftL = getent ("liftL", "targetname");
-				
+
 		trigger waittill ("trigger", Player);
 		trigger delete();
-		
+
 		thread liftR();
 		liftL moveY (180, 1.5);
 		liftL waittill("movedone");
@@ -1126,19 +1126,19 @@ liftdoor()
 liftR()
 {
 		object = getent ("liftR", "targetname");
-		
+
 		object moveY (-180, 1.5);
 		object waittill("movedone");
-}		
-		
+}
+
 liftjumper()
 {
 		trigger = getent ("liftjumper_trigger", "targetname");
 		object = getent ("liftjumper", "targetname");
-		
+
 		trigger waittill ("trigger", Player);
 		trigger delete();
-		
+
 		while(1)
 		{
 		wait(1.5);
@@ -1156,14 +1156,14 @@ liftacti()
 		trigger = getent ("actilift_trigger", "targetname");
 		object = getent ("actilift", "targetname");
 		nodmg = getent ("acti_lift_nodmg" , "targetname");
-		
+
 		trigger waittill ("trigger", Player);
 		trigger delete();
-		
+
 		while(1)
 		{
 		nodmg enablelinkto ();
-		nodmg linkto (object);	
+		nodmg linkto (object);
 		wait(1);
 		object moveZ (1253, 2);
 		object waittill("movedone");
@@ -1182,7 +1182,7 @@ secret()
 		step3 = getent ("step3", "targetname");
 		platform = getent("secret_eingang", "targetname");
 		teleport = getent ("secret_eingang_teleport", "targetname");
-		
+
 		for(;;)
 		{
 		step1 waittill("trigger", player);
@@ -1194,7 +1194,7 @@ secret()
 		player iPrintLnBold("You opened the Secretroom!"); //Change the message if you want
 		iPrintlnBold( " ^3" + player.name + " ^6 Has opened the Secretroom^1!" ); //Change the message if you want
 		teleport enablelinkto ();
-		teleport linkto (platform);		
+		teleport linkto (platform);
 		platform notsolid();
 		platform movez(250,1);
 		platform waittill("movedone");
@@ -1205,11 +1205,11 @@ tele()
 {
 	trigger = getEnt ("secret_eingang_teleport", "targetname");
 	target = getEnt ("secret_eingang_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player iprintlnbold ("Welcome to the Secretroom!");	// change the message if you want
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
@@ -1219,7 +1219,7 @@ tele()
 {
 		object1 = getent ("secrettrap1", "targetname");
 		object2 = getent ("secrettrap2", "targetname");
-		
+
 		while(1)
 		{
 		object1 rotateroll(360, 2.2);
@@ -1233,28 +1233,28 @@ ausgang()
 {
 	trigger = getEnt ("secret_ausgang_teleport", "targetname");
 	target = getEnt ("secret_ausgang_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
-		
+
 		player giveWeapon("ak74u_mp", 100, 500 );
 		player switchToWeapon("ak74u_mp");
 		iPrintlnBold( " ^3" + player.name + " ^6 HAS FINISHED THE SECRET ROOM^1!" ); // change the message if you want
 		//player braxi\_rank::giveRankXp( "", 100);
 	}
-}	
+}
 secretdoor()
 {
 		trigger = getent ("secret_door_trigger", "targetname");
 		object  = getent ("secret_door", "targetname");
-		
+
 		trigger waittill("trigger", Player);
 		trigger delete();
-		
+
 		object moveZ (-110, 2.5);
 		object waittill("movedone");
 }
@@ -1262,11 +1262,11 @@ respawn1()
 {
 	trigger = getEnt ("secret_respawn1", "targetname");
 	target = getEnt ("secret_respawn1_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -1275,11 +1275,11 @@ respawn2()
 {
 	trigger = getEnt ("secret_respawn2", "targetname");
 	target = getEnt ("secret_respawn2_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -1289,11 +1289,11 @@ secret2()
 {
 	trigger = getEnt ("secret2_eingang_trigger", "targetname");
 	target = getEnt ("secret2_eingang_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player iprintlnbold ("^3Welcome to the Secretroom!");	// change the message if you want
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
@@ -1304,11 +1304,11 @@ secret2respawn()
 {
 	trigger = getEnt ("secret2_respawn_trigger", "targetname");
 	target = getEnt ("secret2_respawn_target", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -1318,11 +1318,11 @@ secret2exit_1()
 {
 		trigger = getent ("m60_1_trigger", "targetname");
 		target = getEnt ("secret2_ausgang", "targetname");
-		
+
 	for(;;)
 	{
 		trigger waittill ("trigger", user);
-		
+
 		{
 			{
 			wait 0.25;
@@ -1333,79 +1333,79 @@ secret2exit_1()
 			{
 				user giveWeapon("deserteagle_mp", 100, 500 );
 				user switchToWeapon("deserteagle_mp");
-			
+
 			}
 			if(random == 1)
 			{
 				user giveWeapon("uzi_mp", 100, 500 );
 				user switchToWeapon("uzi_mp");
-				
+
 			}
 			if(random == 2)
 			{
 				user giveWeapon("m4_mp", 100, 500 );
 				user switchToWeapon("m4_mp");
-				
+
 			}
 			if(random == 3)
 			{
 				user giveWeapon("ak47_mp", 100, 500 );
 				user switchToWeapon("ak47_mp");
-				
+
 			}
 			if(random == 4)
 			{
 				user giveWeapon("g3_mp", 100, 500 );
 				user switchToWeapon("g3_mp");
-				
+
 			}
 			if(random == 5)
 			{
 				user giveWeapon("m60e4_mp", 100, 500 );
 				user switchToWeapon("m60e4_mp");
-				
+
 			}
 			if(random == 6)
 			{
 				user giveWeapon("p90_mp", 100, 500 );
 				user switchToWeapon("p90_mp");
-				
+
 			}
 			if(random == 7)
 			{
 				user giveWeapon("m40a3_mp", 100, 500 );
 				user switchToWeapon("m40a3_mp");
-				
+
 			}
 			if(random == 8)
 			{
 				user giveWeapon("barrett_mp", 100, 500 );
 				user switchToWeapon("barrett_mp");
-				
+
 			}
 			if(random == 9)
 			{
 				user giveWeapon("g36c_silencer_mp", 100, 0 );
 				user switchToWeapon("g36c_silencer_mp");
-				
+
 			}
 			if(random == 10)
 			{
 				user giveWeapon("skorpion_silencer_mp", 100, 500 );
 				user switchToWeapon("skorpion_silencer_mp");
-				
+
 			}
 			if(random == 11)
 			{
 				user giveWeapon("saw_grip_mp", 100, 500 );
 				user switchToWeapon("saw_grip_mp");
-				
+
 			}
 			if(random == 12)
 			{
 				user giveWeapon("remington700_mp", 100, 500 );
 				user switchToWeapon("remington700_mp");
-				
+
 			}
 			if(random == 13)
 			{
@@ -1418,7 +1418,7 @@ secret2exit_1()
 		user SetPlayerAngles( target.angles );
 	}
 
-}	
+}
 }
 
 
@@ -1426,11 +1426,11 @@ secret3()
 {
 		trigger = getent ("secret3_eingang_trigger", "targetname");
 		target = getent ("secret3_eingang", "targetname");
-		
+
 			for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -1444,7 +1444,7 @@ secret3respawn1()
 					for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -1453,12 +1453,12 @@ secret3_respawn2()
 {
 		trigger = getent ("secret3_respawn2_trigger", "targetname");
 		target = getent ("secret3_respawn2", "targetname");
-		
+
 
 					for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -1468,11 +1468,11 @@ secret3_teil2()
 {
 		trigger = getent ("secret3_teil2_trigger", "targetname");
 		target = getent ("secret3_teil2_eingang", "targetname");
-		
+
 					for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -1482,11 +1482,11 @@ secret3_respawn3()
 {
 		trigger = getent ("secret3_teil2_respawn_trigger", "targetname");
 		target = getent ("secret3_teil2_respawn", "targetname");
-		
+
 					for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -1500,7 +1500,7 @@ secret3_ausgang()
 						for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -1513,7 +1513,7 @@ actiteleport()
 	trigger = getEnt ("acti_teleport_teleport", "targetname");
 	target = getEnt ("acti_teleport_target", "targetname");
 	trigger2 = getent ("acti_teleport_jumper_trigger", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
@@ -1528,18 +1528,18 @@ actiteleportjumper()
 {
 		level.acti_teleport_jumper_trigger = getent ("acti_teleport_jumper_trigger", "targetname");
 		tele_activator_tunnel = getent ("acti2_teleport_target", "targetname");
-		
+
 		level.acti_teleport_jumper_trigger waittill( "trigger", player );
 		level.acti_teleport_jumper_trigger delete();
-		
+
 		level.activ finalRoom(tele_activator_tunnel);
-	
+
 }
 finalRoom( tp, weap, health )
-{	
+{
     self SetPlayerAngles( tp.angles );
     self SetOrigin( tp.origin );
-}	
+}
 
 tunnel1()
 {
@@ -1575,7 +1575,7 @@ tunnel1()
 		}
 	}
 }
-}	
+}
 tunnel2()
 {
 	jumper = getent ("tunnel2_trigger","targetname");
@@ -1610,7 +1610,7 @@ tunnel2()
 		}
 	}
 }
-}			
+}
 tunnel3()
 {
 	jumper = getent ("tunnel3_trigger","targetname");
@@ -1680,7 +1680,7 @@ tunnel4()
 		}
 	}
 }
-}	
+}
 tunnel5()
 {
 	jumper = getent ("tunnel5_trigger","targetname");
@@ -1715,7 +1715,7 @@ tunnel5()
 		}
 	}
 }
-}	
+}
 tunnel6()
 {
 	jumper = getent ("tunnel6_trigger","targetname");
@@ -1750,7 +1750,7 @@ tunnel6()
 		}
 	}
 }
-}	
+}
 tunnel7()
 {
 	jumper = getent ("tunnel7_trigger","targetname");
@@ -1820,7 +1820,7 @@ tunnel8()
 		}
 	}
 }
-}	
+}
 tunnel9()
 {
 	jumper = getent ("tunnel9_trigger","targetname");
@@ -2173,7 +2173,7 @@ tunnel18()
 }
 train()
 {
-		
+
 			trigger = getent ("train_trigger", "targetname");
 			object = getent ("train", "targetname");
 			gleis2 = getent ("gleis2", "targetname"); //broke
@@ -2182,20 +2182,20 @@ train()
 			backdoor = getent ("train_backdoor", "targetname");
 			sound = getent ("train_sound", "targetname");
 			gleis2 hide();
-			gleis2 notsolid();			
+			gleis2 notsolid();
 			door2 hide();
 			door2 notsolid();
-			
+
 			trigger waittill("trigger",player);
 			trigger delete();
-			
+
 			sound enablelinkto();
 			sound linkto (object);
 			backdoor enablelinkto ();
 			backdoor linkto (object);
 			scheibe enablelinkto ();
 			scheibe linkto (object);
-			wait(3);			
+			wait(3);
 			sound Playsound ( "trains" );
 			object moveY (2640, 1);
 			object waittill("movedone");
@@ -2212,17 +2212,17 @@ trainquake()
 			scheibe = getent ("train_scheibe", "targetname");
 			backdoor = getent ("train_backdoor", "targetname");
 			door1_boom = getent ("door1_boom", "targetname"); //origin
-			firesound = getent("door1_boom","targetname"); //origin	
+			firesound = getent("door1_boom","targetname"); //origin
 
-			
-			
-			firesound PlaySound( "rock"); 
+
+
+			firesound PlaySound( "rock");
 			playFx(level.fire, door1_boom.origin);
-			EarthQuake( 1, 4, door1_boom.origin, 4000 );	
+			EarthQuake( 1, 4, door1_boom.origin, 4000 );
 			gleis1 hide();
 			gleis1 notsolid();
 			gleis2 solid();
-			gleis2 show();	
+			gleis2 show();
 			door1 hide();
 			door1 notsolid();
 			door2 show();
@@ -2239,7 +2239,7 @@ SniperFight()
 		level.actiorigin = getent ("snip_acti", "targetname");
 		teleorigin = getent ("sniper_jumper_teleport", "targetname");
 		level.sniper_trigger = getent ("sniper_trigger", "targetname");
-		
+
 		while(true)
 		{
 		level.sniper_trigger waittill("trigger", player);
@@ -2252,7 +2252,7 @@ SniperFight()
 			level.knife_trigger delete();
 			level.knife_rotate_trigger delete();
 			level.firstenter=false;
-			}	
+			}
 wait(0.05);
 player setorigin (teleorigin.origin);
 player setplayerangles (teleorigin.angles);
@@ -2277,26 +2277,26 @@ while( isAlive( player ) && isDefined( player ) )
 ammobox1()
 {
 		trigger = getent ("ammo_box1", "targetname");
-		
+
 	while(1)
 	    {
 		trigger waittill( "trigger", player );
 		player givemaxammo ( "m40a3_mp" );
 		player givemaxammo ( "remington700_mp" );
 		player iprintlnbold ("^3Ammo Replenished");
-	    }    
+	    }
 }
 ammobox2()
 {
 		trigger = getent ("ammo_box2", "targetname");
-		
+
 	while(1)
 	    {
 		trigger waittill( "trigger", player );
 		player givemaxammo ( "m40a3_mp" );
 		player givemaxammo ( "remington700_mp" );
 		player iprintlnbold ("^3Ammo Replenished");
-	    }    
+	    }
 }
 
 bouncefight()
@@ -2316,17 +2316,17 @@ if(level.firstenter==true)
 		level.knife_trigger delete();
 		level.knife_rotate_trigger delete();
 		level.firstenter=false;
-		}	
+		}
 wait(0.05);
 player SetOrigin( telejumporigin.origin );
 player setplayerangles( telejumporigin.angles );
 player TakeAllWeapons();
-player GiveWeapon( "knife_mp" ); 
+player GiveWeapon( "knife_mp" );
 wait(0.05);
 level.activ SetOrigin (level.teleactorigin.origin);
 level.activ setplayerangles (level.teleactorigin.angles);
 level.activ TakeAllWeapons();
-level.activ GiveWeapon( "knife_mp" ); 
+level.activ GiveWeapon( "knife_mp" );
 wait(0.05);
 player switchToWeapon( "knife_mp" );
 level.activ SwitchToWeapon( "knife_mp" );
@@ -2342,7 +2342,7 @@ bouncerespawn()
 	trigger = getEnt ("bounce_respawn_trigger", "targetname");
 	jumper = getEnt ("bounce_jumper_respawn", "targetname");
 	activator = getEnt ("bounce_activator_respawn", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
@@ -2351,10 +2351,10 @@ bouncerespawn()
 			player SetOrigin(jumper.origin);
 			player SetPlayerAngles( jumper.angles );
 		}
-		else if(player.pers["team"] == "axis")	
+		else if(player.pers["team"] == "axis")
 		{
 			player SetOrigin(activator.origin);
-			player SetPlayerAngles( activator.angles );			
+			player SetPlayerAngles( activator.angles );
 		}
 	}
 }
@@ -2362,10 +2362,10 @@ bouncerespawn()
 bounceweapon()
 {
 		trigger = getent ("bounce_room_weapon", "targetname");
-		
+
 		trigger waittill ("trigger", user);
 		trigger delete();
-		
+
 		{
 			{
 			wait 0.25;
@@ -2375,79 +2375,79 @@ bounceweapon()
 			{
 				user giveWeapon("deserteagle_mp", 100, 500 );
 				user switchToWeapon("deserteagle_mp");
-			
+
 			}
 			if(random == 1)
 			{
 				user giveWeapon("uzi_mp", 100, 500 );
 				user switchToWeapon("uzi_mp");
-				
+
 			}
 			if(random == 2)
 			{
 				user giveWeapon("m4_mp", 100, 500 );
 				user switchToWeapon("m4_mp");
-				
+
 			}
 			if(random == 3)
 			{
 				user giveWeapon("ak47_mp", 100, 500 );
 				user switchToWeapon("ak47_mp");
-				
+
 			}
 			if(random == 4)
 			{
 				user giveWeapon("g3_mp", 100, 500 );
 				user switchToWeapon("g3_mp");
-				
+
 			}
 			if(random == 5)
 			{
 				user giveWeapon("m60e4_mp", 100, 500 );
 				user switchToWeapon("m60e4_mp");
-				
+
 			}
 			if(random == 6)
 			{
 				user giveWeapon("p90_mp", 100, 500 );
 				user switchToWeapon("p90_mp");
-				
+
 			}
 			if(random == 7)
 			{
 				user giveWeapon("m40a3_mp", 100, 500 );
 				user switchToWeapon("m40a3_mp");
-				
+
 			}
 			if(random == 8)
 			{
 				user giveWeapon("barrett_mp", 100, 500 );
 				user switchToWeapon("barrett_mp");
-				
+
 			}
 			if(random == 9)
 			{
 				user giveWeapon("g36c_silencer_mp", 100, 0 );
 				user switchToWeapon("g36c_silencer_mp");
-				
+
 			}
 			if(random == 10)
 			{
 				user giveWeapon("skorpion_silencer_mp", 100, 500 );
 				user switchToWeapon("skorpion_silencer_mp");
-				
+
 			}
 			if(random == 11)
 			{
 				user giveWeapon("saw_grip_mp", 100, 500 );
 				user switchToWeapon("saw_grip_mp");
-				
+
 			}
 			if(random == 12)
 			{
 				user giveWeapon("remington700_mp", 100, 500 );
 				user switchToWeapon("remington700_mp");
-				
+
 			}
 			if(random == 13)
 			{
@@ -2480,12 +2480,12 @@ wait(0.05);
 player SetOrigin( teleknifeorigin.origin );
 player setplayerangles( teleknifeorigin.angles );
 player TakeAllWeapons();
-player GiveWeapon( "tomahawk_mp" ); 
+player GiveWeapon( "tomahawk_mp" );
 wait(0.05);
 level.activ SetOrigin (level.teleactorigin3.origin);
 level.activ setplayerangles (level.teleactorigin3.angles);
 level.activ TakeAllWeapons();
-level.activ GiveWeapon( "tomahawk_mp" ); 
+level.activ GiveWeapon( "tomahawk_mp" );
 wait(0.05);
 player switchToWeapon( "tomahawk_mp" );
 level.activ SwitchToWeapon( "tomahawk_mp" );
@@ -2514,7 +2514,7 @@ if( !isDefined( level.knife_rotate_trigger ) )
 		level.old_jumper_trigger delete();
 		level.bounce_trigger delete();
 		level.firstenter=false;
-		}	
+		}
 wait(0.05);
 player SetOrigin( teleorigin.origin );
 player setplayerangles( teleorigin.angles );
@@ -2539,10 +2539,10 @@ while( isAlive( player ) && isDefined( player ) )
 rotation()
 {
 		object = getent ("rotateknife", "targetname");
-		
-		
-	
-		wait .5;	
+
+
+
+		wait .5;
 		while(1)
 		{
 		thread antidmgrotate();
@@ -2564,17 +2564,17 @@ antidmgrotate()
 		dmg moveZ (150, 0.8);
 		dmg waittill("movedone");
 		wait(1);
-		
+
 }
 knife_respawn()
 {
 	trigger = getEnt ("knife_respawn_trigger", "targetname");
 	target = getEnt ("knife_respawn", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 		player SetPlayerAngles( target.angles );
 	}
@@ -2584,7 +2584,7 @@ knife_respawn()
 
 oldfight()
 {
-	
+
    	level.old_jumper_trigger = getEnt( "old_jumper_trigger", "targetname");
 	object = getent ("old_door", "targetname");
 	music_changed = false;
@@ -2592,11 +2592,11 @@ oldfight()
 	{
 	while( 1 )
     {
-		
+
 		level.old_jumper_trigger waittill( "trigger", player );
         if( !isDefined( level.old_jumper_trigger ) )
             return;
-		thread old_door2();	
+		thread old_door2();
 		if(level.firstenter==true)
 		{
 		level.sniper_trigger delete();
@@ -2606,24 +2606,24 @@ oldfight()
 		level.firstenter=false;
 		}
 		level.old_jumper_trigger delete();
-        
-	
+
+
 	if( level.freeRun || isDefined( level.finalJumper ) || player.pers["team"] != "allies" )
             continue;
-		
+
 		object moveZ (-145, 2.5);
 		iPrintlnBold( " ^7" + player.name + " ^3 HAS OPENED THE OLD WAY^7!" );
 		}
-		
-	}	
-	
+
+	}
+
 }
 
 old_door2()
 {
 		wait(3);
 		object = getent ("old_door2", "targetname");
-		
+
 		wait(2);
 		object moveZ (-150, 2.5);
 }
@@ -2634,18 +2634,18 @@ printCredits()
     {
             if( isDefined( self.logoText ) )
                     self.logoText destroy();
-     
+
             self.logoText = newHudElem();
             self.logoText.y = 10;
             self.logoText.alignX = "center";
             self.logoText.alignY = "middle";
             self.logoText.horzAlign = "center_safearea";
-     
+
             self.logoText.alpha = 0;
             self.logoText.sort = -3;
             self.logoText.fontScale = 1.6;
             self.logoText.archieved = true;
-     
+
             for(;;)
             {
                     self.logoText fadeOverTime(1);
@@ -2684,21 +2684,21 @@ printCredits()
                     self.logoText.alpha = 0;
 					wait 1;
 		}
-	
+
 	}
 	extracredits()
 {
          trigger = getEnt("extra_credit_button_trigger","targetname");
 		 object = getent ("extra_credit_button", "targetname");
-		 
+
 		 trigger setHintString ("^3Extra Credits");
-		 
+
          trigger waittill("trigger",players);
          trigger delete();
-		 
+
 		 object  moveY (-15, 3.5);
     {
-           
+
 	hud_clock = NewHudElem();
 	hud_clock.alignX = "center";
 	hud_clock.alignY = "middle";
@@ -2713,9 +2713,9 @@ printCredits()
 	hud_clock.glowcolor = (0,0,1);
 	hud_clock.label = &"Thanks To:";
 	hud_clock SetPulseFX( 40, 5400, 200 );
-	
+
 	wait 6.5;
-		
+
 	hud_clock = NewHudElem();
 	hud_clock.alignX = "center";
 	hud_clock.alignY = "middle";
@@ -2736,43 +2736,43 @@ printCredits()
 	////////////////////////////////////////
 	deko()
 	{
-	
+
 		object = getent ("deko_1", "targetname");
-		
+
 		thread deko2();
 		thread deko3();
-		
+
 		while(1)
 		{
 			object rotatepitch (-360, 4);
 			wait .5;
 		}
-		
+
 	}
-	
+
 	deko2()
 	{
 			object = getent ("deko_2", "targetname");
-			
+
 			while(1)
 			{
 				object rotateyaw (360, 4);
 				wait .5;
 			}
 	}
-	
+
 	deko3()
 	{
 			object = getent ("deko_3", "targetname");
-			
+
 			while(1)
 			{
 				object rotateroll (-360, 4);
 				wait .5;
 			}
 	}
-	
-	
+
+
 	disco()
 	{
 			object = getent ("disco", "targetname");
@@ -2786,8 +2786,8 @@ printCredits()
 				wait 0.5;
 			}
 	}
-	
-//////////////////////////// JUKE BOX //////// SCRIPT BY IELITEMODZX	
+
+//////////////////////////// JUKE BOX //////// SCRIPT BY IELITEMODZX
 endMusic()
 {
 	AmbientStop(1);
@@ -2830,7 +2830,7 @@ createJuke()
 	{
 		level.juke["options"][k] = createText("default",1.6,"LEFT","",10,((k*22)-100),1,100,level.options[k]);
 		level.juke["options"][k].glowColor = (1,0,0);
-		
+
 		level.juke["artists"][k] = createText("default",1.6,"RIGHT","",-10,((k*22)-100),1,100,level.artists[k]);
 		level.juke["artists"][k].glowAlpha = 1;
 		level.juke["artists"][k].glowColor = (0,1,0);
@@ -2851,16 +2851,16 @@ runJuke()
 			level.juke["curs"] += self attackButtonPressed();
 			if(level.juke["curs"] >= level.options.size)
 				level.juke["curs"] = 0;
-				
+
 			if(level.juke["curs"] < 0)
 				level.juke["curs"] = level.options.size-1;
-				
+
 			for(k = 0; k < level.juke["options"].size; k++)
 				if(k != level.juke["curs"])
 					level.juke["options"][k].glowAlpha = 0;
 				else
 					level.juke["options"][k].glowAlpha = 1;
-					
+
 			wait .15;
 		}
 		if(self useButtonPressed())
@@ -2873,7 +2873,7 @@ runJuke()
 		}
 		if(self meleeButtonPressed())
 			break;
-			
+
 		wait .05;
 	}
 	self notify("left_menu");
@@ -2887,7 +2887,7 @@ runJuke()
 	}
 	for(k = 0; k < level.juke["top_option"].size; k++)
 		level.juke["top_option"][k] destroy();
-		
+
 	self freezeControls(false);
 }
 jukeDeath()
@@ -2895,7 +2895,7 @@ jukeDeath()
 	self endon("left_menu");
 	self waittill("death");
 	level.juke["open"] = false;
-}	
+}
 
 
 createText(font,fontscale,align,relative,x,y,alpha,sort,text)
@@ -2934,14 +2934,14 @@ destroyElemOnDeath(elem)
 	self freezeControls(false);
 	elem destroy();
 }
-	
+
 jukesecret()
 {
 		step1 = getEnt("juke_knife_1", "targetname");
 		step2 = getent ("juke_knife_2", "targetname");
 		step3 = getent ("juke_wall_trigger", "targetname");
 		object = getent("juke_room", "targetname");
-		
+
 		for(;;)
 		{
 		step1 waittill("trigger", player);
@@ -2950,4 +2950,4 @@ jukesecret()
 		object notsolid();
 
 		}
-}	
+}

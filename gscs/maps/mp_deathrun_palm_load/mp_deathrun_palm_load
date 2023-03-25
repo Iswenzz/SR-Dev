@@ -1,0 +1,6 @@
+ERROR: Could not open 'maps/mp/mp_deathrun_palm_fx.gsc'
+ERROR: failed loading 'maps/mp/mp_deathrun_palm_fx.gsc' of type 'rawfile'
+ERROR: Could not open 'maps/createfx/mp_deathrun_palm_fx.gsc'
+ERROR: failed loading 'maps/createfx/mp_deathrun_palm_fx.gsc' of type 'rawfile'
+ERROR: Could not open 'vision/mp_deathrun_palm.vision'
+ERROR: failed loading 'vision/mp_deathrun_palm.vision' of type 'rawfile'

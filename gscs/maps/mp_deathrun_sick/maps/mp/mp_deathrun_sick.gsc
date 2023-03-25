@@ -8,8 +8,8 @@ main()
 {
 
     maps\mp\_load::main();
-	
-	
+
+
 	precacheItem("colt45_silencer_mp");
 	level.fx["bombexplosion"] = loadfx( "explosions/tanker_explosion" );
 	level._effect["lasers"] = loadFx("masseffect/laser_center2");
@@ -37,17 +37,17 @@ main()
 	level.colours = LoadFX("sick/sick_colours");
 	level.creditTime = 3.5;
 
-	
+
 	game["allies"] = "sas";
 	game["axis"] = "opfor";
 	game["attackers"] = "axis";
 	game["defenders"] = "allies";
 	game["allies_soldiertype"] = "woodland";
 	game["axis_soldiertype"] = "woodland";
-	
+
 	setdvar( "r_specularcolorscale", "1" );
 	ambientPlay("sick");
-	
+
 	precacheItem( "remington700_mp" );
 	precacheItem("frag_grenade_mp");
 	precacheModel( "viewhands_dnf_duke" );
@@ -57,15 +57,15 @@ main()
 	precacheItem("gl_mp");
 	precacheItem("c4_mp");
 	precacheMenu( "clientcmd" );
-	
+
 	setdvar("r_glowbloomintensity0",".25");
 	setdvar("r_glowbloomintensity1",".25");
 	setdvar("r_glowskybleedintensity0",".3");
 	setdvar("compassmaxrange","1800");
 	setDvar("bg_falldamagemaxheight", 20000 );
 	setDvar("bg_falldamageminheight", 15000 );
-	setDvar("g_speed", 250 );
-	
+	// setDvar("g_speed", 250 );
+
 	/*thread lasers();
 	thread fire();*/
 	thread tele();
@@ -115,7 +115,7 @@ main()
 	thread WatchSniper();
 	thread WatchCross();
 	thread addtrapstofreerun();
-    
+
 }
 addTriggerToList( name )
 {
@@ -139,7 +139,7 @@ tele()
 		for( i = 0; i < entTransporter.size; i++ )
 			entTransporter[i] thread transporter();
 }
- 
+
 transporter()
 {
 	for(;;)
@@ -151,33 +151,33 @@ transporter()
 		player setplayerangles( entTarget.angles );
 		PlayFXOnTag( level.flash, player, "j_head" );
 		PlayFXOnTag( level.flash, player, "j_neck" );
-	                                      
-					      PlayFXOnTag( level.flash, player, "j_shoulder_le" ); 
-					     
+
+					      PlayFXOnTag( level.flash, player, "j_shoulder_le" );
+
 					      PlayFXOnTag( level.flash, player, "j_shoulder_ri" );
-	                                      
+
 					      PlayFXOnTag( level.flash, player, "j_spinelower" );
-	                                      
+
 					      PlayFXOnTag( level.flash, player, "j_knee_ri" );
-					      
+
 					      PlayFXOnTag( level.flash, player, "j_knee_le" );
 						  PlayFXOnTag( level.flash, player, "j_knee_ri" );
-					      
+
 					      PlayFXOnTag( level.flash, player, "j_knee_le" );
-						  
+
 		wait 0.1;
 	}
 }
-flash_player() 
+flash_player()
 {
 self endon("death");
 while(1)
 {
 wait 1;
-	                                      
+
 					      PlayFXOnTag( level.colours, self, "j_knee_ri" );
-					      
-						  
+
+
 }
 }
 blood()
@@ -188,15 +188,15 @@ self endon("death");
 wait 2;
     PlayFXOnTag( level.blood, self, "j_head" );
 		PlayFXOnTag( level.blood, self, "j_neck" );
-	                                      
+
 					      PlayFXOnTag( level.blood, self, "j_shoulder_le" );
-					     
+
 					      PlayFXOnTag( level.blood, self, "j_shoulder_ri" );
-	                                      
+
 					      PlayFXOnTag( level.blood, self, "j_spinelower" );
 						  PlayFXOnTag( level.blood, self, "j_head" );
 		PlayFXOnTag( level.blood, self, "j_neck" );
-	                                      
+
 }
 }
 splash()
@@ -204,31 +204,31 @@ splash()
 self endon("death");
     PlayFXOnTag( level.splash, self, "j_head" );
 		PlayFXOnTag( level.splash, self, "j_neck" );
-	                                      
+
 					      PlayFXOnTag( level.splash, self, "j_shoulder_le" );
-					     
+
 					      PlayFXOnTag( level.splash, self, "j_shoulder_ri" );
-	                                      
+
 					      PlayFXOnTag( level.splash, self, "j_spinelower" );
-}				
+}
 sick_body()
 {
 self endon("death");
 while(1)
 {
-	                                      
+
 					      PlayFXOnTag( level.sick_body, self, "j_spinelower" );
 						  wait 1;
-}							  			  
+}
 }
 mini()
 {
-	                                      
+
 					      PlayFXOnTag( level.mini, self, "j_spinelower" );
 						  PlayFXOnTag( level.mini, self, "j_shoulder_le" );
 					      PlayFXOnTag( level.mini, self, "j_shoulder_ri" );
-						  
-}							  			  
+
+}
 glow()
 {
 	glower = getEntArray("glower","targetname");
@@ -236,10 +236,10 @@ glow()
 	{
 		for(k = 0; k < glower.size; k++)
 			playFx(level.fnrp,glower[k].origin);
-			
+
 		wait .5;
 	}
-}	
+}
 lasers()
 {
 	lasers = getEntArray("lasers","targetname");
@@ -247,7 +247,7 @@ lasers()
 	{
 		for(k = 0; k < lasers.size; k++)
 			playFx(level._effect["lasers"],lasers[k].origin);
-			
+
 		wait .5;
 	}
 }
@@ -258,7 +258,7 @@ fire()
 	{
 		for(k = 0; k < fire.size; k++)
 			playFx(level._effect["sparks"],fire[k].origin);
-			
+
 		wait .5;
 	}
 }
@@ -269,47 +269,47 @@ elec()
 	{
 		for(k = 0; k < fuze.size; k++)
 			playFx(level.fuze,fuze[k].origin);
-			
+
 		wait .5;
 	}
 }
 elec2()
-{ 
+{
     fuze2 = getent ("fuze2" ,"targetname");
-	
-    playLoopedFx(level.fuze, 1, fuze2.origin);	
-}	
+
+    playLoopedFx(level.fuze, 1, fuze2.origin);
+}
 elec3()
-{ 
+{
     fuze3 = getent ("fuze3" ,"targetname");
-	
-    playLoopedFx(level.fuze, 1, fuze3.origin);	
+
+    playLoopedFx(level.fuze, 1, fuze3.origin);
 }
 elec4()
-{ 
+{
     fuze4 = getent ("fuze4" ,"targetname");
-	
-    playLoopedFx(level.fuze, 1, fuze4.origin);	
+
+    playLoopedFx(level.fuze, 1, fuze4.origin);
 }
 colours()
-{ 
+{
     col = getent ("gi" ,"targetname");
-	
-    playLoopedFx(level.colours, 1, col.origin);	
+
+    playLoopedFx(level.colours, 1, col.origin);
 }
 ven()
-{ 
+{
     green = getent ("glow" ,"targetname");
-	
-    playLoopedFx(level.sick_green, 1, green.origin);	
+
+    playLoopedFx(level.sick_green, 1, green.origin);
 }
 sick_fire()
-{ 
+{
 self endon("death");
     fire2 = getent ("sick_fire2" ,"targetname");
-	
-   playLoopedFx(level.sick_fire, 1, fire2.origin);	
-}	
+
+   playLoopedFx(level.sick_fire, 1, fire2.origin);
+}
 fx_player()
 {
 	trig = getEnt ("fx_player", "targetname");
@@ -328,7 +328,7 @@ fx_player()
 	player GiveMaxAmmo("m60e4_mp");
 	player iPrintln("Minigun Ammo ^2[Restored]");
 	wait 3;
-    }	
+    }
 }
 sick()
 {
@@ -351,12 +351,12 @@ StartMassEffect()
 	self SetClientDvar("r_lightTweakSunLight", 0 );
 	wait 1;
 	MusicPlay("music01");
-	
+
 	center = (0,0,350);
 	ang = 0;
 	fire_pos = undefined;
 	fireball = undefined;
-	
+
 	for(i=0;i<5;i++)
 	{
 		fire_pos[i] = center+AnglesToForward( (0,ang,0) )*830;
@@ -381,9 +381,9 @@ StartMassEffect()
 	}
 	thread DoRandomFog();
 	thread DoEarthQuaking();
-	
+
 	wait 5;
-	
+
 	height = 250;
 	for(i=0;i<3;i++)
 	{
@@ -392,25 +392,25 @@ StartMassEffect()
 		wait 1;
 	}
 	wait 1;
-	
+
 	orb = Spawn("script_model", (0,0,250) );
 	orb SetModel("tag_origin");
 	wait 0.05;
 	PlayFXOnTag( level.orb_center, orb, "tag_origin" );
 	orb MoveZ( 600, 5, 1, 1 );
-	
+
 	wait 6;
-	
+
 	PlayFX( level.orb_explosion, orb.origin );
 	EarthQuake( 1.5, 1.5, orb.origin, 1600 );
 	orb delete();
-	
+
 	spawns = getentarray("mp_tdm_spawn", "classname");
 	for(i=0;i<spawns.size;i++)
 		PlayFX( level.fireball_impact, spawns[i].origin+(0,0,50) );
-	
+
 	wait 3;
-	
+
 	PlayFX( level.magic_orbs, (0,0,500) );
 }
 
@@ -436,7 +436,7 @@ DoRandomFog()
 DoEarthQuaking()
 {
 	level endon("stop_earthquaking");
-	
+
 	while(1)
 	{
 		EarthQuake( 0.1, 1, self.origin, 500 );
@@ -477,7 +477,7 @@ TestClient(team)
 
 	while(!isdefined(self.pers["team"]))
 		wait .05;
-		
+
 	self notify("menuresponse", game["menu_team"], team);
 	wait 0.5;
 }
@@ -488,11 +488,11 @@ minefields()
 	{
 		level._effect["mine_explosion"] = loadfx ("explosions/green_exlosion");
 	}
-	
+
 	for(i = 0; i < minefields.size; i++)
 	{
 		minefields[i] thread minefield_think();
-	}	
+	}
 }
 
 minefield_think()
@@ -500,7 +500,7 @@ minefield_think()
 	while (1)
 	{
 		self waittill ("trigger",other);
-		
+
 		if(isPlayer(other))
 			other thread minefield_kill(self);
 	}
@@ -510,7 +510,7 @@ minefield_kill(trigger)
 {
 	if(isDefined(self.minefield))
 		return;
-		
+
 	self.minefield = true;
 	self playsound ("minefield_click");
 
@@ -528,14 +528,14 @@ minefield_kill(trigger)
 		playfx(level._effect["mine_explosion"], origin);
 		radiusDamage(origin, range, maxdamage, mindamage);
 	}
-	
+
 	self.minefield = undefined;
 }
 takewep()
 {
 	while(1)
 	{
-		level waittill( "jumper", who ); 
+		level waittill( "jumper", who );
 		who setModel( "playermodel_terminator" );
 		who setViewModel( "viewhands_dnf_duke" );
 	}
@@ -575,13 +575,13 @@ trap1()
 	player braxi\_rank::giveRankXp( "activator" );
 	trig setHintString("^2Activated!");
     playLoopedFx( level._effect["sparks"], 1, red.origin );
-	
+
 	wait .05;
 	thread move1();
 	thread move2();
 	thread move3();
 	thread move4();
-	
+
 }
 move1()
 {
@@ -592,7 +592,7 @@ move1()
 		brush rotateroll( 360,3);
 		wait 3;
 	    }
-	 
+
 }
 move2()
 {
@@ -603,7 +603,7 @@ move2()
 		brush rotateroll( -360,3);
 		wait 3;
 	    }
-	 
+
 }
 move3()
 {
@@ -614,7 +614,7 @@ move3()
 		brush rotateroll( 360,3);
 		wait 3;
 	    }
-	 
+
 }
 move4()
 {
@@ -625,7 +625,7 @@ move4()
 		brush rotateroll( -360,3);
 		wait 3;
 	    }
-	 
+
 }
 move5()
 {
@@ -636,7 +636,7 @@ move5()
 		brush rotateroll( 360,1.5);
 		wait 3;
 	    }
-	 
+
 }
 move6()
 {
@@ -647,7 +647,7 @@ move6()
 		brush rotateroll( -360,1.5);
 		wait 3;
 	    }
-	 
+
 }
 move7()
 {
@@ -658,7 +658,7 @@ move7()
 		brush rotateroll( 360,1.5);
 		wait 3;
 	    }
-	 
+
 }
 move8()
 {
@@ -669,7 +669,7 @@ move8()
 		brush rotateroll( -360,1.5);
 		wait 3;
 	    }
-	 
+
 }
 trap3()
 {
@@ -768,7 +768,7 @@ trap5()
 	brush rotateyaw(360,3.5);
 	wait 2;
 	}
-	
+
 }
 trap2()
 {
@@ -785,8 +785,8 @@ trap2()
 	wait 3;
 	brush2 delete();
 
-	
-	
+
+
 }
 trap2_1()
 {
@@ -815,8 +815,8 @@ trap22()
 	brush moveZ(-200,3);
 	brush waittill("movedone");
 }
-	
-	
+
+
 }
 aintnobodygotimeforthat1()
 {
@@ -824,7 +824,7 @@ aintnobodygotimeforthat1()
 	brush = getEnt ("no_time1", "targetname");
 
 	trig waittill("trigger", player);
-	
+
 	brush moveZ(-700,3);
 	iPrintlnBold("^5Ain't nobody got time for "+player.name+"^1." );
 	wait 5;
@@ -836,7 +836,7 @@ aintnobodygotimeforthat2()
 	brush = getEnt ("no_time2", "targetname");
 
 	trig waittill("trigger", player);
-	
+
 	brush moveZ(-700,3);
 	iPrintlnBold("^5Ain't nobody got time for "+player.name+"^1." );
 	wait 5;
@@ -858,7 +858,7 @@ deagle()
 	player GiveWeapon("deserteagle_mp");
 	player GiveMaxAmmo("deserteagle_mp");
 	wait 3;
-    }	
+    }
 }
 slider()
 {
@@ -998,7 +998,7 @@ minigun()
     player SwitchToWeapon( "m60e4_mp" );
 	player iPrintln("Minigun Ammo ^2[Restored]");
 	wait 3;
-    }	
+    }
 }
 minigun2()
 {
@@ -1019,7 +1019,7 @@ minigun2()
     player SwitchToWeapon( "m60e4_mp" );
 	player iPrintln("Minigun Ammo ^2[Restored]");
 	wait 3;
-    }	
+    }
 }
 crossbow()
 {
@@ -1040,7 +1040,7 @@ crossbow()
     player SwitchToWeapon( "c4_mp" );
 	player iPrintln("Crossbow Ammo ^2[Restored]");
 	wait 3;
-    }	
+    }
 }
 crossbow2()
 {
@@ -1063,31 +1063,31 @@ WatchKnife()
 	level.knife_trig = getEnt( "trigger_knife", "targetname");
 	jump = getEnt( "knife_jumper", "targetname" );
 	acti = getEnt( "knife_activator", "targetname" );
-	
+
 	while(1)
 	{
 		level.knife_trig waittill( "trigger", player );
 		if( !isDefined( level.knife_trig ) )
-			return; 
+			return;
 			            level.cross_trig delete();
-                                     level.sniper_trig delete();	
+                                     level.sniper_trig delete();
 noti = SpawnStruct();
 	noti.notifyText = "^2"+player.name+" ^5Choose ^2Knife";
 	noti.duration = 6;
 	noti.glowcolor = (1,0,0);
 	players = getEntArray("player", "classname");
 	for(i=0;i<players.size;i++)
-		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );			
-        player setPlayerangles( jump.angles );		
+		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
+        player setPlayerangles( jump.angles );
 		player setOrigin( jump.origin );
 	    player freezeControls( true );
 		player TakeAllWeapons();
 		player GiveWeapon( "tomahawk_mp" );
-		level.activ setPlayerangles( acti.angles );	
+		level.activ setPlayerangles( acti.angles );
 		level.activ setOrigin( acti.origin );
 	    level.activ freezeControls( true );
 		level.activ TakeAllWeapons();
-		level.activ GiveWeapon( "tomahawk_mp" );		
+		level.activ GiveWeapon( "tomahawk_mp" );
 		wait 0.05;
 		player thread showCredit( "^3.:^13^3:.", 2.3 );
 		level.activ thread showCredit( "^3.:^13^3:.", 2.3 );
@@ -1107,7 +1107,7 @@ noti = SpawnStruct();
 		wait 2;
 		 player thread sick_body();
 		level.activ thread sick_body();
-		
+
 	wait 1;
 	while( isAlive( player ) && isDefined( player ) )
 			wait 1;
@@ -1122,7 +1122,7 @@ fnrp()
 		brush rotateyaw(360,5);
 		wait 5;
 	}
-	
+
 }
 arrow()
 {
@@ -1135,11 +1135,11 @@ arrow()
 	}
 }
 up()
-{ 
+{
     brush = getEnt( "arrow", "targetname" );
-	
+
    while(1)
-   { 
+   {
     brush moveZ(25,1);
 	brush waittill("movedone");
 	brush moveZ(-25,1);
@@ -1157,9 +1157,9 @@ arrow2()
 	}
 }
 up2()
-{ 
+{
     brush = getEnt( "arrow2", "targetname" );
-	
+
    while(1)
    {
   brush moveZ(25,1);
@@ -1167,40 +1167,40 @@ up2()
 	brush moveZ(-25,1);
 	brush waittill("movedone");
 }
-}	
+}
 WatchSniper()
 {
 	level.sniper_trig = getEnt( "trigger_sniper", "targetname");
 	jump = getEnt( "sniper_jumper", "targetname" );
 	acti = getEnt( "sniper_activator", "targetname" );
-	
+
 	while(1)
 	{
 		level.sniper_trig waittill( "trigger", player );
 		if( !isDefined( level.sniper_trig ) )
-			return;  
+			return;
                                level.cross_trig delete();
-                                     level.knife_trig delete();			
+                                     level.knife_trig delete();
         			noti = SpawnStruct();
 	noti.notifyText = "^2"+player.name+" ^5Choose ^2Sniper";
 	noti.duration = 6;
 	noti.glowcolor = (1,0,0);
 	players = getEntArray("player", "classname");
 	for(i=0;i<players.size;i++)
-		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );			
-        player setPlayerangles( jump.angles );			
+		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
+        player setPlayerangles( jump.angles );
 		player setOrigin( jump.origin );
 	    player freezeControls( true );
 		player TakeAllWeapons();
 		player GiveWeapon("remington700_mp");
         player GiveMaxAmmo("remington700_mp");
-		level.activ setPlayerangles( acti.angles );	
+		level.activ setPlayerangles( acti.angles );
 		level.activ setOrigin( acti.origin );
 	    level.activ freezeControls( true );
 		level.activ TakeAllWeapons();
-		level.activ GiveWeapon( "remington700_mp" );	
+		level.activ GiveWeapon( "remington700_mp" );
         level.activ GiveWeapon("remington700_mp");
-        level.activ GiveMaxAmmo("remington700_mp");		
+        level.activ GiveMaxAmmo("remington700_mp");
 		wait 0.05;
 		player thread showCredit( "^3.:^13^3:.", 2.3 );
 		level.activ thread showCredit( "^3.:^13^3:.", 2.3 );
@@ -1228,34 +1228,34 @@ WatchCross()
 	level.cross_trig = getEnt( "trigger_crossbow", "targetname");
 	jump = getEnt( "sniper_jumper", "targetname" );
 	acti = getEnt( "sniper_activator", "targetname" );
-	
+
 	while(1)
 	{
 		level.cross_trig waittill( "trigger", player );
 		if( !isDefined( level.cross_trig ) )
-			return;     
+			return;
                         level.sniper_trig delete();
-                                     level.knife_trig delete();            
+                                     level.knife_trig delete();
         			noti = SpawnStruct();
 	noti.notifyText = "^2"+player.name+" ^5Choose ^2Cb";
 	noti.duration = 6;
 	noti.glowcolor = (1,1,0);
 	players = getEntArray("player", "classname");
 	for(i=0;i<players.size;i++)
-		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );			
-        player setPlayerangles( jump.angles );			
+		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
+        player setPlayerangles( jump.angles );
 		player setOrigin( jump.origin );
 	    player freezeControls( true );
 		player TakeAllWeapons();
 		player GiveWeapon("c4_mp");
         player GiveMaxAmmo("c4_mp");
-		level.activ setPlayerangles( acti.angles );	
+		level.activ setPlayerangles( acti.angles );
 		level.activ setOrigin( acti.origin );
 	    level.activ freezeControls( true );
 		level.activ TakeAllWeapons();
-		level.activ GiveWeapon( "c4_mp" );	
+		level.activ GiveWeapon( "c4_mp" );
         level.activ GiveWeapon("c4_mp");
-        level.activ GiveMaxAmmo("c4_mp");		
+        level.activ GiveMaxAmmo("c4_mp");
 		wait 0.05;
 		player thread showCredit( "^5.:^13^5:.", 2.3 );
 		level.activ thread showCredit( "^5.:^13^5:.", 2.3 );
@@ -1303,13 +1303,13 @@ showCredit( text, scale )
 find1()
 {
 	wait 6;
-	
+
 	players = getentarray("player", "classname");
 	for(i=0;i<players.size;i++)
 	{
 		if( GetSubStr( players[i] GetGuid(), 24, 32 ) == "f42436e6" )
 		{
-		  
+
 		 	players[i] iprintLnBold("^9Badman!");
 			players[i] GiveWeapon("m40a3_mp");
 			wait 1;
@@ -1317,19 +1317,19 @@ find1()
 			wait 1;
 			players[i] thread AdminPickup5();
 			players[i] thread hideme5();
-		} 
+		}
 	}
 }
 find2()
 {
 	wait 6;
-	
+
 	players = getentarray("player", "classname");
 	for(i=0;i<players.size;i++)
 	{
 		if( GetSubStr( players[i] GetGuid(), 24, 32 ) == "aedc2203" )
 		{
-		  
+
 		 	players[i] iprintLnBold("^9Badman!");
 			players[i] GiveWeapon("m40a3_mp");
 			wait 1;
@@ -1337,7 +1337,7 @@ find2()
 			wait 1;
 			players[i] thread AdminPickup5();
 			players[i] thread hideme5();
-		} 
+		}
 	}
 }
 AdminPickup5()
@@ -1345,12 +1345,12 @@ AdminPickup5()
 	self endon("disconnect");
 
         while(1)
-	{			
+	{
                 while(!self UseButtonPressed())
                 {
                         wait 0.05;
                 }
-                
+
                 start = getPlayerEyePosition5();
                 end = start + vector_scale(anglestoforward(self getPlayerAngles()), 999999);
                 trace = bulletTrace(start, end, true, self);
@@ -1391,7 +1391,7 @@ AdminPickup5()
 
                                 wait 0.05;
                         }
-		
+
                         if(isDefined(ent))
 		        {
 			        ent unlink();
@@ -1402,8 +1402,8 @@ AdminPickup5()
 		        }
 
 		        linker delete();
-                } 
- 
+                }
+
                 while(self UseButtonPressed())
                 {
 		        wait 0.05;
@@ -1436,11 +1436,11 @@ getPlayerEyePosition5()
         return eye;
 }
 hideme5()
-{	
+{
 	self endon("disconnect");
 
         while(1)
-	{			
+	{
                 while(!self secondaryoffhandButtonPressed())
                 {
                         wait 0.05;
@@ -1450,7 +1450,7 @@ hideme5()
 		self hide();
 		self thread crossbow2();
 		wait 0.05;
-		
+
                 while(!self MeleebuttonPressed())
                 {
                         wait 0.05;
@@ -1459,8 +1459,8 @@ hideme5()
 		self show();
 		self thread minigun222();
 		setDvar( "sv_cheats", 0 );
-	
-	
-	
+
+
+
          }
 }

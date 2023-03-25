@@ -6,10 +6,10 @@
 							?	?		?????															?	?  ??  ??								=
 							?	?		?	?????????????	?????			?????	?????????????????	?	???  ??									=
 							?	?		?				?	?	?			?	?	?				?	?	   ??									=
-							?	?		?	?????????????	?	?			?	?	?	?????????????	?	???										=	
+							?	?		?	?????????????	?	?			?	?	?	?????????????	?	???										=
 							?	?		?	?				?	?			?	?	?	?				?	?  ??									=
 							?	?		?	?				?	?			?	?	?	?				?	?    ??									=
-							?	?		?	?				?	?			?	?	?	?				?	?      ???								=				
+							?	?		?	?				?	?			?	?	?	?				?	?      ???								=
 							?	?		?	?				?	?????????????	?	?	?????????????	?	?       ????							=
 							?	?		?	?				?					?	?				?	?	?        ????		????				=
 							?????		?????				?????????????????????	?????????????????	?????         ?????		????				=
@@ -39,27 +39,27 @@ main()
 	game["defenders"] = "allies";
 	game["allies_soldiertype"] = "desert";
 	game["axis_soldiertype"] = "desert";
-	
-	
+
+
 	precacheItem("m40a3_mp");
 	precacheItem("remington700_mp");
 	precacheItem("p90_silencer_mp");
 	precacheItem("rpg_mp");
 	precacheItem("raygun_mp");
 	precacheModel("shadow");
-	
+
 	setdvar( "dr_timelimit", "8" );
 	setdvar( "r_specularcolorscale", "1" );
-	setdvar( "g_speed", "220" );				//<-----//=========================================================//
-	setdvar( "dr_jumpers_speed", "1.05" );		//<-----//WARNING: Secret is kinda impossible without these 3 lines//	You better don't edit/remove them.
-	setdvar( "dr_activators_speed", "1.05" );	//<-----//=========================================================//
-	
+	// setdvar( "g_speed", "220" );				//<-----//=========================================================//
+	// setdvar( "dr_jumpers_speed", "1.05" );		//<-----//WARNING: Secret is kinda impossible without these 3 lines//	You better don't edit/remove them.
+	// setdvar( "dr_activators_speed", "1.05" );	//<-----//=========================================================//
+
 	level.fx_startfire = loadFx( "beach/startfire" );
 	level.fx_watersplash = loadFx( "beach/watersplash" );
 	level.fx_bouncehide = loadFx( "beach/bouncehide" );
-	
+
 	// Teleporters \\
-	
+
 	thread bounce_failtp();
 	thread run_fail1tp();
 	thread run_fail2tp();
@@ -87,9 +87,9 @@ main()
 	thread secret_tp15();
 	thread secret_open();
 	thread secretfinish_tp();
-	
+
 	// Traps \\
-	
+
 	thread trap1();
 	thread trap2();
 	thread trap3();
@@ -101,9 +101,9 @@ main()
 	thread walls();
 	thread trap10();
 	thread trap11();
-	
+
 	// Others \\
-	
+
 	thread randomsong();
 	thread broomweap1();
 	thread broomweap2();
@@ -125,7 +125,7 @@ main()
 	thread addTriggerToList( "harder_walls" );
 	thread addTriggerToList( "trap10_trig" );
 	thread addTriggerToList( "trap11_trig" );
-	
+
 }
 
 randomsong()
@@ -228,7 +228,7 @@ trap2_left()
 	bounce1 = getEnt("trap2_b1", "targetname");
 	bounce2 = getEnt("trap2_b2", "targetname");
 	playFx(level.fx_bouncehide, org.origin);
-	
+
 	bounce1 delete();
 	while( 1 )
 	{
@@ -771,7 +771,7 @@ r_trig = getEnt("r_trig", "targetname");
 			level.activ iprintlnbold("^11");
 			wait 1;
 			player freezeControls(0);
-			level.activ freezeControls(0);			
+			level.activ freezeControls(0);
 			player death();
 			iprintlnbold( "^2 " + player.name + " ^7is ^1DEAD !");
 			s_trig triggerOn();
@@ -811,7 +811,7 @@ r_trig = getEnt("r_trig", "targetname");
 			level.activ SwitchToWeapon( "tomahawk_mp" );
 			player freezeControls(1);
 			level.activ freezeControls(1);
-			wait 0.3;			
+			wait 0.3;
 			player iprintlnbold("^5Get ready for the ^1BATTLE !");
 			level.activ iprintlnbold("^5Get ready for the ^1BATTLE !");
 			player iprintlnbold("^51 Fail ^7= ^1GG");
@@ -925,7 +925,7 @@ r_trig = getEnt("r_trig", "targetname");
 			level.activ SwitchToWeapon( "knife_mp" );
 			runner freezeControls(1);
 			level.activ freezeControls(1);
-			wait 0.3;			
+			wait 0.3;
 			runner iprintlnbold("^5Get ready!");
 			level.activ iprintlnbold("^5Get ready!");
 			wait 1;
@@ -1063,7 +1063,7 @@ ultimate_rpg()
 {
 	self endon ( "disconnect" );
     self endon ( "death" );
- 
+
 	while ( 1 )
 	{
 	currentWeapon = self getCurrentWeapon();

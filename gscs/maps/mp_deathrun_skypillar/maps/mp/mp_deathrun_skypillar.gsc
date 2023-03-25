@@ -2,7 +2,7 @@
 main()
 {
 	maps\mp\_load::main();
-	
+
 	ambientPlay("ambient1");
 	game["allies"] = "sas";
 	game["axis"] = "russian";
@@ -10,11 +10,11 @@ main()
 	game["defenders"] = "axis";
 	game["allies_soldiertype"] = "woodland";
 	game["axis_soldiertype"] = "woodland";
-	
+
 	setdvar( "r_specularcolorscale", "1" );
 
 	setdvar("compassmaxrange","2000");
-	
+
 	precacheItem("m40a3_mp");
 	precacheItem("remington700_mp");
 	precacheItem("ak74u_mp");
@@ -22,7 +22,7 @@ main()
 	precacheItem("rpg_mp");
 	level.expbullt = loadfx("explosions/grenadeExp_concrete_1");
 	level.flame = loadfx("fire/tank_fire_engine");
-	
+
 	swingarmparts = getentarray("swingarms","targetname");
 	if(isdefined(swingarmparts))
 	{
@@ -31,7 +31,7 @@ main()
 	swingarmparts[i] thread swingarm();
 	}
 	}
-	
+
 	tolparts = getentarray("tol","targetname");
 	if(isdefined(tolparts))
 	{
@@ -40,7 +40,7 @@ main()
 	tolparts[i] thread toltrap();
 	}
 	}
-	
+
 	rotateendparts = getentarray("rotate_end","targetname");
 	if(isdefined(rotateendparts))
 	{
@@ -49,7 +49,7 @@ main()
 	rotateendparts[i] thread rotateend();
 	}
 	}
-		
+
 	floor = getentarray("rotate2bars","targetname");
 	if(isdefined(floor))
 	{
@@ -58,7 +58,7 @@ main()
 	floor[i] thread rotate2bars();
 	}
 	}
-	
+
 	//threads
 	thread creatorcredit();
 	thread trap_rotatefloor();
@@ -91,7 +91,7 @@ main()
 
 dodvar()
 {
-setDvar("player_meleeRange", 64);
+// setDvar("player_meleeRange", 64);
 }
 
 addtriggers()
@@ -120,7 +120,7 @@ creatorcredit()
 wait(10);
 thread drawInformation( 800, 0.8, 1, "Skypillar" );
 wait(4);
-thread drawInformation( 800, 0.8, 1, "© Wingzor & Paradise" );
+thread drawInformation( 800, 0.8, 1, "ï¿½ Wingzor & Paradise" );
 wait(4);
 }
 
@@ -561,9 +561,9 @@ step1_move()
 	org = self.origin;
 	step1 = getentarray("step","targetname");
     while(1)
-    {	
+    {
 	for(i=0;i<step1.size;i++)
-	{	
+	{
 		step1[i] moveto ((org_start + (0,-100,16)), 0.1);
 		wait(0.05);
 		step1[i] moveto ((org_start + (0,-10,0)), 2);
@@ -639,7 +639,7 @@ for(;;)
 level.snipertrigger waittill("trigger", player);
 level.finishtrigger delete();
 level.jumptele delete();
-setDvar("player_meleeRange", 0);
+// setDvar("player_meleeRange", 0);
 wait(0.05);
 player SetOrigin( teleorigin.origin );
 player setplayerangles( teleorigin.angles );
@@ -727,7 +727,7 @@ level.activ freezeControls( false );
 airtest()
 {
 xptrig = getEnt("trigger_aistrike", "targetname");
-precacheItem("deserteaglegold_mp");	
+precacheItem("deserteaglegold_mp");
 enabled = true;
 while(1)
 {
@@ -778,81 +778,81 @@ discocheck( requiredPlayersCount )
 		for( i = 0; i < players.size; i++ )
 			if( players[i] isPlaying() )
 				count++;
- 
+
 		if( count == requiredPlayersCount )
 		{
-SetExpFog(1024, 2048, 1, 0, 0, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0, 1, 0, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0, 0, 1, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.4, 1, 0.8, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.8, 0, 0.6, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 1, 1, 0.6, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 1, 1, 1, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0, 0, 0.8, 0); 
-wait .1;  
-SetExpFog(1024, 2048, 0.2, 1, 0.8, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.4, 0.4, 1, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0, 0, 0, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.4, 0.2, 0.2, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.4, 1, 1, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.6, 0, 0.4, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 1, 0, 0.8, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 1, 1, 0, 0);  
-wait .1;   
-SetExpFog(1024, 2048, 0.6, 1, 0.6, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 1, 0, 0, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0, 1, 0, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0, 0, 1, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.4, 1, 0.8, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.8, 0, 0.6, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 1, 1, 0.6, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 1, 1, 1, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0, 0, 0.8, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.2, 1, 0.8, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.4, 0.4, 1, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0, 0, 0, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.4, 0.2, 0.2, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.4, 1, 1, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.6, 0, 0.4, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 1, 0, 0.8, 0); 
-wait .1;  
-SetExpFog(1024, 2048, 1, 1, 0, 0);  
-wait .1;  
-SetExpFog(1024, 2048, 0.6, 1, 0.6, 0); 
+SetExpFog(1024, 2048, 1, 0, 0, 0);
+wait .1;
+SetExpFog(1024, 2048, 0, 1, 0, 0);
+wait .1;
+SetExpFog(1024, 2048, 0, 0, 1, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.4, 1, 0.8, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.8, 0, 0.6, 0);
+wait .1;
+SetExpFog(1024, 2048, 1, 1, 0.6, 0);
+wait .1;
+SetExpFog(1024, 2048, 1, 1, 1, 0);
+wait .1;
+SetExpFog(1024, 2048, 0, 0, 0.8, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.2, 1, 0.8, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.4, 0.4, 1, 0);
+wait .1;
+SetExpFog(1024, 2048, 0, 0, 0, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.4, 0.2, 0.2, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.4, 1, 1, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.6, 0, 0.4, 0);
+wait .1;
+SetExpFog(1024, 2048, 1, 0, 0.8, 0);
+wait .1;
+SetExpFog(1024, 2048, 1, 1, 0, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.6, 1, 0.6, 0);
+wait .1;
+SetExpFog(1024, 2048, 1, 0, 0, 0);
+wait .1;
+SetExpFog(1024, 2048, 0, 1, 0, 0);
+wait .1;
+SetExpFog(1024, 2048, 0, 0, 1, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.4, 1, 0.8, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.8, 0, 0.6, 0);
+wait .1;
+SetExpFog(1024, 2048, 1, 1, 0.6, 0);
+wait .1;
+SetExpFog(1024, 2048, 1, 1, 1, 0);
+wait .1;
+SetExpFog(1024, 2048, 0, 0, 0.8, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.2, 1, 0.8, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.4, 0.4, 1, 0);
+wait .1;
+SetExpFog(1024, 2048, 0, 0, 0, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.4, 0.2, 0.2, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.4, 1, 1, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.6, 0, 0.4, 0);
+wait .1;
+SetExpFog(1024, 2048, 1, 0, 0.8, 0);
+wait .1;
+SetExpFog(1024, 2048, 1, 1, 0, 0);
+wait .1;
+SetExpFog(1024, 2048, 0.6, 1, 0.6, 0);
 }
 else
 {
-SetExpFog(2048, 4096, 0, 0, 0, 0); 
-}	
+SetExpFog(2048, 4096, 0, 0, 0, 0);
+}
 }
 }
 
@@ -866,7 +866,7 @@ isReallyAlive()
 {
 	return self.sessionstate == "playing";
 }
- 
+
 isPlaying()
 {
 	return isReallyAlive();

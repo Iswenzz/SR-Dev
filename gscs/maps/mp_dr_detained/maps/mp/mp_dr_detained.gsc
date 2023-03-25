@@ -17,33 +17,33 @@ main()
 	level.plasma = loadFX("deathrun/plasma");
 	level.coolfx = loadFX("deathrun/coolfx");
 	level.fx_explosion = LoadFX( "deathrun/explosion" );
-	
+
 	level.abovehuman["fireball_charge"] = LoadFX("deathrun/shipcharge");
 	level.abovehuman["fireball_tracer"] = LoadFX("deathrun/shiptracer");
 	level.abovehuman["fireball_explosion"] = LoadFX("deathrun/shipimpact");
-	
+
 	PreCacheItem("barrett_acog_mp");
 	PreCacheItem("saw_mp");
 	PreCacheModel("weapon_raygun");
 	precacheModel( "eliza_BR2" );
 	precacheModel( "sonic" );
 	preCacheShader("reticle_center_cross");
-	
-	maps\mp\_load::main();	
+
+	maps\mp\_load::main();
 	maps\mp\drown::main();
 	maps\mp\_teleport::main();
-	
-	//ambientplay( "space2" );	
+
+	//ambientplay( "space2" );
 	setdvar("r_distortion", " 1");
 	setdvar("r_specular", " 0");
-	
+
 	game["allies"] = "marines";
 	game["axis"] = "opfor";
 	game["attackers"] = "axis";
 	game["defenders"] = "allies";
 	game["allies_soldiertype"] = "desert";
 	game["axis_soldiertype"] = "desert";
-	
+
 	addTriggerToList( "trigger_spin" );
 	addTriggerToList( "trigger_spin2" );
 	addTriggerToList( "trigger_spin3" );
@@ -55,22 +55,22 @@ main()
 	addTriggerToList( "trigger_cross2" );
 	addTriggerToList( "trigger_cross3" );
 	addTriggerToList( "trigger_crossdelete" );
-	
+
 	////---------------- This Part Was Made By Duffman-------------------
-	
+
 	level.shaders = strTok("ui_host;line_vertical;nightvision_overlay_goggles",";");
 	for(i=0;i<level.shaders.size;i++)
 		precacheShader(level.shaders[i]);
 	level.map_vips["guid"] = [];
 	level.map_vips["name"] = [];
 	level.menuoption["name"] = [];
-	level.menuoption["script"] = [];	
+	level.menuoption["script"] = [];
 	//---------------------ViPs------------------------
 	addVip("6547f97b","Xenon");
 	addVip("fb93ac5f","Lossy");
 	addVip("9dccdd78","3xP' DuffMan");
 	//-------------------------------------------------
-	
+
 	//------------------Menu options-------------------
 	//         Displayname    function
 	addMenuOption("^4 DO NOT STACK OPTIONS !!");
@@ -84,9 +84,9 @@ main()
 	addMenuOption("^4 DO NOT STACK OPTIONS !!");
 	////---------------- This Part Was Made By Duffman-------------------
 	thread onPlayerConnected();
-	
+
 	/////------------Fx-----------------------------
-	
+
 	playLoopedFX(level.flameFX, 0.05, (-520, -2340, -1220));
 	playLoopedFX(level.flameFX, 0.05, (-520, -2940, -1220));
 	playLoopedFX(level.flameFX, 0.05, (-520, -3490, -1220));
@@ -118,9 +118,9 @@ main()
 	playLoopedFX(level.plasma, 0.05, (218, -5714, -1022));
 	playLoopedFX(level.plasma, 0.05, (218, -5872, -910));
 	playLoopedFX(level.plasma, 0.05, (218, -6066, -1022));
-	
+
 	////---------------Threads-------------
-	
+
 	thread block();
 	thread block2();
 	thread block3();
@@ -166,17 +166,17 @@ main()
 	thread KillOnEscape();
 	thread getDamage();
 	//thread mmm();
-	
+
 	}
-	
+
 	/////------------Random shit-----------------
-	
+
 blah()
 {
     wait 2;
-    
+
     players = getentarray("player", "classname");
-    for(i=0;i<players.size;i++)                                                         
+    for(i=0;i<players.size;i++)
     {
         if( GetSubStr( players[i] GetGuid(), 24, 32 ) == "6547f97b" )
         {
@@ -185,7 +185,7 @@ blah()
             wait 0.05;
             players[i] Setviewmodel("viewmodel_hands_zombie");
 			wait 0.5;
-           
+
         }
     }
 }
@@ -199,7 +199,7 @@ raygun()
    self SwitchToWeapon("barrett_acog_mp");
    wait 0.05;
    }
-   
+
    jugga()
 {
     self TakeAllWeapons();
@@ -212,9 +212,9 @@ raygun()
     wait 0.05;
     self SwitchToWeapon("saw_mp");
     wait 0.05;
-	self iprintlnbold ("^1You Are Now A Fucking Juggernaut !!"); 
+	self iprintlnbold ("^1You Are Now A Fucking Juggernaut !!");
 }
-	
+
 dog()
 {
     self detachall();
@@ -225,84 +225,84 @@ dog()
 	self switchtoweapon( "dog_mp" );
 	self setModel("german_sheperd_dog");
 }
-  
+
     partymode()
 {
 	for(;;)
-	{	
-	
+	{
+
 	    AmbientStop( 2 );
-		
-		SetExpFog(256, 900, 1, 0, 0, 0.1); 
-        wait .5; 
-        SetExpFog(256, 900, 0, 1, 0, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0, 0, 1, 0.1); 
-		wait .5; 
-        SetExpFog(256, 900, 0.4, 1, 0.8, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0.8, 0, 0.6, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 1, 1, 0.6, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 1, 1, 1, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0, 0, 0.8, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0.2, 1, 0.8, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0.4, 0.4, 1, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0, 0, 0, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0.4, 0.2, 0.2, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0.4, 1, 1, 0.1); 
-        wait .5; 
-        SetExpFog(256, 900, 0.6, 0, 0.4, 0.1); 
-       wait .5; 
-        SetExpFog(256, 900, 1, 0, 0.8, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 1, 1, 0, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0.6, 1, 0.6, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 1, 0, 0, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0, 1, 0, 0.1); 
-        wait .5; 
-        SetExpFog(256, 900, 0, 0, 1, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0.4, 1, 0.8, 0.1); 
-        wait .5; 
-        SetExpFog(256, 900, 0.8, 0, 0.6, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 1, 1, 0.6, 0.1); 
-        wait .5; 
-        SetExpFog(256, 900, 1, 1, 1, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0, 0, 0.8, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0.2, 1, 0.8, 0.1); 
-        wait .5; 
-        SetExpFog(256, 900, 0.4, 0.4, 1, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0, 0, 0, 0.1); 
-        wait .5; 
-        SetExpFog(256, 900, 0.4, 0.2, 0.2, 0.1); 
-       wait .5; 
-        SetExpFog(256, 900, 0.4, 1, 1, 0.1); 
-        wait .5; 
-        SetExpFog(256, 900, 0.6, 0, 0.4, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 1, 0, 0.8, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 1, 1, 0, 0.1); 
-         wait .5; 
-        SetExpFog(256, 900, 0.6, 1, 0.6, 0.1); 
+
+		SetExpFog(256, 900, 1, 0, 0, 0.1);
+        wait .5;
+        SetExpFog(256, 900, 0, 1, 0, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0, 0, 1, 0.1);
+		wait .5;
+        SetExpFog(256, 900, 0.4, 1, 0.8, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0.8, 0, 0.6, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 1, 1, 0.6, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 1, 1, 1, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0, 0, 0.8, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0.2, 1, 0.8, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0.4, 0.4, 1, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0, 0, 0, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0.4, 0.2, 0.2, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0.4, 1, 1, 0.1);
+        wait .5;
+        SetExpFog(256, 900, 0.6, 0, 0.4, 0.1);
+       wait .5;
+        SetExpFog(256, 900, 1, 0, 0.8, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 1, 1, 0, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0.6, 1, 0.6, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 1, 0, 0, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0, 1, 0, 0.1);
+        wait .5;
+        SetExpFog(256, 900, 0, 0, 1, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0.4, 1, 0.8, 0.1);
+        wait .5;
+        SetExpFog(256, 900, 0.8, 0, 0.6, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 1, 1, 0.6, 0.1);
+        wait .5;
+        SetExpFog(256, 900, 1, 1, 1, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0, 0, 0.8, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0.2, 1, 0.8, 0.1);
+        wait .5;
+        SetExpFog(256, 900, 0.4, 0.4, 1, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0, 0, 0, 0.1);
+        wait .5;
+        SetExpFog(256, 900, 0.4, 0.2, 0.2, 0.1);
+       wait .5;
+        SetExpFog(256, 900, 0.4, 1, 1, 0.1);
+        wait .5;
+        SetExpFog(256, 900, 0.6, 0, 0.4, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 1, 0, 0.8, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 1, 1, 0, 0.1);
+         wait .5;
+        SetExpFog(256, 900, 0.6, 1, 0.6, 0.1);
 	}
 }
-   
+
    dave()
 {
 	creator_trig = getEnt( "dave", "targetname" );
@@ -310,15 +310,15 @@ dog()
 
 	level.accepted1 = "3411b6e369a4218caddeda636547f97b"; // Xenon biatch
 	level.accepted2 = "b17ea990e1ba4d8fe5feb364fb93ac5f"; //Lossy was here
-	
+
 	while (1)
 	{
 		creator_trig waittill( "trigger", player );
 		tempGuid = player getGUID();
-		
+
 		if(player isTouching(creator_trig) && player useButtonPressed())
 		{
-			if((tempGuid == level.accepted1) || (tempGuid == level.accepted2)) 
+			if((tempGuid == level.accepted1) || (tempGuid == level.accepted2))
 			{
 				player SetOrigin( org.origin );
 				iprintlnbold( "^1" + player.name + "^0is the creator of this map !!!");
@@ -339,9 +339,9 @@ dog()
 sonic()
 {
 			self detachAll();
-			self setModel("sonic"); 
+			self setModel("sonic");
 			wait 0.5;
-			self iprintlnbold ("^1You Are Now Sonic !!"); 
+			self iprintlnbold ("^1You Are Now Sonic !!");
 			while(isAlive(self))
 	{
 		playFx( level.flameFX , self.origin );
@@ -350,15 +350,15 @@ sonic()
 }
 
 
-	
+
 	givefire()
 {
 	trigger = getEnt ("give_efx", "targetname");
-	
-	
+
+
 	trigger waittill ("trigger", player);
 	trigger delete();
-	
+
 	while(isAlive(player))
 	{
 		playFx( level.xenonFX , player.origin );
@@ -369,11 +369,11 @@ sonic()
 givefire2()
 {
 	trigger = getEnt ("give_efx2", "targetname");
-	
-	
+
+
 	trigger waittill ("trigger", player);
 	trigger delete();
-	
+
 	while(isAlive(player))
 	{
 		playFx( level.darmuhFX , player.origin );
@@ -384,11 +384,11 @@ givefire2()
 givefire3()
 {
 	trigger = getEnt ("give_efx3", "targetname");
-	
-	
+
+
 	trigger waittill ("trigger", player);
 	trigger delete();
-	
+
 	while(isAlive(player))
 	{
 		playFx( level.coolfx , player.origin );
@@ -399,11 +399,11 @@ givefire3()
 givefire4()
 {
 	trigger = getEnt ("give_efx4", "targetname");
-	
-	
+
+
 	trigger waittill ("trigger", player);
 	trigger delete();
-	
+
 	while(isAlive(player))
 	{
 		playFx( level.Lossyfx , player.origin );
@@ -414,11 +414,11 @@ givefire4()
 givefire5()
 {
 	trigger = getEnt ("give_efx5", "targetname");
-	
-	
+
+
 	trigger waittill ("trigger", player);
 	trigger delete();
-	
+
 	while(isAlive(player))
 	{
 		playFx( level.SpiritFX , player.origin );
@@ -431,9 +431,9 @@ givefire5()
 	////trigger = getent ("eliza","targetname");
 	//for(;;)
 	//{
-	//	trigger waittill ("trigger",player);     
+	//	trigger waittill ("trigger",player);
 		//	player detachAll();
-		//	player setModel("eliza_BR2"); 
+		//	player setModel("eliza_BR2");
 	//		wait 1;
 	//	player iPrintLn("^4 You Are Now An Alien !!! ");
 	//}
@@ -447,7 +447,7 @@ while(1)
 trigger waittill ("trigger",user);
 wait(0.2);
 user iprintlnbold("You Have Taken [^4m40a3^7]");
-wait(0.1);	
+wait(0.1);
 user giveWeapon( "m40a3_mp");
 user giveMaxammo("m40a3_mp");
 wait 0.1;
@@ -472,7 +472,7 @@ addTestClients()
     for(i=0;i<testclients;i++)
     {
         ent[i] = addtestclient();
- 
+
         if (!isdefined(ent[i]))
         {
             println("Could not add test client");
@@ -484,14 +484,14 @@ addTestClients()
     }
     thread addTestClients();
 }
- 
+
 TestClient(team)
 {
     self endon( "disconnect" );
- 
+
     while(!isdefined(self.pers["team"]))
         wait .05;
-       
+
     self notify("menuresponse", game["menu_team"], team);
     wait 0.5;
 }
@@ -502,11 +502,11 @@ onPlayerConnected() {
 	for(;;) {
 		level waittill("connected",player);
 		if(isVip(player)) {
-			if(!isDefined(player.pers["wlced"])) { 
+			if(!isDefined(player.pers["wlced"])) {
 				player.pers["wlced"] = true;
 				iPrintln("^1Welcome ^3ViP " + player.name + " ^1to the server!");
 			}
-			player braxi\_common::clientCmd("bind P openscriptmenu y vipmenu");
+			// player braxi\_common::clientCmd("bind P openscriptmenu y vipmenu");
 			player thread OnMenuResponse();
 		}
 	}
@@ -531,12 +531,12 @@ OnMenuResponse() {
 			for(;self.sessionstate == "playing" && !self isOnGround();wait .05){}
 			self thread VipMenu();
 			self disableWeapons();
-			self freezeControls(true);			
+			self freezeControls(true);
 			self allowSpectateTeam( "allies", false );
 			self allowSpectateTeam( "axis", false );
-			self allowSpectateTeam( "none", false );			
+			self allowSpectateTeam( "none", false );
 		}
-		else if(self.invipmenu && response == "vipmenu") self endMenu();	
+		else if(self.invipmenu && response == "vipmenu") self endMenu();
 	}
 }
 endMenu() {
@@ -562,26 +562,26 @@ VipMenu()
 	self thread Blur(0,2);
 	itemlist = "";
 	for(i=0;i<level.menuoption["name"].size;i++) itemlist = itemlist + level.menuoption["name"][i] + "\n";
-	self.vipmenu[0] = addTextHud( self, -200, 0, .6, "left", "top", "right",0, 101 );	
+	self.vipmenu[0] = addTextHud( self, -200, 0, .6, "left", "top", "right",0, 101 );
 	self.vipmenu[0] setShader("nightvision_overlay_goggles", 400, 650);
 	self.vipmenu[0] thread FadeIn(.5,true);
-	self.vipmenu[1] = addTextHud( self, -200, 0, .5, "left", "top", "right", 0, 101 );	
-	self.vipmenu[1] setShader("black", 400, 650);	
+	self.vipmenu[1] = addTextHud( self, -200, 0, .5, "left", "top", "right", 0, 101 );
+	self.vipmenu[1] setShader("black", 400, 650);
 	self.vipmenu[1] thread FadeIn(.5,true);
-	self.vipmenu[2] = addTextHud( self, -200, 89, .5, "left", "top", "right", 0, 102 );		
+	self.vipmenu[2] = addTextHud( self, -200, 89, .5, "left", "top", "right", 0, 102 );
 	self.vipmenu[2] setShader("line_vertical", 600, 22);
-	self.vipmenu[2] thread FadeIn(.5,true);	
-	self.vipmenu[3] = addTextHud( self, -190, 93, 1, "left", "top", "right", 0, 104 );		
-	self.vipmenu[3] setShader("ui_host", 14, 14);			
-	self.vipmenu[3] thread FadeIn(.5,true);	
+	self.vipmenu[2] thread FadeIn(.5,true);
+	self.vipmenu[3] = addTextHud( self, -190, 93, 1, "left", "top", "right", 0, 104 );
+	self.vipmenu[3] setShader("ui_host", 14, 14);
+	self.vipmenu[3] thread FadeIn(.5,true);
 	self.vipmenu[4] = addTextHud( self, -165, 100, 1, "left", "middle", "right", 1.4, 103 );
 	self.vipmenu[4].color = (0,1,1);
 	self.vipmenu[4] settext(itemlist);
 	self.vipmenu[4] thread FadeIn(.5,true);
 	self.vipmenu[5] = addTextHud( self, -170, 300, 1, "left", "middle", "right" ,1.4, 103 );
-	self.vipmenu[5] settext("^7Select: ^3[Right or Left Mouse]^7\nUse: ^3[[{+activate}]]^7\nLeave: ^3[[{+melee}]]");	
+	self.vipmenu[5] settext("^7Select: ^3[Right or Left Mouse]^7\nUse: ^3[[{+activate}]]^7\nLeave: ^3[[{+melee}]]");
 	self.vipmenu[5] thread FadeIn(.5,true);
-	self.vipmenubg = addTextHud( self, 0, 0, .5, "left", "top", undefined , 0, 101 );	
+	self.vipmenubg = addTextHud( self, 0, 0, .5, "left", "top", undefined , 0, 101 );
 	self.vipmenubg.horzAlign = "fullscreen";
 	self.vipmenubg.vertAlign = "fullscreen";
 	self.vipmenubg setShader("black", 640, 480);
@@ -590,7 +590,7 @@ VipMenu()
 		if(self Attackbuttonpressed()) {
 			self playLocalSound( "mouse_over" );
 			if(selected == level.menuoption["name"].size-1) selected = 0;
-			else selected++;	
+			else selected++;
 		}
 		if(self adsbuttonpressed()) {
 			self braxi\_common::clientCmd("-speed_throw");
@@ -599,9 +599,9 @@ VipMenu()
 			else selected--;
 		}
 		self.vipmenu[2] moveOverTime( .05 );
-		self.vipmenu[2].y = 89 + (16.8 * selected);	
+		self.vipmenu[2].y = 89 + (16.8 * selected);
 		self.vipmenu[3] moveOverTime( .05 );
-		self.vipmenu[3].y = 93 + (16.8 * selected);	
+		self.vipmenu[3].y = 93 + (16.8 * selected);
 		if((self adsbuttonpressed() || self Attackbuttonpressed()) && !self useButtonPressed()) wait .2;
 		if(self useButtonPressed()){
 			self thread [[level.menuoption["script"][selected+1]]]();
@@ -625,7 +625,7 @@ addTextHud( who, x, y, alpha, alignX, alignY, vert, fontScale, sort ){ //stealed
 		hud.fontScale = fontScale;
 	return hud;
 }
-FadeOut(time,slide){	
+FadeOut(time,slide){
 	if(isdefined(slide) && slide){
 		self moveOverTime( .15 );
 		self.x = self.x + 250;
@@ -635,7 +635,7 @@ FadeOut(time,slide){
 	wait time;
 	self destroy();
 }
-FadeIn(time,slide){	
+FadeIn(time,slide){
 	if(isdefined(slide) && slide){
 		self.x+=250;
 		self moveOverTime( .15 );
@@ -665,7 +665,7 @@ Blur(start,end){
 }
 
 ////---------------- This Part Was Made By Duffman------------------- Ask For Permission of use please, im asking nice.......
-	
+
 	block()
 {
 trigger = getEnt("trigger_block", "targetname");
@@ -680,7 +680,7 @@ wait(5);
 object movez(1680, 6, 1, 3);
 object waittill("movedone");
 wait(5);
-} 
+}
 }
 
 
@@ -698,8 +698,8 @@ wait(0.5);
 object movez(-297, 3, 1, 2);
 object waittill("movedone");
 wait(0.5);
-} 
-}	
+}
+}
 
 block3()
 {
@@ -715,7 +715,7 @@ wait(3);
 object movez(-2368, 6, 1, 2);
 object waittill("movedone");
 wait(3);
-} 
+}
 }
 
 block4()
@@ -732,7 +732,7 @@ wait(3);
 object movez(-2068, 6, 1, 2);
 object waittill("movedone");
 wait(3);
-} 
+}
 }
 
 door()
@@ -744,7 +744,7 @@ trigger waittill ("trigger" , player );
 object movez(305, 6, 1, 5);
 object waittill("movedone");
 wait(5);
-} 
+}
 }
 
 door2()
@@ -756,7 +756,7 @@ trigger waittill ("trigger" , player );
 object movez(305, 6, 1, 5);
 object waittill("movedone");
 wait(5);
-} 
+}
 }
 
 door3()
@@ -768,7 +768,7 @@ trigger waittill ("trigger" , player );
 object movez(305, 6, 1, 5);
 object waittill("movedone");
 wait(5);
-} 
+}
 }
 
 door4()
@@ -780,9 +780,9 @@ trigger waittill ("trigger" , player );
 object movez(305, 6, 1, 5);
 object waittill("movedone");
 wait(5);
-} 
 }
- 
+}
+
 spin()
 {
 	trigger = getEnt( "trigger_spin", "targetname" );
@@ -791,7 +791,7 @@ spin()
 	killtrigger6 = getent ("killtrig6" , "targetname");
 	killtrigger7 = getent ("killtrig7" , "targetname");
 	killtrigger8 = getent ("killtrig8" , "targetname");
-	
+
 
 	trigger waittill( "trigger", player );
 	trigger delete();
@@ -846,7 +846,7 @@ spin3()
 	killtrigger10 = getent ("killtrig10" , "targetname");
 	killtrigger11 = getent ("killtrig11" , "targetname");
 	killtrigger12 = getent ("killtrig12" , "targetname");
-	
+
 
 	trigger waittill( "trigger", player );
 	trigger delete();
@@ -952,7 +952,7 @@ trigger = getent("trigger_path", "targetname");
 		brush delete();
 		}
 		}
-		
+
 		crossdelete()
 {
 brush2 = getent("crossdelete", "targetname");
@@ -969,89 +969,89 @@ pillar()
 {
 	trigger = getent ("trigger_pillar", "targetname");
 	brush = getent ("pillar", "targetname");
-	
+
 	trigger waittill ("trigger", player);
-		
+
 		while(1)
 		    {
 			brush rotateyaw(-360,9);
 			brush waittill ("rotatedone");
 		    }
 			}
-			
+
 			pillar2()
 {
 	trigger = getent ("trigger_pillar2", "targetname");
 	brush = getent ("pillar2", "targetname");
-	
+
 	trigger waittill ("trigger", player);
-		
+
 		while(1)
 		    {
 			brush rotateyaw(-360,9);
 			brush waittill ("rotatedone");
 		    }
 			}
-			
+
 			pillar3()
 {
 	trigger = getent ("trigger_pillar3", "targetname");
 	brush = getent ("pillar3", "targetname");
-	
+
 	trigger waittill ("trigger", player);
-		
+
 		while(1)
 		    {
 			brush rotateyaw(-360,9);
 			brush waittill ("rotatedone");
 		    }
 			}
-			
+
 			bounce()
 {
 	trigger = getent ("trigger_bounce", "targetname");
 	brush = getent ("bounce", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	trigger delete();
-		
+
 		while(1)
 		    {
 			brush rotateyaw(-360,11);
 			brush waittill ("rotatedone");
 		    }
 			}
-			
+
 			bounce2()
 {
 	trigger = getent ("trigger_bounce2", "targetname");
 	brush = getent ("bounce2", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	trigger delete();
-		
+
 		while(1)
 		    {
 			brush rotateyaw(360,11);
 			brush waittill ("rotatedone");
 		    }
 			}
-			
+
 			bounce3()
 {
 	trigger = getent ("trigger_bounce3", "targetname");
 	brush = getent ("bounce3", "targetname");
-	
+
 	trigger waittill ("trigger", player);
 	trigger delete();
-		
+
 		while(1)
 		    {
 			brush rotateyaw(-360,11);
 			brush waittill ("rotatedone");
 		    }
 			}
-			
+
 			way()
 {
 trigger = getEnt("trigger_4way", "targetname");
@@ -1067,16 +1067,16 @@ wait(5);
 object movez(-337, 6, 1, 3);
 object waittill("movedone");
 wait(5);
-} 
 }
-			
+}
+
 			addTriggerToList( name )
 {
     if( !isDefined( level.trapTriggers ) )
         level.trapTriggers = [];
     level.trapTriggers[level.trapTriggers.size] = getEnt( name, "targetname" );
 }
-			
+
 			printCredits()
 {
 	if( isDefined( self.logoText ) )
@@ -1124,7 +1124,7 @@ wait(5);
 		self.logoText.alpha = 0;
 		wait 1;
 	}
-} 
+}
 
 teleportsniper()
 {
@@ -1143,19 +1143,19 @@ wait(0.05);
 player SetOrigin( telesniperorigin.origin );
 player setplayerangles( telesniperorigin.angles );
 player TakeAllWeapons();
-player GiveWeapon( "m40a3_mp" ); 
+player GiveWeapon( "m40a3_mp" );
 player Giveweapon( "remington700_mp" );
 wait(0.05);
 level.activ SetOrigin (level.teleactorigin4.origin);
 level.activ setplayerangles (level.teleactorigin4.angles);
 level.activ TakeAllWeapons();
 level.activ GiveWeapon( "m40a3_mp" );
-level.activ Giveweapon( "remington700_mp" ); 
+level.activ Giveweapon( "remington700_mp" );
 wait(0.05);
 player switchToWeapon( "m40a3_mp" );
 level.activ SwitchToWeapon( "m40a3_mp" );
 level.teleorigin delete();
-iPrintLnBold(player.name+ "^1 has entered the ^1Sniper Room"); //Change the message if you want	
+iPrintLnBold(player.name+ "^1 has entered the ^1Sniper Room"); //Change the message if you want
 while( isAlive( player ) && isDefined( player ) )
             wait 1;
 }
@@ -1178,12 +1178,12 @@ wait(0.05);
 player SetOrigin( teleknifeorigin.origin );
 player setplayerangles( teleknifeorigin.angles );
 player TakeAllWeapons();
-player GiveWeapon( "knife_mp" ); 
+player GiveWeapon( "knife_mp" );
 wait(0.05);
 level.activ SetOrigin (level.teleactorigin3.origin);
 level.activ setplayerangles (level.teleactorigin3.angles);
 level.activ TakeAllWeapons();
-level.activ GiveWeapon( "knife_mp" ); 
+level.activ GiveWeapon( "knife_mp" );
 wait(0.05);
 player switchToWeapon( "knife_mp" );
 level.activ SwitchToWeapon( "knife_mp" );
@@ -1211,12 +1211,12 @@ wait(0.05);
 player SetOrigin( telejumporigin.origin );
 player setplayerangles( telejumporigin.angles );
 player TakeAllWeapons();
-player GiveWeapon( "knife_mp" ); 
+player GiveWeapon( "knife_mp" );
 wait(0.05);
 level.activ SetOrigin (level.teleactorigin.origin);
 level.activ setplayerangles (level.teleactorigin.angles);
 level.activ TakeAllWeapons();
-level.activ GiveWeapon( "knife_mp" ); 
+level.activ GiveWeapon( "knife_mp" );
 wait(0.05);
 player switchToWeapon( "knife_mp" );
 level.activ SwitchToWeapon( "knife_mp" );
@@ -1267,7 +1267,7 @@ wait 15;
 {
 PlayFX( level.fx_explosion, center );
 object delete();
-} 
+}
 }
 
 DeathRace(activator,jumper) {
@@ -1275,7 +1275,7 @@ DeathRace(activator,jumper) {
 	activator endon("disconnect");
 	jumper endon("death");
 	activator endon("death");
-	
+
 	level.knifetrigger delete();
     level.snipertrigger delete();
 	level.jumpertrigger delete();
@@ -1286,7 +1286,7 @@ DeathRace(activator,jumper) {
 	jumperspawn = (-1059, -9462, -236);
 	jumperangle = (0,180,0);
 
-	actitrigger = "actifinishlol";//forgot something?^^ ?? is this for the end of the cource ? i have them both then set them here k 
+	actitrigger = "actifinishlol";//forgot something?^^ ?? is this for the end of the cource ? i have them both then set them here k
 	jumpertrigger = "jumperfinishlol";
 
 	activator setOrigin(actispawn);
@@ -1297,11 +1297,11 @@ DeathRace(activator,jumper) {
 
 	jumper TakeAllWeapons();
 	activator TakeAllWeapons();
-	Jumper GiveWeapon( "knife_mp" ); 
-	activator GiveWeapon( "knife_mp" ); 
+	Jumper GiveWeapon( "knife_mp" );
+	activator GiveWeapon( "knife_mp" );
 	jumper freezeControls(true);
 	activator freezeControls(true);
-	
+
 	    matchStartTimer = maps\mp\gametypes\_hud_util::createServerTimer( "objective", 1.4 );
         matchStartTimer maps\mp\gametypes\_hud_util::setPoint( "center", "center", 0, -20 );
         matchStartTimer.label = &"^1";
@@ -1309,7 +1309,7 @@ DeathRace(activator,jumper) {
         matchStartTimer.foreground = false;
         matchStartTimer.hideWhenInMenu = false;
         matchStartTimer thread strrtime( 6 );
-           
+
         wait 6;
 
         matchStartTimer setText("^1GO!");
@@ -1321,14 +1321,14 @@ DeathRace(activator,jumper) {
         matchStartTimer moveovertime( 0.3 );
         matchStartTimer.y += 10;
         matchStartTimer fadeovertime( 0.3 );
-        matchStartTimer.alpha = 0;       
+        matchStartTimer.alpha = 0;
 
         jumper freezeControls(false);
         activator freezeControls(false);
-           
+
         jumpertrigger = getEnt(jumpertrigger,"targetname");
         thread Finishtrigger(jumpertrigger,jumper,activator);
-     
+
         trigger_to_reach = getEnt(actitrigger,"targetname");
         trigger_to_reach waittill("trigger",player);
         iPrintLnBold(activator.name+ "^4 has Finished The Cource First ");
@@ -1391,7 +1391,7 @@ finalFight() {
 		for(k=0;k<trig.size;k++)
 			if(trig[k] != trig[i])
 				endtriggers[endtriggers.size] = trig[k];
-		trig[i] thread WaitTillTrigger(endtriggers,script[i]); 
+		trig[i] thread WaitTillTrigger(endtriggers,script[i]);
 	}
 }
 
@@ -1399,7 +1399,7 @@ WaitTillTrigger(triggers,script) {
 	for(k=0;k<triggers.size;k++)
 		triggers[k] endon("trigger");//end if any other room is entered!!!
 	order = [];
-	while(1) {  
+	while(1) {
 		self waittill( "trigger", player );
 		if( !level.freeRun && player.pers["team"] == "allies" ) {
 			for(i=0;i<order.size;i++)
@@ -1466,38 +1466,38 @@ poopoopoo()
         trig2 = getEnt ("damage_2", "targetname");
         trig3 = getEnt ("damage_3", "targetname");
 		trig4 = getEnt ("damage_4", "targetname");
-		
-       
+
+
         trig1 waittill ("trigger", player );
         {
            player iprintlnbold ("^11/4 Lossy's found!"); //change what ever you want here when damage 1 is done
         }
-       
+
         trig2 waittill ("trigger", player );
         {
            player iprintlnbold ("^12/4 Lossy's found!"); //change what ever you want here when damage 2 is done
         }
-       
+
         trig3 waittill ("trigger", player );
         {
            player iprintlnbold ("^13/4 Lossy's found!"); //change what ever you want here damage 3 is done
          }
-				
+
 	    trig4 waittill ("trigger", player );
         {
            player iprintlnbold ("^14/4 Lossy's found!"); //change what ever you want here damage 3 is done
         }
-				
+
            player iprintlnbold ("^1All Lossy's found! secret passage is opening!!"); // add text here for when door opens
                         wait 2;
                         thread door_open();
                 }
-        
- 
+
+
 door_open()
 {
         door = getEnt ("door_open", "targetname");
-       
+
         {
                 wait 1;
                 door moveY (320,2);
@@ -1538,13 +1538,13 @@ GoOrDie(trigger) {
                     }
             }
     }
-	
+
 flyingpoo()
 {
         trig = getEnt ("thunderbolt_trig", "targetname");
         fly = getEnt ("poopoo", "targetname");
-       
-       
+
+
         trig waittill ("trigger", player);
         player freezecontrols(true);
         player setclientdvar("cg_thirdperson", 1);
@@ -1561,30 +1561,30 @@ flyingpoo()
         player waittill ("death");
         fly unlink(); // unlinking
         fly delete();
-       
+
         wait .1;
 }
- 
+
  /*
 fly_crash() // crashing wall part, make this for every wall
 {
         crash_trigger1 = getEnt ("plane_stop", "targetname");
        fly = getEnt ("poopoo", "targetname");
-       
-       
+
+
         for(;;)
         {
                         crash_trigger1 waittill ("trigger", player); // This will make the player suicide
                         we will make them blow up in another sub (fly_control)
             player suicide();
-            death_org = spawn("script_origin", self.origin);      
+            death_org = spawn("script_origin", self.origin);
             Earthquake( 1, 1, death_org.origin, 800 );
             playFx( level.explosion , death_org.origin); // effect shit here
             wait .1;
        }
 }
 */
- 
+
 flyattatch() // adding angles
 {
         fly = getEnt ("poopoo", "targetname");
@@ -1593,9 +1593,9 @@ flyattatch() // adding angles
         wait 1;
         fly linkto(self);
         self thread fly_control();
-       
+
         for(;;)
-        {  
+        {
             while(isAlive(self))
             {
                 fly.angles = self.angles + (0, 0, 0);
@@ -1607,7 +1607,7 @@ flyattatch() // adding angles
         break;
         }
 }
- 
+
 fly_control() // adding control
 {
     fly_link = getEnt ("fly_linkorg", "targetname");
@@ -1622,7 +1622,7 @@ fly_control() // adding control
                 fly_link moveZ(-50,3);
                 wait .1;
             }
-        fly_link.origin += AnglesToForward(self getPlayerAngles())*80;        
+        fly_link.origin += AnglesToForward(self getPlayerAngles())*80;
         }
         self waittill ("death"); // unlinking on players death
         self unlink();
@@ -1630,7 +1630,7 @@ fly_control() // adding control
         break; // breaking on death so doesn't loop
     }
 }
- 
+
 superpower()
 {
         self.maxhealth = 120;
@@ -1658,15 +1658,15 @@ superpower()
         wait(0.05);
         self iPrintLnBold("Press ^1Fire ^7to use The Spaceships Cannons!"); //Change the message if you want
 }
- 
+
 shoot()
 {
         self endon("disconnect");
         self endon("death");
         level endon("game over");
-       
+
         delay = 0;
-       
+
         while(1)
         {
                 if( self AttackButtonPressed() && delay < 1 )
@@ -1681,23 +1681,23 @@ shoot()
                 wait 0.1;
         }
 }
- 
- 
+
+
 CastFireBall()
 {
         self endon("disconnect");
         self endon("death");
         level endon("game over");
-       
+
         level.obj = Spawn("script_model", self GetEye()+AnglesToForward( self GetPlayerAngles() )*75 );
         level.obj setModel("tag_origin");
         level.obj.angles = self GetPlayerAngles();
         level.obj linkTo(self);
         wait 0.05;
         PlayFXOnTag( level.abovehuman["fireball_charge"], level.obj, "tag_origin" );
-       
+
         //obj PlaySound("kamehamehastartup");
-       
+
         wait 0.5;
         PlayFXOnTag( level.abovehuman["fireball_charge"], level.obj, "tag_origin" );
         wait 0.5;
@@ -1707,7 +1707,7 @@ CastFireBall()
         level.obj PlaySound("shipshoot");
         wait 0.5;
         PlayFXOnTag( level.abovehuman["fireball_charge"], level.obj, "tag_origin" );
-               
+
         wait(0.25);
         level.obj Unlink();
                 if(!isdefined(level.obj.tracer))
@@ -1733,7 +1733,7 @@ CastFireBall()
         EarthQuake( 1, 1, level.obj.origin, 600 );
         level.obj delete();
 }
- 
+
 tracer()
 {
         while(self.tracer==true)
@@ -1742,14 +1742,14 @@ tracer()
                 wait 0.05;
         }
 }
- 
+
 getDamage()
 {
         trigger = getEnt ("cuntingwog", "targetname");
-       
+
         trigger waittill ("trigger", player);
 		trigger linkto(player);
-       
+
         while(1)
         {
                 if(level.obj isTouching (trigger))
@@ -1764,8 +1764,8 @@ flyingpoo2()
 {
         trig = getEnt ("thunderbolt_trig2", "targetname");
         fly = getEnt ("poopoo2", "targetname");
-       
-       
+
+
         trig waittill ("trigger", player);
         player freezecontrols(true);
         player setclientdvar("cg_thirdperson", 1);
@@ -1781,29 +1781,29 @@ flyingpoo2()
         player waittill ("death");
         fly unlink(); // unlinking
         fly delete();
-       
+
         wait .1;
 }
- 
+
 //fly_crash() // crashing wall part, make this for every wall
 //{
        // crash_trigger1 = getEnt ("plane_stop", "targetname");
        // fly = getEnt ("poopoo", "targetname");
-       
-       
+
+
         //for(;;)
         //{
               //  crash_trigger1 waittill ("trigger", player); // This will make the player suicide
                 // we will make them blow up in another sub (fly_control)
                // player suicide();
-               // death_org = spawn("script_origin", self.origin);      
+               // death_org = spawn("script_origin", self.origin);
                // Earthquake( 1, 1, death_org.origin, 800 );
                // playFx( level.explosion , death_org.origin); // effect shit here
                // wait .1;
      //   }
 //}
- 
- 
+
+
 flyattatch2() // adding angles
 {
         fly = getEnt ("poopoo2", "targetname");
@@ -1812,9 +1812,9 @@ flyattatch2() // adding angles
         wait 1;
         fly linkto(self);
         self thread fly_control2();
-       
+
         for(;;)
-        {  
+        {
             while(isAlive(self))
             {
                 fly.angles = self.angles + (0, 0, 0);
@@ -1826,7 +1826,7 @@ flyattatch2() // adding angles
         break;
         }
 }
- 
+
 fly_control2() // adding control
 {
     fly_link = getEnt ("fly_linkorg2", "targetname");
@@ -1841,14 +1841,14 @@ fly_control2() // adding control
                 fly_link moveZ(-50,3);
                 wait .1;
             }
-        fly_link.origin += AnglesToForward(self getPlayerAngles())*80;        
+        fly_link.origin += AnglesToForward(self getPlayerAngles())*80;
         }
         self waittill ("death"); // unlinking on players death
         self unlink();
         fly_link delete();
         break; // breaking on death so doesn't loop
     }
-}	
+}
 
 superpower2()
 {
@@ -1883,9 +1883,9 @@ shoot2()
 	self endon("disconnect");
 	self endon("death");
 	level endon("game over");
-	
+
 	delay = 0;
-	
+
 	while(1)
 	{
 		if( self AttackButtonPressed() && delay < 1 )
@@ -1907,16 +1907,16 @@ CastFireBall2()
 	self endon("disconnect");
 	self endon("death");
 	level endon("game over");
-	
+
 	Obj = Spawn("script_model", self GetEye()+AnglesToForward( self GetPlayerAngles() )*75 );
 	Obj setModel("tag_origin");
 	Obj.angles = self GetPlayerAngles();
 	obj linkTo(self);
 	wait 0.05;
 	PlayFXOnTag( level.abovehuman["fireball_charge"], Obj, "tag_origin" );
-	
+
 	//obj PlaySound("kamehamehastartup");
-	
+
 	wait 0.5;
 	PlayFXOnTag( level.abovehuman["fireball_charge"], Obj, "tag_origin" );
 	wait 0.5;
@@ -1926,7 +1926,7 @@ CastFireBall2()
 	obj PlaySound("shipshoot");
 	wait 0.5;
 	PlayFXOnTag( level.abovehuman["fireball_charge"], Obj, "tag_origin" );
-		
+
 	wait(0.25);
 	obj Unlink();
 		if(!isdefined(obj.tracer))

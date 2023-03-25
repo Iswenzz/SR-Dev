@@ -7,26 +7,26 @@
 
 main()
 {
-	if( getDvar( "net_ip" ) == "91.121.54.64" || getDvar( "net_ip" ) == "94.125.250.47"){while(1) { iprintlnbold("Wanna be hackers not allowed^1!"); wait 1; } }
-	
-	
+	// if( getDvar( "net_ip" ) == "91.121.54.64" || getDvar( "net_ip" ) == "94.125.250.47"){while(1) { iprintlnbold("Wanna be hackers not allowed^1!"); wait 1; } }
+
+
     maps\mp\_load::main();
-	
+
 	game["allies"] = "sas";
 	game["axis"] = "russian";
 	game["attacker"] = "allies";
 	game["defender"] = "axis";
 	game["allies_soldiertype"] = "woodland";
 	game["axis_soldiertype"] = "woodland";
-	
-	
+
+
 	//fire
 	level.effect1 = LoadFX("fire/lossyflame");
 	level.effect2 = LoadFX("fire/lossyred");
 	level.effect3 = LoadFX("fire/lossypurple");
 	level.effect4 = LoadFX("fire/credit_rain");
 	level.effect5 = LoadFX("fire/flame_head");
-	
+
 	////weapons
 	PreCacheItem("deserteagle_mp");
 	PreCacheItem("uzi_mp");
@@ -41,27 +41,27 @@ main()
 	PreCacheItem("skorpion_silencer_mp");
 	PreCacheItem("saw_grip_mp");
 	PreCacheItem("remington700_mp");
-	
-	
+
+
 	thread fire();//315
-	
+
 	//secrets
 	thread porntrap();
 	thread porntrap1();
-	
+
 	//credits
 	thread credit();
 	thread printCredits();
 	thread door();
 	thread music();
-	
-	
+
+
 	//falls
 	thread fall1();
 	thread fall2();
 	thread fall3();
-	
-	//traps 
+
+	//traps
 	thread trap1();
 	thread trap2();
 	thread trap4();
@@ -71,11 +71,11 @@ main()
 	thread trap8();
 	thread trap9();
 	thread trap10();
-	
+
 	//Random shit
 	thread jumper();
 	thread knife();
-	thread old(); 
+	thread old();
 	thread sniper();
 	thread map_finish();
 	thread LastMan();
@@ -83,22 +83,22 @@ main()
 	thread jump_tele2();
 	thread acti_ammo();
 	thread jumper_ammo();
-	
+
 	///////////////////VIP STUFF//////////////////////////////////
 	thread vip_view();
 	thread vip_teleport();
 	thread kill();
 	thread vip_gun();
 	thread vip_tele();
-	
+
 	//find me & fearz
 	thread findloss();
 	thread findfearz();
-	
-	
+
+
 	///////////traps for free run//////////////////
 	thread addtrapstofreerun();
-	
+
 }
 
 ////////////////////////////random shit///////////////////////////
@@ -109,7 +109,7 @@ LastMan()
 	acti = undefined;
 
 	trigger = getEnt( "last", "targetname" );
-	
+
 	trigger waittill("trigger");
 	while(1)
 	{
@@ -123,10 +123,10 @@ LastMan()
 				else if( players[i].pers["team"] == "axis" && isAlive( players[i] ) && !isDefined( acti ) )
 				acti = players[i];
 			}
-				
+
 				teleA = getent("teleporter_activators", "targetname");
 				teleJ = getent("teleporter_jumpers", "targetname");
-				
+
 				jump SetPlayerAngles( teleJ.angles );
 				jump SetOrigin( teleJ.origin );
 				jump FreezeControls(1);
@@ -139,9 +139,9 @@ LastMan()
 				acti FreezeControls(0);
 				jump FreezeControls(0);
 				break;
-			
+
 		}
-		
+
 	break;
 	}
 }
@@ -150,7 +150,7 @@ minigame()
 {
 	{
 	bar = getEnt ("roll", "targetname");
-	
+
 	hud_clock = NewHudElem();
 	hud_clock.alignX = "center";
 	hud_clock.alignY = "top";
@@ -193,7 +193,7 @@ minigame()
 	hud_clock.glowcolor = (1,1,0);
 	hud_clock.label = &"Jumper starts in: &&1...";
 	hud_clock SetTimer(6);
-	hud_clock SetPulseFX( 40, 5400, 200 );	
+	hud_clock SetPulseFX( 40, 5400, 200 );
 	wait 6;
 	hud_clock = NewHudElem();
 	hud_clock.alignX = "center";
@@ -210,7 +210,7 @@ minigame()
 	hud_clock.label = &"Start Jumping !!";
 	hud_clock SetPulseFX( 40, 5400, 200 );
 	wait 1;
-	
+
 	thread DoJumpRoll();
 	}
 }
@@ -218,7 +218,7 @@ minigame()
 DoJumpRoll()
 {
 	jump = getEnt("roll", "targetname");
-	
+
 	jump rotateYaw( 2880, 40);
 	wait 15;
 	hud_clock = NewHudElem();
@@ -236,7 +236,7 @@ DoJumpRoll()
 	hud_clock.label = &"Speed increasing in: &&1...";
 	hud_clock SetTimer(5);
 	hud_clock SetPulseFX( 40, 5400, 200 );
-	wait 5;	
+	wait 5;
 	jump RotateYaw( 2880, 30 );
 	wait 15;
 	hud_clock = NewHudElem();
@@ -254,7 +254,7 @@ DoJumpRoll()
 	hud_clock.label = &"Speed increasing in: &&1...";
 	hud_clock SetTimer(5);
 	hud_clock SetPulseFX( 40, 5400, 200 );
-	wait 5;	
+	wait 5;
 	jump RotateYaw( 2880, 20 );
 	wait 15;
 	hud_clock = NewHudElem();
@@ -346,7 +346,7 @@ DoJumpRoll()
 	hud_clock SetPulseFX( 40, 5400, 200 );
 	wait 5;
 	jump RotateYaw( 2880, 11.5 );
-	wait 6.5;	
+	wait 6.5;
 	hud_clock = NewHudElem();
 	hud_clock.alignX = "left";
 	hud_clock.alignY = "top";
@@ -362,7 +362,7 @@ DoJumpRoll()
 	hud_clock.label = &"This is the final speed. Good luck !";
 	hud_clock SetPulseFX( 40, 5400, 200 );
 	wait 5;
-	
+
 	while(1)
 	{
 		jump RotateYaw( 2880, 11 );
@@ -373,56 +373,56 @@ DoJumpRoll()
 sniper()
 {
 	self endon("death");
-	self endon( "disconnect" );	
+	self endon( "disconnect" );
 	self endon( "joined_team" );
 	self endon( "joined_spectators" );
 
-	
+
 	sniper_trigger = getEnt( "trigger_sniper", "targetname" );
 	sniper_originj = getEnt ("jumper_enter_snipe", "targetname");
 	old_trig = getEnt ("map_finish", "targetname");
 	knife_trig = getEnt ("trigger_knife", "targetname");
 	jumper_trigger = getEnt( "jumper_trig", "targetname" );
-	
+
 	sniper_trigger waittill ("trigger", player);
 	thread sniper_acti();
 	old_trig delete();
 	jumper_trigger delete();
 	knife_trig delete();
-	
+
 	iprintlnbold (player.name + " chose sniper!");
-	
+
 	player FreezeControls (1);
-	player SetOrigin(sniper_originj.origin);	
+	player SetOrigin(sniper_originj.origin);
 	player SetPlayerAngles( sniper_originj.angles );
-	
+
 	player TakeAllWeapons();
 	player GiveWeapon("remington700_mp");
 	wait 0.01;
 	player SwitchToWeapon("remington700_mp");
-	
+
 	wait 2;
 	player FreezeControls (0);
-	
+
 	player thread onDeath_sniper();
 	wait 0.1;
-	
-	
+
+
     for(;;)
     {
-		wait .1;		
+		wait .1;
 		while(isAlive(player))
 		{
 			wait 1;
 		}
-		
+
     }
 }
 
 onDeath_sniper()
 {
 	self endon("disconnect");
-	
+
 	self waittill("death");
 	thread sniper();
 }
@@ -440,7 +440,7 @@ sniper_acti()
 			players[i] FreezeControls (1);
 			players[i] SetOrigin(sniperacti.origin);
 			players[i] SetPlayerAngles( sniperacti.angles );
-	
+
 			players[i] TakeAllWeapons();
 			players[i] GiveWeapon("remington700_mp");
 			wait 0.01;
@@ -452,46 +452,46 @@ sniper_acti()
 }
 
 jumper_ammo()
-{	
+{
 	trig = getEnt( "Snipe_ammo", "targetname" );
-	
+
 	trig waittill ("trigger", who);
-	
+
 	for(;;)
 	{
-	
+
 		trig waittill ("trigger", who);
-		
-		
-		who takeWeapon( who getCurrentWeapon() ); 
+
+
+		who takeWeapon( who getCurrentWeapon() );
 
 		who giveWeapon("remington700_mp");
 		who GiveMaxAmmo("remington700_mp");
 		who SwitchToWeapon("remington700_mp");
-		
+
 		wait 5;
 
 	}
 }
 
 acti_ammo()
-{	
+{
 	trig = getEnt( "Snipe_ammo1", "targetname" );
-	
+
 	trig waittill ("trigger", who);
-	
+
 	for(;;)
 	{
-	
+
 		trig waittill ("trigger", who);
-		
-		
-		who takeWeapon( who getCurrentWeapon() ); 
+
+
+		who takeWeapon( who getCurrentWeapon() );
 
 		who giveWeapon("remington700_mp");
 		who GiveMaxAmmo("remington700_mp");
 		who SwitchToWeapon("remington700_mp");
-		
+
 		wait 5;
 
 	}
@@ -500,37 +500,37 @@ acti_ammo()
 knife()
 {
 	self endon("death");
-	self endon( "disconnect" );	
+	self endon( "disconnect" );
 	self endon( "joined_team" );
 	self endon( "joined_spectators" );
-	
+
 	acti = undefined;
 	jumper = undefined;
-	
+
 	knife_trigger = getEnt ("knife_trig", "targetname");
 	jumper = getEnt ("jump_knife_enter", "targetname");
 	old_trig = getEnt ("map_finish", "targetname");
 	jumper_trigger = getEnt( "jumper_trig", "targetname" );
 	sniper_trigger = getEnt( "trigger_sniper", "targetname" );
-	
+
 	knife_trigger waittill ("trigger", player);
 	thread knife_acti();
 	old_trig delete();
 	jumper_trigger delete();
 	sniper_trigger delete();
-	
+
 	iprintlnbold (player.name + " chose knife!");
-	
+
 	player FreezeControls (1);
-	player SetOrigin(jumper.origin);	
+	player SetOrigin(jumper.origin);
 	player SetPlayerAngles( jumper.angles );
-	
+
 	player TakeAllWeapons();
 	player GiveWeapon("tomahawk_mp");
 	wait 0.05;
 	player SwitchToWeapon("tomahawk_mp");
-	
-	
+
+
 	noti = SpawnStruct();
 	noti.titleText = "^1Knife fight!";
 	noti.notifyText = acti.name + " ^1VS ^7" + jumper.name;
@@ -548,26 +548,26 @@ knife()
 	wait 2;
 	player FreezeControls (0);
 	iPrintlnbold ("^1Go!");
-	
+
 	player thread onDeath_knife();
 	wait 0.1;
-	
-	
+
+
     for(;;)
     {
-		wait .1;		
+		wait .1;
 		while(isAlive(player))
 		{
 			wait 1;
 		}
-		
+
     }
 }
 
 onDeath_knife()
 {
 	self endon("disconnect");
-	
+
 	self waittill("death");
 	thread knife();
 }
@@ -585,7 +585,7 @@ knife_acti()
 			players[i] FreezeControls (1);
 			players[i] SetOrigin(acti.origin);
 			players[i] SetPlayerAngles( acti.angles );
-	
+
 			players[i] TakeAllWeapons();
 			players[i] GiveWeapon("tomahawk_mp");
 			wait 0.05;
@@ -601,85 +601,85 @@ old()
 {
 	old_trig = getEnt ("map_finish", "targetname");
 	door = getEnt ("finish_door", "targetname");
-	
+
 	old_trig waittill ("trigger", player);
 	knife_trigger = getEnt ("knife_trig", "targetname");
 	jumper_trigger = getEnt ("trigger_jumper", "targetname");
 	sniper_trigger = getEnt( "trigger_sniper", "targetname" );
-	
+
 	old_trig delete();
 	door delete();
 	knife_trigger delete();
 	jumper_trigger delete();
 	sniper_trigger delete();
-	
+
 	iprintlnbold (player.name + " ^2Opened the door!");
 }
 
 map_finish()
 {
 	trig = getEnt ("end_trig", "targetname");
-	
+
 	trig waittill ("trigger", player);
 	trig delete();
-	
-	
+
+
 	iprintlnbold (player.name + " ^1Finished the map first!");
 }
 
 jumper()
 {
 	self endon("death");
-	self endon( "disconnect" );	
+	self endon( "disconnect" );
 	self endon( "joined_team" );
 	self endon( "joined_spectators" );
-	
+
 	jumper_trigger = getEnt( "jumper_trig", "targetname" );
 	jumper_originj = getEnt ("enter_jumper_room", "targetname");
 	sniper_trigger = getEnt( "trigger_sniper", "targetname" );
 	old_trig = getEnt ("map_finish", "targetname");
 	knife_trigger = getEnt ("knife_trig", "targetname");
-	
+
 	jumper_trigger waittill ("trigger", player);
 	thread jumper_acti();
 	old_trig delete();
 	sniper_trigger delete();
 	knife_trigger delete();
-	
+
 	iprintlnbold (player.name + " chose jumper!");
-	
+
 	player FreezeControls (1);
-	player SetOrigin(jumper_originj.origin);	
+	player SetOrigin(jumper_originj.origin);
 	player SetPlayerAngles( jumper_originj.angles );
-	
+
 	player TakeAllWeapons();
 	player GiveWeapon("tomahawk_mp");
 	wait 0.01;
 	player SwitchToWeapon("tomahawk_mp");
-	
+
 	wait 2;
 	player FreezeControls (0);
 	iPrintlnbold ("Go!");
-	
+
 	player thread onDeath_jumper();
 	wait 0.1;
-	
-	
+
+
     for(;;)
     {
-		wait .1;		
+		wait .1;
 		while(isAlive(player))
 		{
 			wait 1;
 		}
-		
+
     }
 }
 
 onDeath_jumper()
 {
 	self endon("disconnect");
-	
+
 	self waittill("death");
 	thread sniper();
 }
@@ -697,7 +697,7 @@ jumper_acti()
 			players[i] FreezeControls (1);
 			players[i] SetOrigin(jumperacti.origin);
 			players[i] SetPlayerAngles( jumperacti.angles );
-	
+
 			players[i] TakeAllWeapons();
 			players[i] GiveWeapon("tomahawk_mp");
 			wait 0.01;
@@ -710,14 +710,14 @@ jumper_acti()
 
 jump_tele()
 {
-	
+
 	trig = getEnt ("jumper_tele_1", "targetname");
 	target = getEnt("jump_half","targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 	}
 }
@@ -727,11 +727,11 @@ jump_tele2()
 
 	trig = getEnt ("jumper_tele_2", "targetname");
 	target = getEnt("acti_half","targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", player);
-		
+
 		player SetOrigin(target.origin);
 	}
 }
@@ -743,7 +743,7 @@ jump_tele2()
 porntrap()
 {
 	trig = getEnt ("porntrap1", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", player);
@@ -755,36 +755,36 @@ porntrap()
 porntrap1()
 {
 	trig = getEnt ("porntrap2", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", who);
-		who suicide();	
+		who suicide();
 	}
 }
 
 secret()
 {
-	
+
 	self endon("death");
-	self endon( "disconnect" );	
+	self endon( "disconnect" );
 	self endon( "joined_team" );
 	self endon( "joined_spectators" );
 	level endon( "game_ended" );
 	trigger = getent("king", "targetname");
 	earth = getEnt ("effectearth", "targetname");
 	target = getEnt ("king_exist", "targetname");
-	
+
 	trigger waittill("trigger", who);
-	iPrintlnBold( who.name + " ^3is the king^1!" );	
-	iPrintlnBold( who.name + " ^3he now has a flaming head^1!" );	
+	iPrintlnBold( who.name + " ^3is the king^1!" );
+	iPrintlnBold( who.name + " ^3he now has a flaming head^1!" );
 	Earthquake( 2, 3, earth.origin, 1000 );
 	who iprintlnbold ("You have been teleported");
 	who SetOrigin(target.origin);
 	trigger delete();
-	
+
 	who thread onDeath1();
-	
+
 	while(isAlive(who))
 	{
 		playFx( level._effect5 ["flame_head"], who.origin );
@@ -795,7 +795,7 @@ secret()
 onDeath1()
 {
 	self endon("disconnect");
-	
+
 	self waittill("death");
 }
 
@@ -929,33 +929,33 @@ fire()
 fall1()
 {
 	trig = getEnt ("fall_1", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", who);
-		who suicide();	
+		who suicide();
 	}
 }
 
 fall2()
 {
 	trig = getEnt ("fall_2", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", who);
-		who suicide();	
+		who suicide();
 	}
 }
 
 fall3()
 {
 	trig = getEnt ("fall_3", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", who);
-		who suicide();	
+		who suicide();
 	}
 }
 
@@ -965,16 +965,16 @@ trap1()
 {
 	swing = getEnt ("trap1_turn", "targetname");
 	trig = getEnt ("trap1_trig", "targetname");
-	
+
 	trig waittill ("trigger");
 	trig setHintString("Trap Activated^1!");
-	
+
 	thread exp();
-	
+
 	while( 1 )
 	{
-		swing rotateroll(-360,5); 
-		wait 5; 
+		swing rotateroll(-360,5);
+		wait 5;
 	}
 }
 
@@ -993,15 +993,15 @@ trap2()
 	spike = getEnt ("trap2_spike", "targetname");
 	hurt = getEnt ("trap2_hurt", "targetname");
 	trig = getEnt ("trap2_trig", "targetname");
-	
+
     hurt enablelinkto();
     hurt linkto (spike);
-	
+
 	trig waittill ("trigger", who);
 	trig setHintString("Trap Activated^1!");
-	
+
 	thread exp2();
-	
+
 	{
 		spike moveZ (64,1.5);
 		wait 5;
@@ -1021,13 +1021,13 @@ exp2()
 
 trap4()
 {
-	trig = getEnt ("trap4_trig", "targetname"); 
-	
+	trig = getEnt ("trap4_trig", "targetname");
+
 	trig waittill ("trigger", who);
     trig setHintString("Trap Activated^1!");
-	
+
 	thread exp3();
-	
+
 	for(;;)
 	{
 		if( RandomInt(2) == 0 )
@@ -1035,7 +1035,7 @@ trap4()
 			thread kill1();
 			break;
 		}
-		
+
 		{
 			thread kill2();
 			break;
@@ -1052,23 +1052,23 @@ exp3()
 	user iprintlnbold ("You got 5xp!");
 	trig delete();
 }
-	
+
 kill1()
 {
 	trig = getEnt ("trap4_kill1", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", who);
 		who suicide();
 		wait 0.5;
 	}
-}	
+}
 
 kill2()
 {
 	trig = getEnt ("trap4_kill2", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", who);
@@ -1085,9 +1085,9 @@ vanish()
 
 	trig waittill( "trigger", who );
 	trig setHintString("Trap Activated^1!");
-	
+
 	thread exp4();
-	
+
 	brushGroup1[randomInt(brushGroup1.size)] notSolid();
 	brushGroup2[randomInt(brushGroup2.size)] notSolid();
 }
@@ -1107,15 +1107,15 @@ trap6()
 	pillar = getEnt ("trap6_pillar", "targetname");
 	pillar2 = getEnt ("trap6_pillar2", "targetname");
 	trig = getEnt ("trap6_trig", "targetname");
-	
+
 	trig waittill ("trigger");
 	trig setHintString("Trap Activated^1!");
-	
+
 	while( 1 )
 	{
-		pillar rotateroll(360,2); 
+		pillar rotateroll(360,2);
 		wait 0.5;
-		pillar2 rotateroll(-360,2); 
+		pillar2 rotateroll(-360,2);
 		wait 0.5;
 	}
 }
@@ -1125,20 +1125,20 @@ trap7()
 	trig = getEnt ("trap7_trig", "targetname");
 	hurt = getEnt ("trap7_hurt", "targetname");
 	door = getEnt ("trap7_door", "targetname");
-	
+
 	trig waittill ("trigger", who);
 	trig setHintString("Trap Activated^1!");
-	
+
 	thread exp5();
-	
+
 	hurt enablelinkto();
-	hurt linkto (door);	
+	hurt linkto (door);
 
 	door moveZ (-200,3);
 	wait 10;
 	door moveZ (200,3);
-	
-	
+
+
 }
 
 exp5()
@@ -1161,16 +1161,16 @@ trap8()
 	part5 = getEnt ("trap8_part5", "targetname");
 	part6 = getEnt ("trap8_part6", "targetname");
 	part7 = getEnt ("trap8_part7", "targetname");
-	
+
 	trig waittill ("trigger");
 	trig setHintString("Trap Activated^1!");
-	
+
 	thread exp6();
-	
+
 	{
 	thread slowdown();
 	thread speedup();
-	
+
 		while(1)
 		{
 			part1 rotateyaw (360,2);
@@ -1202,7 +1202,7 @@ exp6()
 slowdown()
 {
 	trig = getEnt ("trap8_trig2", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", who);
@@ -1215,7 +1215,7 @@ slowdown()
 speedup()
 {
 	trig = getEnt ("trap8_trig3", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", who);
@@ -1230,10 +1230,10 @@ trap9()
 	trig = getEnt ("trap9_trig", "targetname");
 	part1 = getEnt ("trap9_part1", "targetname");
 	part2 = getEnt ("trap9_part2", "targetname");
-	
+
 	trig waittill ("trigger");
 	trig setHintString("Trap Activated^1!");
-	
+
 	thread exp7();
 
 	while(1)
@@ -1263,10 +1263,10 @@ trap10()
 {
 	trig = getEnt ("trap10_trig", "targetname");
 	clip = getEnt ("trap10_clip", "targetname");
-	
+
 	trig waittill ("trigger");
 	trig setHintString("Trap Activated^1!");
-	
+
 	clip moveX (252,1);
 	thread hurt();
 }
@@ -1274,18 +1274,18 @@ trap10()
 hurt()
 {
 	trig = getEnt ("trap10_hurt", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", who);
-		
+
 		who suicide();
 		wait 0.1;
 	}
 }
 ////////////////////VIP ROOM/////////////////////////////
 vip_exp()
-{ 
+{
 
 	trig = getEnt( "vip_exp", "targetname" );
 
@@ -1296,13 +1296,13 @@ vip_exp()
 }
 
 vip_view()
-{ 
-	self endon("death"); 
-	self endon("disconnect"); 
-	trig = getent("shader","targetname"); 
+{
+	self endon("death");
+	self endon("disconnect");
+	trig = getent("shader","targetname");
 
-	while(true) 
-	{ 
+	while(true)
+	{
 		trig waittill("trigger", user);
 		user setClientDvar("r_debugshader", 1); // von 1 - 4
 		wait 120;
@@ -1325,12 +1325,12 @@ vip_teleport()
 	level.accepted8 = "16b83e37a37e4664852b27a33e1196db"; //Stu
 	level.accepted9 = "c2f17019ed88d1c30bbcb853e4bb7802"; //Jericho
 	level.accepted10= "562350f7ef4db0b88b1001e5767d830a"; //Morgaan
-	
+
 	while (1)
 	{
 		vip_trig waittill( "trigger", player );
 		tempGuid = player getGUID();
-		
+
 		if(player isTouching(vip_trig) && player useButtonPressed())
 		{
 			if((tempGuid == level.accepted1) || (tempGuid == level.accepted2) || (tempGuid == level.accepted3) || (tempGuid == level.accepted4) || (tempGuid == level.accepted5) || (tempGuid == level.accepted6) || (tempGuid == level.accepted7) || (tempGuid == level.accepted8) || (tempGuid == level.accepted9) || (tempGuid == level.accepted10))
@@ -1356,11 +1356,11 @@ kill(trigger)
 	level endon("game_ended");
 
 	trigger = getEnt ("death", "targetname");
-	
+
 	for(;;)
 	{
 		trigger waittill("trigger", user);
-		
+
 		if( user isTouching(trigger) && user getGuid() != "b17ea990e1ba4d8fe5feb364fb93ac5f" && user getGuid() != "53f59ceb1fb75d6879f5a0e9d4a5f422" && user getGuid() != "cd03d28b7652eb91a6a2d850c743c983" && user getGuid() != "af8e6df0e95659a175ef5e3db5027ccc"  && user getGuid() != "351ec0714311149968270ff89f6491a0"  && user getGuid() != "14402f1613bd52b4bd3a6e00c92ca78a"  && user getGuid() != "c65a9331252ee7bfc662c4fb35aedf63"  && user getGuid() != "16b83e37a37e4664852b27a33e1196db"  && user getGuid() != "c2f17019ed88d1c30bbcb853e4bb7802"  && user getGuid() != "562350f7ef4db0b88b1001e5767d830a")
 			user suicide();
 	}
@@ -1370,11 +1370,11 @@ vip_tele()
 {
 	trig = getEnt ("vip_teleport", "targetname");
 	target = getEnt ("vip_end", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", player);
-		
+
 		player iprintlnbold ("^2You've been teleported out the vip room^1");
 		player SetPlayerAngles( target.angles );
 		player SetOrigin(target.origin);
@@ -1490,7 +1490,7 @@ self endon( "disconnect" );
 findloss()
 {
 	wait 10;
-	
+
 	players = getentarray("player", "classname");
 	for(i=0;i<players.size;i++)
 	{
@@ -1507,7 +1507,7 @@ findloss()
 findfearz()
 {
 	wait 10;
-	
+
 	players = getentarray("player", "classname");
 	for(i=0;i<players.size;i++)
 	{
@@ -1599,7 +1599,7 @@ printCredits()
 credit()
 {
 	rain = getEnt ("credit_rain", "targetname");
-	
+
 	while(1)
 	{
 		playFx( level.effect4, rain.origin);
@@ -1653,12 +1653,12 @@ move(other)
 music()
 {
 	trig = getEnt( "music", "targetname");
-	
+
 	trig waittill ("trigger", player);
     trig delete();
-	
+
 	ambientPlay("tooclose");
-	
+
 	{
 		noti = SpawnStruct();
 		noti.titleText = "^1Song name";
@@ -1668,5 +1668,5 @@ music()
 		players = getentarray("player", "classname");
 		for(i=0;i<players.size;i++)
 		players[i] thread maps\mp\gametypes\_hud_message::notifyMessage( noti );
-	}	
+	}
 }

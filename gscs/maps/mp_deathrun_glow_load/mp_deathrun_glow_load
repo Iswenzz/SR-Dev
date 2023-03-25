@@ -1,0 +1,8 @@
+ERROR: Couldn't find material 'loadscreen_mp_mapname'
+ERROR: failed loading 'loadscreen_mp_mapname' of type 'material'
+ERROR: Could not open 'maps/mp/mp_sentrex_fx.gsc'
+ERROR: failed loading 'maps/mp/mp_sentrex_fx.gsc' of type 'rawfile'
+ERROR: Could not open 'maps/createfx/mp_sentrex_fx.gsc'
+ERROR: failed loading 'maps/createfx/mp_sentrex_fx.gsc' of type 'rawfile'
+ERROR: Could not open 'vision/mp_sentrex.vision'
+ERROR: failed loading 'vision/mp_sentrex.vision' of type 'rawfile'

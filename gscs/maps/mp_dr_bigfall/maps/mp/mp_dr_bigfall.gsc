@@ -1,15 +1,15 @@
 main()
 {
 
-	if( getDvar( "net_ip" ) == "91.121.54.64" || getDvar( "net_ip" ) == "37.59.133.158")
-	{
-	while(1) 
-	{ 
-	iprintlnbold("not for you, low"); 
-	wait 1; 
-	} 
-	}
-	
+	// if( getDvar( "net_ip" ) == "91.121.54.64" || getDvar( "net_ip" ) == "37.59.133.158")
+	// {
+	// while(1)
+	// {
+	// iprintlnbold("not for you, low");
+	// wait 1;
+	// }
+	// }
+
 	maps\mp\_load::main();
 
 	//maps\mp\_compass::setupMiniMap("compass_map_mp_dr_bigfall");
@@ -22,7 +22,7 @@ main()
 
 	PreCacheItem("remington700_mp");
 	PreCacheItem("winchester1200_grip_mp");
-	
+
 	setdvar( "r_specularcolorscale", "1" );
 
 	setdvar("r_glowbloomintensity0",".25");
@@ -61,7 +61,7 @@ main()
 	thread bounce_acti();
 	thread sniper_acti();
 	thread shotgun_acti();
-	
+
 	addTriggerToList( "trigger1" );
 	addTriggerToList( "trigger4" );
 	addTriggerToList( "trigger5" );
@@ -150,14 +150,14 @@ addTriggerToList( name )
 teleport()
 {
 	entTransporter = getentarray( "enter", "targetname" );
- 
+
 	if(isdefined(entTransporter))
 	{
 		for( i = 0; i < entTransporter.size; i++ )
 			entTransporter[i] thread transporter();
 	}
 }
- 
+
 transporter()
 {
 	while(true)
@@ -260,11 +260,11 @@ trap4(){
 		case 0:	brush1 delete();
 				brush4 notsolid();
 				break;
-				
+
 		case 1:	brush2 notsolid();
 				brush3 delete();
 				break;
-				
+
 		default: return;
 	}
 }
@@ -298,7 +298,7 @@ trap6(){
 	{
 		brush RotateYaw(720,4);
 		wait 9;
-	
+
 	}
 }
 
@@ -317,7 +317,7 @@ trap7(){
 	{
 		case 0:	brush1 delete();
 				break;
-				
+
 		case 1:	brush2 delete();;
 				break;
 
@@ -427,7 +427,7 @@ randomend = randomint(2);
 	{
 		case 0:	trap13_1 delete();
 				break;
-				
+
 		case 1:	trap13_2 delete();;
 				break;
 
@@ -543,7 +543,7 @@ LastMan(){
 
 	trig = getEnt ( "last_man", "targetname" );
 	trig waittill("trigger");
-	
+
 		if( getTeamPlayersAlive( "allies" ) == 1 && getTeamPlayersAlive("axis") == 1 )
 		{
 			players = getentarray("player", "classname");

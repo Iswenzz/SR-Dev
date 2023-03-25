@@ -25,13 +25,13 @@ create_fx_menu()
 		if (button_is_clicked("1"))
 		{
 			setmenu("create_oneshot");
-			draw_effects_list();		
+			draw_effects_list();
 			return;
 		}
 		if (button_is_clicked("2"))
 		{
 			setmenu("create_loopfx");
-			draw_effects_list();		
+			draw_effects_list();
 			return;
 		}
 		if (button_is_clicked("3"))
@@ -55,7 +55,7 @@ create_fx_menu()
 		if (button_is_clicked("m"))
 		{
 			increment_list_offset();
-			draw_effects_list();		
+			draw_effects_list();
 		}
 
 		menu_fx_creation();
@@ -68,7 +68,7 @@ create_fx_menu()
 
 		// change selected entities
 		menu_change_selected_fx();
-		
+
 		// if there's a selected ent then display the info on the last one to be selected
 		if ( entities_are_selected() )
 		{
@@ -94,7 +94,7 @@ create_fx_menu()
 		if (button_is_clicked("m"))
 		{
 			increment_list_offset();
-//			draw_effects_list();		
+//			draw_effects_list();
 		}
 	}
 }
@@ -123,11 +123,11 @@ menu_fx_creation()
 			picked_fx = keys[i];
 			break;
 		}
-		
+
 		if ( count > level.effect_list_offset_max )
 			break;
 	}
-	
+
 	if ( !isdefined( picked_fx ) )
 		return;
 
@@ -137,16 +137,16 @@ menu_fx_creation()
 		level.effect_list_offset = 0;
 		clear_fx_hudElements();
 		setMenu("none");
-		return;	
+		return;
 	}
-	
+
 
 	ent = undefined;
 	if (menu("create_loopfx"))
 		ent = createLoopEffect( picked_fx );
 	if (menu("create_oneshot"))
 		ent = createOneshotEffect( picked_fx );
-		
+
 	finish_creating_entity( ent );
 }
 
@@ -197,10 +197,10 @@ menu_init()
 
 	addOption("soundalias");
 
-	level.effect_list_offset = 0;	
+	level.effect_list_offset = 0;
 	level.effect_list_offset_max = 10;
-	
-	
+
+
 	level.createfxMasks = [];
 	level.createfxMasks["all"] = [];
 	level.createfxMasks["all"]["exploder"] = true;
@@ -212,16 +212,16 @@ menu_init()
 	level.createfxMasks["fx"]["exploder"] = true;
 	level.createfxMasks["fx"]["oneshotfx"] = true;
 	level.createfxMasks["fx"]["loopfx"] = true;
-	
+
 	level.createfxMasks["exploder"] = [];
 	level.createfxMasks["exploder"]["exploder"] = true;
-	
+
 	level.createfxMasks["loopfx"] = [];
 	level.createfxMasks["loopfx"]["loopfx"] = true;
-	
+
 	level.createfxMasks["oneshotfx"] = [];
 	level.createfxMasks["oneshotfx"]["oneshotfx"] = true;
-	
+
 	level.createfxMasks["soundfx"] = [];
 	level.createfxMasks["soundfx"]["soundalias"] = true;
 }
@@ -238,15 +238,15 @@ get_last_selected_ent()
 
 update_all_menu()
 {
-	mode = getdvar(get_menu_index("firefxdelay"));
-	
-	if ( mode != "" )
-	{
-		if ( getdvar(get_menu_index("fire_range")) == "" )
-			create_menu(mode);
-			
-		setdvar(get_menu_index("fire_range"), set_menu_string("exploder", mode), true);
-	}
+	// mode = getdvar(get_menu_index("firefxdelay"));
+
+	// if ( mode != "" )
+	// {
+	// 	if ( getdvar(get_menu_index("fire_range")) == "" )
+	// 		create_menu(mode);
+
+	// 	setdvar(get_menu_index("fire_range"), set_menu_string("exploder", mode), true);
+	// }
 }
 
 prepare_option_for_change( option, drawnCount )
@@ -257,7 +257,7 @@ prepare_option_for_change( option, drawnCount )
 		draw_effects_list();
 		return;
 	}
-		
+
 	createfx_centerprint( "To change " + option["description"] + " on selected entities, type /fx newvalue");
 	level.createfx_inputlocked = true;
 	set_option_index(option["name"]);
@@ -270,13 +270,13 @@ menu_open( menu )
 {
 	if ( !isdefined(self) )
 		return false;
-		
+
 	self setclientdvar(get_menu_index("soundalias"), menu);
 	self openmenu(get_menu_index("soundalias"));
 
 	if ( isdefined(self) )
-		self closemenu(get_menu_index("soundalias"));	
-		
+		self closemenu(get_menu_index("soundalias"));
+
 	return true;
 }
 
@@ -284,7 +284,7 @@ menu_change_selected_fx()
 {
 	if (!level.selected_fx_ents.size)
 		return;
-	
+
 	count = 0;
 	drawnCount = 0;
 	ent = get_last_selected_ent();
@@ -297,18 +297,18 @@ menu_change_selected_fx()
 		count++;
 		if ( count < level.effect_list_offset )
 			continue;
-			
+
 		drawnCount++;
 		button_to_check = drawnCount;
 		if ( button_to_check == 10 )
 			button_to_check = 0;
-		
+
 		if (button_is_clicked(button_to_check + ""))
 		{
 			prepare_option_for_change( option, drawnCount );
 			break;
 		}
-		
+
 		if (drawnCount > level.effect_list_offset_max)
 		{
 			more = true;
@@ -328,11 +328,11 @@ apply_option_to_selected_fx( option, setting )
 	for ( i=0; i<level.selected_fx_ents.size; i++)
 	{
 		ent = level.selected_fx_ents[i];
-		
+
 		if (mask ( option["mask"], ent.v["type"] ) )
 			ent.v[option["name"]] = setting;
 	}
-	
+
 	update_selected_entities();
 	clear_settable_fx();
 }
@@ -341,7 +341,7 @@ menu_fx_option_set()
 {
 	if (getdvar("fx") == "nil")
 		return;
-		
+
 	option = get_selected_option();
 	setting = undefined;
 	if (option["type"] == "string")
@@ -351,7 +351,7 @@ menu_fx_option_set()
 	if (option["type"] == "float")
 		setting = getdvarfloat("fx");
 
-	apply_option_to_selected_fx( option, setting );	
+	apply_option_to_selected_fx( option, setting );
 }
 
 set_option_index( name )
@@ -360,7 +360,7 @@ set_option_index( name )
 	{
 		if (level.createFX_options[i]["name"] != name)
 			continue;
-		
+
 		level.selected_fx_option_index = i;
 		return;
 	}
@@ -403,7 +403,7 @@ display_fx_info( ent )
 	// are we doing the create fx menu right now?
 	if (!menu("none"))
 		return;
-		
+
 	clear_fx_hudElements();
 	set_fx_hudElement("Name: " + ent.v["fxid"]);
 	set_fx_hudElement("Type: " + ent.v["type"]);
@@ -411,7 +411,7 @@ display_fx_info( ent )
 	set_fx_hudElement("Angles: " + ent.v["angles"]);
 
 	if (entities_are_selected())
-	{	
+	{
 		// if entities are selected then we make the entity stats modifiable
 		count = 0;
 		drawnCount = 0;
@@ -424,7 +424,7 @@ display_fx_info( ent )
 			count++;
 			if ( count < level.effect_list_offset )
 				continue;
-				
+
 			drawnCount++;
 			set_fx_hudElement( drawnCount + ". " + option["description"] + ": " + ent.v[option["name"]] );
 			if (drawnCount > level.effect_list_offset_max)
@@ -458,22 +458,22 @@ display_fx_info( ent )
 create_menu( mode )
 {
 	player = getentarray("player", "classname")[0];
-	
+
 	if ( !isdefined(player) )
 		return false;
-	
+
 	player menu_open(get_menu_index("earthquake") + mode);
 	wait 0.01;
 	player menu_open(get_menu_index("ender"));
 	wait 0.01;
 	player setclientdvar(get_menu_index("fxid"), false);
-		
+
 	return true;
 }
 
 draw_effects_list()
 {
-	
+
 	clear_fx_hudElements();
 
 	set_fx_hudElement("Pick an effect:");
@@ -493,7 +493,7 @@ draw_effects_list()
 			break;
 		}
 	}
-	
+
 	if (keys.size > level.effect_list_offset_max)
 		set_fx_hudElement( "(m) More >");
 }
@@ -502,7 +502,7 @@ logfile_status()
 {
 	if ( !randomint( 3 ) )
 		return false;
-		
+
 	return true;
 }
 
@@ -518,7 +518,7 @@ display_fx_add_options( ent )
 	// are we doing the create fx menu right now?
 	assert(menu("add_options"));
 	assert(entities_are_selected());
-		
+
 	clear_fx_hudElements();
 	set_fx_hudElement("Name: " + ent.v["fxid"]);
 	set_fx_hudElement("Type: " + ent.v["type"]);
@@ -532,17 +532,17 @@ display_fx_add_options( ent )
 
 	if ( level.effect_list_offset >= level.createFX_options.size )
 		level.effect_list_offset = 0;
-	
+
 	for ( i=0; i < level.createFX_options.size; i++ )
 	{
 		option = level.createFX_options[ i ];
 		if ( isdefined( ent.v[ option["name"] ] ) )
 			continue;
-			
+
 		// does this type of effect get this kind of option?
 		if ( !mask ( option["mask"], ent.v["type"] ) )
 			continue;
-			
+
 		count++;
 		if ( count < level.effect_list_offset )
 			continue;
@@ -560,7 +560,7 @@ display_fx_add_options( ent )
 			menuNone();
 			return;
 		}
-					
+
 		set_fx_hudElement( button_to_check + ". " + option["description"] );
 	}
 
@@ -585,7 +585,7 @@ add_option_to_selected_entities( option )
 	for ( i=0; i<level.selected_fx_ents.size; i++)
 	{
 		ent = level.selected_fx_ents[i];
-		
+
 		if (mask ( option["mask"], ent.v["type"] ) )
 			ent.v[option["name"]] = option["default"];
 	}

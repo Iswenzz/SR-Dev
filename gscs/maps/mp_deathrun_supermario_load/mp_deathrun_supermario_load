@@ -1,0 +1,50 @@
+ERROR: Could not open 'maps/mp/mp_deathrun_spikes_fx.gsc'
+ERROR: failed loading 'maps/mp/mp_deathrun_spikes_fx.gsc' of type 'rawfile'
+ERROR: Could not open 'maps/createfx/mp_deathrunsupermario_fx.gsc'
+ERROR: failed loading 'maps/createfx/mp_deathrunsupermario_fx.gsc' of type 'rawfile'
+ERROR: Could not open 'vision/mp_deathrun_supermario.vision'
+ERROR: failed loading 'vision/mp_deathrun_supermario.vision' of type 'rawfile'
+ERROR: Sound alias file mario1.csv: Unknown sound type 'auto'; should be primed, streamed or loaded
+Sound file 'sound/misc/thunder01.wav' not found
+Sound file 'sound/misc/thunder02.wav' not found
+Sound file 'sound/music/navras.mp3' not found
+Sound file 'sound/music/ThePeopleAreHeroes.mp3' not found
+Sound file 'sound/music/ambient_toxic.mp3' not found
+Sound file 'sound/music/zombie_ambient.mp3' not found
+Sound file 'sound/misc/zombie_attack0.wav' not found
+Sound file 'sound/misc/zombie_attack1.wav' not found
+Sound file 'sound/misc/zombie_attack2.wav' not found
+Sound file 'sound/misc/zombie_attack3.wav' not found
+Sound file 'sound/misc/zombie_attack4.wav' not found
+Sound file 'sound/misc/zombie_attack5.wav' not found
+Sound file 'sound/misc/zombie_attack6.wav' not found
+Sound file 'sound/misc/zombie_attack7.wav' not found
+Sound file 'sound/misc/zombie_attack8.wav' not found
+Sound file 'sound/misc/zombie_attack9.wav' not found
+Sound file 'sound/misc/zombie_death0.wav' not found
+Sound file 'sound/misc/zombie_death1.wav' not found
+Sound file 'sound/misc/zombie_death2.wav' not found
+Sound file 'sound/misc/zombie_death3.wav' not found
+Sound file 'sound/misc/zombie_death4.wav' not found
+Sound file 'sound/misc/zombie_death5.wav' not found
+Sound file 'sound/misc/zombie_death6.wav' not found
+Sound file 'sound/misc/zombie_death7.wav' not found
+Sound file 'sound/misc/zombie_heartbeat.wav' not found
+Sound file 'sound/misc/box.mp3' not found
+Sound file 'sound/misc/zombie_newwave.mp3' not found
+Sound file 'sound/misc/zombie_outro.mp3' not found
+Sound file 'sound/misc/zombie_run0.wav' not found
+Sound file 'sound/misc/zombie_run1.wav' not found
+Sound file 'sound/misc/zombie_run2.wav' not found
+Sound file 'sound/misc/zombie_run3.wav' not found
+Sound file 'sound/misc/zombie_run4.wav' not found
+Sound file 'sound/misc/zombie_run5.wav' not found
+Sound file 'sound/misc/zombie_trigger2.mp3' not found
+Sound file 'sound/misc/zombie_walk0.mp3' not found
+Sound file 'sound/misc/zombie_walk1.mp3' not found
+Sound file 'sound/misc/zombie_walk2.mp3' not found
+Sound file 'sound/misc/zombie_walk3.mp3' not found
+Sound file 'sound/misc/zombie_walk4.mp3' not found
+Sound file 'sound/misc/zombie_walk5.mp3' not found
+Sound file 'sound/misc/zombie_walk6.mp3' not found
+Sound file 'sound/misc/zombie_whisper.mp3' not found

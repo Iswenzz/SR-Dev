@@ -12,7 +12,7 @@
 //    |     \ \   /     |                                                           |     \ \   /     |    \\
 //    |      \ \ /      |                        Map by MiThyX                      |      \ \ /      |    \\
 //    |   |\  \_/  /|   |                      Script by MiThyX                     |   |\  \_/  /|   |    \\
-//    |   | \  	  / |   |                                                           |   | \     / |   |    \\          
+//    |   | \  	  / |   |                                                           |   | \     / |   |    \\
 //    |   | |\___/  |   |                        Steam: MiThyX                      |   | |\___/  |   |    \\
 //    |___|/        |___|                                                           |___|/        |___|    \\
 //                                                                                                         \\
@@ -29,18 +29,18 @@ main()
  game["defenders"] = "axis";
  game["allies_soldiertype"] = "desert";
  game["axis_soldiertype"] = "desert";
-	
+
  // Players Sprays / Lighting
  setdvar( "r_specularcolorscale", "1" );
  setDvar("r_glowbloomintensity0",".1");
  setDvar("r_glowbloomintensity1",".1");
  setDvar("r_glowskybleedintensity0",".1");
  setdvar("compassmaxrange","1800");
-	
+
  // Players Speed
- setdvar("g_speed" ,"190");
- setdvar("dr_jumpers_speed" ,"1");
-	
+//  setdvar("g_speed" ,"190");
+//  setdvar("dr_jumpers_speed" ,"1");
+
 	if(!isdefined(level.music))
 	level.music=[];
 
@@ -68,7 +68,7 @@ main()
 	addTriggerToList( "trig_trap8" );
 	addTriggerToList( "trig_trap9" );
 	addTriggerToList( "trig_trap10" );
-	
+
 	thread messages();
 	thread startdoor();
 	thread guidchecking();
@@ -111,7 +111,7 @@ main()
 	thread knife();
 	thread old();
 	thread musictrig();
-	
+
 }
 
 addTriggerToList( name )
@@ -126,7 +126,7 @@ cleanUp()
 {
 	if( !isDefined( self ) )
 		return;
- 
+
 	if( isDefined( self.hud_music ) )
 	{
 		for( i = 0; i < self.hud_music.size; i++ )
@@ -183,23 +183,23 @@ for(;;)
 			wait 3;
 		}
 
-    sanictrig delete();	
+    sanictrig delete();
 }
 }
 
 credits()
 {
         self endon( "disconnect" );
- 
+
         if( isDefined( self.credits_text ) )
                 self.credits_text Destroy();
- 
+
         self.credits_text = newHudElem();
         self.credits_text.y = 10;
         self.credits_text.alignX = "center";
         self.credits_text.alignY = "middle";
         self.credits_text.horzAlign = "center";
- 
+
         self.credits_text.alpha = 0;
         self.credits_text.sort = -3;
         self.credits_text.fontScale = 1.6;
@@ -219,7 +219,7 @@ credits()
 credit_roll( msg, time )
 {
         self endon( "disconnect" );
- 
+
         self.credits_text fadeOverTime(1);
         self.credits_text.alpha = 1;
         self.credits_text setText( msg );
@@ -239,7 +239,7 @@ autorotate()
 	block rotateYaw(90, 4);
 	wait 2;
 	}
-	
+
 }
 
 autorotate2()
@@ -252,7 +252,7 @@ autorotate2()
 	block rotateYaw(200, 4);
 	wait 2;
 	}
-	
+
 }
 
 autorotate3()
@@ -265,7 +265,7 @@ autorotate3()
 	block rotateYaw(-400, 15);
 	wait 2;
 	}
-	
+
 }
 
 autorotate4()
@@ -278,7 +278,7 @@ autorotate4()
 	block rotateYaw(400, 15);
 	wait 2;
 	}
-	
+
 }
 
 autorotate5()
@@ -291,7 +291,7 @@ autorotate5()
 	block rotateYaw(400, 15);
 	wait 2;
 	}
-	
+
 }
 
 autorotate6()
@@ -304,13 +304,13 @@ autorotate6()
 	block rotateYaw(400, 10);
 	wait 2;
 	}
-	
+
 }
 
 automove()
 {
    block = getent("automove1","targetname");
-   
+
    for(;;)
    {
    wait 11;
@@ -318,13 +318,13 @@ automove()
    wait 11;
    block moveY (-1050, 8);
    }
-   
+
 }
 
 automove2()
 {
    block = getent("automove2","targetname");
-   
+
    for(;;)
    {
    wait 10;
@@ -332,13 +332,13 @@ automove2()
    wait 10;
    block moveY (-4912, 5);
    }
-   
+
 }
 
 automove3()
 {
    block = getent("automove3","targetname");
-   
+
    for(;;)
    {
    wait 8;
@@ -346,13 +346,13 @@ automove3()
    wait 8;
    block moveX (-848, 8);
    }
-   
+
 }
 
 automove5()
 {
    block = getent("automove5","targetname");
-   
+
    for(;;)
    {
    wait 10;
@@ -360,7 +360,7 @@ automove5()
    wait 10;
    block moveZ (-208, 6);
    }
-   
+
 }
 
 //secret jumper
@@ -369,7 +369,7 @@ secret()
 {
    level.secret_trigger = getent("trig_tp1","targetname");
    telejumporigin = getent("secret_jumper", "targetname");
-   
+
    while(1)
    {
       level.secret_trigger waittill( "trigger", player );
@@ -381,7 +381,7 @@ secret()
    player SetOrigin( telejumporigin.origin );
    player setplayerangles( telejumporigin.angles );
    wait(0.05);
-   
+
 }
 }
 
@@ -389,7 +389,7 @@ secretjumpfail()
 {
 	secretjumper = getEnt("secret_trigger_respawn", "targetname");
 	origin_jumper_secret = getEnt("origin_jumper_secret", "targetname");
-	
+
 	for (;;)
 	{
 		secretjumper waittill("trigger", player);
@@ -403,7 +403,7 @@ secretjumpfail2()
 {
 	secretjumper = getEnt("secret_trigger_respawn2", "targetname");
 	origin_jumper_secret = getEnt("origin_jumper_secret2", "targetname");
-	
+
 	for (;;)
 	{
 		secretjumper waittill("trigger", player);
@@ -417,7 +417,7 @@ secretjumpfail3()
 {
 	secretjumper = getEnt("secret_trigger_respawn3", "targetname");
 	origin_jumper_secret = getEnt("origin_jumper_secret2", "targetname");
-	
+
 	for (;;)
 	{
 		secretjumper waittill("trigger", player);
@@ -431,7 +431,7 @@ secretjumpfail4()
 {
 	secretjumper = getEnt("secret_trigger_respawn4", "targetname");
 	origin_jumper_secret = getEnt("origin_jumper_secret2", "targetname");
-	
+
 	for (;;)
 	{
 		secretjumper waittill("trigger", player);
@@ -445,7 +445,7 @@ secretjumpfail5()
 {
 	secretjumper = getEnt("secret_trigger_respawn5", "targetname");
 	origin_jumper_secret = getEnt("origin_jumper_secret3", "targetname");
-	
+
 	for (;;)
 	{
 		secretjumper waittill("trigger", player);
@@ -459,7 +459,7 @@ endsecret()
 {
    level.endsecret_trigger = getent("trig_endsecret","targetname");
    telejumporigin2 = getent("jumper_secretend", "targetname");
-   
+
    while(1)
    {
       level.endsecret_trigger waittill( "trigger", player );
@@ -473,17 +473,17 @@ endsecret()
    iprintlnbold(" ^9" + player.name + " ^8 has finished the secret room!!");
    player braxi\_rank::giveRankXP("", 400);
    wait(0.05);
-   
+
 }
 }
 
-//activator secret 
+//activator secret
 
 secretactivatorfail()
 {
 	secretactivator = getEnt("secret_activator_respawn", "targetname");
 	origin_activator_secret = getEnt("origin_activator_secret", "targetname");
-	
+
 	for (;;)
 	{
 		secretactivator waittill("trigger", player);
@@ -491,13 +491,13 @@ secretactivatorfail()
 		player setPlayerAngles(origin_activator_secret.angles);
 		player iprintln("^3>>^1Respawned");
 	}
-} 
+}
 
 endsecret2()
 {
    level.endsecret3_trigger = getent("trig_tpactisecret","targetname");
    telejumporigin4 = getent("activator_secretend", "targetname");
-   
+
    while(1)
    {
       level.endsecret3_trigger waittill( "trigger", player );
@@ -510,7 +510,7 @@ endsecret2()
    player setplayerangles( telejumporigin4.angles );
    player braxi\_rank::giveRankXP("", 400);
    wait(0.05);
-   
+
 }
 }
 
@@ -555,7 +555,7 @@ trap1()
 	block1 rotateYaw(-350, 10);
 	wait 2;
 	}
-	
+
 }
 
 trap2()
@@ -573,7 +573,7 @@ trap2()
 	block2 rotateYaw(360, 5);
 	wait 8;
 	}
-	
+
 }
 
 trap3()
@@ -588,21 +588,21 @@ trap3()
    trig waittill("trigger",player);
 
    x = randomint(1);
-   
+
    if (x == 0)
    {
    block1 delete();
    block3 delete();
    block5 delete();
    }
-   
+
    else if(x == 1)
    {
    block2 delete();
    block4 delete();
    block6 delete();
    }
-   
+
 
 }
 
@@ -613,7 +613,7 @@ trap4()
 	trig = getent("trig_trap4","targetname");
 	trig waittill("trigger",player);
 	player braxi\_rank::giveRankXP("", 60);
-	
+
 	for(;;)
 	{
 	block1 moveZ (64, 3);
@@ -623,7 +623,7 @@ trap4()
 	block2 moveZ (64, 3);
 	wait 3;
 	}
-	
+
 }
 
 trap5()
@@ -639,7 +639,7 @@ trap5()
 	block1 rotateYaw(360, 4);
 	wait 4;
 	}
-	
+
 }
 
 trap6()
@@ -655,7 +655,7 @@ trap6()
 	block1 rotateYaw(360, 4);
 	wait 8;
 	}
-	
+
 }
 
 trap7()
@@ -664,11 +664,11 @@ trap7()
     trig = getent("trig_trap7","targetname");
     trig waittill("trigger",player);
 	player braxi\_rank::giveRankXP("", 60);
-   
+
     platform delete();
-   
+
     trig delete();
-   
+
 }
 
 trap8()
@@ -688,7 +688,7 @@ trap8()
 	block3 rotateYaw(1240, 4);
 	wait 0.1;
 	}
-	
+
 }
 
 trap9()
@@ -708,7 +708,7 @@ trap9()
 	block3 rotateYaw(-400, 10);
 	wait 2;
 	}
-	
+
 }
 
 //rooms
@@ -731,18 +731,18 @@ sniper()
    level.jump_trigger delete();
    level.knife_trigger delete();
    level.firstenter=false;
-   } 
+   }
    wait(0.05);
 
    player SetOrigin((5320, 10856, 488));
    player SetPlayerAngles((0,316,0));
    player TakeAllWeapons();
    player GiveWeapon("m40a3_mp");
-   player GiveWeapon( "remington700_mp" ); 
+   player GiveWeapon( "remington700_mp" );
    player GiveMaxAmmo("m40a3_mp");
    player GiveMaxAmmo( "remington700_mp" );
    wait .05;
-   player SwitchToWeapon("m40a3_mp"); 
+   player SwitchToWeapon("m40a3_mp");
    wait(0.05);
    level.activ SetOrigin((7848, 9064, 472));
    level.activ SetPlayerAngles((0,130,0));
@@ -752,8 +752,8 @@ sniper()
    level.activ GiveMaxAmmo("m40a3_mp");
    level.activ GiveMaxAmmo( "remington700_mp" );
    wait .05;
-   level.activ SwitchToWeapon("m40a3_mp"); 
-   iPrintlnBold( " ^9" + player.name + " ^4 has entered the Sniper room^8!" ); 
+   level.activ SwitchToWeapon("m40a3_mp");
+   iPrintlnBold( " ^9" + player.name + " ^4 has entered the Sniper room^8!" );
    wait(0.05);
    player switchToWeapon( "m40a3_mp" );
    level.activ SwitchToWeapon( "m40a3_mp" );
@@ -778,7 +778,7 @@ jump()
    level.sniper_trigger delete();
    level.knife_trigger delete();
    level.firstenter=false;
-   } 
+   }
    wait(0.05);
 
    player SetOrigin((5288, 6456, 376));
@@ -791,7 +791,7 @@ jump()
    wait .05;
    level.activ giveweapon("knife_mp");
    player giveweapon("knife_mp");
-   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Jump room^8!"); 
+   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Jump room^8!");
    wait(0.05);
 
 
@@ -806,7 +806,7 @@ jumproomjumpfail()
 {
 	sniperjumper = getEnt("jump_jumper_respawn2", "targetname");
 	origin_jumper_jump = getEnt("origin_jumper_jump", "targetname");
-	
+
 	for (;;)
 	{
 		sniperjumper waittill("trigger", player);
@@ -820,7 +820,7 @@ jumproomactifail()
 {
 	sniperjumper = getEnt("jump_acti_respawn2", "targetname");
 	origin_acti_jump = getEnt("origin_acti_jump", "targetname");
-	
+
 	for (;;)
 	{
 		sniperjumper waittill("trigger", player);
@@ -847,7 +847,7 @@ knife()
    level.knife_trigger = getent("trig_knife","targetname");
    level.teleactorigin = getent("origin_acti_knife", "targetname");
    telejumporigin = getent("origin_jumper_knife", "targetname");
-   
+
    while(1)
    {
       level.knife_trigger waittill("trigger",player );
@@ -861,7 +861,7 @@ knife()
    level.knife_trigger delete();
    level.jump_trigger delete();
    level.firstenter=false;
-   } 
+   }
    wait(0.05);
 
    player SetOrigin((5288, 7144, -24));
@@ -874,7 +874,7 @@ knife()
    wait .05;
    level.activ giveweapon("knife_mp");
    player giveweapon("knife_mp");
-   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Knife room^8!"); 
+   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Knife room^8!");
    wait(0.05);
 
 
@@ -890,7 +890,7 @@ old()
    block1 = getent("porte1","targetname");
    level.old_trigger = getent("trig_porte1","targetname");
    level.old_trigger waittill("trigger",player);
-   
+
    level.sniper_trigger delete();
    level.jump_trigger delete();
    level.knife_trigger delete();
@@ -898,7 +898,7 @@ old()
    {
    wait 2;
    block1 moveZ (-500, 5);
-   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Old room^8!"); 
+   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Old room^8!");
    wait 2;
    }
    level.old_trigger delete();
@@ -913,33 +913,33 @@ musicMenu()
 	self endon( "spawned" );
 	self endon( "joined_spectators" );
 	self endon( "music thread terminated" );
- 
+
 	self thread onDeath();
 	self thread onDisconnect();
- 
+
 	self.hud_music = [];
 	self.selection = 0;
- 
+
 	// create huds
 	i = 0;
 	self.hud_music[i] = braxi\_mod::addTextHud( self, 160, 200, 0.6, "left", "top", 2 );
 	self.hud_music[i].sort = 880;
 	self.hud_music[i] setShader( "black", 320, 160 );
-	
+
 	i++;
 	self.hud_music[i] = braxi\_mod::addTextHud( self, 210, 204, 0.93, "left", "top", 1.8 );
 	self.hud_music[i].sort = 884;
 	self.hud_music[i].glowalpha=1;
 	if(isdefined(level.randomcolor))
 		self.hud_music[i].glowcolor=level.randomcolor;
-	else 
+	else
 		self.hud_music[i].glowcolor=(1,0,0);
 
 	i++;
 	self.hud_music[i] = braxi\_mod::addTextHud( self, 250, 360, 1, "center", "bottom", 1.4 );
 	self.hud_music[i].sort = 886;
 	self.hud_music[i] setText("Scroll: ^3[{+attack}] ^7| Select: ^3[{+activate}] ^7| Close: ^3[{+frag}]");
- 
+
 	for( j = 0; j < level.music.size; j++ )
 	{
 		i++;
@@ -949,31 +949,31 @@ musicMenu()
 		self.hud_music[i].glowalpha=1;
 		if(isdefined(level.randomcolor))
 			self.hud_music[i].glowcolor=level.randomcolor;
-		else 
+		else
 			self.hud_music[i].glowcolor=(1,0,0);
- 
+
 		entry = level.music[j];
 		self.hud_music[i] setText(entry["song"]);
 	}
- 
+
 	i++;
 	self.hud_music[self.hud_music.size] = braxi\_mod::addTextHud( self, 167, 230, 0.4, "left", "top", 1.4 );
 	self.hud_music[i].sort = 881;
 	indicator = self.hud_music[self.hud_music.size-1];
 	indicator setShader( "white", 306, 17 );
- 
+
 	while(self.sessionstate == "playing")
 	{
 		wait 0.1;
- 
+
 		if(self attackButtonPressed())
 		{
 			self.hud_music[3+self.selection].alpha = 0.93;
- 
+
 			self.selection++;
 			if( self.selection >= level.music.size )
 				self.selection = 0;
- 
+
 			item = self.hud_music[3+self.selection];
 			item.alpha = 1;
 			indicator.y = item.y;
@@ -992,28 +992,28 @@ musicMenu()
 			break;
 		}
 	}
- 
+
 	self cleanUp();
 }
- 
+
 musictrig()
 {
 	trig = getEnt ("musicmenu", "targetname");
 	trig setHintString("Press [^5&&1^7] to choose Music");
- 
+
 	trig waittill("trigger",player);
 	player freezecontrols(1);
 	trig delete();
 	player musicMenu();
 }
- 
+
 	onDisconnect()
 {
 	self endon( "music thread terminated" );
 	self waittill( "disconnect" );
 	self cleanUp();
 }
- 
+
 	onDeath()
 {
 	self endon( "disconnect" );
@@ -1021,7 +1021,7 @@ musictrig()
 	self waittill( "death" );
 	self cleanUp();
 }
- 
+
 partymusic()
 {
 x = randomint(5);

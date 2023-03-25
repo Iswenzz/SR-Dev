@@ -1,0 +1,3 @@
+ERROR: Couldn't find material 'mtl_weapon_m4_m16'
+ERROR: Could not open 'maps/mp/mp_dr_smart.gsc'
+ERROR: failed loading 'maps/mp/mp_dr_smart.gsc' of type 'rawfile'

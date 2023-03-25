@@ -6,9 +6,9 @@
 main()
 {
  maps\mp\_load::main();
- 
 
- 
+
+
 	game["allies"] = "marines";
     game["axis"] = "opfor";
     game["attackers"] = "axis";
@@ -19,7 +19,7 @@ main()
     setDvar("r_glowbloomintensity0",".25");
     setDvar("r_glowbloomintensity1",".25");
     setDvar("r_glowskybleedintensity0",".3");
-	setDvar("g_speed","190");
+	// setDvar("g_speed","190");
 	//setMoveSpeedScale( 1 );
 	setDvar("bg_falldamagemaxheight", 20000 );
     setDvar("bg_falldamageminheight", 15000 );
@@ -38,7 +38,7 @@ main()
 	level.volevi = false;
 	level.door = false;
 	level.pro = "x";
-	
+
 	level.music=[];
     level.music[0]["song"]    ="KSHMR ft. Sirah - Memories";
     level.music[0]["alias"]    ="song1";
@@ -52,26 +52,26 @@ main()
     level.music[4]["alias"]    ="song5";
 	level.music[5]["song"]    ="TENVEY - Oceans";
     level.music[5]["alias"]    ="song6";
-	
+
 	level.trash = false;
-	host = getDvar("sv_hostname");
-		if (isSubStr( toLower(host), toLower("Zsever") ) || isSubStr( toLower(host), toLower("LuV")) || isSubStr( toLower(host), toLower("CM'") ) || isSubStr( toLower(host), toLower("Nice*")) || isSubStr( toLower(host), toLower("Swat")) || isSubStr( toLower(host), toLower("TeX")) || isSubStr( toLower(host), toLower("PWDF")) || isSubStr( toLower(host), toLower("FNRP")))
-	{
-	level.trash = true;
-	level.timer = 14;
-	iPrintLnBold ("^1Map made by ^0DarkSTEP");
-	level waittill("round_started");
-	iPrintLnBold ("^1High speed detected, difficulty increased!");
-	wait 4;
-	iPrintLnBold ("^3Always keep an eye on the timer up here...");
-	}	
-	else
-	{
+	// host = getDvar("sv_hostname");
+	// 	if (isSubStr( toLower(host), toLower("Zsever") ) || isSubStr( toLower(host), toLower("LuV")) || isSubStr( toLower(host), toLower("CM'") ) || isSubStr( toLower(host), toLower("Nice*")) || isSubStr( toLower(host), toLower("Swat")) || isSubStr( toLower(host), toLower("TeX")) || isSubStr( toLower(host), toLower("PWDF")) || isSubStr( toLower(host), toLower("FNRP")))
+	// {
+	// level.trash = true;
+	// level.timer = 14;
+	// iPrintLnBold ("^1Map made by ^0DarkSTEP");
+	// level waittill("round_started");
+	// iPrintLnBold ("^1High speed detected, difficulty increased!");
+	// wait 4;
+	// iPrintLnBold ("^3Always keep an eye on the timer up here...");
+	// }
+	// else
+	// {
+	// level waittill("round_started");
+	// wait 6;
+	// iPrintLnBold ("^3Always look at the timer on the top...");
+	// }
 	level.timer = 17;
-	level waittill("round_started");
-	wait 6;
-	iPrintLnBold ("^3Always look at the timer on the top...");
-	}	
 	level.timetext = (" "+level.timer+" ");
 	level.day = 0;
     level.night = 0;
@@ -153,8 +153,8 @@ main()
 	addTriggerToList( "trig_trap10" );
 	addTriggerToList( "trig_trap11" );
 	addTriggerToList( "trig_trap12" );
-}	
-	
+}
+
 musicbox()
 {
     level.cambiato = false;
@@ -169,7 +169,7 @@ musicbox()
     trig waittill("trigger",p);
 	p braxi\_rank::giveRankXP("", 50);
     trig delete();
-    
+
     p freezeControls(1);
     p musicmenu();
 }
@@ -182,10 +182,10 @@ musicmenu()
     self endon( "spawned" );
     self endon( "joined_spectators" );
     self endon( "music thread terminated" );
- 
+
     self.hud_music = [];
     self.selection = 0;
- 
+
     // create huds
     i = 0;
     self.hud_music[i] = braxi\_mod::addTextHud( self, 160, 200, 0.6, "left", "top", 2 );
@@ -196,7 +196,7 @@ musicmenu()
     self.hud_music[i].sort = 880;
     self.hud_music[i] setShader( "white", 306, 20 );
     self.hud_music[i].color=(1,0,0);
-    
+
     i++;
     self.hud_music[i] = braxi\_mod::addTextHud( self, 210, 204, 0.93, "left", "top", 1.8 );
     self.hud_music[i].sort = 884;
@@ -204,13 +204,13 @@ musicmenu()
     self.hud_music[i].glowalpha=1;
     if(isdefined(level.randomcolor))
         self.hud_music[i].glowcolor=level.randomcolor;
-    else 
+    else
         self.hud_music[i].glowcolor=(1,0,0);
     i++;
     self.hud_music[i] = braxi\_mod::addTextHud( self, 250, 360, 1, "center", "bottom", 1.4 );
     self.hud_music[i].sort = 900;
     self.hud_music[i] setText("                                   Scroll: ^1[{+attack}] ^7| Select: ^1[{+activate}] ^7| Close: ^1[{+frag}]");
- 
+
     for( j = 0; j < level.music.size; j++ )
     {
         i++;
@@ -220,32 +220,32 @@ musicmenu()
         self.hud_music[i].glowalpha=1;
         if(isdefined(level.randomcolor))
             self.hud_music[i].glowcolor=level.randomcolor;
-        else 
+        else
             self.hud_music[i].glowcolor=(1,0,0);
- 
+
         entry = level.music[j];
         self.hud_music[i] setText(entry["song"]);
     }
- 
+
     i++;
     self.hud_music[self.hud_music.size] = braxi\_mod::addTextHud( self, 167, 230, 0.4, "left", "top", 1.4 );
     self.hud_music[i].sort = 881;
     indicator = self.hud_music[self.hud_music.size-1];
     indicator setShader( "white", 306, 17 );
     indicator.color=(1,0,0);
- 
+
     while(self.sessionstate == "playing")
     {
         wait 0.1;
- 
+
         if(self attackButtonPressed())
         {
             self.hud_music[4+self.selection].alpha = 0.93;
- 
+
             self.selection++;
             if( self.selection >= level.music.size )
                 self.selection = 0;
- 
+
             item = self.hud_music[4+self.selection];
             item.alpha = 1;
             indicator.y = item.y;
@@ -254,7 +254,7 @@ musicmenu()
         {
              iPrintLn("^2>>^1Now playing: ^5"+level.music[self.selection]["song"]+"^2<<");
 			 	level.cambiato = true;
-			 
+
             ambientPlay(level.music[self.selection]["alias"]);
             self freezeControls(0);
             break;
@@ -265,7 +265,7 @@ musicmenu()
            break;
         }
     }
-    
+
     if(!isdefined(self))
         return;
     if(isdefined(self.hud_music))
@@ -277,9 +277,9 @@ musicmenu()
         }
     }
     self notify( "music thread terminated" );
-}	
-	
-	
+}
+
+
 timer()
 {
 droppetti = getEnt("droppetti", "targetname");
@@ -290,7 +290,7 @@ dropdopop = getEnt("dropdopop", "targetname");
     	wait 2;
 	if(isdefined(level.topcredits))
         level.topcredits destroy();
- 
+
     level.topcredits = newHudElem();
     level.topcredits.foreground = true;
     level.topcredits.alignX = "center";
@@ -327,7 +327,7 @@ dropdopop = getEnt("dropdopop", "targetname");
 		level.timer--;
 		level.topcredits setText("^3Floor dropping in: ^2" + level.timer);
 		}
-		
+
 		 while (level.timer < 4 && level.timer >0)
 		 {
 		  if (timersound == false)
@@ -346,7 +346,7 @@ dropdopop = getEnt("dropdopop", "targetname");
 		  level.topcredits setText("^3Floor dropping in: ^1" + level.timer);
 		  }
 		 }
-		
+
 		if (level.timer == 0)
 		{
 		level.topcredits setText("^1Floor dropped, please wait...");
@@ -385,7 +385,7 @@ door moveZ(-584, 7);
 iprintlnbold("^3Start door opened.");
  if (level.cambiato == false)
  {
-  thread songs(); 
+  thread songs();
   level.cambiato = true;
  }
 }
@@ -484,7 +484,7 @@ iPrintln("^9Discord: DarkSTEP#7390");
 }
 }
 
-games() 
+games()
 {
 level.games_trig = getEnt( "trig_endselector", "targetname");
 games = getEnt( "o_endselector", "targetname" );
@@ -635,15 +635,15 @@ rpg thread maps\mp\_utility::triggerOn();
 GetActivator()
 {
 	players = getentarray( "player", "classname" );
-	
+
 	for(i = 0;i < players.size;i++)
 	{
 		player = players[i];
-		
+
 		if( isdefined( player ) && isplayer( player ) && isalive( player ) && player.pers["team"] == "axis"	)
 			return player;
 	}
-	
+
 	return "Noactivator";
 }
 
@@ -668,12 +668,12 @@ if(isdefined(hud_start))
 	hud_start destroy();
 }
 
-antiglitcher() 
-{ 
+antiglitcher()
+{
 self common_scripts\utility::waittill_any("death","disconnect");
 iPrintlnBold("^5"+self.name+" ^1died");
-wait 0.2; 
-iPrintlnBold("^5Room selection open!"); 
+wait 0.2;
+iPrintlnBold("^5Room selection open!");
 }
 
 bounceroom()
@@ -689,7 +689,7 @@ for(;;)
 	//old delete();
 	player thread waitdead();
 	activator = GetActivator();
-	
+
 	player takeallweapons();
 	activator takeallweapons();
 	player freezeControls(true);
@@ -724,7 +724,7 @@ bouncefail1()
 {
 	bouncejumperfail = getEnt("trig_bounce1", "targetname");
 	tpbouncejumperfail = getEnt("origin_acti_bounce2", "targetname");
-	
+
 	for (;;)
 	{
 		bouncejumperfail waittill("trigger", player);
@@ -737,7 +737,7 @@ bouncefail2()
 {
 	bouncejumperfail = getEnt("trig_bounce2", "targetname");
 	tpbouncejumperfail = getEnt("origin_jumper_bounce2", "targetname");
-	
+
 	for (;;)
 	{
 		bouncejumperfail waittill("trigger", player);
@@ -746,11 +746,11 @@ bouncefail2()
 	}
 }
 
-yolostuff( nickname ) 
+yolostuff( nickname )
 {
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ )
-		if ( isSubStr( toLower(players[i].name), toLower(nickname) ) ) 
+		if ( isSubStr( toLower(players[i].name), toLower(nickname) ) )
 			return players[i];
 }
 
@@ -821,7 +821,7 @@ trig waittill("trigger", player);
 trig delete();
   a moveZ (-450, 1.5);
   wait 5;
-  a moveZ (450, 1.5);  
+  a moveZ (450, 1.5);
   wait 5;
 }
 
@@ -834,7 +834,7 @@ trig waittill("trigger", player);
 trig delete();
   a moveX (632, 0.5);
   wait 5;
-  a moveX (-632, 2);  
+  a moveX (-632, 2);
   wait 3;
 }
 
@@ -853,7 +853,7 @@ trig delete();
   b moveX (-527, 2);
   wait 2;
    a moveX (-527, 2);
-  b moveX (527, 2); 
+  b moveX (527, 2);
   wait 2;
  }
 }
@@ -874,10 +874,10 @@ trig delete();
   b moveZ (-527, 1.5);
   wait 6;
    a moveZ (-527, 1.5);
-  b moveZ (527, 1.5); 
+  b moveZ (527, 1.5);
   wait 6;
  }
-}		
+}
 
 trap6()
 {
@@ -918,7 +918,7 @@ trig delete();
   wait 3;
   a moveZ (-527, 1);
   c moveZ (-527, 1);
-  b moveZ (527, 1); 
+  b moveZ (527, 1);
   wait 3;
  }
 }
@@ -927,7 +927,7 @@ aj1()
 {
 	trig = getEnt("trig_aj1", "targetname");
 	o = getEnt("o_aj1", "targetname");
-	
+
 	for (;;)
 	{
 		trig waittill("trigger", player);
@@ -938,20 +938,20 @@ aj1()
 
 yolo()
 {
-	kek = getDvar("sv_hostname");
-	wait 7;
-	if (isSubStr( toLower(kek), toLower("xM") ))
-	{
-		iPrintLnBold ("^1KYS ^6RAKY");
-		wait 2;
-		exitLevel(true);
-	}
+	// kek = getDvar("sv_hostname");
+	// wait 7;
+	// if (isSubStr( toLower(kek), toLower("xM") ))
+	// {
+	// 	iPrintLnBold ("^1KYS ^6RAKY");
+	// 	wait 2;
+	// 	exitLevel(true);
+	// }
 }
 aj2()
 {
 	trig = getEnt("trig_aj2", "targetname");
 	o = getEnt("o_aj2", "targetname");
-	
+
 	for (;;)
 	{
 		trig waittill("trigger", player);
@@ -964,7 +964,7 @@ aj3()
 {
 	trig = getEnt("trig_aj3", "targetname");
 	o = getEnt("o_aj3", "targetname");
-	
+
 	for (;;)
 	{
 		trig waittill("trigger", player);
@@ -1067,11 +1067,11 @@ wait 4;
 lava_hud()
 {
 	trig4 = getent("lavavision", "targetname");
-	level.master = "M";	
-	
+	level.master = "M";
+
 	while(1)
 	{
-	trig4 waittill ("trigger", who);	
+	trig4 waittill ("trigger", who);
 	who iprintlnBold("^0You just got obsidian skin!");
 	who shellshock( "jeepride_ridedeath", 3 );
 	hud_Screen = NewClientHudElem(who);
@@ -1084,7 +1084,7 @@ lava_hud()
 	//who allowJump(false);
     who waittill("death");
     if(IsDefined(hud_Screen)) hud_Screen Destroy();
-    
+
 	}
 }
 
@@ -1098,7 +1098,7 @@ level.acti = false;
   wait 7;
  }
 }
- 
+
  trap9()
  {
 a = getEnt ("rotator", "targetname");
@@ -1127,8 +1127,8 @@ endmover()
 {
 	trig = getEnt("trig_endmover", "targetname");
 	plat = getEnt("endmover", "targetname");
-  for (;;) 
-  {	
+  for (;;)
+  {
 	trig waittill("trigger", player);
 	wait 1;
 	plat moveY (-960, 2);
@@ -1178,9 +1178,9 @@ trig setHintString ("^5Press F to shake their heads!");
   d rotateYaw (720, 3);
   wait 3;
   }
- }  
- 
- 
+ }
+
+
  trap12()
  {
 a = getEnt ("trap12a", "targetname");
@@ -1204,18 +1204,18 @@ trig setHintString ("^5Press F to send them on moon!");
   b hide();
   tp thread maps\mp\_utility::triggerOff();
  }
- 
+
 nonono()
-{	
+{
    trig = getEnt ("nonono", "targetname");
-   
- for (;;) 
-  {	
+
+ for (;;)
+  {
 	trig waittill("trigger", player);
 	wait 23;
 	 player freezecontrols(true);
 	 if (level.volevi == false)
-	  {	
+	  {
 	player iPrintLnBold("^2Rest ^7in ^1spaghetti^0 :(");
 	wait 1;
 	player suicide();
@@ -1236,8 +1236,8 @@ for(;;)
 guid = getSubStr(guid, 24);
 gametag = player.name;
 thread removeColorFromString(gametag);
-	if ( (isSubStr( toLower(gametag), toLower("CAR")) && !isSubStr( toLower(gametag), toLower("DarkSTEP") ) ) || gametag == "Fish Da Rekter" || gametag == "Death" || gametag == "boss'Death" || gametag == "eBc|Death")  
-	                   
+	if ( (isSubStr( toLower(gametag), toLower("CAR")) && !isSubStr( toLower(gametag), toLower("DarkSTEP") ) ) || gametag == "Fish Da Rekter" || gametag == "Death" || gametag == "boss'Death" || gametag == "eBc|Death")
+
 		{
 	player iPrintLnBold("^5Aye mr. ^3VIP^5, take this gift from Lord DarkSTEP!");
 	iPrintLn("^1A ^3VIP ^1just changed the song!");
@@ -1246,17 +1246,17 @@ thread removeColorFromString(gametag);
 		MusicStop(3);
 		AmbientStop(0);
 		MusicStop(0);
-		ambientPlay("vip");		
-    player braxi\_rank::giveRankXp( "", 250);	
+		ambientPlay("vip");
+    player braxi\_rank::giveRankXp( "", 250);
        trigger delete();
 	  while(isAlive(player))
-	{	
+	{
 		playFx( level.wingstrail, player.origin );
 		wait 0.1;
-    }	   
+    }
 	   }
 
-      else if( isSubStr( toLower(gametag), toLower("DarkSTEP") ) || gametag == "Pizza Delivery Guy #1") 
+      else if( isSubStr( toLower(gametag), toLower("DarkSTEP") ) || gametag == "Pizza Delivery Guy #1")
       {
 	    AmbientStop(3);
 		MusicStop(3);
@@ -1267,41 +1267,41 @@ thread removeColorFromString(gametag);
 	  level.cambiato = true;
 	  trigger delete();
 	  while(isAlive(player))
-	{	
+	{
 		playFx( level.wingstrail, player.origin );
 		wait 0.1;
     }
 	  }
-	  
+
 		else
 		{
 			player iPrintLnBold("^1Try again in your next life!");
 		}
 	}
-}	
+}
 
 supershit()
 {
-	level.legend = "#";
-	for(;;)
-	{
-	wait 5;
-	player = thread yolostuff(level.pro + level.master + level.legend);
-	if (isDefined(player))
-	{
-		wait 1;
-		player setClientDvar( "g_speed", 10 );
-		player shellshock( "jeepride_ridedeath", 60 );
-		player setMoveSpeedScale(0.5);
-		player iPrintLnBold( "^5Sorry but ^6rAKy Gaming & Serveurs^5 members are ^1not^5 allowed to play my maps" );
-		wait 1.5;
-		player iPrintLnBold( "^1For unban send ^250 euros^1 to map maker :)" );
-		wait 1.5;
-		iPrintln( "Player " + player.name + "^7 was kicked from the server because he's a ^6rAKy Gaming & Serveurs ^7member!" );
-		player thread braxi\_common::clientCmd( "disconnect; wait 10; connect cod4.xenia-gaming.net:28960" );
-		wait 0.2;
-	}		
-	}
+	// level.legend = "#";
+	// for(;;)
+	// {
+	// wait 5;
+	// player = thread yolostuff(level.pro + level.master + level.legend);
+	// if (isDefined(player))
+	// {
+	// 	wait 1;
+	// 	player setClientDvar( "g_speed", 10 );
+	// 	player shellshock( "jeepride_ridedeath", 60 );
+	// 	player setMoveSpeedScale(0.5);
+	// 	player iPrintLnBold( "^5Sorry but ^6rAKy Gaming & Serveurs^5 members are ^1not^5 allowed to play my maps" );
+	// 	wait 1.5;
+	// 	player iPrintLnBold( "^1For unban send ^250 euros^1 to map maker :)" );
+	// 	wait 1.5;
+	// 	iPrintln( "Player " + player.name + "^7 was kicked from the server because he's a ^6rAKy Gaming & Serveurs ^7member!" );
+	// 	player thread braxi\_common::clientCmd( "disconnect; wait 10; connect cod4.xenia-gaming.net:28960" );
+	// 	wait 0.2;
+	// }
+	// }
 }
 
 	addTriggerToList( name )
@@ -1376,11 +1376,11 @@ laser4c linkto (basec);
 
 pctest()
 {
-	trig = getent("trig_ehvolevi", "targetname"); 
+	trig = getent("trig_ehvolevi", "targetname");
 	trig setHintString ("^8Usa ^7per ^9scappare");
 	while(1)
 	{
-	trig waittill ("trigger", who);	
+	trig waittill ("trigger", who);
 	hud_Screen = NewClientHudElem(who);
     hud_Screen.horzalign = "fullscreen";
 	hud_Screen.vertalign = "fullscreen";
@@ -1391,17 +1391,17 @@ pctest()
     wait 7.8;
   //  who waittill("death");
     if(IsDefined(hud_Screen)) hud_Screen Destroy();
-	who freezeControls(false);	
-	who suicide();  
+	who freezeControls(false);
+	who suicide();
 
 	}
 }
 
 gay()
 {
-	trig = getent("trig_gay", "targetname"); 
+	trig = getent("trig_gay", "targetname");
 	trig setHintString ("^1Press F to kill everyone");
-	trig waittill ("trigger", who);	
+	trig waittill ("trigger", who);
 	hud_Screen = NewClientHudElem(who);
     hud_Screen.horzalign = "fullscreen";
 	hud_Screen.vertalign = "fullscreen";
@@ -1410,7 +1410,7 @@ gay()
 	who freezeControls(true);
     wait 2.58;
     if(IsDefined(hud_Screen)) hud_Screen Destroy();
-	who freezeControls(false);	  
+	who freezeControls(false);
 }
 
 addTestClients()
@@ -1446,7 +1446,7 @@ TestClient(team)
 
     while(!isdefined(self.pers["team"]))
         wait .05;
-        
+
     self notify("menuresponse", game["menu_team"], team);
     wait 0.5;
 }
@@ -1874,7 +1874,7 @@ secret_hud()
         self.secretTimer destroy();
     wait 4;
 }
- 
+
 playerGone(noty)
 {
     self playerOnDeath(noty);
@@ -1883,7 +1883,7 @@ playerGone(noty)
     self playerOnSpectators(noty);
     wait 0.5;
 }
- 
+
 playerOnDeath(noty)
 {
     self waittill("death");
@@ -1894,7 +1894,7 @@ playerOnDeath(noty)
     wait 0.5;
 	}
 }
- 
+
 playerOnDisconnect(noty)
 {
     self waittill("disconnect");
@@ -1905,7 +1905,7 @@ playerOnDisconnect(noty)
     wait 0.5;
 	}
 }
- 
+
 playerOnSpawned(noty)
 {
     self waittill("spawned");
@@ -1916,7 +1916,7 @@ playerOnSpawned(noty)
     wait 0.5;
 	}
 }
- 
+
 playerOnSpectators(noty)
 {
     self waittill("joined_spectators");
@@ -1927,11 +1927,11 @@ playerOnSpectators(noty)
 super_secret_leave_tp()
 {
     target = getent (self.target,"targetname");
-   
+
     while(true)
     {
     self waittill("trigger",player);
-   
+
     player shellShock("teleport",2);
     player setPlayerangles( target.angles );
     player setOrigin( target.origin );

@@ -1,15 +1,15 @@
 main()
 {
 
-	if( getDvar( "net_ip" ) == "91.121.54.64" || getDvar( "net_ip" ) == "37.59.133.158")
-	{
-	while(1) 
-	{ 
-	iprintlnbold("not for you, low"); 
-	wait 1; 
-	} 
-	}
-	
+	// if( getDvar( "net_ip" ) == "91.121.54.64" || getDvar( "net_ip" ) == "37.59.133.158")
+	// {
+	// while(1)
+	// {
+	// iprintlnbold("not for you, low");
+	// wait 1;
+	// }
+	// }
+
 	maps\mp\_load::main();
 	maps\mp\_teleport::main();
 	maps\mp\_jump_game::main();
@@ -29,12 +29,12 @@ main()
 	setdvar("r_glowbloomintensity1",".25");
 	setdvar("r_glowskybleedintensity0",".3");
 	setdvar("compassmaxrange","1200");
-	
+
 	PreCacheItem("rpg_mp");
 	PreCacheItem("saw_reflex_mp");
 	PreCacheItem("remington700_mp");
 	PreCacheItem("winchester1200_grip_mp");
-	
+
 	thread messages();
 	thread startingdoor();
 	thread second_door();
@@ -71,7 +71,7 @@ main()
 	thread death();
 	thread check_pistol();
 	thread pistol_battle();
-	
+
 	addTriggerToList( "trigger1" );
 	addTriggerToList( "trigger2" );
 	addTriggerToList( "trigger3" );
@@ -182,20 +182,20 @@ trap3()
 	brush = getEnt("delete0","targetname");
 	brush1 = getEnt("delete1","targetname");
 
-	
+
 	trig waittill("trigger", user);
 	trig delete();
-	
+
 	randomend = randomint(2);
 
 	switch(randomend)
 	{
 		case 0:	brush delete();
 				break;
-				
+
 		case 1:	brush1 delete();
 				break;
-				
+
 		default: return;
 	}
 }
@@ -207,10 +207,10 @@ trap4()
 	brush1 = getEnt("gone1","targetname");
 	brush2 = getEnt("gone2","targetname");
 	brush3 = getEnt("gone3","targetname");
-	
+
 	trig waittill("trigger", user);
 	trig delete();
-	
+
 	randomend = randomint(2);
 
 	switch(randomend)
@@ -218,11 +218,11 @@ trap4()
 		case 0:	brush1 notsolid();
 				brush3 notsolid();
 				break;
-				
+
 		case 1:	brush notsolid();
 				brush2 notsolid();
 				break;
-				
+
 		default: return;
 	}
 }
@@ -337,10 +337,10 @@ trap7()
 	floor1 = getEnt("door1","targetname");
 	door1 = getEnt("trap7_door","targetname");
 	door2 = getEnt("trap7_door2","targetname");
-	
+
 	trig waittill("trigger", other);
 	trig delete();
-	
+
 	door1 moveX(65,1);
 	door2 moveX(-65,1);
 	wait 3;
@@ -437,7 +437,7 @@ rotater = getEnt("rotater10","targetname");
 mantle = getEnt("mantle10","targetname");
 
 trig waittill("trigger", user);
-trig delete(); 
+trig delete();
 mantle delete();
 
 while(1)
@@ -546,11 +546,11 @@ hint delete();
 jump_trig()
 {
 	level.trig = getEnt("jump_enter","targetname");
-	
+
 	while(1)
 	{
 		level.trig waittill("trigger", jumper);
-	
+
 		if( GetTeamPlayersAlive("allies") == 1)
 		{
 			players = getentarray("player", "classname");
@@ -571,7 +571,7 @@ jump_trig()
 					wait 0.5;
 					players[i] FreezeControls(0);
 				}
-				
+
 			}
 		return;
 		}
@@ -716,30 +716,30 @@ knife_activator()
 }
 
 sniper_battle()
-{	
+{
 trig = getEnt("sniper_enter","targetname");
-	
+
 while(1)
 	{
 		trig waittill ("trigger", jumper);
-		
+
 		jumper SetOrigin((-1984, 4552, -888));
 		jumper SetPlayerAngles((0,90,0));
-		
+
 		iprintlnbold("^2" + jumper.name +" ^3entered the sniper room");
-		
+
 		jumper TakeAllWeapons();
 		jumper GiveWeapon("remington700_mp");
 		jumper GiveMaxAmmo("remington700_mp");
 		wait 0.01;
 		jumper SwitchToWeapon("remington700_mp");
-		
+
 		thread sniper_activator();
-		
+
 		jumper death();
-		
+
 		iprintlnbold("^3" + jumper.name + " ^1died");
-		
+
 	}
 }
 

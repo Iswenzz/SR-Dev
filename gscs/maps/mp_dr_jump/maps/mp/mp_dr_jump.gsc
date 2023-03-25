@@ -4,24 +4,24 @@
 main()
 {
  maps\mp\_load::main();
- 
+
  game["allies"] = "marines";
  game["axis"] = "opfor";
  game["attackers"] = "axis";
  game["defenders"] = "allies";
  game["allies_soldiertype"] = "desert";
  game["axis_soldiertype"] = "desert";
- 
-	setdvar("g_speed" ,"190");
-	setdvar("dr_jumpers_speed" ,"1");
-	
+
+	// setdvar("g_speed" ,"190");
+	// setdvar("dr_jumpers_speed" ,"1");
+
 	setdvar( "r_specularcolorscale", "1" );
 
 	setdvar("r_glowbloomintensity0",".1");
 	setdvar("r_glowbloomintensity1",".1");
 	setdvar("r_glowskybleedintensity0",".1");
 
-	
+
 		//TRIGGERS//
 	addTriggerToList( "trig_trap1" );
 	addTriggerToList( "trig_trap2" );
@@ -33,8 +33,8 @@ main()
 	addTriggerToList( "trig_trap8" );
 	addTriggerToList( "trig_trap9" );
 	addTriggerToList( "trig_trap10" );
-	
-	
+
+
 	thread messages();
 	thread messages2();
 	thread messages3();
@@ -139,9 +139,9 @@ wait 2;
 music()
 {
     level waittill( "round_started" );
-    
+
     wait 1;
-    
+
     ambientPlay( "song1" );
 }
 
@@ -155,7 +155,7 @@ autorotate()
 	block rotateYaw(200, 5);
 	wait 2;
 	}
-	
+
 }
 
 autorotate2()
@@ -168,7 +168,7 @@ autorotate2()
 	block rotateroll(600, 5);
 	wait 2;
 	}
-	
+
 }
 
 autorotate3()
@@ -181,7 +181,7 @@ autorotate3()
 	block rotateYaw(-400, 15);
 	wait 2;
 	}
-	
+
 }
 
 autorotate4()
@@ -194,7 +194,7 @@ autorotate4()
 	block rotateYaw(400, 15);
 	wait 2;
 	}
-	
+
 }
 
 autorotate5()
@@ -207,7 +207,7 @@ autorotate5()
 	block rotateYaw(400, 15);
 	wait 2;
 	}
-	
+
 }
 
 autorotate6()
@@ -220,13 +220,13 @@ autorotate6()
 	block rotateYaw(400, 10);
 	wait 2;
 	}
-	
+
 }
 
 automove()
 {
    block = getent("automove","targetname");
-   
+
    for(;;)
    {
    wait 10;
@@ -234,7 +234,7 @@ automove()
    wait 10;
    block moveY (1250, 10);
    }
-   
+
 }
 
 endmap()
@@ -272,7 +272,7 @@ trap1()
 	block6 rotateYaw(1440, 4);
 	wait 0.1;
 	}
-	
+
 }
 
 trap2()
@@ -292,7 +292,7 @@ trap2()
 	block3 rotateYaw(360, 5);
 	wait 8;
 	}
-	
+
 }
 
 trap3()
@@ -302,7 +302,7 @@ trap3()
 	trig = getent("trig_trap3","targetname");
 	trig waittill("trigger",player);
 	player braxi\_rank::giveRankXP("", 60);
-	
+
 	for(;;)
 	{
 	block1 moveY (350, 3);
@@ -312,7 +312,7 @@ trap3()
 	block2 moveY (350, 3);
 	wait 3;
 	}
-	
+
 }
 
 trap4()
@@ -328,7 +328,7 @@ trap4()
 	block1 rotatepitch(360, 5);
 	wait 8;
 	}
-	
+
 }
 
 trap5()
@@ -344,7 +344,7 @@ trap5()
 	block1 rotatepitch(360, 5);
 	wait 8;
 	}
-	
+
 }
 
 trap6()
@@ -353,11 +353,11 @@ trap6()
    trig = getent("trig_trap6","targetname");
    trig waittill("trigger",player);
    player braxi\_rank::giveRankXP("", 60);
-   
+
    platform delete();
-   
+
    trig delete();
-   
+
 }
 
 trap8()
@@ -375,7 +375,7 @@ trap8()
 	block2 rotatepitch(360, 5);
 	wait 5;
 	}
-	
+
 }
 
 trap7()
@@ -395,7 +395,7 @@ trap7()
 	block3 rotateYaw(1240, 4);
 	wait 0.1;
 	}
-	
+
 }
 
 trap9()
@@ -419,7 +419,7 @@ trap9()
 	block5 rotateYaw(-1240, 4);
 	wait 0.1;
 	}
-	
+
 }
 
 trap10()
@@ -439,14 +439,14 @@ trap10()
 	block3 rotateYaw(-400, 10);
 	wait 2;
 	}
-	
+
 }
 
 secret()
 {
    level.secret_trigger = getent("trig_tp1","targetname");
    telejumporigin = getent("secret_jumper", "targetname");
-   
+
    while(1)
    {
       level.secret_trigger waittill( "trigger", player );
@@ -458,7 +458,7 @@ secret()
    player SetOrigin( telejumporigin.origin );
    player setplayerangles( telejumporigin.angles );
    wait(0.05);
-   
+
 }
 }
 
@@ -466,7 +466,7 @@ secretactifail()
 {
 	sniperjumper2 = getEnt("secret_acti_respawn", "targetname");
 	origin_acti_secret = getEnt("origin_acti_secret", "targetname");
-	
+
 	for (;;)
 	{
 		sniperjumper2 waittill("trigger", player);
@@ -480,7 +480,7 @@ secret2()
 {
    level.secret2_trigger = getent("trig_tp4","targetname");
    telejumporigin2 = getent("secret2_jumper", "targetname");
-   
+
    while(1)
    {
       level.secret2_trigger waittill( "trigger", player );
@@ -492,7 +492,7 @@ secret2()
    player SetOrigin( telejumporigin2.origin );
    player setplayerangles( telejumporigin2.angles );
    wait(0.05);
-   
+
 }
 }
 
@@ -500,7 +500,7 @@ secretjumpfail()
 {
 	secretjumper = getEnt("secret_jumper_respawn", "targetname");
 	origin_jumper_secret = getEnt("origin_jumper_secret", "targetname");
-	
+
 	for (;;)
 	{
 		secretjumper waittill("trigger", player);
@@ -514,7 +514,7 @@ bounceroomjumpfail()
 {
 	sniperjumper = getEnt("bounce_jumper_respawn", "targetname");
 	origin_jumper_bounce = getEnt("origin_jumper_bounce", "targetname");
-	
+
 	for (;;)
 	{
 		sniperjumper waittill("trigger", player);
@@ -528,7 +528,7 @@ bounceroomactifail()
 {
 	sniperjumper = getEnt("bounce_acti_respawn", "targetname");
 	origin_acti_bounce = getEnt("origin_acti_bounce", "targetname");
-	
+
 	for (;;)
 	{
 		sniperjumper waittill("trigger", player);
@@ -542,7 +542,7 @@ endsecret()
 {
    level.endsecret_trigger = getent("trig_tp2","targetname");
    telejumporigin2 = getent("jumper_secretend", "targetname");
-   
+
    while(1)
    {
       level.endsecret_trigger waittill( "trigger", player );
@@ -556,7 +556,7 @@ endsecret()
    iprintlnbold(" ^9" + player.name + " ^8 has finished the first secret room!!");
    player braxi\_rank::giveRankXP("", 400);
    wait(0.05);
-   
+
 }
 }
 
@@ -564,7 +564,7 @@ endsecret2()
 {
    level.endsecret2_trigger = getent("trig_tp3","targetname");
    telejumporigin3 = getent("jumper_secretend2", "targetname");
-   
+
    while(1)
    {
       level.endsecret2_trigger waittill( "trigger", player );
@@ -578,7 +578,7 @@ endsecret2()
    iprintlnbold(" ^9" + player.name + " ^8 has finished the second secret room!!");
    player braxi\_rank::giveRankXP("", 400);
    wait(0.05);
-   
+
 }
 }
 
@@ -600,18 +600,18 @@ sniper()
    level.bounce_trigger delete();
    level.jump_trigger delete();
    level.firstenter=false;
-   } 
+   }
    wait(0.05);
 
    player SetOrigin((7726, 1208, -84));
    player SetPlayerAngles((0,330,0));
    player TakeAllWeapons();
    player GiveWeapon("m40a3_mp");
-   player GiveWeapon( "remington700_mp" ); 
+   player GiveWeapon( "remington700_mp" );
    player GiveMaxAmmo("m40a3_mp");
    player GiveMaxAmmo( "remington700_mp" );
    wait .05;
-   player SwitchToWeapon("m40a3_mp"); 
+   player SwitchToWeapon("m40a3_mp");
    wait(0.05);
    level.activ SetOrigin((10286, -616, -84));
    level.activ SetPlayerAngles((0,150,0));
@@ -621,8 +621,8 @@ sniper()
    level.activ GiveMaxAmmo("m40a3_mp");
    level.activ GiveMaxAmmo( "remington700_mp" );
    wait .05;
-   level.activ SwitchToWeapon("m40a3_mp"); 
-   iPrintlnBold( " ^9" + player.name + " ^4 has entered the Sniper room^8!" ); 
+   level.activ SwitchToWeapon("m40a3_mp");
+   iPrintlnBold( " ^9" + player.name + " ^4 has entered the Sniper room^8!" );
    wait(0.05);
    player switchToWeapon( "m40a3_mp" );
    level.activ SwitchToWeapon( "m40a3_mp" );
@@ -636,7 +636,7 @@ old()
    block1 = getent("porte1","targetname");
    level.old_trigger = getent("trig_porte1","targetname");
    level.old_trigger waittill("trigger",player);
-   
+
    level.bounce_trigger delete();
    level.sniper_trigger delete();
    level.jump_trigger delete();
@@ -644,7 +644,7 @@ old()
    {
    wait 2;
    block1 moveZ (-500, 5);
-   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Old room^8!"); 
+   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Old room^8!");
    wait 2;
    }
    level.old_trigger delete();
@@ -668,7 +668,7 @@ bounce()
    level.sniper_trigger delete();
    level.jump_trigger delete();
    level.firstenter=false;
-   } 
+   }
    wait(0.05);
 
    player SetOrigin((7928, 3384, 136));
@@ -681,7 +681,7 @@ bounce()
    wait .05;
    level.activ giveweapon("knife_mp");
    player giveweapon("knife_mp");
-   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Bounce room^8!"); 
+   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Bounce room^8!");
    wait(0.05);
 
 
@@ -698,7 +698,7 @@ jump()
    level.teleactorigin = getent("jump_acti_respawn","targetname");
    telejumporigin = getent("jump_jumper_respawn","targetname");
 
-   
+
    while(1)
    {
       level.jump_trigger waittill("trigger",player );
@@ -711,7 +711,7 @@ jump()
    level.sniper_trigger delete();
    level.bounce_trigger delete();
    level.firstenter=false;
-   } 
+   }
    wait(0.05);
 
    player SetOrigin((8968, 6664, -584));
@@ -724,7 +724,7 @@ jump()
    wait .05;
    level.activ giveweapon("knife_mp");
    player giveweapon("knife_mp");
-   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Knife room^8!"); 
+   iPrintlnBold(" ^9" + player.name + " ^4 has entered the Knife room^8!");
    wait(0.05);
 
 

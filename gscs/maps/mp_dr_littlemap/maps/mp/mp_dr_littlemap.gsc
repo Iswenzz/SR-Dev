@@ -4,17 +4,17 @@
 main()
 {
  maps\mp\_load::main();
- 
+
  game["allies"] = "marines";
  game["axis"] = "opfor";
  game["attackers"] = "axis";
  game["defenders"] = "allies";
  game["allies_soldiertype"] = "desert";
  game["axis_soldiertype"] = "desert";
- 
-	setdvar("g_speed" ,"190");
-	setdvar("dr_jumpers_speed" ,"1");
-	
+
+	// setdvar("g_speed" ,"190");
+	// setdvar("dr_jumpers_speed" ,"1");
+
 	setdvar( "r_specularcolorscale", "1" );
 
 	setdvar("r_glowbloomintensity0",".1");
@@ -68,7 +68,7 @@ wait 2;
 automove()
 {
    block = getent("automove","targetname");
-   
+
    for(;;)
    {
    wait 2;
@@ -76,13 +76,13 @@ automove()
    wait 2;
    block moveX (100, 2);
    }
-   
+
 }
 
 automove2()
 {
    block = getent("automove2","targetname");
-   
+
    for(;;)
    {
    wait 5;
@@ -90,7 +90,7 @@ automove2()
    wait 5;
    block moveX (380, 5);
    }
-   
+
 }
 
 trap1()
@@ -99,7 +99,7 @@ trap1()
 	trig = getent("trig_trap1","targetname");
 	trig SetHintString("^3 Move the brush");
 	trig waittill("trigger",player);
-	
+
 	for(;;)
 	{
 	wait 1;
@@ -107,7 +107,7 @@ trap1()
 	wait 1;
 	block moveZ (-100, 0.5);
 	}
-	
+
 }
 
 trap2()
@@ -116,14 +116,14 @@ trap2()
 	trig = getent("trig_trap2","targetname");
 	trig SetHintString("^3 Rotate the bounce");
 	trig waittill("trigger",player);
-	
+
 	for(;;)
 	{
 	wait 0.1;
 	block rotateYaw(1440, 4);
-	wait 10;	
+	wait 10;
 	}
-	
+
 }
 
 trap3()
@@ -132,14 +132,14 @@ trap3()
     trig = getent("trig_trap3","targetname");
 	trig SetHintString("^3 Rotate the bounce");
 	trig waittill("trigger",player);
-	
+
 	for(;;)
 	{
 	wait 0.1;
 	block rotateYaw(1440, 4);
-	wait 10;	
+	wait 10;
 	}
-	
+
 }
 
 trap4()
@@ -148,11 +148,11 @@ trap4()
     trig = getent("trig_trap4","targetname");
     trig SetHintString("^3 Remove the brush");
     trig waittill("trigger",player);
-   
+
     platform delete();
-   
+
     trig delete();
-   
+
 }
 
 trap7()
@@ -161,11 +161,11 @@ trap7()
     trig = getent("trig_trap7","targetname");
     trig SetHintString("^3 Remove the brush");
     trig waittill("trigger",player);
-   
+
     platform delete();
-   
+
     trig delete();
-   
+
 }
 
 trap6()
@@ -174,7 +174,7 @@ trap6()
 	trig = getent("trig_trap6","targetname");
 	trig SetHintString("^3 Move the brush");
 	trig waittill("trigger",player);
-	
+
 	for(;;)
 	{
 	wait 3;
@@ -182,7 +182,7 @@ trap6()
 	wait 3;
 	block moveX (-100, 3);
 	}
-	
+
 }
 
 trap8()
@@ -191,14 +191,14 @@ trap8()
 	trig = getent("trig_trap8","targetname");
 	trig SetHintString("^3 Rotate the bounce");
 	trig waittill("trigger",player);
-	
+
 	for(;;)
 	{
 	wait 0.1;
 	block rotateYaw(1440, 4);
-	wait 10;	
+	wait 10;
 	}
-	
+
 }
 
 porte1()
@@ -228,13 +228,13 @@ porte2()
    }
    trig delete();
 }
- 
+
 arme1()
 {
 	trig = getent("trig_arme1","targetname");
 	trig SetHintString("^3m^44^60^2a^53");
 	trig waittill("trigger",player);
-	
+
 	for(;;)
 	{
 	wait 1;
@@ -242,7 +242,7 @@ arme1()
 	player GiveMaxAmmo("m40a3_mp");
 	wait 1;
 	}
-	
+
 }
 
 arme2()
@@ -250,7 +250,7 @@ arme2()
 	trig = getent("trig_arme2","targetname");
 	trig SetHintString("^3r^27^50^60");
 	trig waittill("trigger",player);
-	
+
 	for(;;)
 	{
 	wait 1;
@@ -258,7 +258,7 @@ arme2()
 	player GiveMaxAmmo("remington700_mp");
 	wait 1;
 	}
-	
+
 }
 
 arme3()
@@ -266,7 +266,7 @@ arme3()
 	trig = getent("trig_arme3","targetname");
 	trig SetHintString("^3 m40a3");
 	trig waittill("trigger",player);
-	
+
 	for(;;)
 	{
 	wait 1;
@@ -274,14 +274,14 @@ arme3()
 	player GiveMaxAmmo("m40a3_mp");
 	wait 1;
 	}
-	
+
 }
 
 secret()
 {
    level.secret_trigger = getent("trig_secret","targetname");
    telejumporigin = getent("secret_jumper", "targetname");
-   
+
    while(1)
    {
       level.secret_trigger waittill( "trigger", player );
@@ -293,7 +293,7 @@ secret()
    player SetOrigin( telejumporigin.origin );
    player setplayerangles( telejumporigin.angles );
    wait(0.05);
-   
+
 }
 }
 
@@ -328,18 +328,18 @@ sniper()
    level.old_trigger delete();
    level.bounce_trigger delete();
    level.firstenter=false;
-   } 
+   }
    wait(0.05);
 
    player SetOrigin( telejumporigin.origin );
    player setplayerangles( telejumporigin.angles );
    player TakeAllWeapons();
    player GiveWeapon("m40a3_mp");
-   player GiveWeapon( "remington700_mp" ); 
+   player GiveWeapon( "remington700_mp" );
    player GiveMaxAmmo("m40a3_mp");
    player GiveMaxAmmo( "remington700_mp" );
    wait .05;
-   player SwitchToWeapon("m40a3_mp"); 
+   player SwitchToWeapon("m40a3_mp");
    wait(0.05);
    level.activ SetOrigin (level.teleactorigin.origin);
    level.activ setplayerangles (level.teleactorigin.angles);
@@ -349,8 +349,8 @@ sniper()
    level.activ GiveMaxAmmo("m40a3_mp");
    level.activ GiveMaxAmmo( "remington700_mp" );
    wait .05;
-   level.activ SwitchToWeapon("m40a3_mp"); 
-   iPrintlnBold( " ^8" + player.name + " ^4 has entered the Sniper room^8!" ); 
+   level.activ SwitchToWeapon("m40a3_mp");
+   iPrintlnBold( " ^8" + player.name + " ^4 has entered the Sniper room^8!" );
    wait(0.05);
    player switchToWeapon( "m40a3_mp" );
    level.activ SwitchToWeapon( "m40a3_mp" );
@@ -381,7 +381,7 @@ bounce()
    level.old_trigger delete();
    level.sniper_trigger delete();
    level.firstenter=false;
-   } 
+   }
    wait(0.05);
 
    player SetOrigin(telejumporigin.origin );
@@ -392,7 +392,7 @@ bounce()
    level.activ setplayerangles (level.teleactorigin.angles);
    level.activ TakeAllWeapons();
    wait .05;
-   iPrintlnBold(" ^8" + player.name + " ^4 has entered the Bounce room^8!"); 
+   iPrintlnBold(" ^8" + player.name + " ^4 has entered the Bounce room^8!");
    wait(0.05);
 
 
@@ -407,7 +407,7 @@ respawn()
 {
    level.respawn_trigger = getent("trig_respawn","targetname");
    telejumporigin = getent("bounce_jumper", "targetname");
-   
+
    while(1)
    {
       level.respawn_trigger waittill( "trigger", player );
@@ -419,7 +419,7 @@ respawn()
    player SetOrigin( telejumporigin.origin );
    player setplayerangles( telejumporigin.angles );
    wait(0.05);
-   
+
 }
 }
 
@@ -427,7 +427,7 @@ respawn2()
 {
    level.respawn2_trigger = getent("trig_respawn2","targetname");
    level.teleactorigin = getent("bounce_activator", "targetname");
-   
+
    while(1)
    {
       level.respawn2_trigger waittill( "trigger", player );
@@ -439,15 +439,15 @@ respawn2()
    level.activ SetOrigin (level.teleactorigin.origin);
    level.activ setplayerangles (level.teleactorigin.angles);
    wait(0.05);
-   
+
 }
 }
 
 music()
 {
     level waittill( "round_started" );
-    
+
     wait 1;
-    
+
     ambientPlay( "song1" );
 }

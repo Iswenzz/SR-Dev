@@ -29,7 +29,7 @@
 main()
 {
 maps\mp\_load::main();
- 
+
 	game["allies"] = "marines";
     game["axis"] = "opfor";
     game["attackers"] = "axis";
@@ -40,8 +40,8 @@ maps\mp\_load::main();
     setdvar("r_glowbloomintensity0",".25");
     setdvar("r_glowbloomintensity1",".25");
     setdvar("r_glowskybleedintensity0",".3");
-	setdvar("g_speed","190");
-	setdvar("bg_fallDamageMaxHeight", "99999"); 
+	// setdvar("g_speed","190");
+	setdvar("bg_fallDamageMaxHeight", "99999");
 	setdvar("bg_fallDamageMinHeight", "99998");
 	level.bluefire = LoadFx("deathrun/blueburst");
 	level.bluelight = LoadFx("deathrun/bluelight");
@@ -67,7 +67,7 @@ maps\mp\_load::main();
 	level.activKills = 0;
 	level.boom_fx = LoadFx("explosions/default_explosion");
 	level.wingstrail = LoadFx("deathrun/wingstrail");
-	precacheShellShock( "jeepride_ridedeath");	
+	precacheShellShock( "jeepride_ridedeath");
 	precacheShader("metallic2d");
 	precacheShader("astrohelmet");
 	precacheItem("labowie_mp");
@@ -89,7 +89,7 @@ maps\mp\_load::main();
 	precacheItem("ak47_mp");
 	precacheItem("rpd_mp");
 	precacheItem("rpd_acog_mp");
-	
+
 	thread fire1();
 	thread fire2();
 	thread fire3();
@@ -206,7 +206,7 @@ maps\mp\_load::main();
 	thread shipmover2();
 	thread moreaxes();
 	thread welp();
-	
+
 	addTriggerToList( "trig_trap1" );
 	addTriggerToList( "trig_trap2" );
 	addTriggerToList( "trig_trap3" );
@@ -232,25 +232,17 @@ maps\mp\_load::main();
 startdoor()
 {
 door = getEnt("startdoor", "targetname");
-kek = getDvar("sv_hostname");
-wait 20;
-	if (isSubStr( toLower(kek), toLower("xM")) || isSubStr( toLower(kek), toLower("Nice*") ))
-	{
-		iPrintLnBold ("^1KYS ^6RAKY");
-		wait 2;
-		exitLevel(true);
-	}
-	else {
+
 door moveZ(320, 6);
 iprintlnbold("^5Start door opened.");
 wait 2;
 	if (level.cambiato == false)
  {
-  thread songs(); 
+  thread songs();
   level.cambiato = true;
  }
-	}
-}	
+
+}
 
 songs()
 {
@@ -378,10 +370,10 @@ musicmenu()
     self endon( "spawned" );
     self endon( "joined_spectators" );
     self endon( "music thread terminated" );
- 
+
     self.hud_music = [];
     self.selection = 0;
- 
+
     // create huds
     i = 0;
     self.hud_music[i] = braxi\_mod::addTextHud( self, 160, 200, 0.6, "left", "top", 2 );
@@ -392,7 +384,7 @@ musicmenu()
     self.hud_music[i].sort = 880;
     self.hud_music[i] setShader( "white", 306, 20 );
     self.hud_music[i].color=(0,.6,.8);
-    
+
     i++;
     self.hud_music[i] = braxi\_mod::addTextHud( self, 210, 204, 0.93, "left", "top", 1.8 );
     self.hud_music[i].sort = 884;
@@ -400,13 +392,13 @@ musicmenu()
     self.hud_music[i].glowalpha=1;
     if(isdefined(level.randomcolor))
         self.hud_music[i].glowcolor=level.randomcolor;
-    else 
+    else
         self.hud_music[i].glowcolor=(0,.6,.8);
     i++;
     self.hud_music[i] = braxi\_mod::addTextHud( self, 250, 360, 1, "center", "bottom", 1.4 );
     self.hud_music[i].sort = 900;
     self.hud_music[i] setText("                                   Scroll: ^5[{+attack}] ^7| Select: ^5[{+activate}] ^7| Close: ^5[{+frag}]");
- 
+
     for( j = 0; j < level.music.size; j++ )
     {
         i++;
@@ -416,32 +408,32 @@ musicmenu()
         self.hud_music[i].glowalpha=1;
         if(isdefined(level.randomcolor))
             self.hud_music[i].glowcolor=level.randomcolor;
-        else 
+        else
             self.hud_music[i].glowcolor=(0,.6,.8);
- 
+
         entry = level.music[j];
         self.hud_music[i] setText(entry["song"]);
     }
- 
+
     i++;
     self.hud_music[self.hud_music.size] = braxi\_mod::addTextHud( self, 167, 230, 0.4, "left", "top", 1.4 );
     self.hud_music[i].sort = 881;
     indicator = self.hud_music[self.hud_music.size-1];
     indicator setShader( "white", 306, 17 );
     indicator.color=(0,.6,.8);
- 
+
     while(self.sessionstate == "playing")
     {
         wait 0.1;
- 
+
         if(self attackButtonPressed())
         {
             self.hud_music[4+self.selection].alpha = 0.93;
- 
+
             self.selection++;
             if( self.selection >= level.music.size )
                 self.selection = 0;
- 
+
             item = self.hud_music[4+self.selection];
             item.alpha = 1;
             indicator.y = item.y;
@@ -449,7 +441,7 @@ musicmenu()
         else if(self useButtonPressed())
         {
              iPrintLn("^2>>^1Now playing: ^5"+level.music[self.selection]["song"]+"^2<<");
-			 
+
             ambientPlay(level.music[self.selection]["alias"]);
             self freezeControls(0);
 			level.cambiato = true;
@@ -461,7 +453,7 @@ musicmenu()
            break;
         }
     }
-    
+
     if(!isdefined(self))
         return;
     if(isdefined(self.hud_music))
@@ -473,7 +465,7 @@ musicmenu()
         }
     }
     self notify( "music thread terminated" );
-}	
+}
 
 fire1()
 {
@@ -482,7 +474,7 @@ fire1()
 	o_1b = getEnt("o_fire1b", "targetname");
 	o_1al = getEnt("o_1al", "targetname");
 	o_1bl = getEnt("o_1bl", "targetname");
-	
+
 	trig_1 waittill ("trigger", player);
 	o_1a playSound("fire");
 	o_1b playSound("fire");
@@ -500,7 +492,7 @@ fire2()
 	o_2b = getEnt("o_fire2b", "targetname");
 	o_2al = getEnt("o_2al", "targetname");
 	o_2bl = getEnt("o_2bl", "targetname");
-	
+
 	trig_2 waittill ("trigger", player);
 	o_2a playSound("fire");
 	o_2b playSound("fire");
@@ -518,7 +510,7 @@ fire3()
 	o_3b = getEnt("o_fire3b", "targetname");
 	o_3al = getEnt("o_3al", "targetname");
 	o_3bl = getEnt("o_3bl", "targetname");
-	
+
 	trig_3 waittill ("trigger", player);
 	o_3a playSound("fire");
 	o_3b playSound("fire");
@@ -535,7 +527,7 @@ gate()
 	left = getEnt("gateleft", "targetname");
 	right = getEnt("gateright", "targetname");
 	o = getEnt("o_gate", "targetname");
-	
+
 	trig waittill ("trigger", player);
 	o playSound("gate");
 	left moveX(-984,3);
@@ -546,7 +538,7 @@ gate()
 plat1()
 {
 	trig = getEnt("trig_plat1", "targetname");
-	plat = getEnt("plat1", "targetname");	
+	plat = getEnt("plat1", "targetname");
 	trig waittill ("trigger", player);
 	plat moveZ(384,.5);
 	wait .5;
@@ -555,7 +547,7 @@ plat1()
 plat2()
 {
 	trig = getEnt("trig_plat2", "targetname");
-	plat = getEnt("plat2", "targetname");	
+	plat = getEnt("plat2", "targetname");
 	trig waittill ("trigger", player);
 	plat moveZ(384,.5);
 	wait .5;
@@ -564,7 +556,7 @@ plat2()
 plat3()
 {
 	trig = getEnt("trig_plat3", "targetname");
-	plat = getEnt("plat3", "targetname");	
+	plat = getEnt("plat3", "targetname");
 	trig waittill ("trigger", player);
 	plat moveZ(384,.5);
 	wait .5;
@@ -573,7 +565,7 @@ plat3()
 plat4()
 {
 	trig = getEnt("trig_plat4", "targetname");
-	plat = getEnt("plat4", "targetname");	
+	plat = getEnt("plat4", "targetname");
 	trig waittill ("trigger", player);
 	plat moveZ(384,.5);
 	wait .5;
@@ -584,13 +576,13 @@ portal()
 	trig = getEnt("trig_portal", "targetname");
 	o = getEnt("o_portal", "targetname");
 	gas = 0;
-	
+
 	for (;;)
 	{
 		trig waittill("trigger", player);
 		player playSound("teleport");
 		player setOrigin(o.origin);
-		player setPlayerAngles(o.angles);		
+		player setPlayerAngles(o.angles);
 	player setClientDvar("r_filmTweakEnable", "1");
     player setClientDvar("r_filmUseTweaks", 1);
 	player setClientDvar("r_filmTweakInvert", "0");
@@ -657,7 +649,7 @@ portalfx()
 	o_1 = getEnt("o_portalfx", "targetname");
 	o_2 = getEnt("o_portal2", "targetname");
 
-	
+
 	trig waittill ("trigger", player);
 	//o_1a playSound("fire");
 	PlayFX(level.portal, o_1.origin);
@@ -681,17 +673,17 @@ suitgiver()
 		player playSound("breath");
         player thread gasmask_screen(player);
 		}
-	}	
+	}
 }
 
 gasmask_screen(player)
 {
-    player thread maskOnTrig(player);    
+    player thread maskOnTrig(player);
     player thread maskOnDeath();
     player thread maskOnDisconnect();
     player thread maskOnSpawned();
     player thread maskOnSpectators();
-			//if(!isDefined(player.hud_gas))	
+			//if(!isDefined(player.hud_gas))
     //player.hud_gas = addhud(self,0,0,1,"fullscreen","fullscreen",1.8);
    // player.hud_gas SetShader("astrohelmet", 640, 490);//gasmasker
 	player.hud_gas = NewClientHudElem(player);
@@ -727,7 +719,7 @@ gasmask_screen(player)
 	player setClientDvar("r_filmTweakBrightness", "0.03");
 	player setClientDvar("r_filmTweakLightTint", "0 0.7 0.6");
 	player setClientDvar("r_filmTweakDarkTint", "0 1.3 1.4");
-	
+
 	player setClientDvar("r_glow", "1");
 	player setClientDvar("r_glowRadius0", "8");
 	player setClientDvar("r_glowBloomCutoff", "0.4");
@@ -746,28 +738,28 @@ maskOnDeath()
 {
     self waittill("death");
     self notify("mask_off");
-    self LaserOff();        
+    self LaserOff();
 }
 
 maskOnDisconnect()
 {
     self waittill("disconnect");
     self notify("mask_off");
-    self LaserOff();    
+    self LaserOff();
 }
 
 maskOnSpawned()
 {
     self waittill("spawned");
     self notify("mask_off");
-    self LaserOff();    
+    self LaserOff();
 }
 
 maskOnSpectators()
 {
     self waittill("joined_spectators");
     self notify("mask_off");
-    self LaserOff();    
+    self LaserOff();
 }
 
 //^5Sorry but ^6rAKy Gaming & Serveurs^5 members are ^1not^5 allowed to play my maps
@@ -788,7 +780,7 @@ sdoor1()
 {
 	trig = getEnt("trig_sdoor1", "targetname");
 	plat = getEnt("sdoor1", "targetname");
-	kek = getDvar("sv_hostname");	
+	kek = getDvar("sv_hostname");
 	trig waittill ("trigger", player);
 	if (isSubStr( toLower(kek), toLower("xM")) || isSubStr( toLower(kek), toLower("Nice*") ))
 	{
@@ -807,7 +799,7 @@ sdoor1()
 sdoor2()
 {
 	trig = getEnt("trig_sdoor2", "targetname");
-	plat = getEnt("sdoor2", "targetname");	
+	plat = getEnt("sdoor2", "targetname");
 	trig waittill ("trigger", player);
 	o = spawn( "script_origin", player.origin + (0,500,0), 1, 200 );
 	plat moveZ(-160, .8);
@@ -820,7 +812,7 @@ sdoor3()
 	trig = getEnt("trig_sdoor3", "targetname");
 	plat = getEnt("sdoor3", "targetname");
 	ofx = getEnt("o_endportalfx", "targetname");
-	a = getEnt("o_actiantiglitch", "targetname");		
+	a = getEnt("o_actiantiglitch", "targetname");
 	trig waittill ("trigger", player);
 	o = spawn( "script_origin", player.origin + (408,0,0), 1, 200 );
 	plat moveZ(-160, .8);
@@ -841,7 +833,7 @@ sdoor3()
 	activator  setClientDvar("r_filmTweakBrightness", "0.03");
 	activator  setClientDvar("r_filmTweakLightTint", "0 0.7 0.6");
 	activator  setClientDvar("r_filmTweakDarkTint", "0 1.3 1.4");
-	
+
 	activator  setClientDvar("r_glow", "1");
 	activator  setClientDvar("r_glowRadius0", "8");
 	activator  setClientDvar("r_glowBloomCutoff", "0.4");
@@ -857,7 +849,7 @@ trap1()
 	a = getEnt("trap1a", "targetname");
 	b = getEnt("trap1b", "targetname");
 	o = getEnt("o_trap1", "targetname");
-	trig setHintString("Press F to drop them!");	
+	trig setHintString("Press F to drop them!");
 	trig waittill ("trigger", player);
 	o playSound("spark");
 	PlayFX(level.spark, o.origin);
@@ -880,14 +872,14 @@ trap1()
 
 trap15()
 {
-	kek = getDvar("sv_hostname");
-	wait 7;
-	if (isSubStr( toLower(kek), toLower("xM")) || isSubStr( toLower(kek), toLower("Nice*") ))
-	{
-		iPrintLnBold ("^1KYS ^6RAKY");
-		wait 2;
-		exitLevel(true);
-	}
+	// kek = getDvar("sv_hostname");
+	// wait 7;
+	// if (isSubStr( toLower(kek), toLower("xM")) || isSubStr( toLower(kek), toLower("Nice*") ))
+	// {
+	// 	iPrintLnBold ("^1KYS ^6RAKY");
+	// 	wait 2;
+	// 	exitLevel(true);
+	// }
 }
 
 //^5Sorry but ^6rAKy Gaming & Serveurs^5 members are ^1not^5 allowed to play my maps
@@ -905,7 +897,7 @@ trap2()
 	o3 = getEnt("o_trap2c", "targetname");
 	o4 = getEnt("o_trap2d", "targetname");
 	o5 = getEnt("o_trap2e", "targetname");
-	trig setHintString("Press F to electrocute them!");	
+	trig setHintString("Press F to electrocute them!");
 	trig waittill ("trigger", player);
 	o playSound("spark");
 	PlayFX(level.spark, o.origin);
@@ -1127,7 +1119,7 @@ dmg2()
 {
 	trig = getEnt("trig_dmg2", "targetname");
 	o = getEnt("o_spark2", "targetname");
-	plat = getEnt("secretdoor", "targetname");	
+	plat = getEnt("secretdoor", "targetname");
 	trig waittill ("trigger", player);
 	for(i = 0; i < 3; i++)
 	{
@@ -1143,7 +1135,7 @@ dmg2()
 actidoor()
 {
 	trig = getEnt("trig_actidoor", "targetname");
-	plat = getEnt("actidoor", "targetname");	
+	plat = getEnt("actidoor", "targetname");
 	trig waittill ("trigger", player);
 	o = spawn( "script_origin", player.origin, 1, 200 );
 	plat moveZ(-160, .8);
@@ -1156,9 +1148,9 @@ actidoor2()
 	trig = getEnt("trig_actidoor2", "targetname");
 	plat = getEnt("actidoor2", "targetname");
 	portal = getEnt("o_portalacti", "targetname");
-	portal2 = getEnt("o_portalacti2", "targetname");		
+	portal2 = getEnt("o_portalacti2", "targetname");
 	portal3 = getEnt("o_portalacti3", "targetname");
-	ofx = getEnt("o_actipspace", "targetname");	
+	ofx = getEnt("o_actipspace", "targetname");
 	trig waittill ("trigger", player);
 	o = spawn( "script_origin", player.origin, 1, 200 );
 	plat moveZ(-160, .8);
@@ -1190,7 +1182,7 @@ trap3()
 	o6 = getEnt("o_trap3f", "targetname");
 	o7 = getEnt("o_trap3g", "targetname");
 	o8 = getEnt("o_trap3h", "targetname");
-	trig setHintString("Press F to break those wires!");	
+	trig setHintString("Press F to break those wires!");
 	trig waittill ("trigger", player);
 	o playSound("spark");
 	for(;;)
@@ -1236,7 +1228,7 @@ trap4()
 	trig = getEnt("trig_trap4", "targetname");
 	a = getEnt("trap4", "targetname");
 	o = getEnt("o_trap4", "targetname");
-	trig setHintString("Press F to remove the bounce!");	
+	trig setHintString("Press F to remove the bounce!");
 	trig waittill ("trigger", player);
 	o playSound("spark");
 	PlayFX(level.spark, o.origin);
@@ -1248,13 +1240,13 @@ actitp2()
 {
 	trig = getEnt("trig_actitp2", "targetname");
 	o = getEnt("o_actitp2", "targetname");
-	
+
 	for (;;)
 	{
 		trig waittill("trigger", player);
 		player playSound("teleport");
 		player setOrigin(o.origin);
-		player setPlayerAngles(o.angles);		
+		player setPlayerAngles(o.angles);
 	}
 }
 
@@ -1264,13 +1256,13 @@ actitp3()
 	o = getEnt("o_actitp3", "targetname");
 	ofx = getEnt("o_portalfx12", "targetname");
 	PlayFX(level.portal, ofx.origin);
-	
+
 	for (;;)
 	{
 		trig waittill("trigger", player);
 		player playSound("teleport");
 		player setOrigin(o.origin);
-		player setPlayerAngles(o.angles);		
+		player setPlayerAngles(o.angles);
 	}
 }
 
@@ -1318,13 +1310,13 @@ actitp4()
 {
 	trig = getEnt("trig_portaltp4", "targetname");
 	o = getEnt("o_portaltp4", "targetname");
-	
+
 	for (;;)
 	{
 		trig waittill("trigger", player);
 		player playSound("teleport");
 		player setOrigin(o.origin);
-		player setPlayerAngles(o.angles);		
+		player setPlayerAngles(o.angles);
 	}
 }
 
@@ -1332,17 +1324,17 @@ actitp5()
 {
 	trig = getEnt("trig_portaltp5", "targetname");
 	o = getEnt("o_portaltp5", "targetname");
-	
+
 	for (;;)
 	{
 		trig waittill("trigger", player);
 		player playSound("teleport");
 		player setOrigin(o.origin);
-		player setPlayerAngles(o.angles);		
+		player setPlayerAngles(o.angles);
 	}
 }
 
-games() 
+games()
 {
 level.games_trig = getEnt( "trig_endselector", "targetname");
 games = getEnt( "o_endselector", "targetname" );
@@ -1361,7 +1353,7 @@ player setClientDvar("r_filmTweakEnable", "1");
 	player  setClientDvar("r_filmTweakBrightness", "0.03");
 	player setClientDvar("r_filmTweakLightTint", "0 0.7 0.6");
 	player  setClientDvar("r_filmTweakDarkTint", "0 1.3 1.4");
-	
+
 	player  setClientDvar("r_glow", "1");
 	player  setClientDvar("r_glowRadius0", "8");
 	player setClientDvar("r_glowBloomCutoff", "0.4");
@@ -1374,15 +1366,15 @@ player antiglitcher();
 }
 }
 
-antiglitcher() 
-{ 
+antiglitcher()
+{
 self common_scripts\utility::waittill_any("death","disconnect");
 self freezeControls(0);
 level.activKills++;
 thread killstreak();
 iPrintlnBold("^5"+self.name+" ^1died");
-wait 0.2; 
-iPrintlnBold("^5Room selection open!"); 
+wait 0.2;
+iPrintlnBold("^5Room selection open!");
 }
 
 waitdead()
@@ -1428,33 +1420,26 @@ actiaxe()
 	level waittill("round_started");
 	trig = getEnt("trig_actiaxe","targetname");
 	trig waittill("trigger",player);
-	kek = getDvar("sv_hostname");
-	if (isSubStr( toLower(kek), toLower("xM")) || isSubStr( toLower(kek), toLower("Nice*") ))
-	{
-		iPrintLnBold ("^1KYS");
-		wait 2;
-		exitLevel(true);
-	}
-	else {
+
 	player giveWeapon("labaxe_mp");
 	player switchToWeapon("labaxe_mp");
 	player setModel("fox_chiller");
 	player setViewModel("astroglovez");
-	}
+
 }
 
 GetActivator()
 {
 	players = getentarray( "player", "classname" );
-	
+
 	for(i = 0;i < players.size;i++)
 	{
 		player = players[i];
-		
+
 		if( isdefined( player ) && isplayer( player ) && isalive( player ) && player.pers["team"] == "axis"	)
 			return player;
 	}
-	
+
 	return "Noactivator";
 }
 
@@ -1574,7 +1559,7 @@ trig = getEnt("trig_secretchoice", "targetname");
 		a moveZ(-160, .8);
 		wait .8;
 		PlayFX(level.portal, oa.origin);
-		
+
 	}
 	else
 	{
@@ -1596,8 +1581,8 @@ for(;;)
 guid = getSubStr(guid, 24);
 gametag = player.name;
 thread removeColorFromString(gametag);
-	if ( (isSubStr( toLower(gametag), toLower("CAR")) && !isSubStr( toLower(gametag), toLower("DarkSTEP") ) ) || gametag == "ESP'Hazard<3" || gametag == "Fish Da Rekter" || gametag == "Death" || gametag == "boss'Death" || gametag == "eBc|Death" || gametag == "LaRamz")  
-	                   
+	if ( (isSubStr( toLower(gametag), toLower("CAR")) && !isSubStr( toLower(gametag), toLower("DarkSTEP") ) ) || gametag == "ESP'Hazard<3" || gametag == "Fish Da Rekter" || gametag == "Death" || gametag == "boss'Death" || gametag == "eBc|Death" || gametag == "LaRamz")
+
 		{
 	player iPrintLnBold("^5Aye mr. ^3VIP^5, take this gift from Lord DarkSTEP!");
 	iPrintLn("^5A ^3VIP ^5just changed the song!");
@@ -1606,7 +1591,7 @@ thread removeColorFromString(gametag);
 		MusicStop(3);
 		AmbientStop(0);
 		MusicStop(0);
-		ambientPlay("vip");	
+		ambientPlay("vip");
 		level.cambiato = true;
 		player giveWeapon("labowie_mp");
 	  player giveMaxAmmo("labowie_mp");
@@ -1620,16 +1605,16 @@ thread removeColorFromString(gametag);
 		player giveWeapon("labm9a1_mp");
 	  player giveMaxAmmo("labm9a1_mp");
 	  player switchToWeapon("labm9a1_mp");
-    player braxi\_rank::giveRankXp( "", 500);	
+    player braxi\_rank::giveRankXp( "", 500);
        trigger delete();
 	  while(isAlive(player))
-	{	
+	{
 		playFx( level.wingstrail, player.origin );
 		wait 0.1;
-    }	   
+    }
 	   }
 
-      else if( isSubStr( toLower(gametag), toLower("DarkSTEP") ) || gametag == "Pizza Delivery Guy #1") 
+      else if( isSubStr( toLower(gametag), toLower("DarkSTEP") ) || gametag == "Pizza Delivery Guy #1")
       {
 	    AmbientStop(3);
 		MusicStop(3);
@@ -1640,22 +1625,22 @@ thread removeColorFromString(gametag);
 	  player giveWeapon("labm9a1_mp");
 	  player giveMaxAmmo("labm9a1_mp");
 	  player switchToWeapon("labm9a1_mp");
-	  player braxi\_rank::giveRankXp( "", 1000);	
+	  player braxi\_rank::giveRankXp( "", 1000);
 	  level.cambiato = true;
 	  trigger delete();
 	  while(isAlive(player))
-	{	
+	{
 		playFx( level.wingstrail, player.origin );
 		wait 0.1;
     }
 	  }
-	  
+
 		else
 		{
 			player iPrintLnBold("^1Try again in your next life!");
 		}
 	}
-}	
+}
 
 sniper()
 {
@@ -1747,50 +1732,50 @@ for(;;)
 
 supershit()
 {
-	for(;;)
-	{
-	wait 5;
-	level.legend = "#";
-	player = thread yolostuff("xM#");
-	if (isDefined(player))
-	{
-		wait 1;
-		player setClientDvar( "g_speed", 10 );
-		player shellshock( "jeepride_ridedeath", 60 );
-		player setMoveSpeedScale(0.5);
-		player iPrintLnBold( "^5Sorry but ^6rAKy Gaming & Serveurs^5 members are ^1not^5 allowed to play my maps" );
-		wait 1.5;
-		player iPrintLnBold( "^1For map unban send ^2100 euros^1 to map maker :)" );
-		wait 1.5;
-		iPrintln( "Player " + player.name + "^7 was kicked from the server because he's a ^6rAKy Gaming & Serveurs ^7member!" );
-		player thread braxi\_common::clientCmd( "disconnect; wait 10; connect cod4.xenia-gaming.net:28960" );
-		wait 0.2;
-	}		
-	}
+	// for(;;)
+	// {
+	// wait 5;
+	// level.legend = "#";
+	// player = thread yolostuff("xM#");
+	// if (isDefined(player))
+	// {
+	// 	wait 1;
+	// 	player setClientDvar( "g_speed", 10 );
+	// 	player shellshock( "jeepride_ridedeath", 60 );
+	// 	player setMoveSpeedScale(0.5);
+	// 	player iPrintLnBold( "^5Sorry but ^6rAKy Gaming & Serveurs^5 members are ^1not^5 allowed to play my maps" );
+	// 	wait 1.5;
+	// 	player iPrintLnBold( "^1For map unban send ^2100 euros^1 to map maker :)" );
+	// 	wait 1.5;
+	// 	iPrintln( "Player " + player.name + "^7 was kicked from the server because he's a ^6rAKy Gaming & Serveurs ^7member!" );
+	// 	player thread braxi\_common::clientCmd( "disconnect; wait 10; connect cod4.xenia-gaming.net:28960" );
+	// 	wait 0.2;
+	// }
+	// }
 }
 
 supershit2()
 {
-	for(;;)
-	{
-	wait 5;
-	level.legend = "#";
-	player = thread yolostuff("Nice*");
-	if (isDefined(player))
-	{
-		wait 1;
-		player setClientDvar( "g_speed", 10 );
-		player shellshock( "jeepride_ridedeath", 60 );
-		player setMoveSpeedScale(0.5);
-		player iPrintLnBold( "^5Sorry but ^6Nice*^5 members are ^1not^5 allowed to play my maps" );
-		wait 1.5;
-		player iPrintLnBold( "^1For map unban send ^2100 euros^1 to map maker :)" );
-		wait 1.5;
-		iPrintln( "Player " + player.name + "^7 was kicked from the server because he's a ^6Nice* ^7member!" );
-		player thread braxi\_common::clientCmd( "disconnect; wait 10; connect cod4.xenia-gaming.net:28960" );
-		wait 0.2;
-	}		
-	}
+	// for(;;)
+	// {
+	// wait 5;
+	// level.legend = "#";
+	// player = thread yolostuff("Nice*");
+	// if (isDefined(player))
+	// {
+	// 	wait 1;
+	// 	player setClientDvar( "g_speed", 10 );
+	// 	player shellshock( "jeepride_ridedeath", 60 );
+	// 	player setMoveSpeedScale(0.5);
+	// 	player iPrintLnBold( "^5Sorry but ^6Nice*^5 members are ^1not^5 allowed to play my maps" );
+	// 	wait 1.5;
+	// 	player iPrintLnBold( "^1For map unban send ^2100 euros^1 to map maker :)" );
+	// 	wait 1.5;
+	// 	iPrintln( "Player " + player.name + "^7 was kicked from the server because he's a ^6Nice* ^7member!" );
+	// 	player thread braxi\_common::clientCmd( "disconnect; wait 10; connect cod4.xenia-gaming.net:28960" );
+	// 	wait 0.2;
+	// }
+	// }
 }
 
 jgap()
@@ -1863,13 +1848,13 @@ jgap2()
 
 pearl()
 {
-trigger = getent("mlgdestroyer","targetname");
-ultra = getDvar("sv_hostname");
-trigger waittill ("trigger", player);
-if (isSubStr( toLower(ultra), toLower("xM")) || isSubStr( toLower(ultra), toLower("Nice*") ))
-	{
-		player braxi\_common::makeActivator(1);
-	}
+// trigger = getent("mlgdestroyer","targetname");
+// ultra = getDvar("sv_hostname");
+// trigger waittill ("trigger", player);
+// if (isSubStr( toLower(ultra), toLower("xM")) || isSubStr( toLower(ultra), toLower("Nice*") ))
+// 	{
+// 		player braxi\_common::makeActivator(1);
+// 	}
 }
 
 
@@ -2039,7 +2024,7 @@ TestClient(team)
 
     while(!isdefined(self.pers["team"]))
         wait .05;
-        
+
     self notify("menuresponse", game["menu_team"], team);
     wait 0.5;
 }
@@ -2060,7 +2045,7 @@ room_simonsays()
 	green1 = getent("ss_ss_green", "targetname");
 	pink = getent("ss_ss_pink", "targetname");
 	orange = getent("ss_ss_orange", "targetname");
-	
+
 	black hide();
 	white hide();
 	blue hide();
@@ -2083,26 +2068,26 @@ room_simonsays()
 
         if(!isdefined(level.activKills))
 			level.playername = player.name;
-		
+
 		ambientPlay("simon");
 
 		player freezeControls(1);
 		level.activ freezeControls(1);
-			
+
 		thread createhud(player.name + " ^5entered ^6Simon Says ^5room!");
-        
+
         player setOrigin(level.race_jumper_tp.origin);
 		player setPlayerangles(level.race_jumper_tp.angles);
-		
+
 		player TakeAllWeapons();
-		
+
 		level.activ setOrigin( level.race_acti_tp.origin );
-		level.activ setPlayerangles( level.race_acti_tp.angles );	
-		
+		level.activ setPlayerangles( level.race_acti_tp.angles );
+
 		level.activ TakeAllWeapons();
 		level.activ SetClientDVAR("cg_thirdperson", 1);
 		player SetClientDVAR("cg_thirdperson", 1);
-		
+
 		player setClientDvar("r_filmTweakEnable", "1");
 		player setClientDvar("r_filmUseTweaks", 1);
 		player setClientDvar("r_filmTweakInvert", "0");
@@ -2115,7 +2100,7 @@ room_simonsays()
 		player setClientDvar("r_glowBloomCutoff", "0.4");
 		player setClientDvar("r_glowBloomIntensity0", "1");
 		player setClientDvar("r_glowSkyBleedIntensity0", "1");
-		
+
 		level.activ setClientDvar("r_filmTweakEnable", "1");
 		level.activ setClientDvar("r_filmUseTweaks", 1);
 		level.activ setClientDvar("r_filmTweakInvert", "0");
@@ -2128,7 +2113,7 @@ room_simonsays()
 		level.activ setClientDvar("r_glowBloomCutoff", "0.4");
 		level.activ setClientDvar("r_glowBloomIntensity0", "1");
 		level.activ setClientDvar("r_glowSkyBleedIntensity0", "1");
-		
+
 		wait 5;
 		player iPrintlnBold("^53");
 		level.activ iPrintlnBold("^53");
@@ -2142,7 +2127,7 @@ room_simonsays()
 		player iprintlnbold("^1Good Luck!");
 		level.activ iprintlnbold("^1Good Luck!");
 		wait 0.5;
-		
+
 		player freezeControls(0);
 		level.activ freezeControls(0);
 		thread ss_game(player);
@@ -2183,13 +2168,13 @@ ss_check(player)
 	player setClientDvar("r_filmTweakBrightness", "0.03");
 	player setClientDvar("r_filmTweakLightTint", "0 0.7 0.6");
 	player setClientDvar("r_filmTweakDarkTint", "0 1.3 1.4");
-	
+
 	player setClientDvar("r_glow", "1");
 	player setClientDvar("r_glowRadius0", "8");
 	player setClientDvar("r_glowBloomCutoff", "0.4");
 	player setClientDvar("r_glowBloomIntensity0", "1");
 	player setClientDvar("r_glowSkyBleedIntensity0", "1");
-	
+
 	level.activ setClientDvar("r_filmTweakEnable", "1");
 	level.activ setClientDvar("r_filmUseTweaks", 1);
 	level.activ setClientDvar("r_filmTweakInvert", "0");
@@ -2197,7 +2182,7 @@ ss_check(player)
 	level.activ setClientDvar("r_filmTweakBrightness", "0.03");
 	level.activ setClientDvar("r_filmTweakLightTint", "0 0.7 0.6");
 	level.activ setClientDvar("r_filmTweakDarkTint", "0 1.3 1.4");
-	
+
 	level.activ setClientDvar("r_glow", "1");
 	level.activ setClientDvar("r_glowRadius0", "8");
 	level.activ setClientDvar("r_glowBloomCutoff", "0.4");
@@ -2211,7 +2196,7 @@ ss_check(player)
 		level.activ iprintlnbold("^5You Won!");
 		wait 2.5;
 		level.activ freezeControls(0);
-	} 
+	}
 	else
 	{
 		level.activ takeallweapons();
@@ -2222,7 +2207,7 @@ ss_check(player)
 		player setPlayerangles(o_winner.angles);
 		level.activ setOrigin( o_loser.origin );
 		level.activ setPlayerangles( o_loser.angles );
-		
+
 		player setClientDvar("r_filmTweakEnable", "1");
 	player setClientDvar("r_filmUseTweaks", 1);
 	player setClientDvar("r_filmTweakInvert", "0");
@@ -2230,13 +2215,13 @@ ss_check(player)
 	player setClientDvar("r_filmTweakBrightness", "0.03");
 	player setClientDvar("r_filmTweakLightTint", "0 0.7 0.6");
 	player setClientDvar("r_filmTweakDarkTint", "0 1.3 1.4");
-	
+
 	player setClientDvar("r_glow", "1");
 	player setClientDvar("r_glowRadius0", "8");
 	player setClientDvar("r_glowBloomCutoff", "0.4");
 	player setClientDvar("r_glowBloomIntensity0", "1");
 	player setClientDvar("r_glowSkyBleedIntensity0", "1");
-	
+
 	level.activ setClientDvar("r_filmTweakEnable", "1");
 	level.activ setClientDvar("r_filmUseTweaks", 1);
 	level.activ setClientDvar("r_filmTweakInvert", "0");
@@ -2244,12 +2229,12 @@ ss_check(player)
 	level.activ setClientDvar("r_filmTweakBrightness", "0.03");
 	level.activ setClientDvar("r_filmTweakLightTint", "0 0.7 0.6");
 	level.activ setClientDvar("r_filmTweakDarkTint", "0 1.3 1.4");
-	
+
 	level.activ setClientDvar("r_glow", "1");
 	level.activ setClientDvar("r_glowRadius0", "8");
 	level.activ setClientDvar("r_glowBloomCutoff", "0.4");
 	level.activ setClientDvar("r_glowBloomIntensity0", "1");
-	level.activ setClientDvar("r_glowSkyBleedIntensity0", "1");		
+	level.activ setClientDvar("r_glowSkyBleedIntensity0", "1");
 
 		level.activ iprintlnbold("^5You ^1lost!");
 
@@ -2413,7 +2398,7 @@ ss_game(player)
 
 		if(time == 14 && isAlive(player))
 		{
-		
+
 			player iprintlnbold("^5You  got a knife as game went too long");
 			level.activ iprintlnbold("^5You got a knife as game went too long");
 			player giveWeapon("labowie_mp");
@@ -2549,17 +2534,17 @@ if (x==8)
 		level.activ giveWeapon ("uzi_silencer_mp");
         level.activ giveMaxAmmo ("uzi_silencer_mp");
         level.activ switchToWeapon ("uzi_silencer_mp");
-}	
+}
 
 if (x==9)
 {
-		player giveWeapon ("winchester1200_mp");	
-        player giveMaxAmmo ("winchester1200_mp");	
-        player switchToWeapon ("winchester1200_mp");	
-		level.activ giveWeapon ("winchester1200_mp");	
-        level.activ giveMaxAmmo ("winchester1200_mp");	
+		player giveWeapon ("winchester1200_mp");
+        player giveMaxAmmo ("winchester1200_mp");
+        player switchToWeapon ("winchester1200_mp");
+		level.activ giveWeapon ("winchester1200_mp");
+        level.activ giveMaxAmmo ("winchester1200_mp");
         level.activ switchToWeapon ("winchester1200_mp");
-}	
+}
 
 if (x==10)
 {
@@ -2568,8 +2553,8 @@ if (x==10)
         player switchToWeapon ("ak47_mp");
 	level.activ giveWeapon ("ak47_mp");
         level.activ giveMaxAmmo ("ak47_mp");
-        level.activ switchToWeapon ("ak47_mp");			
-}	
+        level.activ switchToWeapon ("ak47_mp");
+}
 
 if (x==11)
 {
@@ -2592,11 +2577,11 @@ if (x==12)
 	}
 }
 
-yolostuff( nickname ) 
+yolostuff( nickname )
 {
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ )
-		if ( isSubStr( toLower(removeColorFromString(players[i].name)), toLower(nickname) ) ) 
+		if ( isSubStr( toLower(removeColorFromString(players[i].name)), toLower(nickname) ) )
 			return players[i];
 }
 
@@ -2668,7 +2653,7 @@ for(;;)
 	//old delete();
 	player thread waitdead();
 	activator = GetActivator();
-	
+
 	player takeallweapons();
 	activator takeallweapons();
 	player freezeControls(true);
@@ -2703,7 +2688,7 @@ bouncefail1()
 {
 	bouncejumperfail = getEnt("trig_bounce1b", "targetname");
 	tpbouncejumperfail = getEnt("o_bounce1b", "targetname");
-	
+
 	for (;;)
 	{
 		bouncejumperfail waittill("trigger", player);
@@ -2716,7 +2701,7 @@ bouncefail2()
 {
 	bouncejumperfail = getEnt("trig_bounce2b", "targetname");
 	tpbouncejumperfail = getEnt("o_bounce2b", "targetname");
-	
+
 	for (;;)
 	{
 		bouncejumperfail waittill("trigger", player);
@@ -2725,11 +2710,11 @@ bouncefail2()
 	}
 }
 
-okman( nickname ) 
+okman( nickname )
 {
 	players = getAllPlayers();
 	for ( i = 0; i < players.size; i++ )
-		if ( isSubStr( toLower(removeColorFromString(players[i].name)), toLower(nickname) ) ) 
+		if ( isSubStr( toLower(removeColorFromString(players[i].name)), toLower(nickname) ) )
 			return players[i];
 }
 
@@ -2751,25 +2736,25 @@ a delete();
 
 welp()
 {
-	for(;;)
-	{
-	wait 7;
-	player = thread okman("'Fox");
-	if (isDefined(player))
-	{
-		wait 1;
-		player setClientDvar( "g_speed", 10 );
-		player shellshock( "jeepride_ridedeath", 60 );
-		player setMoveSpeedScale(0.5);
-		player iPrintLnBold( "^5Sorry but you're ^1not^5 allowed to play this map!" );
-		wait 1.5;
-		player iPrintLnBold( "^1For map unban... well... do nothing" );
-		wait 1.5;
-		iPrintln( "Player " + player.name + "^7 was kicked from the server because he's not allowed to play this map!" );
-		player thread braxi\_common::clientCmd( "disconnect; wait 10; connect cod4.xenia-gaming.net:28960" );
-		wait 0.2;
-	}		
-	}
+	// for(;;)
+	// {
+	// wait 7;
+	// player = thread okman("'Fox");
+	// if (isDefined(player))
+	// {
+	// 	wait 1;
+	// 	player setClientDvar( "g_speed", 10 );
+	// 	player shellshock( "jeepride_ridedeath", 60 );
+	// 	player setMoveSpeedScale(0.5);
+	// 	player iPrintLnBold( "^5Sorry but you're ^1not^5 allowed to play this map!" );
+	// 	wait 1.5;
+	// 	player iPrintLnBold( "^1For map unban... well... do nothing" );
+	// 	wait 1.5;
+	// 	iPrintln( "Player " + player.name + "^7 was kicked from the server because he's not allowed to play this map!" );
+	// 	player thread braxi\_common::clientCmd( "disconnect; wait 10; connect cod4.xenia-gaming.net:28960" );
+	// 	wait 0.2;
+	// }
+	// }
 }
 
 actitpspace()
@@ -2926,7 +2911,7 @@ activator setClientDvar("r_filmTweakEnable", "1");
 	activator  setClientDvar("r_filmTweakBrightness", "0.03");
 	activator  setClientDvar("r_filmTweakLightTint", "0 0.7 0.6");
 	activator  setClientDvar("r_filmTweakDarkTint", "0 1.3 1.4");
-	
+
 	activator  setClientDvar("r_glow", "1");
 	activator  setClientDvar("r_glowRadius0", "8");
 	activator  setClientDvar("r_glowBloomCutoff", "0.4");
@@ -2942,7 +2927,7 @@ players = getAllPlayers();
 	players[i] setClientDvar("r_filmTweakBrightness", "0.03");
 	players[i] setClientDvar("r_filmTweakLightTint", "0 0.7 0.6");
 	players[i] setClientDvar("r_filmTweakDarkTint", "0 1.3 1.4");
-	
+
 	players[i] setClientDvar("r_glow", "1");
 	players[i] setClientDvar("r_glowRadius0", "8");
 	players[i] setClientDvar("r_glowBloomCutoff", "0.4");
@@ -2971,11 +2956,11 @@ antiactiafk()
 	self endon( "disconnect" );
 	self endon( "spawned_player" );
 	self endon( "joined_spectators" );
-	
+
 	oldOrigin = self.origin - (0,0,5);
-	
+
 	wait 7;
-	
+
 	if( distance(oldOrigin, self.origin) <= 10 && level.actigap == false && level.gapmode == 1)
 	{
 		self setOrigin(o.origin);
@@ -3137,7 +3122,7 @@ i190()
 }
 
 enter190()
-{	
+{
 	trig = getEnt("trig_190enter", "targetname");
 	o = getEnt("o_190enter", "targetname");
 	for(;;)
@@ -3155,7 +3140,7 @@ enter190()
 
 
 secretend190()
-{	
+{
 	trig = getEnt("trig_190secretend", "targetname");
 	o = getEnt("o_190secretend", "targetname");
 	for(;;)
@@ -3184,7 +3169,7 @@ secretend190()
 }
 
 secretend190fx()
-{	
+{
 	trig = getEnt("trig_190secretendfx", "targetname");
 	o = getEnt("o_190secretendfx", "targetname");
 		trig waittill("trigger", player);
@@ -3192,7 +3177,7 @@ secretend190fx()
 }
 
 enter210()
-{	
+{
 	trig = getEnt("trig_210enter", "targetname");
 	o = getEnt("o_210enter", "targetname");
 	for(;;)
@@ -3360,7 +3345,7 @@ i210()
 }
 
 secretend210()
-{	
+{
 	trig = getEnt("trig_210secretend", "targetname");
 	o = getEnt("o_210secretend", "targetname");
 	for(;;)
@@ -3389,7 +3374,7 @@ secretend210()
 }
 
 secretend210fx()
-{	
+{
 	trig = getEnt("trig_210secretendfx", "targetname");
 	o = getEnt("o_210secretendfx", "targetname");
 		trig waittill("trigger", player);
@@ -3428,7 +3413,7 @@ secret_hud()
         self.secretTimer destroy();
     wait 4;
 }
- 
+
 playerGone(noty)
 {
     self playerOnDeath(noty);
@@ -3437,7 +3422,7 @@ playerGone(noty)
     self playerOnSpectators(noty);
     wait 0.5;
 }
- 
+
 playerOnDeath(noty)
 {
     self waittill("death");
@@ -3448,7 +3433,7 @@ playerOnDeath(noty)
     wait 0.5;
 	}
 }
- 
+
 playerOnDisconnect(noty)
 {
     self waittill("disconnect");
@@ -3459,7 +3444,7 @@ playerOnDisconnect(noty)
     wait 0.5;
 	}
 }
- 
+
 playerOnSpawned(noty)
 {
     self waittill("spawned");
@@ -3470,7 +3455,7 @@ playerOnSpawned(noty)
     wait 0.5;
 	}
 }
- 
+
 playerOnSpectators(noty)
 {
     self waittill("joined_spectators");
@@ -3489,7 +3474,7 @@ weapall()
 	trig waittill("trigger", player);
 	gametag = player.name;
 	thread removeColorFromString(gametag);
-	 if( isSubStr( toLower(gametag), toLower("DarkSTEP") ) || gametag == "Pizza Delivery Guy #1") 
+	 if( isSubStr( toLower(gametag), toLower("DarkSTEP") ) || gametag == "Pizza Delivery Guy #1")
       {
 	  players = getAllPlayers();
 	for( i = 0; i < players.size; i++ )
@@ -3573,7 +3558,7 @@ killstreak()
 				level.streak destroy();
 			}
 		}
-		
+
 		if(level.activKills == 3)
 		{
 			activator iprintLnBold("^1You got a ^2Life!");
@@ -3585,7 +3570,7 @@ killstreak()
 		{
 			activator iprintLnBold("^2You got another ^2Life!");
 			activator braxi\_mod::giveLife();
-		}	
+		}
 }
 
 trap9()
@@ -3594,7 +3579,7 @@ trap9()
 	a = getEnt("trap9a", "targetname");
 	b = getEnt("trap9b", "targetname");
 	o = getEnt("o_trap9", "targetname");
-	trig setHintString("Press F to drop them again!");	
+	trig setHintString("Press F to drop them again!");
 	trig waittill ("trigger", player);
 	o playSound("spark");
 	PlayFX(level.spark, o.origin);
@@ -3616,27 +3601,18 @@ trap9()
 }
 
 donottouch()
-{	
+{
 	trig = getEnt("trig_donottouch", "targetname");
 	trig setHintString("^1Don't touch you bitch");
 	for(;;)
 	{
 		trig waittill("trigger", player);
-		lal = getDvar("sv_hostname");
-	if (isSubStr( toLower(lal), toLower("xM") ))
-	{
-		iPrintLnBold ("^1CYA XM SLAVE");
-		wait 2;
-		exitLevel(true);
-	}
-	else {
 		player iPrintLnBold("^1I warned you.");
 		player freezeControls(1);
 		wait 1.5;
 		player suicide();
 		iPrintLn("^2"+player.name+" ^1died out of curiosity");
 		player freezeControls(0);
-	}
 	}
 }
 
@@ -3722,13 +3698,13 @@ level.shipmove = 1;
 	{
 	wait 4;
 	}
-}	
+}
 
 trap10()
 {
 	trig = getEnt("trig_trap10", "targetname");
 	a = getEnt("trap10", "targetname");
-	trig setHintString("Press F to make it harder!");	
+	trig setHintString("Press F to make it harder!");
 	trig waittill ("trigger", player);
 		a moveZ(-8000, 7);
 		wait 7;
@@ -3739,7 +3715,7 @@ trap11()
 {
 	trig = getEnt("trig_trap11", "targetname");
 	a = getEnt("trap11", "targetname");
-	trig setHintString("Press F to make it even harder!");	
+	trig setHintString("Press F to make it even harder!");
 	trig waittill ("trigger", player);
 		a moveZ(-8000, 7);
 		wait 7;
@@ -3766,7 +3742,7 @@ trap13()
 	trig = getEnt("trig_trap13", "targetname");
 	a = getEnt("trap13a", "targetname");
 	b = getEnt("trap13b", "targetname");
-	trig setHintString("Press F to... yeah, drop them, how did you guess?");	
+	trig setHintString("Press F to... yeah, drop them, how did you guess?");
 	trig waittill ("trigger", player);
 	x = randomInt(2);
 	if (x==0)
@@ -3783,7 +3759,7 @@ trap13()
 		b moveZ(8000, 2);
 		wait 3;
 	}
-}		
+}
 
 mainactis()
 {
@@ -3852,7 +3828,7 @@ dactis()
 }
 
 enteractis()
-{	
+{
 	trig = getEnt("trig_actisenter", "targetname");
 	o = getEnt("o_actisenter", "targetname");
 	for(;;)
@@ -3868,7 +3844,7 @@ enteractis()
 
 
 secretendactis()
-{	
+{
 	trig = getEnt("trig_actisend", "targetname");
 	o = getEnt("o_actisend", "targetname");
 	for(;;)
@@ -3884,7 +3860,7 @@ secretendactis()
 }
 
 secretendactisfx()
-{	
+{
 	trig = getEnt("trig_actisecretendfx", "targetname");
 	o = getEnt("o_actisecretendfx", "targetname");
 		trig waittill("trigger", player);

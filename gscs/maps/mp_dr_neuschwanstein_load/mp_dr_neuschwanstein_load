@@ -1,0 +1,36 @@
+Sound file 'sound/voiceovers/generic/OM/gen_m_death1.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death2.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death3.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death4.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death5.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death6.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death7.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death8.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death1.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death2.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death3.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death4.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death5.wav' not found
+Sound file 'sound/voiceovers/generic/RU3/ru3_death_01.wav' not found
+Sound file 'sound/voiceovers/generic/RU3/ru3_death_02.wav' not found
+Sound file 'sound/voiceovers/generic/RU4/ru4_death_01.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_01.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_02.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_03.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_04.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_05.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_06.wav' not found
+Sound file 'sound/music/music0.mp3' not found
+Sound file 'sound/music/music1.mp3' not found
+Sound file 'sound/music/music2.mp3' not found
+Sound file 'sound/music/music3.mp3' not found
+Sound file 'sound/music/music4.mp3' not found
+Sound file 'sound/music/music5.mp3' not found
+ERROR: Could not open 'server132.cfg'
+ERROR: failed loading 'server132.cfg' of type 'rawfile'
+ERROR: Could not open 'maps/mp/mp_dr_neuschwanstein_fx.gsc'
+ERROR: failed loading 'maps/mp/mp_dr_neuschwanstein_fx.gsc' of type 'rawfile'
+ERROR: Could not open 'maps/createfx/mp_dr_neuschwanstein_fx.gsc'
+ERROR: failed loading 'maps/createfx/mp_dr_neuschwanstein_fx.gsc' of type 'rawfile'
+ERROR: Could not open 'vision/mp_dr_neuschwanstein.vision'
+ERROR: failed loading 'vision/mp_dr_neuschwanstein.vision' of type 'rawfile'

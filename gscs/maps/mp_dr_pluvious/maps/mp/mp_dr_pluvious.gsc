@@ -49,10 +49,10 @@ main()
 	game["allies_soldiertype"] = "woodland";
 	game["axis_soldiertype"] = "woodland";
 
-	setDvar("com_maxFPS", "125");
-	setDvar("jump_height", "39");
-	setDvar("dr_jumpers_speed", "1");
-	setDvar("dr_activators_speed", "1");
+	// setDvar("com_maxFPS", "125");
+	// setDvar("jump_height", "39");
+	// setDvar("dr_jumpers_speed", "1");
+	// setDvar("dr_activators_speed", "1");
 
 	jumpPads = getEntArray("trig_jumppad", "targetname");
 	for(i = 0; i < jumpPads.size; i++)

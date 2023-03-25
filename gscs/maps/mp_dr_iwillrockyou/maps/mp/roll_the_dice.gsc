@@ -145,7 +145,7 @@ GiftSelector(random)
 
 
 //////////////////////////////////////|
-//KÖVETKEZNEK A ROSSZ "AJÁNDÉKOK" (10)|
+//Kï¿½VETKEZNEK A ROSSZ "AJï¿½NDï¿½KOK" (10)|
 //////////////////////////////////////|
 
 
@@ -227,16 +227,16 @@ Freeze(who)
 MoveAway(who)
 {
 	who endon("death");
-	
+
     who IPrintLnBold("I saw a nice girl somewhere...");
     wait 1;
     who IPrintLnBold("^3I ^9must ^3find where she is! I need a phone number!");
     wait 1;
-	
+
 	currweap = who GetCurrentWeapon();
 	wait 0.05;
 	who DisableWeapons(); //don't let jumpers to get to the activator through a wall and kill him
-	
+
     orig1 = Spawn("script_origin", who.origin);
 	who EnableLinkTo();
 	who LinkTo(orig1);
@@ -244,31 +244,31 @@ MoveAway(who)
 	wait 1;
 	who UnLink();
 	wait 4;
-	
+
 	orig2 = Spawn("script_origin", who.origin);
 	who LinkTo(orig2);
 	orig2 MoveY(-180, 0.3);
 	wait 1;
 	who UnLink();
 	wait 1;
-	
+
 	orig3 = Spawn("script_origin", who.origin);
 	who LinkTo(orig3);
 	orig3 MoveX(-120, 0.3);
 	wait 1;
 	who UnLink();
 	wait 5;
-	
+
 	orig4 = Spawn("script_origin", who.origin);
 	who LinkTo(orig4);
 	orig4 MoveY(180, 0.3);
 	wait 1;
 	who UnLink();
-	
+
 	who EnableWeapons();
 	wait 0.05;
 	who SwitchToWeapon(currweap);
-	
+
 	orig1 Delete();
 	orig2 Delete();
 	orig3 Delete();
@@ -295,7 +295,7 @@ Drunk(who)
 {
 	who endon("death");
 	who thread Drunk_Cleanup(who);
-	
+
 	who SayAll("OmG, i drnuk so mcuh, that i can''t eevn pla.y dethrun!!!444!!");
     who.hud_drunkScreen = NewClientHudElem(who);
     who.hud_drunkScreen.horzalign = "fullscreen";
@@ -327,7 +327,7 @@ NoAmmo(who)
 
 
 /////////////////////////////////|
-//KÖVETKEZNEK A JÓ AJÁNDÉKOK (10)|
+//Kï¿½VETKEZNEK A Jï¿½ AJï¿½NDï¿½KOK (10)|
 /////////////////////////////////|
 
 Fast(who)
@@ -344,7 +344,7 @@ Fast(who)
 IncreaseJump(who)
 {
 	who endon("death");
-	
+
 	oldpos = who.origin;
 	jumped = false;
 	who IPrintLnBold("^3You can jump much higher, but ^9big power ^3comes ^9big responsibility^3!");

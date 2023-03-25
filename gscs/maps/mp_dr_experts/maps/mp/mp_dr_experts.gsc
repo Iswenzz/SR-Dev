@@ -38,11 +38,11 @@ main()
 	game["defenders"] = "axis";
 	game["allies_soldiertype"] = "desert";
 	game["axis_soldiertype"] = "desert";
-	
+
 	setdvar( "r_specularcolorscale", "1" );
-	
+
 	setdvar("compassmaxrange","1600");
-	
+
 	addTriggerToList ("t1_s");
 	addTriggerToList ("t2_s");
 	addTriggerToList ("t3_s");
@@ -78,18 +78,18 @@ onPlayerConnect()
 	{
 		level waittill( "connected", player );
 		player thread spawn_message();
-		
+
 	}
 }
 credits()
 {
 	trig = getEnt ("credits", "targetname");
-	
+
 	for(;;)
 	{
 		trig waittill ("trigger", player);
 		trig delete();
-		
+
 		hud_clock = NewHudElem();
 		hud_clock.alignX = "center";
 		hud_clock.alignY = "middle";
@@ -103,7 +103,7 @@ credits()
 		hud_clock.glowalpha = 1;
 		hud_clock.glowcolor = (1,0,0);
 		hud_clock.label = &"^7>> ^3Map Experts -> ^7Made By ^3JynX ^7<<";
-		hud_clock SetPulseFX( 40, 5400, 200 );	
+		hud_clock SetPulseFX( 40, 5400, 200 );
 		wait 6;
 		hud_clock = NewHudElem();
 		hud_clock.alignX = "center";
@@ -118,7 +118,7 @@ credits()
 		hud_clock.glowalpha = 1;
 		hud_clock.glowcolor = (1,0,0);
 		hud_clock.label = &"^7>> ^3Special thanks to ^7pXg|^3Manix ^7<<";
-		hud_clock SetPulseFX( 40, 5400, 200 );	
+		hud_clock SetPulseFX( 40, 5400, 200 );
 		wait 6;
 		hud_clock = NewHudElem();
 		hud_clock.alignX = "center";
@@ -133,14 +133,14 @@ credits()
 		hud_clock.glowalpha = 1;
 		hud_clock.glowcolor = (1,0,0);
 		hud_clock.label = &"^7>> ^3Visit www.pxg.me ^7<<";
-		hud_clock SetPulseFX( 40, 5400, 200 );	
+		hud_clock SetPulseFX( 40, 5400, 200 );
 		wait 6;
 		wait 300;
 	}
 }
 rotate1()
 {
-	rotate_obj = getentarray("rotate1","targetname");	
+	rotate_obj = getentarray("rotate1","targetname");
 	if(isdefined(rotate_obj))
 		for(i=0;i<rotate_obj.size;i++)
 			rotate_obj[i] thread ra_rotate1();
@@ -151,7 +151,7 @@ ra_rotate1()
 		self.speed = 10;
 	if (!isdefined(self.script_noteworthy))
 		self.script_noteworthy = "z";
- 
+
 	for(;;)
 	{
 		while(1)
@@ -170,7 +170,7 @@ ra_rotate1()
 }
 rotate2()
 {
-	rotate_obj = getentarray("rotate2","targetname");	
+	rotate_obj = getentarray("rotate2","targetname");
 	if(isdefined(rotate_obj))
 		for(i=0;i<rotate_obj.size;i++)
 			rotate_obj[i] thread ra_rotate2();
@@ -181,7 +181,7 @@ ra_rotate2()
 		self.speed = 10;
 	if (!isdefined(self.script_noteworthy))
 		self.script_noteworthy = "z";
- 
+
 	for(;;)
 	{
 		while(1)
@@ -201,7 +201,7 @@ ra_rotate2()
 platform1()
 {
 	p = getEnt ("platform1","targetname");
-	
+
 	while(1)
 	{
 		p moveX (-656,5);
@@ -324,33 +324,33 @@ transporter5()
 initMusic()
 {
 		level.music = [];
- 
+
         i = 0;
 		level.music[i]["artist"] = "Skism";
 		level.music[i]["title"] = "Experts (Original Mix)";
 		level.music[i]["alias"] = "sound1";
-		
+
 		i++;
 		level.music[i]["artist"] = "Feed Me";
 		level.music[i]["title"] = "One Click Headshot";
 		level.music[i]["alias"] = "sound2";
-		
+
 		i++;
 		level.music[i]["artist"] = "Disturbed";
 		level.music[i]["title"] = "Stupify";
 		level.music[i]["alias"] = "sound3";
-		
+
 		i++;
 		level.music[i]["artist"] = "Three Days Grace";
 		level.music[i]["title"] = "Break";
 		level.music[i]["alias"] = "sound4";
-		
+
 		i++;
 		level.music[i]["artist"] = "Jake Miller";
 		level.music[i]["title"] = "Runnin'";
 		level.music[i]["alias"] = "sound5";
- 
- 
+
+
         //precacheShader( "bladeuni" ); sind meine eigenen :D
         //precacheShader( "rainbow" );
 
@@ -359,30 +359,30 @@ initMusic()
 }
 musicMenu()
 {
-	
+
 	self endon( "death" );
- 
+
 	self thread onDeath();
 	self thread onDisconnect();
- 
+
 	self.hud_music = [];
 	self.selection = 0;
- 
+
 	i = 0;
 	self.hud_music[i] = braxi\_mod::addTextHud( self, 160, 200, 0.35, "left", "top", 2 );
 	self.hud_music[i].sort = 880;
 	self.hud_music[i] setShader( "black", 320, 160 );
-	
+
 	i++;
 	self.hud_music[i] = braxi\_mod::addTextHud( self, 270, 180, 1, "left", "top", 1.8 );
 	self.hud_music[i].sort = 883;
 	self.hud_music[i] setText( "^7<<< ^3Music Menu ^7>>>" );
-	
+
 	i++;
 	self.hud_music[i] = braxi\_mod::addTextHud( self, 270, 204, 0.93, "left", "top", 1.8 );
 	self.hud_music[i].sort = 884;
 	self.hud_music[i] setText( "<<< ^3Select a Song ^7>>>" );
- 
+
 	i++;
 	self.hud_music[i] = braxi\_mod::addTextHud( self, 288, 360, 1, "center", "top", 1.4 );
 	self.hud_music[i].sort = 885;
@@ -392,36 +392,36 @@ musicMenu()
 	self.hud_music[i] = braxi\_mod::addTextHud( self, 235, 360, 1, "center", "bottom", 1.4 );
 	self.hud_music[i].sort = 886;
 	self.hud_music[i] setText( "^7<<< ^3 Visit pxg.me for more ^7>>>" );
- 
+
 	for( j = 0; j < level.music.size; j++ )
 	{
 		i++;
 		self.hud_music[i] = braxi\_mod::addTextHud( self, 172, 230+(j*16), 0.93, "left", "top", 1.4 );
 		self.hud_music[i].sort = 882;
 		self.hud_music[i].font = "objective";
- 
+
 		entry = level.music[j];
 		self.hud_music[i] setText( entry["artist"] + " ^3-^7 " + entry["title"] );
 	}
- 
+
 	i++;
 	self.hud_music[self.hud_music.size] = braxi\_mod::addTextHud( self, 167, 230, 0.4, "left", "top", 1.4 );
 	self.hud_music[i].sort = 881;
 	indicator = self.hud_music[self.hud_music.size-1];
 	indicator setShader( "white", 306, 17 );
- 
+
 	while( self.sessionstate == "playing" )
 	{
 		wait 0.1;
- 
+
 		if( self attackButtonPressed() )
 		{
 			self.hud_music[5+self.selection].alpha = 0.93;
- 
+
 			self.selection++;
 			if( self.selection >= level.music.size )
 				self.selection = 0;
- 
+
 			item = self.hud_music[5+self.selection];
 			item.alpha = 1;
 			indicator.y = item.y;
@@ -429,7 +429,7 @@ musicMenu()
 		else if( self useButtonPressed() )
 		{
 			iPrintln( "^3Now playing: ^7" + level.music[self.selection]["artist"]+" - ^3" +level.music[self.selection]["title"] );
- 
+
 			ambientPlay( level.music[self.selection]["alias"], 3 );
 			self freezeControls(0);
 			level notify ( "song_picked" );
@@ -442,14 +442,14 @@ musicMenu()
 			break;
 		}
 	}
- 
+
 	self cleanUp();
 }
 musictrig()
 {
 	trigger = getEnt ( "music_menu", "targetname" );
 	trigger setHintString( "Press ^3[^7USE^3] ^7to choose Music" );
- 
+
 	trigger waittill( "trigger", player );
 	trigger delete();
 	level endon ( "song_picked" );
@@ -473,7 +473,7 @@ cleanUp()
 {
 	if( !isDefined( self ) )
 		return;
- 
+
 	if( isDefined( self.hud_music ) )
 	{
 		for( i = 0; i < self.hud_music.size; i++ )
@@ -505,31 +505,31 @@ trap1()
             trap01_b = getEnt ("trap01_b", "targetname");
             trap01_c = getEnt ("trap01_c", "targetname");
             trap01_d = getEnt ("trap01_d", "targetname");
-           
+
         trig waittill ("trigger", player);
-           
+
             trig delete();
-           
+
             x = RandomInt( 4 );
-             
+
             if (x==1)
             {
                     trap01_a notSolid();
                     trap01_d notSolid();
             }
-                   
+
             else if (x==2)
             {
                     trap01_b notSolid();
                     trap01_c notSolid();
             }
-                   
+
             else if (x==3)
             {
                     trap01_c notSolid();
                     trap01_a notSolid();
             }
-                   
+
             else
             {
                     trap01_b notSolid();
@@ -550,7 +550,7 @@ trap2()
 		t waittill ("trigger", player);
 			t delete();
 		wait 0.1;
-		
+
 		t2_right moveY (-64,1);
 		t2_left moveY (64,1);
 		t2_right waittill ("movedone");
@@ -570,7 +570,7 @@ trap3()
 			tr delete();
 
 			wait 0.1;
-			
+
 			t moveZ (-544,1);
 			t waittill ("movedone");
 			t moveZ (544,1);
@@ -579,7 +579,7 @@ trap3()
 }
 trap4()
 {
-	rotate_obj = getentarray("t4","targetname");	
+	rotate_obj = getentarray("t4","targetname");
 	t = getEnt ("t4_s","targetname");
 		t waittill ("trigger", player);
 			t delete();
@@ -593,7 +593,7 @@ ra_rotate10()
 		self.speed = 10;
 	if (!isdefined(self.script_noteworthy))
 		self.script_noteworthy = "z";
- 
+
 	for(;;)
 	{
 		while(1)
@@ -640,7 +640,7 @@ sniper()
      	level.snip_trig = getEnt( "snipe", "targetname");
      	jump = getEnt( "snipe_jumper", "targetname" );
      	acti = getEnt( "snipe_activator", "targetname" );
-     
+
      	while(1)
      	{
          	level.snip_trig waittill( "trigger", player );
@@ -651,23 +651,23 @@ sniper()
          	player setOrigin( jump.origin );
          	player TakeAllWeapons();
          	player GiveWeapon( "remington700_mp" );
-	 	player givemaxammo( "remington700_mp" );  
-		player GiveWeapon( "deserteagle_mp" );	
+	 	player givemaxammo( "remington700_mp" );
+		player GiveWeapon( "deserteagle_mp" );
 		player setWeaponAmmoClip( "deserteagle_mp", 0 );
-		player setweaponammostock( "deserteagle_mp", 0 );		
+		player setweaponammostock( "deserteagle_mp", 0 );
          	level.activ setPlayerangles( acti.angles );
          	level.activ setOrigin( acti.origin );
          	level.activ TakeAllWeapons();
          	level.activ GiveWeapon( "remington700_mp" );
 	 	level.activ givemaxammo( "remington700_mp" );
-		level.activ GiveWeapon( "deserteagle_mp" );	
+		level.activ GiveWeapon( "deserteagle_mp" );
 		level.activ setWeaponAmmoClip( "deserteagle_mp", 0 );
 		level.activ setweaponammostock( "deserteagle_mp", 0 );
-		iPrintlnBold( " ^3" + player.name + " ^7 has entered the ^3Sniper room^7!" );         		
+		iPrintlnBold( " ^3" + player.name + " ^7 has entered the ^3Sniper room^7!" );
 		wait .5;
          	player switchToWeapon( "remington700_mp" );
          	level.activ SwitchToWeapon( "remington700_mp" );
-		player freezecontrols(true); 
+		player freezecontrols(true);
 		level.activ freezecontrols(true);
 		wait 1;
 		player iPrintlnBold( "^3[ ^73 ^3]" );
@@ -681,8 +681,8 @@ sniper()
 		wait 1;
 		player iPrintlnBold( "^3[ ^7Good Luck! ^3]" );
 		level.activ iPrintlnBold( "^3[ ^7Good Luck! ^3]" );
-		player freezecontrols(false); 
-		level.activ freezecontrols(false);        
+		player freezecontrols(false);
+		level.activ freezecontrols(false);
      	}
 }
 knife()
@@ -690,7 +690,7 @@ knife()
      	level.knife_trig = getEnt( "knife", "targetname");
      	jump = getEnt( "knife_jumper", "targetname" );
      	acti = getEnt( "knife_activator", "targetname" );
-     
+
      	while(1)
      	{
          	level.knife_trig waittill( "trigger", player );
@@ -701,17 +701,17 @@ knife()
          	player setOrigin( jump.origin );
          	player TakeAllWeapons();
          	player GiveWeapon( "knife_mp" );
-	 	player givemaxammo( "knife_mp" );      
+	 	player givemaxammo( "knife_mp" );
          	level.activ setPlayerangles( acti.angles );
          	level.activ setOrigin( acti.origin );
          	level.activ TakeAllWeapons();
          	level.activ GiveWeapon( "knife_mp" );
 	 	level.activ givemaxammo( "knife_mp" );
-		iPrintlnBold( " ^3" + player.name + " ^7 has entered the ^3Knife room^7!" );         		
+		iPrintlnBold( " ^3" + player.name + " ^7 has entered the ^3Knife room^7!" );
 		wait .5;
          	player switchToWeapon( "knife_mp" );
          	level.activ SwitchToWeapon( "knife_mp" );
-		player freezecontrols(true); 
+		player freezecontrols(true);
 		level.activ freezecontrols(true);
 		wait 1;
 		player iPrintlnBold( "^3[ ^73 ^3]" );
@@ -725,15 +725,15 @@ knife()
 		wait 1;
 		player iPrintlnBold( "^3[ ^7Good Luck! ^3]" );
 		level.activ iPrintlnBold( "^3[ ^7Good Luck! ^3]" );
-		player freezecontrols(false); 
-		level.activ freezecontrols(false);    
+		player freezecontrols(false);
+		level.activ freezecontrols(false);
      	}
 }
 games()
 {
      	level.games_trig = getEnt( "minigames", "targetname");
      	games = getEnt( "minigames_ori", "targetname" );
-     
+
      	while(1)
      	{
          	level.games_trig waittill( "trigger", player );
@@ -748,10 +748,10 @@ games()
          	player TakeAllWeapons();
 			player giveWeapon ("deserteagle_mp");
 			player giveMaxAmmo ("desertealge_mp");
-			player switchtoweapon("deserteagle_mp");  
+			player switchtoweapon("deserteagle_mp");
 	 	player died();
-	
-	             
+
+
          	while( isAlive( player ) && isDefined( player ) )
 		if( isDefined( level.activ ) && isAlive( level.activ ) )
              	wait 1;
@@ -770,7 +770,7 @@ died()
 
 setUp()
 {
-	setDvar("dr_jumpers_speed", 1.1);
+	// setDvar("dr_jumpers_speed", 1.1);
 }
 addTestClients()
 {
@@ -805,7 +805,7 @@ TestClient(team)
 
     while(!isdefined(self.pers["team"]))
         wait .05;
-        
+
     self notify("menuresponse", game["menu_team"], team);
     wait 0.5;
 }

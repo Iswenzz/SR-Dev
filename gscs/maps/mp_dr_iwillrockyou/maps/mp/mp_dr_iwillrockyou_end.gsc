@@ -68,13 +68,13 @@ ElsoEnd()
 	IPrintLnBold(kivalto.name + level.stringek["map_endelve1"]);
 	IPrintLnBold(level.stringek["map_endelve2"]);
 	wait 2;
-	
+
 	orig = Spawn("script_origin", kivalto GetOrigin());
 	kivalto LinkTo(orig);
 	kivalto FreezeControls(false);
 	orig MoveZ(-450, 6, 2, 2);
 	orig waittill("movedone");
-	
+
 	kivalto UnLink();
 	orig Delete();
 }
@@ -106,7 +106,7 @@ Elso_KilepesFigyelo()
 Old()
 {
 	level.triggerek["end_old"] waittill("trigger", kivalto);
-	
+
 	level.melyikEnd = "old";
 	level.elsoEndMegvolt = true;
 	level.triggerek["end_knife"] Delete();
@@ -120,15 +120,15 @@ Old()
 	}
 	level.brushok["multiend"] MoveX(540, 5, 2, 2);
 	wait 3;
-	
-	level notify("akti_teleport");	
+
+	level notify("akti_teleport");
 	wait 0.1;
 	level.activ UnLink();
 	level.activ SetOrigin(level.originek["old"] GetOrigin());
 	level.activ SetPlayerAngles(level.originek["old"].angles);
 	level.brushok["end_oldelzaro"] MoveZ(142, 0.1);
 	wait 1;
-	
+
 	level.brushok["end_oldajto"] MoveX(210, 5, 2, 2);
 	Earthquake(0.75, 5, level.originek["old"] GetOrigin(), 750);
 }
@@ -139,7 +139,7 @@ LightningKnife()
 	while (true)
 	{
 		level.triggerek["end_knife"] waittill("trigger", kivalto);
-		
+
 		if (!level.elsoEndMegvolt)
 		{
 			level.melyikEnd = "lightningknife";
@@ -154,13 +154,13 @@ LightningKnife()
 				level.brushok["endelzaro_racing"] MoveZ(216, 2);
 			}
 			level.brushok["multiend"] MoveX(540, 5, 2, 2);
-			
+
 			level notify("akti_teleport");
 			wait 0.1;
 			level.activ UnLink();
 			level.activ SetClientDVAR("cg_thirdperson", 0);
 			level.activ thread ToltenyTorlo("mindorokke");
-			
+
 			thread EsoEffekt();
 			thread EsoHang();
 			thread VillamEffekt();
@@ -168,16 +168,16 @@ LightningKnife()
 		level.activ SetMoveSpeedScale(GetDVARFloat("dr_activators_speed"));
 		level.activ SetOrigin(level.originek["knife_akti"] GetOrigin());
 		level.activ SetPlayerAngles(level.originek["knife_akti"].angles);
-		
+
 		kivalto thread Knife_HalalFigyelo();
 		kivalto thread Knife_KilepesFigyelo();
 		thread Knife_HalalVillam();
 		kivalto SetMoveSpeedScale(GetDVARFloat("dr_jumpers_speed"));
 		kivalto thread ToltenyTorlo("mindorokke");
-		
+
 		kivalto SetOrigin(level.originek["knife_jumper"] GetOrigin());
 		kivalto SetPlayerAngles(level.originek["knife_jumper"].angles);
-		
+
 		level waittill("knife_kovetkezo");
 	}
 }
@@ -228,7 +228,7 @@ VillamEffekt()
 		{
 			PlayFX(level.effektek["villam_nagy"], level.originek["global_effekt"] GetOrigin());
 		}
-		
+
 		wait RandomFloatRange(0.1, 5.0);
 	}
 }
@@ -258,7 +258,7 @@ RockingSniper()
 	while (true)
 	{
 		level.triggerek["end_sniper"] waittill("trigger", kivalto);
-		
+
 		if (!level.elsoEndMegvolt)
 		{
 			level.melyikEnd = "rockingsniper";
@@ -273,28 +273,28 @@ RockingSniper()
 				level.brushok["endelzaro_racing"] MoveZ(216, 2);
 			}
 			level.brushok["multiend"] MoveX(540, 5, 2, 2);
-			
+
 			Falak();
-			
+
 			level notify("akti_teleport");
 			wait 0.1;
 			level.activ UnLink();
 			level.activ SetClientDVAR("cg_thirdperson", 0);
 		}
 		thread Modelek();
-		
+
 		level.activ SetMoveSpeedScale(GetDVARFloat("dr_activators_speed"));
 		level.activ SetOrigin(level.originek["sniper_akti"] GetOrigin());
 		level.activ SetPlayerAngles(level.originek["sniper_akti"].angles);
 		level.activ VeletlenSniperFegyver();
-		
+
 		kivalto thread Sniper_HalalFigyelo();
 		kivalto thread Sniper_KilepesFigyelo();
 		kivalto SetMoveSpeedScale(GetDVARFloat("dr_jumpers_speed"));
 		kivalto SetOrigin(level.originek["sniper_jumper"] GetOrigin());
 		kivalto SetPlayerAngles(level.originek["sniper_jumper"].angles);
 		kivalto VeletlenSniperFegyver();
-		
+
 		level waittill("sniper_kovetkezo");
 	}
 }
@@ -315,7 +315,7 @@ Sniper_KilepesFigyelo()
 VeletlenSniperFegyver()
 {
 	self TakeAllWeapons();
-	
+
 	fegyver = undefined;
 	switch (RandomIntRange(0, 5))
 	{
@@ -335,16 +335,16 @@ VeletlenSniperFegyver()
 			fegyver = "barrett_mp";
 		break;
 		default:
-			//Sose érünk ide...
+			//Sose ï¿½rï¿½nk ide...
 		break;
 	}
-	
+
 	self GiveWeapon(fegyver);
 	wait 0.1;
 	self SwitchToWeapon(fegyver);
-	
+
 	wait 0.2;
-	
+
 	self SetWeaponAmmoStock(level.activ GetCurrentWeapon(), 80);
 	self SetWeaponAmmoClip(level.activ GetCurrentWeapon(), 80);
 }
@@ -357,7 +357,7 @@ Falak()
 		level.brushok["sniper_falak"][falak[i]] Delete();
 	}
 	wait 0.1;
-	
+
 	level.brushok["sniper_falak"] = GetEntArray("brush_sniper_falak", "targetname");
 	for (i = 0; i < level.brushok["sniper_falak"].size; i++)
 	{
@@ -411,7 +411,7 @@ Modelek()
 				model = "vehicle_80s_hatch1_brn_destructible_mp";
 			break;
 			default:
-				//Sose érünk ide...
+				//Sose ï¿½rï¿½nk ide...
 			break;
 		}
 		level.end_sniper_modelek[i] = Spawn("script_model", hely);
@@ -431,7 +431,7 @@ ModelBeallit()
 MetalRacing()
 {
 	level.triggerek["end_racing"] waittill("trigger", kivalto);
-	
+
 	level.melyikEnd = "heavy";
 	level.elsoEndMegvolt = true;
 	level.triggerek["end_knife"] Delete();
@@ -443,13 +443,13 @@ MetalRacing()
 		level.brushok["endelzaro_knife"] MoveZ(216, 2);
 		level.brushok["endelzaro_sniper"] MoveZ(216, 2);
 	}
-	
+
 	thread MetalRacing_AktiResz();
 	thread MetalRacing_JumperResz();
 	thread MetalRacing_AktiEnd();
 	thread MetalRacing_JumperEnd();
 	thread MetalRacing_Leeses();
-	
+
 	level notify("akti_teleport");
 	wait 0.1;
 	level.activ UnLink();
@@ -503,7 +503,7 @@ MetalRacing_Leeses()
 MetalRacing_AktiEnd()
 {
 	level endon("racing_jumper_win");
-	
+
 	while (true)
 	{
 		level.triggerek["racing_akti"] waittill("trigger", kivalto);
@@ -514,8 +514,8 @@ MetalRacing_AktiEnd()
 			break;
 		}
 	}
-	
-	
+
+
 	jatekosok = GetEntArray("player", "classname");
 	for (i = 0; i < jatekosok.size; i++)
 	{
@@ -531,13 +531,13 @@ MetalRacing_AktiEnd()
 			jatekosok[i].angles = level.originek["racing_raketa_halal"][vel].angles;
 		}
 	}
-	
+
 	thread BigBoom();
 }
 MetalRacing_JumperEnd()
 {
 	level endon("racing_akti_win");
-	
+
 	while (true)
 	{
 		level.triggerek["racing_jumper"] waittill("trigger", kivalto);
@@ -548,8 +548,8 @@ MetalRacing_JumperEnd()
 			break;
 		}
 	}
-	
-	
+
+
 	jatekosok = GetEntArray("player", "classname");
 	for (i = 0; i < jatekosok.size; i++)
 	{
@@ -565,7 +565,7 @@ MetalRacing_JumperEnd()
 			jatekosok[i].angles = level.originek["racing_raketa"][vel].angles;
 		}
 	}
-	
+
 	thread BigBoom();
 }
 
@@ -578,32 +578,32 @@ BigBoom()
 		level.brushok["raketa_reszek"][i] NotSolid();
 	}
 	level.brushok["raketa_fo"] NotSolid();
-	
+
 	level.brushok["raketa_fo"] MoveTo(level.originek["racing_raketa_start"] GetOrigin(), 0.1);
 	level.brushok["raketa_fo"] RotateRoll(180, 0.1);
-	
+
 	wait 2;
-	
+
 	cel = level.originek["racing_raketa_cel"] GetOrigin() - (0, 0, 128);
 	level.brushok["raketa_fo"] MoveTo(cel, 10, 8);
-	
+
 	wait 3;
-	
+
 	effekt PlaySound("bigboom");
-	
+
 	wait 3;
-	
+
 	Earthquake(0.75, 6, effekt GetOrigin(), 2000);
-	
+
 	wait 3;
-	
+
 	PlayFX(level.effektek["bigboom1"], level.originek["racing_raketa_cel"] GetOrigin());
 	PlayFX(level.effektek["bigboom2"], level.originek["racing_raketa_cel"] GetOrigin());
 	wait 1;
 	PlayFX(level.effektek["bigboom3"], level.originek["racing_raketa_cel"] GetOrigin());
-	
+
 	thread BigBoom_Halal();
-	
+
 	wait 1;
 	for (i = 0; i < level.brushok["raketa_reszek"].size; i++)
 	{
@@ -626,7 +626,7 @@ BigBoom_Halal()
 BigBoom_Halal_Seged()
 {
 	self endon("death");
-	
+
 	tamado = Spawn("script_origin", self.origin);
 	while (true)
 	{

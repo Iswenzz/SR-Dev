@@ -2,31 +2,31 @@
 main()
 {
 	maps\mp\_load::main();
-	
-	level.firefly_red	= loadFX("deathrun/firefly_a"); 
-	level.firefly_blue	= loadFX("deathrun/firefly_b"); 
-	level.firefly_org	= loadFX("deathrun/firefly_c"); 
-	level.firefly_purp	= loadFX("deathrun/firefly_d"); 
-	level.firefly_white	= loadFX("deathrun/firefly_e"); 
-	level.bright = loadFX("deathrun/bright"); 	
-	level.bobbel = loadFX("deathrun/bobbel"); 
-	level.weed = loadFX("deathrun/weed"); 
-	level.ghost = loadFX("deathrun/ghost"); 
-	level.scruffy = loadFX("deathrun/scruffy"); 
-	level.player = loadFX("deathrun/flash"); 
-	level.energy = loadFX("deathrun/energy"); 
-	level.party_a = loadFX("deathrun/party_a"); 
-	level.party_b = loadFX("deathrun/party_b"); 
+
+	level.firefly_red	= loadFX("deathrun/firefly_a");
+	level.firefly_blue	= loadFX("deathrun/firefly_b");
+	level.firefly_org	= loadFX("deathrun/firefly_c");
+	level.firefly_purp	= loadFX("deathrun/firefly_d");
+	level.firefly_white	= loadFX("deathrun/firefly_e");
+	level.bright = loadFX("deathrun/bright");
+	level.bobbel = loadFX("deathrun/bobbel");
+	level.weed = loadFX("deathrun/weed");
+	level.ghost = loadFX("deathrun/ghost");
+	level.scruffy = loadFX("deathrun/scruffy");
+	level.player = loadFX("deathrun/flash");
+	level.energy = loadFX("deathrun/energy");
+	level.party_a = loadFX("deathrun/party_a");
+	level.party_b = loadFX("deathrun/party_b");
 	level.party_c = loadFX("deathrun/party_c");
-	level.java = loadFX("explosions/belltower_explosion"); 
-	
+	level.java = loadFX("explosions/belltower_explosion");
+
 	//////PortalGun//////
 	level.portalgunused = false;
 	level.portalgun["portal_blue"] = LoadFX("deathrun/portal_blue");
 	level.portalgun["portal_red"] = LoadFX("deathrun/portal_red");
 	level.portalgun["shoot_blue"] = LoadFX("deathrun/portalgun_shoot_blue");
 	level.portalgun["shoot_red"] = LoadFX("deathrun/portalgun_shoot_red");
-	
+
 	//////Game//////
 	game["allies"] = "sas";
 	game["axis"] = "russian";
@@ -34,14 +34,14 @@ main()
 	game["defenders"] = "allies";
 	game["allies_soldiertype"] = "woodland";
 	game["axis_soldiertype"] = "woodland";
-	
+
 	setdvar( "r_specularcolorscale", "1" );
     setdvar("r_glowbloomintensity0",".25");
     setdvar("r_glowbloomintensity1",".25");
     setdvar("r_glowskybleedintensity0",".3");
 	setdvar("compassmaxrange","1500");
-	setdvar("dr_jumpers_speed","1.2");
-	
+	// setdvar("dr_jumpers_speed","1.2");
+
 	//////Models//////
 	precacheModel("viewmodel_ak47");
 	precacheModel("weapon_g3");
@@ -64,13 +64,13 @@ main()
 	precacheModel("head_mp_opforce_ghillie");
 	precacheModel("body_mp_sas_urban_specops");
 	precacheModel("head_sp_opforce_justin_beanie_body_e");
-	precacheModel("body_sp_sas_woodland_at4");	
-	precacheModel("head_specops_sp");	
+	precacheModel("body_sp_sas_woodland_at4");
+	precacheModel("head_specops_sp");
 
-	//precacheModel("viewhands_BotS_50cent");   
+	//precacheModel("viewhands_BotS_50cent");
 	//self setModel("playermodel_BotS_50cent");
 	//self setViewmodel("viewhands_BotS_50cent");
-	
+
 	//////PreCache//////
 	PrecacheItem("m16_mp");
 	PreCacheItem("ak47_mp");
@@ -79,7 +79,7 @@ main()
 	PreCacheItem("barrett_mp");
 	PreCacheItem("m40a3_mp");
 	PreCacheItem("g36c_silencer_mp");
-	
+
 	thread bobbles();
 	thread ganja();
 	thread party();
@@ -109,7 +109,7 @@ main()
 
 	thread sniper();
 	thread sniper_brush();
-	
+
 	/////power///
 	//thread tower();
 	thread powerbox();
@@ -120,7 +120,7 @@ main()
 	thread cube3();
 	thread cube4();
 
-	
+
 	//////Traps//////
 	thread trap1();
 	thread trap2();
@@ -136,7 +136,7 @@ main()
 	thread trap12();
 	thread trap13();
 	thread trap14();
-	
+
 	////TestClient////
 	thread addTestClients();
 }
@@ -175,7 +175,7 @@ wait 0.5;
 party()
 {
     party=getentarray("disco","targetname");
-   
+
     level waittill("round_started");
 
 	while(1)
@@ -195,7 +195,7 @@ party()
         	playfx(level.party_c, party[i].origin);
         }
     	wait 2;
-	}    	
+	}
 }
 
 startcredit()
@@ -369,9 +369,9 @@ move1()
 {
     trig = getEnt( "move1_trigger", "targetname" );
     brush = getEnt( "move1_brush", "targetname" );
-	
+
 	trig waittill( "trigger" , player );
-	
+
 while(1)
 {
 	trig delete();
@@ -408,9 +408,9 @@ move4()
 {
    trig = getEnt( "move4_trigger", "targetname" );
    brush = getEnt( "move4_brush1", "targetname" );
-	
+
 	trig waittill( "trigger" , player );
-	
+
 while(1)
 {
 	trig delete();
@@ -460,9 +460,9 @@ babe1()
     trig = getEnt( "girl1_trigger", "targetname" );
     brush1 = getEnt( "girl1_brush1", "targetname" );
     brush2 = getEnt( "girl1_brush2", "targetname" );
-	
+
 	trig waittill( "trigger" , player );
-	
+
 {
 	trig delete();
 	brush1 moveZ(104,2);
@@ -475,9 +475,9 @@ babe2()
     trig = getEnt( "girl2_trigger", "targetname" );
     brush1 = getEnt( "girl2_brush1", "targetname" );
     brush2 = getEnt( "girl2_brush2", "targetname" );
-	
+
 	trig waittill( "trigger" , player );
-	
+
 {
 	trig delete();
 	brush1 moveZ(104,2);
@@ -490,9 +490,9 @@ babe3()
     trig = getEnt( "girl3_trigger", "targetname" );
     brush1 = getEnt( "girl3_brush1", "targetname" );
     brush2 = getEnt( "girl3_brush2", "targetname" );
-	
+
 	trig waittill( "trigger" , player );
-	
+
 {
 	trig delete();
 	brush1 moveX(-176,1);
@@ -505,9 +505,9 @@ babe4()
     trig = getEnt( "girl4_trigger", "targetname" );
     brush1 = getEnt( "girl4_brush1", "targetname" );
     brush2 = getEnt( "girl4_brush2", "targetname" );
-	
+
 	trig waittill( "trigger" , player );
-	
+
 {
 	trig delete();
 	brush1 moveX(-176,1.5);
@@ -520,9 +520,9 @@ babe5()
     trig = getEnt( "girl5_trigger", "targetname" );
     brush1 = getEnt( "girl5_brush1", "targetname" );
     brush2 = getEnt( "girl5_brush2", "targetname" );
-	
+
 	trig waittill( "trigger" , player );
-	
+
 {
 	trig delete();
 	brush1 moveY(-120,1.5);
@@ -537,22 +537,22 @@ weapon_box()
 {
         weapon = getEnt("weapon_model", "targetname");
 		trigger = getEnt ("weapon_trigger", "targetname");
- 
+
         weaponListModels = [];
         weaponList = [];
- 
+
         weaponList[weaponList.size] = "ak47_mp";
         weaponList[weaponList.size] = "g3_mp";
         weaponList[weaponList.size] = "p90_mp";
         weaponList[weaponList.size] = "barrett_mp";
         weaponList[weaponList.size] = "m40a3_mp";
- 
+
         weaponListModels[weaponListModels.size] = "weapon_ak47";
         weaponListModels[weaponListModels.size] = "weapon_g3";
         weaponListModels[weaponListModels.size] = "weapon_p90";
         weaponListModels[weaponListModels.size] = "weapon_m82";
         weaponListModels[weaponListModels.size] = "weapon_m40a3";
- 
+
         while(1)
         {
                trigger waittill("trigger", user);
@@ -597,8 +597,8 @@ skins()
 	skinListModels = [];
 	skinList = [];
 	modelList = [];
-	
-	
+
+
     skinList[0] = "body_mp_usmc_woodland_sniper";
     skinListHead[0] = "head_mp_usmc_ghillie";
 	skinList[1] = "deadpool";
@@ -614,7 +614,7 @@ skins()
     skinList[6] = "body_mp_sas_urban_specops";
     skinList[7] = "body_sp_sas_woodland_at4";
     skinListHead[7] = "head_specops_sp";
-	
+
 	modelList[0] = "body_mp_usmc_woodland_sniper";
     modelList[1] = "deadpool";
     modelList[2] = "ratchet";
@@ -623,9 +623,9 @@ skins()
     modelList[5] = "body_mp_opforce_sniper";
     modelList[6] = "body_mp_sas_urban_specops";
     modelList[7] = "body_sp_sas_woodland_at4";
-	
+
     model hide();
- 
+
         while(1)
         {
                trigger waittill("trigger", user);
@@ -659,22 +659,22 @@ vip_gun()
 {
         weapon = getEnt("green_origin", "targetname");
         trigger = getEnt("green_trigger", "targetname");
- 
+
         weaponListModels = [];
         weaponList = [];
- 
+
         weaponList[weaponList.size] = "ak47_mp";
         weaponList[weaponList.size] = "g3_mp";
         weaponList[weaponList.size] = "p90_mp";
         weaponList[weaponList.size] = "barrett_mp";
         weaponList[weaponList.size] = "m40a3_mp";
- 
+
         weaponListModels[weaponListModels.size] = "weapon_ak47";
         weaponListModels[weaponListModels.size] = "weapon_g3";
         weaponListModels[weaponListModels.size] = "weapon_p90";
         weaponListModels[weaponListModels.size] = "weapon_m82";
         weaponListModels[weaponListModels.size] = "weapon_m40a3";
- 
+
         while(1)
         {
                trigger waittill("trigger", user);
@@ -709,7 +709,7 @@ vip_gun()
                 }
         }
 }
- 
+
 rewardWeapon( weaponType, weaponName, ammoClip, ammoStock )
 {
         self endon( "disconnect" );
@@ -741,7 +741,7 @@ teleporter_thread()
 
 	entTransporter= getentarray("teleport","targetname");
 	if(isdefined(entTransporter))
- 
+
 		{
 			for(lp=0; lp<entTransporter.size;lp=lp+1)
 			entTransporter [lp] thread teleporter();
@@ -772,12 +772,12 @@ musicMenu()
     self endon("spawned");
     self endon("joined_spectators");
     self endon("HUD terminate");
- 
+
     self thread onDeath();
     self thread onDisconnect();
-	
+
 	precacheShader( "vistic" );
- 
+
     self.hud_music = [];
     self.selection = 0;
     i = 0;
@@ -786,7 +786,7 @@ musicMenu()
     level.menuOptions[0] = "Get XP";
     level.menuOptions[1] = "Teleport to Spawn";
     level.menuOptions[2] = "Option3";
- 
+
     // HUD background
     self.hud_music[i] = braxi\_mod::addTextHud(self, 160, 200, 0.6, "left", "top", 2);
     //self.hud_music[i] = braxi\_mod::addTextHud(self, 320, 400, 0.6, "left", "top", 2);
@@ -807,7 +807,7 @@ musicMenu()
     self.hud_music[i] = braxi\_mod::addTextHud(self, 265, 360, 1, "center", "bottom", 1.4);
     self.hud_music[i].sort = 886;
     self.hud_music[i] setText("Scroll: ^3[{+attack}] ^7| Select: ^3[{+activate}] ^7| Close: ^3[{+frag}]");
- 
+
     for(j = 0; j < level.menuOptions.size; j++)
     {
     	i++;
@@ -815,35 +815,35 @@ musicMenu()
         self.hud_music[i].sort = 882;
         self.hud_music[i].font = "objective";
         self.hud_music[i].glowalpha=1;
- 
+
         entry = level.menuOptions[j];
         self.hud_music[i] setText(entry);
     }
- 
+
     self.hud_music[self.hud_music.size] = braxi\_mod::addTextHud(self, 167, 230, 0.4, "left", "top", 1.4);
     self.hud_music[i].sort = 881;
     indicator = self.hud_music[self.hud_music.size-1];
     indicator setShader( "white", 306, 17 );
- 
+
     wait 1;
-	
+
     while(self.sessionstate == "playing")
     {
         wait 0.1;
- 
+
         if(self attackButtonPressed())
         {
             self.hud_music[3+self.selection].alpha = 0.99;
- 
+
             self.selection++;
             if(self.selection >= level.menuOptions.size)
             	self.selection = 0;
- 
+
             item = self.hud_music[3+self.selection];
             item.alpha = 1;
             indicator.y = item.y;
         }
-		
+
         else if(self useButtonPressed())
         {
             if(self.selection == 0)
@@ -887,7 +887,7 @@ onDisconnect()
     self waittill("disconnect");
     self cleanUp();
 }
- 
+
 onDeath()
 {
     self endon("disconnect");
@@ -895,7 +895,7 @@ onDeath()
     self waittill("death");
     self cleanUp();
 }
- 
+
 cleanUp()
 {
     if(!isDefined(self))
@@ -911,7 +911,7 @@ cleanUp()
     }
     self notify("HUD terminate");
 }
- 
+
 red()
 {
 	trig = getEnt ("red_trigger", "targetname");
@@ -921,7 +921,7 @@ red()
 		trig waittill("trigger", player);
 		player FreezeControls(1);
 		player musicMenu();
-		
+
 	while(isDefined(level.hud_music))
 		{
 		wait 0.1;
@@ -932,7 +932,7 @@ red()
 
 xpfarm()
 {
-	self braxi\_rank::giveRankXP("", 20000);	
+	self braxi\_rank::giveRankXP("", 20000);
 }
 
 
@@ -960,9 +960,9 @@ StartPlacingPortals()
 {
 	self endon("disconnect");
 	self endon("death");
-	
+
 	mover = undefined;
-	
+
 	while(1)
 	{
 		if( self GetCurrentWeapon() == "m16_mp" )
@@ -1096,7 +1096,7 @@ StartPlacingPortals()
 WatchPortalEntering( firstportal, secondportal, owner )
 {
 	self endon("stop_watching_entering");
-	
+
 	while(1)
 	{
 		if( !isDefined( firstportal ) || !isDefined( secondportal ) )
@@ -1124,10 +1124,10 @@ WatchPortalEntering( firstportal, secondportal, owner )
 PlayLoopedSound( sound, delay )
 {
 	self endon("stop_looped_sound");
-	
+
 	if(!isDefined(delay) || delay == 0)
 		delay = 5;
-	
+
 	while(1)
 	{
 		if(!isDefined(self))
@@ -1151,13 +1151,13 @@ vip()
     level.accepted6 = "XXXXXXXXXXXXXXXXXXXXXX"; //who
     level.accepted7 = "XXXXXXXXXXXXXXXXXXXXXX"; //who
     level.accepted8 = "XXXXXXXXXXXXXXXXXXXXXX"; //who
-    
-    
+
+
     while (1)
     {
         vip_trig waittill( "trigger", player );
         tempGuid = player getGUID();
-        
+
         if(player isTouching(vip_trig) && player useButtonPressed())
         {
             if((tempGuid == level.accepted1) || (tempGuid == level.accepted2) || (tempGuid == level.accepted3) || (tempGuid == level.accepted4) || (tempGuid == level.accepted5) || (tempGuid == level.accepted6) || (tempGuid == level.accepted7) || (tempGuid == level.accepted8))
@@ -1186,7 +1186,7 @@ Vip()
 	air2 = getent ("zip_air2","targetname");
 	brush1 = getent ("zip_brush1","targetname");
 	brush2 = getent ("zip_brush2","targetname");
-	
+
 	for(;;)
 	{
 		jumpx waittill ("trigger",user);
@@ -1216,9 +1216,9 @@ Vip_door()
     trig = getEnt( "secret_trigger", "targetname" );
     brush1 = getEnt( "secret_brush1", "targetname" );
     brush2 = getEnt( "secret_brush2", "targetname" );
-	
+
 	trig waittill( "trigger" );
-	
+
 {
 	trig delete();
 	brush1 moveX(-50,1);
@@ -1231,36 +1231,36 @@ Vip_door()
 
 sniper()
 {
-   
+
 	level.final_trigger = getEnt( "final_trigger", "targetname");
     jump = getEnt( "enter_jumper_room", "targetname" );
     acti = getEnt( "activator_enter_jump", "targetname" );
-	
+
 
      while(1)
     {
         level.final_trigger waittill( "trigger", player );
         if( !isDefined( level.final_trigger ) )
             return;
-       
-		
-		
+
+
+
          player.health = player.maxhealth;
 		 level.activ.health = level.activ.maxhealth;
 		player SetPlayerAngles( jump.angles );
         player setOrigin( jump.origin );
         player TakeAllWeapons();
         player GiveWeapon( "remington700_mp" );
-		player GiveWeapon( "m40a3_mp" );        
+		player GiveWeapon( "m40a3_mp" );
         level.activ setPlayerangles( acti.angles );
         level.activ setOrigin( acti.origin );
         level.activ TakeAllWeapons();
         level.activ GiveWeapon( "remington700_mp" );
-        level.activ GiveWeapon( "m40a3_mp" );         
+        level.activ GiveWeapon( "m40a3_mp" );
         wait 0.05;
 		AmbientStop( 4 );
 		AmbientPlay( "ambient2" );
-        player switchToWeapon( "remington700_mp" ); 
+        player switchToWeapon( "remington700_mp" );
         level.activ SwitchToWeapon( "remington700_mp" );
         player FreezeControls(1);
 		level.activ FreezeControls(1);
@@ -1277,7 +1277,7 @@ sniper()
 				level.activ FreezeControls(0);
         while( isAlive( player ) && isDefined( player ) )
             wait 1;
-			
+
     }
 
 }
@@ -1286,7 +1286,7 @@ sniper_brush()
 {
    brush1 = getEnt( "sniper_brush1", "targetname" );
    brush2 = getEnt( "sniper_brush2", "targetname" );
-	
+
 while(1)
 {
 	brush1 moveZ(80,5);
@@ -1295,8 +1295,8 @@ while(1)
 	brush2 moveZ(80,5);
 	brush1 moveZ(-80,5);
 	wait 5;
-}	
-	
+}
+
 }
 
 powerbox()
@@ -1325,7 +1325,7 @@ trig6 thread watchTrigger();
 		else
 			wait 1;
 	}
-	
+
 	thread opendoor();
 }
 
@@ -1428,7 +1428,7 @@ wait 4;
 
 
 ////////TRAPS////////
-	
+
 Trap1()
 {
 brush1 = getEnt("trap1_brush1","targetname");
@@ -1597,7 +1597,7 @@ Trap11()
 	brush = getEnt("trap11_brush","targetname");
 	trig = getEnt("trap11_trigger","targetname");
 	fx = getEnt( "trap11_org", "targetname" );
-	
+
 	//hurt enableLinkTo();
 	//hurt linkTo(brush);
 {
@@ -1701,7 +1701,7 @@ TestClient(team)
 
 	while(!isdefined(self.pers["team"]))
 		wait .05;
-		
+
 	self notify("menuresponse", game["menu_team"], team);
 	wait 0.5;
 }

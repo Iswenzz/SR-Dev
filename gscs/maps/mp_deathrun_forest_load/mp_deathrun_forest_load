@@ -1,0 +1,38 @@
+R_FindColorCorrectionData: failed to find color correction entry 'hunted'.  Using 'default' instead.
+R_FindColorCorrectionData: failed to find color correction entry 'hunted'.  Using 'default' instead.
+File fx/impacts/small_brick.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/impacts/default_hit.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/impacts/small_foliage.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/impacts/small_glass.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/impacts/small_grass.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/impacts/small_gravel.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/impacts/large_brick.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/impacts/large_glass.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/impacts/large_gravel.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/impacts/flesh_hit.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/impacts/large_plaster.efx, line 1: Effect needs to be updated from the legacy format.
+File fx/impacts/large_rock.efx, line 1: Effect needs to be updated from the legacy format.
+Sound file 'sound/voiceovers/generic/OM/gen_m_death1.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death2.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death3.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death4.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death5.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death6.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death7.wav' not found
+Sound file 'sound/voiceovers/generic/OM/gen_m_death8.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death1.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death2.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death3.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death4.wav' not found
+Sound file 'sound/voiceovers/generic/ON/gen_n_death5.wav' not found
+Sound file 'sound/voiceovers/generic/RU3/ru3_death_01.wav' not found
+Sound file 'sound/voiceovers/generic/RU3/ru3_death_02.wav' not found
+Sound file 'sound/voiceovers/generic/RU4/ru4_death_01.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_01.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_02.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_03.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_04.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_05.wav' not found
+Sound file 'sound/voiceovers/generic/US7/us7_death_06.wav' not found
+ERROR: Could not open 'vision/mp_deathrun_forest.vision'
+ERROR: failed loading 'vision/mp_deathrun_forest.vision' of type 'rawfile'
