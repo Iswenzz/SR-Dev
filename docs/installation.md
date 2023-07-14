@@ -2,9 +2,7 @@
 
 ![](https://i.imgur.com/S19WOb2.png)
 
-Download the latest version of **SR-Dev** https://github.com/Iswenzz/SR-Dev/releases then extract the folder to ``cod4/mods`` directory.
-
-Make a shortcut of **iw3mp.exe** from the cod4 folder to your desktop and name this shortcut **SR-Dev**
+Download the latest version of [**SR-Dev**](https://github.com/Iswenzz/SR-Dev/releases) then extract the folder to ``cod4/mods`` directory. Make a shortcut of **iw3mp.exe** from the cod4 folder to your desktop and name this shortcut **SR-Dev**
 
 Right click on the shortcut and go to properties and edit the target box from:
 ```
