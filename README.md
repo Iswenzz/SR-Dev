@@ -8,6 +8,10 @@ SR Development mod.
 
 This mod is made for developping maps with the SR API.
 
+## Setup
+* [Installation](https://github.com/Iswenzz/SR-Dev/blob/master/docs/installation.md)
+* [Tutorials](https://github.com/Iswenzz/SR-Dev/blob/master/docs/tutorials.md)
+
 ## Documentation
 * [Player](https://github.com/Iswenzz/SR-Dev/blob/master/docs/player.md)
 * [Map](https://github.com/Iswenzz/SR-Dev/blob/master/docs/map.md)
@@ -17,7 +21,6 @@ This mod is made for developping maps with the SR API.
 * [Defrag](https://github.com/Iswenzz/SR-Dev/blob/master/docs/defrag.md)
 
 ## Features
-
 * Compatible APIs with SR/DR/BR
 * Trigger creation
 * Debugging
