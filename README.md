@@ -8,6 +8,14 @@ SR Development mod.
 
 This mod is made for developping maps with the SR API.
 
+## Documentation
+* [Player](https://github.com/Iswenzz/SR-Dev/blob/master/docs/player.md)
+* [Map](https://github.com/Iswenzz/SR-Dev/blob/master/docs/map.md)
+* [Speedrun](https://github.com/Iswenzz/SR-Dev/blob/master/docs/speedrun.md)
+* [Deathrun](https://github.com/Iswenzz/SR-Dev/blob/master/docs/deathrun.md)
+* [BattleRoyale](https://github.com/Iswenzz/SR-Dev/blob/master/docs/battleroyale.md)
+* [Defrag](https://github.com/Iswenzz/SR-Dev/blob/master/docs/defrag.md)
+
 ## Features
 
 * Compatible APIs with SR/DR/BR
