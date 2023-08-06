@@ -5,8 +5,8 @@ Toggle the anti elevator.
 
 Usage Example:
 ```c
-player antiElevator(false);
-player antiElevator(true);
+player sr\api\_player::antiElevator(false);
+player sr\api\_player::antiElevator(true);
 ```
 <hr>
 
@@ -15,8 +15,8 @@ Toggle the anti lag.
 
 Usage Example:
 ```c
-player antiLag(false);
-player antiLag(true);
+player sr\api\_player::antiLag(false);
+player sr\api\_player::antiLag(true);
 ```
 <hr>
 
@@ -25,7 +25,7 @@ Set the player speed depending on the current modifiers.
 
 Usage Example:
 ```c
-player setPlayerSpeed(300);
+player sr\api\_player::setPlayerSpeed(300);
 ```
 <hr>
 
@@ -34,7 +34,7 @@ Set the player speed scale depending on the current modifiers.
 
 Usage Example:
 ```c
-player setPlayerSpeedScale(300);
+player sr\api\_player::setPlayerSpeedScale(300);
 ```
 <hr>
 
@@ -43,7 +43,7 @@ Set the player gravity depending on the current modifiers.
 
 Usage Example:
 ```c
-player setPlayerGravity(500);
+player sr\api\_player::setPlayerGravity(500);
 ```
 <hr>
 
@@ -52,6 +52,6 @@ Set the player jump height depending on the current modifiers.
 
 Usage Example:
 ```c
-player setPlayerJumpHeight(70);
+player sr\api\_player::setPlayerJumpHeight(70);
 ```
 <hr>
