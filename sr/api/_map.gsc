@@ -25,12 +25,31 @@ createTeleporter(triggerOrigin, width, height, origin, angles, state, color)
 	return trigger;
 }
 
+createDeath(triggerOrigin, width, height)
+{
+	trigger = spawn("trigger_radius", triggerOrigin, 0, width, height);
+	trigger.radius = width;
+	trigger.targetname = "sr_death";
+
+	thread watchDeath(trigger);
+	return trigger;
+}
+
 watchTeleporter(trigger, origin, angles, state)
 {
 	while (true)
 	{
 		trigger waittill("trigger", player);
 		player thread playerTeleport(origin, angles, state);
+	}
+}
+
+watchDeath(trigger)
+{
+	while (true)
+	{
+		trigger waittill("trigger", player);
+		player suicide();
 	}
 }
 

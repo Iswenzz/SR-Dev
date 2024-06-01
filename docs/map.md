@@ -35,6 +35,20 @@ sr\api\_map::createTeleporter((0, 0, 0), 150, 100, (0, 0, 0), 90, "none", "blue"
 ```
 <hr>
 
+#### ``createDeath(<triggerOrigin>, <width>, <height>)``
+Create a death trigger.
+
+**Parameters:**
+* triggerOrigin: The trigger origin.
+* width: The trigger width.
+* height: The trigger height.
+
+Usage Example:
+```c
+sr\api\_map::createDeath((0, 0, 0), 150, 100);
+```
+<hr>
+
 #### ``createSpawn(<origin>, <angles>)``
 Create a spawn point.
 The origin includes the 60 units of the player and can be used with ``/viewpos`` in the console while standing.
