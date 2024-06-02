@@ -6,6 +6,7 @@ playerConnect()
 	self endon("connect");
 	self endon("disconnect");
 	level notify("connected", self);
+	level.player = self;
 
 	self.enable3DWaypoints = true;
 	self.enableDeathIcons = true;

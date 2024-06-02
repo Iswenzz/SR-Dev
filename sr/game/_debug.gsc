@@ -5,6 +5,10 @@
 
 main()
 {
+	if (!getDvarInt("developer_script"))
+		iPrintLn("^1ERROR: developer_script must be set to 1.");
+
+	event("map", ::visualizer);
 	event("map", ::triggers);
 	event("spawn", ::onSpawn);
 	event("death", ::clean);
@@ -135,6 +139,56 @@ debugWeapons()
 		}
 		prevWeapon = weapon;
 	}
+}
+
+visualizer()
+{
+	ents = [];
+	ents[ents.size] = getEntArray("trigger_damage", "classname");
+	ents[ents.size] = getEntArray("trigger_disk", "classname");
+	ents[ents.size] = getEntArray("trigger_friendlychain", "classname");
+	ents[ents.size] = getEntArray("trigger_hurt", "classname");
+	ents[ents.size] = getEntArray("trigger_lookat", "classname");
+	ents[ents.size] = getEntArray("trigger_multiple", "classname");
+	ents[ents.size] = getEntArray("trigger_once", "classname");
+	ents[ents.size] = getEntArray("trigger_radius", "classname");
+	ents[ents.size] = getEntArray("trigger_use", "classname");
+	ents[ents.size] = getEntArray("trigger_use_touch", "classname");
+	ents[ents.size] = getEntArray("script_brushmodel","classname");
+    ents[ents.size] = getEntArray("script_model","classname");
+    ents[ents.size] = getEntArray("script_origin","classname");
+    ents[ents.size] = getEntArray("script_struct","classname");
+    ents[ents.size] = getEntArray("script_vehicle","classname");
+    ents[ents.size] = getEntArray("script_vehicle_mp","classname");
+
+	for (i = 0; i < ents.size; i++)
+	{
+		for (t = 0; t < ents[i].size; t++)
+			ents[i][t] thread visualizerLoop(t);
+	}
+}
+
+visualizerLoop(index)
+{
+	color = (0.0, 1.0, 1.0);
+	if (isSubStr(self.classname, "trigger_"))
+        color = (0.0, 1.0, 0.0);
+
+	id = "[" + index + "] " + self.classname;
+
+	targetname = self.targetname;
+	if (!isDefined(targetname))
+		targetname = "<unassigned>";
+
+    while (isDefined(self))
+    {
+        if (isDefined(level.player) && distance(level.player getOrigin(), self getOrigin()) < 1000)
+        {
+            print3d(self getOrigin(), id, color, 1, 0.4, 1);
+            print3d(self getOrigin() - (0, 0, 7), targetname, (1.0, 1.0, 1.0), 1, 0.4, 1);
+        }
+        wait 0.05;
+    }
 }
 
 triggers()
