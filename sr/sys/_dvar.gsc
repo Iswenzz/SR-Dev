@@ -5,8 +5,8 @@ initDvars()
 	addDvar("mod", "mod_id", "dev");
 
 	setDvar("sv_mapRotationCurrent", "map " + level.map);
-	setDvar("mod_author", "SuX Lolz");
-	makeDvarServerInfo("mod_author", "SuX Lolz");
+	setDvar("mod_author", "Iswenzz");
+	makeDvarServerInfo("mod_author", "Iswenzz");
 
 	reset();
 }
