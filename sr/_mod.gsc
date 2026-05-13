@@ -22,17 +22,17 @@ main()
 	braxi\_mod::main();
 	battleroyale\_mod::main();
 
-	sr\game\_map::main();
-	sr\game\_trigger::main();
-	sr\game\_match::main();
-	sr\game\_scoreboard::main();
-	sr\game\_menus::main();
-	sr\game\_debug::main();
-	sr\game\_time::main();
-	sr\game\_save::main();
-	sr\player\_run::main();
-	sr\player\_settings::main();
-	sr\player\huds\_speedrun::main();
+	sr\core\_debug::main();
+	sr\core\_map::main();
+	sr\core\_match::main();
+	sr\core\_menus::main();
+	sr\core\_run::main();
+	sr\core\_save::main();
+	sr\core\_settings::main();
+	sr\core\_time::main();
+	sr\core\_trigger::main();
+	sr\huds\_speedrun::main();
+	sr\sys\_scoreboard::main();
 }
 
 precache()

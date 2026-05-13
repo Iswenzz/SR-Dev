@@ -17,7 +17,7 @@ changeWay(way)
 
 finishWay(way)
 {
-	self thread sr\player\_run::endTimer();
+
 }
 
 createEndMap(origin, width, height, way)
@@ -27,10 +27,10 @@ createEndMap(origin, width, height, way)
 
 	trigger = spawn("trigger_radius", origin, 0, width, height);
 	trigger.radius = width;
-	trigger.targetname = "sr_" + way;
+	trigger.targetname = "sr_end_" + way;
 
 	thread watchTriggerEndMap(trigger, way);
-	thread sr\game\fx\_trigger::effect(trigger, "red");
+	thread sr\fx\_trigger::effect(trigger, "red");
 	return trigger;
 }
 
@@ -50,7 +50,7 @@ createWay(triggerOrigin, width, height, color, way)
 	trigger.targetname = "sr_" + way;
 
 	thread watchWay(trigger, way);
-	thread sr\game\fx\_trigger::effect(trigger, IfUndef(color, "blue"));
+	thread sr\fx\_trigger::effect(trigger, IfUndef(color, "blue"));
 	return trigger;
 }
 
@@ -72,10 +72,10 @@ createTeleporter(triggerOrigin, width, height, origin, angles, state, color, way
 
 	trigger = spawn("trigger_radius", triggerOrigin, 0, width, height);
 	trigger.radius = width;
-	trigger.targetname = "sr_" + way;
+	trigger.targetname = "sr_teleport_" + way;
 
 	thread watchTeleporter(trigger, origin, angles, state, way);
-	thread sr\game\fx\_trigger::effect(trigger, IfUndef(color, "blue"));
+	thread sr\fx\_trigger::effect(trigger, IfUndef(color, "blue"));
 	return trigger;
 }
 

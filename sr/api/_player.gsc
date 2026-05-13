@@ -1,6 +1,13 @@
+#include sr\utils\_common;
+
 antiElevator(state)
 {
-	iPrintLnBold("^5Elevator:^7 " + state);
+	self.antiElevator = state;
+}
+
+antiLag(state)
+{
+	self.antiLag = state;
 }
 
 setPlayerSpeed(speed)

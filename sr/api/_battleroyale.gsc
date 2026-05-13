@@ -1,5 +1,4 @@
-#include battleroyale\game\_game;
-#include sr\utils\_math;
+#include sr\utils\_common;
 
 removeAllMapTriggers()
 {
@@ -32,13 +31,11 @@ createSpawn(origin, angle)
 createLobbyBlocker(origin, width, height)
 {
 	trigger = spawn("trigger_radius", (origin[0], origin[1], origin[2] - 60), 0, width, height);
-	trigger.radius = int(width / 2);
-	trigger.targetname = "lobby";
 
+	trigger.targetname = "lobby";
 	if (!level.dvar["debug"])
 		trigger setContents(true);
 
-	thread sr\game\fx\_trigger::effect(trigger, "yellow");
 	return trigger;
 }
 
@@ -54,15 +51,11 @@ createPlanePath(start, end, angle)
 	path[0].targetname = "plane_" + level.planePath;
 	path[1] = spawn("script_origin", end);
 	path[1].targetname = "plane_" + level.planePath;
-
-	thread drawLine(start, end, -1, (0, 0, 1));
 }
 
 createPlaneDrop(origin)
 {
 	level.dropOrigin = origin;
-
-	thread drawPoint(origin, -1, (0, 1, 0));
 }
 
 createPlaneDropTrigger(origin, radius)
@@ -70,8 +63,6 @@ createPlaneDropTrigger(origin, radius)
 	ent = spawn("trigger_radius", origin, 0, radius, 2000);
 	ent.radius = radius;
 	ent.targetname = "drop";
-
-	thread sr\game\fx\_trigger::effect(ent, "red");
 }
 
 createPlaneDuration(seconds)
@@ -83,8 +74,6 @@ createPlaneDuration(seconds)
 createZone(origin)
 {
 	level.zoneSpawns[level.zoneSpawns.size] = origin;
-
-	thread drawPoint(origin, -1, (0, 1, 1));
 }
 
 createZoneLevels(levels)
@@ -135,7 +124,7 @@ createWeapon(id, mag, sound, icon, weapon, rng)
 	item.weapon = weapon;
 	item.model = getWeaponModel(weapon);
 	item.rng = rng;
-	item.give = ::givePlayerWeapon;
+	item.give = battleroyale\core\_game::givePlayerWeapon;
 
 	level.items[id] = item;
 	return item;
@@ -150,7 +139,7 @@ createSpecial(id, model, sound, icon, rng)
 	item.icon = icon;
 	item.model = model;
 	item.rng = rng;
-	item.give = ::givePlayerSpecial;
+	item.give = battleroyale\core\_game::givePlayerSpecial;
 
 	level.items[id] = item;
 	return item;
@@ -166,7 +155,7 @@ createGrenade(id, sound, icon, weapon, rng)
 	item.weapon = weapon;
 	item.model = getWeaponModel(weapon);
 	item.rng = rng;
-	item.give = ::givePlayerGrenade;
+	item.give = battleroyale\core\_game::givePlayerGrenade;
 
 	level.items[id] = item;
 	return item;

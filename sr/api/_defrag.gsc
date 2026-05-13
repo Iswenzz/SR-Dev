@@ -2,12 +2,12 @@
 
 weapons(list)
 {
-
+	level.defragStartWeapons = strTok(list, ";");
 }
 
 perks(list)
 {
-
+	level.mapPerks = strTok(list, ";");
 }
 
 triggerSection(id, origin, width, height, callback)
@@ -47,30 +47,42 @@ triggerPerk(id, origin, width, height, perk, time)
 
 switchToDefragWeapon(name)
 {
-
+	self switchToWeapon(level.defragWeapons[name]);
 }
 
 takeDefragWeapon(name)
 {
-
+	self takeWeapon(level.defragWeapons[name]);
 }
 
-takeAllPerks(name)
+takeAllPerks()
 {
-
+	self.perks = [];
 }
 
-takeDefragPerk(name)
+takeDefragPerk(id)
 {
-
+	self sr\core\_perks::playerRemovePerk(id);
 }
 
 giveDefragWeapon(name, ammo)
 {
+	weapon = level.defragWeapons[name];
 
+	self giveWeapon(weapon);
+	self switchToWeapon(weapon);
+
+	if (isDefined(ammo))
+		self setWeaponAmmoClip(weapon, ammo);
 }
 
-giveDefragPerk(name, time)
+giveDefragPerk(id, time)
 {
+	self sr\core\_perks::playerSetPerk(id);
 
+	if (isDefined(time))
+	{
+		wait time;
+		self takeDefragPerk(id);
+	}
 }

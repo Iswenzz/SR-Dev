@@ -6,14 +6,14 @@ A battle royale map must have the following features:
 - Plane path, drop origin, drop trigger
 - Entities of different assets such as weapons, ammos, grenades, specials
 
-*``battleroyale\game\_api`` can also be ``sr\api\_battleroyale`` if the target is SR servers.*
+*``battleroyale\core\_api`` can also be ``sr\api\_battleroyale`` if the target is SR servers.*
 
 #### ``removeAllMapTriggers()``
 Remove all triggers, used in stock maps to prevent trigger conflicts.
 
 Usage Example:
 ```c
-thread battleroyale\game\_api::removeAllMapTriggers();
+thread battleroyale\core\_api::removeAllMapTriggers();
 ```
 <hr>
 
@@ -22,7 +22,7 @@ Remove all stock spawns, used in stock maps to control the lobby area.
 
 Usage Example:
 ```c
-thread battleroyale\game\_api::removeAllSpawns();
+thread battleroyale\core\_api::removeAllSpawns();
 ```
 <hr>
 
@@ -31,7 +31,7 @@ Create a spawn for the lobby area.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createSpawn((0, 0, 0), 90);
+battleroyale\core\_api::createSpawn((0, 0, 0), 90);
 ```
 <hr>
 
@@ -40,7 +40,7 @@ Add a blocker that will be deleted when the game starts.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createLobbyBlocker((100, 200, 300), 200, 300);
+battleroyale\core\_api::createLobbyBlocker((100, 200, 300), 200, 300);
 ```
 <hr>
 
@@ -49,7 +49,7 @@ Add a path to the plane paths.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createPlanePath((-1000, 0, 1000), (1000, 0, 1000), 90);
+battleroyale\core\_api::createPlanePath((-1000, 0, 1000), (1000, 0, 1000), 90);
 ```
 <hr>
 
@@ -58,7 +58,7 @@ Add the default plane dropping origin, if someone afk or gets stuck.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createPlaneDrop((0, 0, 1000));
+battleroyale\core\_api::createPlaneDrop((0, 0, 1000));
 ```
 <hr>
 
@@ -67,7 +67,7 @@ Add a trigger for the plane dropping area where you can press F to drop.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createPlaneDropTrigger((0, 0, 1000), 5000);
+battleroyale\core\_api::createPlaneDropTrigger((0, 0, 1000), 5000);
 ```
 <hr>
 
@@ -76,7 +76,7 @@ Sets the plane path duration.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createPlaneDuration(60);
+battleroyale\core\_api::createPlaneDuration(60);
 ```
 <hr>
 
@@ -85,7 +85,7 @@ Add origins to the list of final zones.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createZone((0, 0, 0));
+battleroyale\core\_api::createZone((0, 0, 0));
 ```
 <hr>
 
@@ -94,7 +94,7 @@ Defines the level size for the current map.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createZoneLevels(0);
+battleroyale\core\_api::createZoneLevels(0);
 ```
 <hr>
 
@@ -103,7 +103,7 @@ Spawn a battleroyale entity at the specified origin.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createEntity("m16", (0, 0, 0));
+battleroyale\core\_api::createEntity("m16", (0, 0, 0));
 ```
 <hr>
 
@@ -120,7 +120,7 @@ Create a weapon.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createWeapon("m16", "5_45", "weap_raise_plr", "hud_icon_m16a4", "m16_mp", level.RNG_NORMAL);
+battleroyale\core\_api::createWeapon("m16", "5_45", "weap_raise_plr", "hud_icon_m16a4", "m16_mp", level.RNG_NORMAL);
 ```
 <hr>
 
@@ -137,7 +137,7 @@ Create ammo.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createAmmo("5_45", "sr_5_45", "amunition", "hud_icon_mag_5_56", 30, level.RNG_NORMAL);
+battleroyale\core\_api::createAmmo("5_45", "sr_5_45", "amunition", "hud_icon_mag_5_56", 30, level.RNG_NORMAL);
 ```
 <hr>
 
@@ -153,7 +153,7 @@ Create a grenade.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createGrenade("frag_grenade", "grenade_pickup", "hud_icon_grenade", "frag_grenade_mp", level.RNG_SMALL);
+battleroyale\core\_api::createGrenade("frag_grenade", "grenade_pickup", "hud_icon_grenade", "frag_grenade_mp", level.RNG_SMALL);
 ```
 <hr>
 
@@ -169,6 +169,6 @@ Create a special.
 
 Usage Example:
 ```c
-battleroyale\game\_api::createSpecial("bandage", "sr_bandage", "health_pickup_large", "hud_icon_band", level.RNG_NORMAL);
+battleroyale\core\_api::createSpecial("bandage", "sr_bandage", "health_pickup_large", "hud_icon_band", level.RNG_NORMAL);
 ```
 <hr>

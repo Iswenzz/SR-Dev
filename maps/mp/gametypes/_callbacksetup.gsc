@@ -76,7 +76,7 @@ CodeCallback_PlayerSpawned()
 		self.psoffsettime = 0;
 		self.died = false;
 
-		self sr\game\_callbacks::playerSpawn();
+		self sr\core\_callbacks::playerSpawn();
 
 		for (i = 0; isDefined(level.events["spawn"]) && i < level.events["spawn"].size; i++)
 			self thread [[level.events["spawn"][i]]]();
@@ -98,7 +98,7 @@ CodeCallback_PlayerSpectator()
 		self.sessionstate = "spectator";
 		self.spectatorclient = -1;
 
-		self sr\game\_callbacks::playerSpectator();
+		self sr\core\_callbacks::playerSpectator();
 
 		for (i = 0; isDefined(level.events["spectator"]) && i < level.events["spectator"].size; i++)
 			self thread [[level.events["spectator"][i]]]();
@@ -143,8 +143,8 @@ CodeCallback_PlayerConnect()
 	self.statusicon = "hud_status_connecting";
 	self.died = false;
 
-	self sr\player\_settings::init();
-	self sr\game\_callbacks::playerConnect();
+	self sr\core\_settings::init();
+	self sr\core\_callbacks::playerConnect();
 
 	self thread CodeCallback_PlayerSpawned();
 	self thread CodeCallback_PlayerSpectator();
@@ -170,7 +170,7 @@ CodeCallback_PlayerDisconnect()
 {
 	self notify("disconnect");
 
-	self sr\game\_callbacks::playerDisconnect();
+	self sr\core\_callbacks::playerDisconnect();
 
 	for (i = 0; isDefined(level.events["disconnect"]) && i < level.events["disconnect"].size; i++)
 		self thread [[level.events["disconnect"][i]]]();
@@ -185,7 +185,7 @@ CodeCallback_PlayerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath
 	if (isDefined(self.godmode))
 		return;
 
-	self sr\game\_callbacks::playerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, timeOffset);
+	self sr\core\_callbacks::playerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, timeOffset);
 
 	for (i = 0; isDefined(level.events["damage"]) && i < level.events["damage"].size; i++)
 		self thread [[level.events["damage"][i]]](eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, timeOffset);
@@ -199,7 +199,7 @@ CodeCallback_PlayerKilled(eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon
 	self.sessionstate = "dead";
 	self.died = true;
 
-	self sr\game\_callbacks::playerKilled(eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, timeOffset, deathAnimDuration);
+	self sr\core\_callbacks::playerKilled(eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, timeOffset, deathAnimDuration);
 
 	for (i = 0; isDefined(level.events["killed"]) && i < level.events["killed"].size; i++)
 		self thread [[level.events["killed"][i]]](eInflictor, eAttacker, iDamage, sMeansOfDeath, sWeapon, vDir, sHitLoc, timeOffset, deathAnimDuration);

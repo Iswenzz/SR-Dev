@@ -2,11 +2,9 @@
 
 createEndMap(origin, width, height)
 {
-	if (isDefined(getEnt("endmap_trig", "targetname")))
-	{
-		temp = getEnt("endmap_trig", "targetname");
-		temp delete();
-	}
+	array = getEntArray("endmap_trig", "targetname");
+	for (i = 0; i < array.size; i++)
+		array[i] delete();
 
 	trigger = spawn("trigger_radius", origin, 0, width, height);
 	trigger.targetname = "endmap_trig";
@@ -18,10 +16,10 @@ createTeleporter(triggerOrigin, width, height, origin, angles, state, color)
 {
 	trigger = spawn("trigger_radius", triggerOrigin, 0, width, height);
 	trigger.radius = width;
-	trigger.targetname = "sr_tp_" + randomInt(99999999);
+	trigger.targetname = "sr_teleport";
 
 	thread watchTeleporter(trigger, origin, angles, state);
-	thread sr\game\fx\_trigger::effect(trigger, IfUndef(color, "blue"));
+	thread sr\fx\_trigger::effect(trigger, IfUndef(color, "blue"));
 	return trigger;
 }
 
@@ -89,7 +87,7 @@ createSpawnOrigin(origin, angles)
 
 createTriggerFx(trigger, fx)
 {
-	thread sr\game\fx\_trigger::effect(trigger, fx);
+	thread sr\fx\_trigger::effect(trigger, fx);
 }
 
 noFallDamage()
