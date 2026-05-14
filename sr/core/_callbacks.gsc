@@ -80,8 +80,11 @@ playerSpawn()
 	level notify("jumper", self);
 	self cleanUp();
 
-	self sr\core\_teams::setPlayerModel();
 	self sr\core\_teams::setHealth();
+	self detachAll();
+
+	self setModel("body_mp_usmc_cqb");
+	self setViewModel("viewmodel_hands_zombie");
 
 	self.pers["weapon"] = "beretta_mp";
 

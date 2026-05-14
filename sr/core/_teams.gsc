@@ -1,13 +1,5 @@
 #include sr\utils\_common;
 
-setPlayerModel()
-{
-	self detachAll();
-
-	self setModel("body_mp_usmc_cqb");
-	self setViewModel("viewmodel_hands_zombie");
-}
-
 setHealth()
 {
 	self.maxhealth = 100;
