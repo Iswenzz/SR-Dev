@@ -5,14 +5,8 @@ FILENOTES           ""
 REFERENCE           MODNAME
 LANG_ENGLISH        "SR Mod"
 
-REFERENCE           SPEEDRUN_DESC
-LANG_ENGLISH        "^5Welcome to Sr- Speedrun\n^7This is a mod where players try to complete the map in the fastest time possible and\n compete for the top spot on the leaderboard. \n^5How to level up:\n^7Getting a time on the leaderboard will give you XP. You get more XP depending \non how high up your time is and how many times have already been set.\n^5Contact:\n^7You can visit our discord server for updates and help:\n^8https://discord.gg/76aHfGF"
-
-REFERENCE           BATTLEROYALE_DESC
-LANG_ENGLISH        "^5Welcome to Sr- BattleRoyale\n^7The popular battle royale gamemode from other games such as \nPlayer Unknown's Battlegrounds, Fortnite, H1Z1, recreated on Call of Duty 4!\n\n^5Contact:\n^7You can visit our discord server for updates and help:\n^8https://discord.gg/76aHfGF"
-
 REFERENCE           DEV_DESC
-LANG_ENGLISH        "^5Welcome to Sr- Dev\n^7This mod is made for developping maps using the SR API.\n\n^5Contact:\n^7You can visit our discord server for updates and help:\n^8https://discord.gg/76aHfGF"
+LANG_ENGLISH        "^5Dev: ^7This mod is made for developping maps using the SR API.\n^5IW3SR: ^7A custom client with extra features, improvements and a built-in video player\n^5GitHub: ^7SR is open source and can be found at: ^8https://github.com/Iswenzz\n^5Discord: ^7Join us for updates, help and community: ^8https://discord.gg/76aHfGF"
 
 REFERENCE           MOTD
 LANG_ENGLISH        ""

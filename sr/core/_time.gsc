@@ -20,6 +20,7 @@ playedTime()
 		time = originToTime(getTime() - self.timePlayed);
 		self setStat(2629, self getStat(2629) + time.min);
 		self.timePlayed = getTime();
+		self updateMenu();
 
 		wait 60;
 	}
@@ -27,5 +28,6 @@ playedTime()
 
 updateMenu()
 {
-	self setClientDvar("sr_info_timePlayed", self getStat(2629));
+	mins = self getStat(2629);
+    self setClientDvar("sr_info_timePlayed", mins + " mins");
 }
