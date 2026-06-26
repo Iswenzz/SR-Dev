@@ -29,7 +29,7 @@ endmapTrigger()
 start()
 {
 	self.finishedMap = false;
-	self.sr_mode = self getLastMode();
+	self.sr_mode = self getMode();
 	self.sr_way = "normal_0";
 
 	switch (self.sr_mode)
@@ -65,7 +65,7 @@ start()
 	self thread playerTimer();
 }
 
-getLastMode()
+getMode()
 {
 	switch (self getStat(1700))
 	{
@@ -78,21 +78,6 @@ getLastMode()
 		case 7: return "Portal";
 	}
 	return "190";
-}
-
-getLastModeStat()
-{
-	switch (self.sr_mode)
-	{
-		case "190": return 1;
-		case "210": return 2;
-		case "Q3": return 3;
-		case "Q3CPM": return 4;
-		case "Q3CPMW": return 5;
-		case "CS": return 6;
-		case "Portal": return 7;
-	}
-	return 1;
 }
 
 playerTimer()
