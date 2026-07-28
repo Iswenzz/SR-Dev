@@ -29,34 +29,60 @@ endmapTrigger()
 start()
 {
 	self.finishedMap = false;
+
 	self.sr_mode = self getMode();
 	self.sr_way = "normal_0";
+
+	if (self getStat(1700) != self getModeStat())
+		self setStat(1700, self getModeStat());
 
 	switch (self.sr_mode)
 	{
 		case "190":
 			self.speed = sr\api\_map::getSpeed(190);
+			self.jumpHeight = sr\api\_map::getJumpHeight(39);
+			self.gravity = sr\api\_map::getGravity(800);
 			self.moveSpeedScale = sr\api\_map::getMoveSpeedScale(1.05);
+			if (isSlide())
+			{
+				self.moveSpeedScale = sr\api\_map::getMoveSpeedScale(1.0);
+				self.gravity = sr\api\_map::getGravity(1000);
+				self.jumpHeight = sr\api\_map::getJumpHeight(70);
+				self.speed = sr\api\_map::getSpeed(190 * level.map_slide_multiplier);
+			}
 			break;
+
 		case "210":
 			self.speed = sr\api\_map::getSpeed(210);
+			self.jumpHeight = sr\api\_map::getJumpHeight(39);
+			self.gravity = sr\api\_map::getGravity(800);
 			self.moveSpeedScale = sr\api\_map::getMoveSpeedScale(1.12);
+			if (isSlide())
+			{
+				self.moveSpeedScale = sr\api\_map::getMoveSpeedScale(1.8);
+				self.gravity = sr\api\_map::getGravity(1000);
+				self.jumpHeight = sr\api\_map::getJumpHeight(70);
+				self.speed = sr\api\_map::getSpeed(190 * level.map_slide_multiplier);
+			}
 			break;
+
 		case "Q3":
 		case "Q3CPM":
 		case "Q3CPMW":
 			self.speed = sr\api\_map::getSpeed(320);
+			self.jumpHeight = sr\api\_map::getJumpHeight(39);
+			self.gravity = sr\api\_map::getGravity(800);
 			self.moveSpeedScale = sr\api\_map::getMoveSpeedScale(1.0);
 			break;
+
 		case "CS":
 		case "Portal":
 			self.speed = sr\api\_map::getSpeed(250);
+			self.jumpHeight = sr\api\_map::getJumpHeight(39);
+			self.gravity = sr\api\_map::getGravity(800);
 			self.moveSpeedScale = sr\api\_map::getMoveSpeedScale(1.0);
 			break;
 	}
-	self.gravity = sr\api\_map::getGravity(800);
-	self.jumpHeight = sr\api\_map::getJumpHeight(39);
-
 	self.spawnMoveSpeedScale = self.moveSpeedScale;
 	self.spawnGravity = self.gravity;
 	self.spawnJumpHeight = self.jumpHeight;
@@ -78,6 +104,21 @@ getMode()
 		case 7: return "Portal";
 	}
 	return "190";
+}
+
+getModeStat()
+{
+	switch (self.sr_mode)
+	{
+		case "190": return 1;
+		case "210": return 2;
+		case "Q3": return 3;
+		case "Q3CPM": return 4;
+		case "Q3CPMW": return 5;
+		case "CS": return 6;
+		case "Portal": return 7;
+	}
+	return 1;
 }
 
 playerTimer()
