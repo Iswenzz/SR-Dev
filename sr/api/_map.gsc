@@ -65,22 +65,22 @@ createTriggerFx(trigger, fx)
 
 getSpeed(speed)
 {
-	return int(ceil(getDvarInt("g_speed") * (speed / 190)));
+	return int(ceil(level.speed * (speed / 190)));
 }
 
 getMoveSpeedScale(moveSpeedScale)
 {
-	return getDvarFloat("dr_jumpers_speed") * (moveSpeedScale / 1.05);
+	return level.speedScale * (moveSpeedScale / 1.05);
 }
 
 getGravity(gravity)
 {
-	return int(ceil(getDvarFloat("g_gravity") * (gravity / 800)));
+	return int(ceil(level.gravity * (gravity / 800)));
 }
 
 getJumpHeight(jumpHeight)
 {
-	return int(ceil(getDvarFloat("jump_height") * (jumpHeight / 39)));
+	return int(ceil(level.jumpHeight * (jumpHeight / 39)));
 }
 
 watchTeleporter(trigger, origin, angles, state)

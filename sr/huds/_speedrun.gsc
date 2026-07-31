@@ -22,7 +22,7 @@ hud()
 	self.huds["speedrun"]["background"].color = (0, 0, 0);
 	self.huds["speedrun"]["background"].glowAlpha = 1;
 	self.huds["speedrun"]["mode"] = addHud(self, 4, 0, 1, "left", "top", 1.8, 99, true);
-	self.huds["speedrun"]["mode"] setText("^5SR");
+	self.huds["speedrun"]["mode"] setText(self.sr_mode);
 	self.huds["speedrun"]["row1"] = addHud(self, 72, 0, 1, "left", "top", 1.8, 99, true);
 	self.huds["speedrun"]["row1"] setText("^50:00.0");
 }

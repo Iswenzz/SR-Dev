@@ -3,7 +3,16 @@
 
 main()
 {
+	event("map", ::mapDvars);
 	event("map", ::endmapTrigger);
+}
+
+mapDvars()
+{
+	level.speed = getDvarInt("g_speed");
+	level.speedScale = getDvarFloat("dr_jumpers_speed");
+	level.gravity = getDvarFloat("g_gravity");
+	level.jumpHeight = getDvarFloat("jump_height");
 }
 
 endmapTrigger()
@@ -87,6 +96,11 @@ start()
 	self.spawnGravity = self.gravity;
 	self.spawnJumpHeight = self.jumpHeight;
 	self.spawnSpeed = self.speed;
+
+	setDvar("g_speed", self.speed);
+	self setMoveSpeedScale(self.moveSpeedScale);
+	setDvar("g_gravity", self.gravity);
+	setDvar("jump_height", self.jumpHeight);
 
 	self thread playerTimer();
 }

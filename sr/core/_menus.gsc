@@ -14,6 +14,8 @@ main()
 	menu("main_mp", 	"autoassign", 	::menu_Team);
 	menu("main_mp", 	"spectator", 	::menu_Spectator);
 
+	menu_multiple("sr_modes",  "mode",	::menu_Modes);
+
 	menu_callback("quickcommands",	 	maps\mp\gametypes\_quickmessages::quickcommands);
 	menu_callback("quickstatements", 	maps\mp\gametypes\_quickmessages::quickstatements);
 	menu_callback("quickresponses",  	maps\mp\gametypes\_quickmessages::quickresponses);
@@ -24,6 +26,7 @@ main()
 precache()
 {
 	precacheMenu("main/main_mp");
+	precacheMenu("main/sr_modes");
 	precacheMenu("commands/wm_quickmessage");
 	precacheMenu("commands/quickcommands");
 	precacheMenu("commands/quickresponses");
@@ -35,6 +38,19 @@ precache()
 	precacheMenu("misc/endofgame");
 	precacheMenu("misc/scoreboard");
 	precacheMenu("misc/muteplayer");
+}
+
+menu_Modes(arg)
+{
+	self closeMenu();
+	self closeInGameMenu();
+
+	mode = arg[1];
+	self setStat(1700, int(mode));
+	self suicide();
+
+	if (self canSpawn())
+		self eventSpawn();
 }
 
 menu_Dog(arg)
@@ -81,8 +97,7 @@ menu_Team(arg)
 	}
 	self sr\core\_teams::setTeam("allies");
 
-	if (self canSpawn())
-		self eventSpawn();
+	self openMenu("sr_modes");
 }
 
 menu_Spectator(arg)
