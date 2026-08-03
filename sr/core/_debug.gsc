@@ -79,7 +79,7 @@ debugSounds()
 		if (groups != prevGroups)
 		{
 			self setClientDvar("snd_drawinfo", groups + 1);
-			setAction(0, "^8" + labels[groups] + ": ^7[{+melee}]");
+			setAction(0, "^>" + labels[groups] + ": ^7[{+melee}]");
 		}
 		wait 0.05;
 	}
