@@ -671,6 +671,27 @@ setVelocity(velocity)
 
 }
 
+isQ3()
+{
+	if (isDefined(self.sr_mode) && (self.sr_mode == "Q3" || self.sr_mode == "Q3CPM" || self.sr_mode == "Q3CPMW"))
+		return true;
+	return false;
+}
+
+isCS()
+{
+	if (isDefined(self.sr_mode) && (self.sr_mode == "CS" || self.sr_mode == "Portal"))
+		return true;
+	return false;
+}
+
+isPortal()
+{
+	if (isDefined(self.sr_mode) && self.sr_mode == "Portal")
+		return true;
+	return false;
+}
+
 isCJ()
 {
 	return isDefined(level.map_cj) && level.map_cj;

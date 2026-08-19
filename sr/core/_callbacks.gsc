@@ -50,6 +50,9 @@ playerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vP
 
 	level notify("player_damage", self, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime);
 
+	if (sMeansOfDeath == "MOD_FALLING" && (self isQ3() || self isCS()))
+		return;
+
 	iDFlags |= level.iDFLAGS_NO_KNOCKBACK;
 
 	self doPlayerDamage(eInflictor, eAttacker, iDamage, iDFlags, sMeansOfDeath, sWeapon, vPoint, vDir, sHitLoc, psOffsetTime);
